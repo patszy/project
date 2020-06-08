@@ -1,0 +1,45 @@
+@import "header.css";
+@import "navigation.css";
+@import "main.css";
+@import "aside.css";
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-color: black;
+    --light-color: white;
+    --grey-color: #707070;
+    --red-color: #EA2027;
+    --green-color: #009432;
+    --blue-color: #00B0FF;
+    --yellow-color: #F79F1F;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-img {
+    z-index: -1;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ccc;
+    background-image: url(../assets/undraw_in_love_3dcq.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}

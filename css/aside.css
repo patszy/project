@@ -1,0 +1,11 @@
+aside {
+    position: fixed;
+    width: 200px;
+    line-height: 500px;
+    text-align: center;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid var(--grey-color);
+    background-color: var(--light-color);
+}

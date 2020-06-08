@@ -1,0 +1,9 @@
+.content__nav {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 50px;
+    border: 1px solid var(--grey-color);
+    background-color: var(--light-color);
+}
