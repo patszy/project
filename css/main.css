@@ -1,14 +1,13 @@
 main {
-    margin-top: 150px;
+    margin-top: 100px;
     width: 60%;
 }
 
 .user__container {
     margin-bottom: 50px;
     position: relative;
-    border: 1px solid var(--grey-color);
     padding: 30px;
-    background-color: white;
+    background-color: var(--light-color);
 }
 
 .user__data {
@@ -78,13 +77,14 @@ main {
     top: 0;
     right: 0;
     border: 0;
+    outline: 0;
     width: 32px;
     height: 32px;
     line-height: 32px;
     background-color: var(--light-color);
     cursor: pointer;
     font-size: 1.2rem;
-    transition: .4s;
+    transition: .2s;
 }
 
 .container__close::before,
@@ -93,31 +93,35 @@ main {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 20px;
+    width: 15px;
     height: 2px;
-    background-color: black;
-    transition: .4s;
+    background-color: var(--dark-color);
+    transition: .2s;
 }
 
 .container__close::before {
-    transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-80%, -50%) rotate(45deg);
 }
 
 .container__close::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-20%, -50%) rotate(-45deg);
 }
 
 .container__mail {
-    right: 32px;
+    right: 37px;
 }
 
 .container__mail:hover {
     background-color: var(--yellow-color);
     color: var(--light-color);
+    transform: scale(1.2);
+    z-index: 10;
 }
 
 .container__close:hover {
-    background-color: var(--red-color);
+    background-color: var(--green-color);
+    transform: scale(1.2);
+    z-index: 10;
 }
 
 .container__close:hover::before,
@@ -126,14 +130,17 @@ main {
 }
 
 .user__article {
-    margin-top: 50px;
+    margin-top: 30px;
+}
 
+.user__article:not(:first-of-type) {
+    display: none;
 }
 
 .article__data time {
     padding: 0 10px;
     font-style: italic;
-    border: 1px solid var(--grey-color);
+    border-bottom: 1px solid var(--grey-color);
 }
 
 .article__data h2 {
@@ -145,23 +152,25 @@ main {
 .article__content {
     margin: 0;
     padding: 10px 20px;
-    border: 1px solid var(--grey-color);
-    overflow: hidden;
+}
+
+.user__container--show .user__article{
+    display: block;
 }
 
 .user__container--show .container__close::before,
 .user__container--show .container__close::after {
-    width: 15px;
+    width: 20px;
 }
 
 .user__container--show .container__close::before {
-    transform: translate(-80%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .user__container--show .container__close::after {
-    transform: translate(-20%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .user__container--show .container__close:hover {
-    background-color: var(--green-color);
+    background-color: var(--red-color);
 }

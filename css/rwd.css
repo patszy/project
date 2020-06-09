@@ -1,0 +1,17 @@
+@media all and (max-width: 960px) {
+    main {
+        width: 100%;
+    }
+
+    .user__container {
+        padding: 30px 5px;
+    }
+
+    .article__content {
+        padding: 10px;
+    }
+
+    .user__data {
+        flex-wrap: wrap;
+    }
+}

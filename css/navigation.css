@@ -6,4 +6,5 @@
     width: 50px;
     border: 1px solid var(--grey-color);
     background-color: var(--light-color);
+    display: none;
 }

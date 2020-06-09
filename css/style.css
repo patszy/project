@@ -2,6 +2,8 @@
 @import "navigation.css";
 @import "main.css";
 @import "aside.css";
+@import "rwd.css";
+
 * {
     box-sizing: border-box;
 }
@@ -14,6 +16,7 @@
     --green-color: #009432;
     --blue-color: #00B0FF;
     --yellow-color: #F79F1F;
+    --sea-color: #00BFA6;
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
 }
@@ -37,7 +40,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ccc;
+    background-color: #192a56;
     background-image: url(../assets/undraw_in_love_3dcq.svg);
     background-repeat: no-repeat;
     background-size: contain;

@@ -8,4 +8,5 @@ aside {
     transform: translateY(-50%);
     border: 1px solid var(--grey-color);
     background-color: var(--light-color);
+    display: none;
 }
