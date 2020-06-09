@@ -3,6 +3,23 @@
         width: 100%;
     }
 
+    header {
+        display: block;
+    }
+
+    .main__nav {
+        flex-wrap: wrap;
+        display: none;
+    }
+
+    .main__nav--active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
     .user__container {
         padding: 30px 5px;
     }
