@@ -30,12 +30,14 @@ header {
 }
 
 .search__bar {
+    position: relative;
     flex-grow: 1;
     display: flex;
 }
 
 .search__bar .fa-pen {
-    padding: 0 30px;
+    position: absolute;
+    left: 30px;
 }
 
 .search__bar label {
@@ -47,7 +49,7 @@ header {
 .search__bar label input[type="text"]{
     border: 0;
     outline: 0;
-    padding: 5px;
+    padding-left: 80px;
     flex-grow: 1;
     font-size: 1.2rem;
     background-color: transparent;
@@ -84,22 +86,30 @@ header {
     color: var(--dark-color);
 }
 
-.main__nav .user__bar ul {
+.main__nav .user__bar {
     margin: 0;
     padding: 0;
     list-style: none;
+    width: 200px;
+    height: 50px;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.main__nav .user__bar ul li a i{
-    color: var(--blue-color);
-    padding: 0 15px;
-    margin: 0 5px;
+.main__nav .user__bar li {
+    flex-basis: 33%;
+    text-align: center;
+}
+
+.main__nav .user__bar li a i{
+    width: 100%;
     line-height: 50px;
+    color: var(--blue-color);
     transition: .2s;
 }
 
-.main__nav .user__bar ul li a i:hover {
+.main__nav .user__bar li:hover a i {
     background-color: var(--blue-color);
     color: var(--light-color);
     transform: scale(1.2);

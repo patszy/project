@@ -7,6 +7,10 @@
         display: block;
     }
 
+    .logo {
+        border: 0;
+    }
+
     .main__nav {
         flex-wrap: wrap;
         display: none;
@@ -14,6 +18,45 @@
 
     .main__nav--active {
         display: flex;
+        height: calc(100vh - 50px);
+    }
+
+    .search__bar {
+        display: block;
+        align-self: center;
+    }
+
+    .search__bar label {
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    .search__bar label input[type="text"]{
+        text-align: center;
+        padding: 0;
+    }
+
+    .search__bar button {
+        width: 100%;
+    }
+
+    .fa-arrow-down {
+        display: none;
+    }
+
+    .user__bar {
+        flex-basis: 100%;
+        align-self: flex-end;
+    }
+
+    .main__nav .user__bar ul {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .main__nav .user__bar ul li {
+        flex-basis: 100%;
+        text-align: center;
     }
 
     .hamburger {
