@@ -86,7 +86,7 @@ header {
     color: var(--dark-color);
 }
 
-.main__nav .user__bar {
+.user__bar {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -97,19 +97,19 @@ header {
     align-items: center;
 }
 
-.main__nav .user__bar li {
+.user__bar li {
     flex-basis: 33%;
     text-align: center;
 }
 
-.main__nav .user__bar li a i{
+.user__bar li a i{
     width: 100%;
     line-height: 50px;
     color: var(--blue-color);
     transition: .2s;
 }
 
-.main__nav .user__bar li:hover a i {
+.user__bar li:hover a i {
     background-color: var(--blue-color);
     color: var(--light-color);
     transform: scale(1.2);
