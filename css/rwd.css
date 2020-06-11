@@ -45,7 +45,6 @@
     }
 
     .user__bar {
-        margin-bottom: 50px;
         flex-basis: 100%;
         align-self: flex-end;
     }
