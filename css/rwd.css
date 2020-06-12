@@ -16,7 +16,7 @@
         height: 0;
         overflow: hidden;
         transition: .2s;
-        background-image: url(../assets/undraw_select_option_y75i.svg);
+        background-image: url(../assets/undraw_candidate_ubwv.svg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -39,6 +39,10 @@
 
     .search__bar label input[type="text"]{
         text-align: center;
+    }
+
+    .search__bar button[type="submit"] {
+        text-shadow: 1px 1px var(--light-color);
     }
 
     .fa-arrow-down {
@@ -86,6 +90,6 @@
 
     .search__bar button[type="submit"] {
         flex-grow: 1;
-        padding-left: 80px;
+        padding-left: 90px;
     }
 }
