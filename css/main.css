@@ -134,7 +134,10 @@ main {
 }
 
 .user__article:not(:first-of-type) {
-    display: none;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: .4s;
 }
 
 .article__data time {
@@ -155,7 +158,8 @@ main {
 }
 
 .user__container--show .user__article{
-    display: block;
+    margin-top: 30px;
+    height: auto;
 }
 
 .user__container--show .container__close::before,

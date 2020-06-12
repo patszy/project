@@ -13,31 +13,32 @@
 
     .main__nav {
         flex-wrap: wrap;
-        display: none;
+        height: 0;
+        overflow: hidden;
+        transition: .2s;
+        background-image: url(../assets/undraw_select_option_y75i.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
     }
 
     .main__nav--active {
         display: flex;
-        height: calc(100vh - 50px);
+        height: 50vh;
     }
 
     .search__bar {
-        display: block;
+        display: flex;
         align-self: center;
     }
 
     .search__bar label {
-        width: 100%;
+        flex-grow: 1;
         margin: 15px 0;
     }
 
     .search__bar label input[type="text"]{
         text-align: center;
-        padding: 0;
-    }
-
-    .search__bar button {
-        width: 100%;
     }
 
     .fa-arrow-down {
@@ -73,5 +74,18 @@
 
     .user__data {
         flex-wrap: wrap;
+    }
+}
+
+@media all and (max-width: 540px) {
+    .search__bar {
+        display: flex;
+        align-self: center;
+        flex-wrap: wrap;
+    }
+
+    .search__bar button[type="submit"] {
+        flex-grow: 1;
+        padding-left: 80px;
     }
 }
