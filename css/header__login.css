@@ -1,0 +1,23 @@
+.form__login {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: var(--blue-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    overflow: hidden;
+    transition: .2s;
+}
+
+.form__login label {
+    flex-basis: 100%;
+    margin-top: 20px;
+}
+
+.form__login--show {
+    height: 200px;
+    padding: 20px;
+}
