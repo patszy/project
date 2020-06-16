@@ -2,9 +2,10 @@
 @import "navigation.css";
 @import "main.css";
 @import "aside.css";
-@import "rwd.css";
 
 @import "header__login.css";
+
+@import "rwd.css";
 
 * {
     box-sizing: border-box;
@@ -15,9 +16,9 @@
     --light-color: white;
     --grey-color: #707070;
     --red-color: #EA2027;
-    --green-color: #009432;
+    --green-color: #C4E538;
     --blue-color: #00B0FF;
-    --yellow-color: #F79F1F;
+    --yellow-color: #FFC312;
     --sea-color: #00BFA6;
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;

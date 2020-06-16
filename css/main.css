@@ -114,13 +114,11 @@ main {
 .container__mail:hover {
     background-color: var(--yellow-color);
     color: var(--light-color);
-    transform: scale(1.2);
     z-index: 10;
 }
 
 .container__close:hover {
     background-color: var(--green-color);
-    transform: scale(1.2);
     z-index: 10;
 }
 
@@ -157,24 +155,24 @@ main {
     padding: 10px 20px;
 }
 
-.user__container--show .user__article{
+.user__container.--show .user__article{
     margin-top: 30px;
     height: auto;
 }
 
-.user__container--show .container__close::before,
-.user__container--show .container__close::after {
+.user__container.--show .container__close::before,
+.user__container.--show .container__close::after {
     width: 20px;
 }
 
-.user__container--show .container__close::before {
+.user__container.--show .container__close::before {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.user__container--show .container__close::after {
+.user__container.--show .container__close::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.user__container--show .container__close:hover {
+.user__container.--show .container__close:hover {
     background-color: var(--red-color);
 }

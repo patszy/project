@@ -1,23 +1,173 @@
 .form__login {
     position: absolute;
+    width: 400px;
     top: 50px;
     right: 0;
     background-color: var(--blue-color);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    color: var(--light-color);
     height: 0;
     overflow: hidden;
     transition: .2s;
+    box-shadow: 0 5px 5px var(--grey-color);
 }
 
-.form__login label {
-    flex-basis: 100%;
-    margin-top: 20px;
+.form__close {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    outline: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: .2s;
 }
 
-.form__login--show {
-    height: 200px;
+.form__close::before,
+.form__close::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 2px;
+    background-color: var(--dark-color);
+    transition: .2s;
+}
+
+.form__close::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.form__close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.form__close:hover {
+    background-color: var(--red-color);
+}
+
+.form__login.--show {
+    height: 300px;
     padding: 20px;
+}
+
+.form__login h5 {
+    margin: 5px 10px;
+    position: absolute;
+    text-align: left;
+    width: 90%;
+    left: 40px;
+    transition: .2s;
+    cursor: text;
+}
+
+.form__row {
+    display: block;
+    position: relative;
+    margin: 15px 0;
+    padding: 10px 0;
+    background-color: transparent;
+    border-bottom: 2px solid var(--light-color);
+    transition: .2s;
+}
+
+.form__row::before, .form__row::after{
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0%;
+	height: 2px;
+	background-color: var(--green-color);
+	transition: .4s;
+}
+
+.form__row::before{
+	right: 50%;
+}
+
+.form__row::after{
+	left: 50%;
+}
+
+.form__row.focus::before, .form__row.focus::after{
+	width: 40%;
+}
+
+.input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 50px;
+    font-size: 1em;
+    border: 0;
+    background-color: transparent;
+    color: var(--green-color);
+    outline: 0;
+}
+
+.form__row.focus h5 {
+    transform: translateY(-30px) scale(.8);
+}
+
+.form__row .fas,
+.form__row .far {
+    position: absolute;
+    top: 17px;
+    transition: .2s;
+}
+
+.form__row .fas {
+    left: 10px;
+}
+
+.form__row.focus .fas {
+    color: var(--green-color);
+}
+
+.form__row .far.fa-eye {
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+}
+
+.form__row .far.fa-eye:hover {
+    color: var(--green-color);
+    transform: scale(1.2);
+}
+
+.submit {
+    display: block;
+    margin: 10px auto;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background-color: var(--green-color);
+    color: var(--light-color);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: .2s;
+}
+
+.submit:hover {
+    border: 0;
+    color: var(--dark-color);
+    transform: scale(.9);
+}
+
+.forgot {
+    font-size: 0.8em;
+    color: var(--main-dark-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.forgot:hover {
+    color: var(--red-color);
+    text-shadow: 0 0 5px var(--light-color);
 }

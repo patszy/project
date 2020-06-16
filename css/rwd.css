@@ -22,7 +22,7 @@
         background-size: contain;
     }
 
-    .main__nav--active {
+    .main__nav.--show {
         display: flex;
         height: 50vh;
     }
@@ -78,6 +78,12 @@
 
     .user__data {
         flex-wrap: wrap;
+    }
+
+
+    .form__login.--show {
+        width: 100vw;
+        height: 100vh;
     }
 }
 

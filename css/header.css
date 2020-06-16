@@ -15,7 +15,7 @@ header {
     font-size: 1.5rem;
 }
 
-.main__nav--active {
+.main__nav.--show {
     display: flex;
 }
 
@@ -113,7 +113,8 @@ header {
     transition: .2s;
 }
 
-.user__bar li:hover a i {
+.user__bar li:hover a i,
+.user__bar li a.--show i{
     background-color: var(--blue-color);
     color: var(--light-color);
 }
@@ -152,16 +153,16 @@ header {
     top: 13px;
 }
 
-.hamburger--active .hamburger__inner {
+.hamburger.--show .hamburger__inner {
     background-color: transparent;
 }
 
-.hamburger--active .hamburger__inner::before {
+.hamburger.--show .hamburger__inner::before {
     transform: translateY(10px) rotate(45deg);
     background-color: var(--red-color);
 }
 
-.hamburger--active .hamburger__inner::after {
+.hamburger.--show .hamburger__inner::after {
     transform: translateY(-13px) rotate(-45deg);
     background-color: var(--red-color);
 }
