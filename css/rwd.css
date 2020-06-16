@@ -16,15 +16,11 @@
         height: 0;
         overflow: hidden;
         transition: .2s;
-        background-image: url(../assets/undraw_candidate_ubwv.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
     }
 
     .main__nav.--show {
         display: flex;
-        height: 50vh;
+        height: 100px;
     }
 
     .search__bar {
@@ -39,10 +35,6 @@
 
     .search__bar label input[type="text"]{
         text-align: center;
-    }
-
-    .search__bar button[type="submit"] {
-        text-shadow: 1px 1px var(--light-color);
     }
 
     .fa-arrow-down {
@@ -92,6 +84,10 @@
         display: flex;
         align-self: center;
         flex-wrap: wrap;
+    }
+
+    .main__nav.--show {
+        height: 150px;
     }
 
     .search__bar button[type="submit"] {

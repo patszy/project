@@ -41,5 +41,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
     loginButton.addEventListener('click', () => handleLoginClick(loginButton));
     hamburgerMenu.addEventListener(`click`, () => handleHamburgerClick(hamburgerMenu));
     for(let btn of closeBtn) btn.addEventListener(`click`, () => handleCloseClick(btn.closest(`.user__container`)));
-    closeFormBtn.addEventListener(`click`, () => handleCloseClick(closeFormBtn.closest(`.form__login`)));
+    closeFormBtn.addEventListener(`click`, () => {
+        handleCloseClick(closeFormBtn.closest(`.form__login`));
+        handleCloseClick(closeFormBtn.closest(`.form__login`).previousElementSibling);
+
+    });
 });
