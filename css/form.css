@@ -179,8 +179,13 @@
     border: 0;
     padding: 10px 20px;
     border-radius: 50px;
+<<<<<<< HEAD:css/form.css
     background-color: var(--blue-color);
     color: var(--dark-color);
+=======
+    background-color: transparent;
+    color: var(--light-color);
+>>>>>>> d10eb5ccded9f8c28ae6765cc9fe063e198a74ca:css/header__login.css
     cursor: pointer;
     font-weight: bold;
     font-size: 1em;
@@ -190,7 +195,7 @@
 }
 
 .submit:hover {
-    border: 0;
+    color: var(--green-color);
     box-shadow: 0 2px 2px rgba(255,255,255, .5),
                 0 -3px rgba(0,0,0, .5);
     transform: scale(.9);
