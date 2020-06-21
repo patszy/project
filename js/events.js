@@ -1,10 +1,13 @@
 document.addEventListener(`DOMContentLoaded`, () => {
-    const closeBtn = document.querySelectorAll(`.user__container .container__close`);
-    const closeFormBtn = document.querySelector(`.form__close`);
+    const closeContainerBtn = document.querySelectorAll(`.user__container .container__close`);
+    const closeFormBtn = document.querySelectorAll(`.form__close`);
     const hamburgerMenu = document.querySelector(`.hamburger`);
-    const inputs = document.querySelectorAll(`.form__login input:not([type="submit"])`);
+    const inputs = document.querySelectorAll(`.form input:not([type="submit"])`);
     const loginButton = document.querySelector(`.login__button`);
-    const eyes = document.querySelectorAll(`.form__row .far.fa-eye`);
+    const registerButton = document.querySelector(`.register__button`);
+    const eyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
+
+    console.log(eyes);
 
     const handleHamburgerClick = (element) => {
         element.classList.toggle(`--show`);
@@ -12,13 +15,16 @@ document.addEventListener(`DOMContentLoaded`, () => {
     }
 
     const handleCloseClick = (element) => {
+        console.log(element);
         element.classList.toggle(`--show`);
     }
 
-    const handleLoginClick = (element) => {
+    const handleFormClick = (element) => {
         element.classList.toggle(`--show`);
         element.nextElementSibling.classList.toggle(`--show`);
     }
+
+    // Add Event Listeners
 
     inputs.forEach(input => {
         input.addEventListener(`focus`, (event) => {
@@ -32,18 +38,30 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     eyes.forEach(eye => {
         eye.addEventListener(`click`, (event) => {
+            if(eye.classList.contains(`fa-eye`)) {
+                eye.classList.remove(`fa-eye`);
+                eye.classList.add(`fa-eye-slash`);
+            } else {
+                eye.classList.remove(`fa-eye-slash`);
+                eye.classList.add(`fa-eye`);
+            }
+
             event.preventDefault();
             let input = event.target.previousElementSibling;
             (input.type == `password`) ? input.type = `text` : input.type = `password`;
         });
     });
 
-    loginButton.addEventListener('click', () => handleLoginClick(loginButton));
+    loginButton.addEventListener('click', () => handleFormClick(loginButton));
+    registerButton.addEventListener('click', () => handleFormClick(registerButton));
     hamburgerMenu.addEventListener(`click`, () => handleHamburgerClick(hamburgerMenu));
-    for(let btn of closeBtn) btn.addEventListener(`click`, () => handleCloseClick(btn.closest(`.user__container`)));
-    closeFormBtn.addEventListener(`click`, () => {
-        handleCloseClick(closeFormBtn.closest(`.form__login`));
-        handleCloseClick(closeFormBtn.closest(`.form__login`).previousElementSibling);
 
-    });
+    for(let closeBtn of closeContainerBtn) closeBtn.addEventListener(`click`, () => handleCloseClick(closeBtn.closest(`.user__container`)));
+
+    for(let closeBtn of closeFormBtn) {
+        closeBtn.addEventListener(`click`, () => {
+            handleCloseClick(closeBtn.closest(`.form`));
+            handleCloseClick(closeBtn.closest(`.form`).previousElementSibling);
+        });
+    }
 });
