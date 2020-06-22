@@ -72,10 +72,17 @@
         flex-wrap: wrap;
     }
 
+    .form {
+        top: 0;
+        left: 0;
+    }
 
-    .form__login.--show {
+    .form.--show {
         width: 100vw;
         height: 100vh;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
     }
 }
 
