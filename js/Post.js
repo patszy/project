@@ -24,8 +24,8 @@ class Post{
 
         let userContainer = document.createElement(`section`);
         let userData = document.createElement(`h1`);
-        let userDatas;
         let userArticle = document.createElement(`article`);
+        let userDatas, button, articleData;
 
         userContainer.classList.add(`user__container`);
         userData.classList.add(`user__data`);
@@ -46,6 +46,35 @@ class Post{
         userDatas.innerText = `18`;
         userData.appendChild(userDatas);
 
+        button = document.createElement(`button`);
+        button.className = `container__mail`;
+        let i = document.createElement(`i`);
+        i.className = `far fa-envelope`;
+        button.appendChild(i);
+
+        userContainer.appendChild(button);
+
+        button = document.createElement(`button`);
+        button.className = `container__close`;
+
+        userContainer.appendChild(button);
+
+        articleData = document.createElement(`div`);
+        articleData.classList.add(`article__data`);
+        let time = document.createElement(`time`);
+        time.innerText = this.time;
+
+        articleData.appendChild(time);
+
+        let title = document.createElement(`h2`);
+        title.innerText = this.title;
+
+        articleData.appendChild(title);
+
+        userArticle.innerText = this.title;
+        userArticle.appendChild(articleData);
+
+        userContainer.appendChild(userArticle);
         userContainer.appendChild(userData);
         main.appendChild(userContainer);
 
