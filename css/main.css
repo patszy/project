@@ -3,11 +3,69 @@ main {
     width: 60%;
 }
 
+.new__users {
+    background-color: var(--light-color);
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-radius: 20px;
+}
+
+.new__users .user__wrapper {
+    position: relative;
+    margin: 10px 5px;
+    flex-basis: 100px;
+    height: 100px;
+    border-radius: 100px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.new__users .user__img {
+    margin: 0;
+    background-image: url(../assets/undraw_male_avatar_323b.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    transition: .2s;
+}
+
+.new__users .user__wrapper:nth-child(3) .user__img,
+.new__users .user__wrapper:nth-child(5) .user__img {
+    background-image: url(../assets/undraw_female_avatar_w3jk.svg);
+}
+
+.new__users .user__name {
+    position: absolute;
+    text-align: center;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1px 3px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px var(--grey-color);
+    white-space: nowrap;
+    transition: .2s;
+}
+
+.new__users .user__wrapper:hover .user__img {
+    transform: scale(1.2);
+}
+
+.new__users .user__wrapper:hover .user__name {
+    transform: translate(-50%, -300%);
+}
+
 .user__container {
     margin-bottom: 50px;
     position: relative;
     padding: 30px;
     background-color: var(--light-color);
+    border-radius: 0 0 10px 10px;
 }
 
 .user__data {
@@ -30,6 +88,7 @@ main {
     background-color: var(--blue-color);
     font-weight: bold;
     cursor: default;
+    text-shadow: 0 0 5px var(--grey-color);
 }
 
 .user__city,
