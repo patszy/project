@@ -2,37 +2,29 @@ document.addEventListener(`DOMContentLoaded`, () => {
     const closeContainerBtn = document.querySelectorAll(`.user__container .container__close`);
     const closeFormBtn = document.querySelectorAll(`.form__close`);
     const hamburgerMenu = document.querySelector(`.hamburger`);
-    const inputs = document.querySelectorAll(`.form input:not([type="submit"])`);
+    const inputs = document.querySelectorAll(`.form .input`);
     const loginButton = document.querySelector(`.login__button`);
     const registerButton = document.querySelector(`.register__button`);
+    const postButton = document.querySelector(`.post__button`);
     const eyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
 
-    console.log(eyes);
-
-    const handleHamburgerClick = (element) => {
+    const toggleShowClass = (element, parent = null) => {
         element.classList.toggle(`--show`);
-        document.querySelector(`.main__nav`).classList.toggle(`--show`);
+        if(parent) parent.classList.toggle(`--show`);
     }
 
-    const handleCloseClick = (element) => {
-        console.log(element);
-        element.classList.toggle(`--show`);
-    }
-
-    const handleFormClick = (element) => {
-        element.classList.toggle(`--show`);
-        element.nextElementSibling.classList.toggle(`--show`);
-    }
+    const toggleFocusClass = (element, show) => {
+        show ? element.classList.add(`--focus`) : element.classList.remove(`--focus`);
+    };
 
     // Add Event Listeners
 
     inputs.forEach(input => {
-        input.addEventListener(`focus`, (event) => {
-            event.target.closest('.form__row').classList.add(`focus`);
+        input.addEventListener(`focus`, event => {
+            toggleFocusClass(event.target.closest('.form__row'), true);
         });
-
-        input.addEventListener(`blur`, (event) => {
-            if(!event.target.value) event.target.closest('.form__row').classList.remove(`focus`);
+        input.addEventListener(`blur`, event => {
+            (!event.target.value) ? toggleFocusClass(event.target.closest('.form__row'), false) : null;
         });
     });
 
@@ -52,16 +44,11 @@ document.addEventListener(`DOMContentLoaded`, () => {
         });
     });
 
-    loginButton.addEventListener('click', () => handleFormClick(loginButton));
-    registerButton.addEventListener('click', () => handleFormClick(registerButton));
-    hamburgerMenu.addEventListener(`click`, () => handleHamburgerClick(hamburgerMenu));
+    loginButton.addEventListener('click', () => toggleShowClass(loginButton, loginButton.nextElementSibling));
+    registerButton.addEventListener('click', () => toggleShowClass(registerButton, registerButton.nextElementSibling));
+    postButton.addEventListener('click', () => toggleShowClass(postButton, postButton.nextElementSibling));
+    hamburgerMenu.addEventListener(`click`, () => toggleShowClass(hamburgerMenu, document.querySelector(`.main__nav`)));
 
-    for(let closeBtn of closeContainerBtn) closeBtn.addEventListener(`click`, () => handleCloseClick(closeBtn.closest(`.user__container`)));
-
-    for(let closeBtn of closeFormBtn) {
-        closeBtn.addEventListener(`click`, () => {
-            handleCloseClick(closeBtn.closest(`.form`));
-            handleCloseClick(closeBtn.closest(`.form`).previousElementSibling);
-        });
-    }
+    for(let closeBtn of closeContainerBtn) closeBtn.addEventListener(`click`, () => toggleShowClass(closeBtn.closest(`.user__container`)));
+    for(let closeBtn of closeFormBtn) closeBtn.addEventListener(`click`, () => toggleShowClass(closeBtn.closest(`.form`), closeBtn.closest(`.form`).previousElementSibling));
 });

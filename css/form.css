@@ -14,14 +14,21 @@
     z-index: 100;
 }
 
+.form.--show {
+    padding: 20px 50px;
+}
+
 .form__login.--show {
     height: 300px;
-    padding: 20px;
 }
 
 .form__register.--show {
-    height: 700px;
-    padding: 20px;
+    height: 600px;
+}
+
+.form__post.--show {
+    width: 600px;
+    height: 450px;
 }
 
 .form__close {
@@ -79,7 +86,7 @@
     position: relative;
     margin: 15px auto;
     padding: 10px 0;
-    width: 300px;
+    width: 100%;
     background-color: transparent;
     border-bottom: 2px solid var(--dark-color);
     transition: .2s;
@@ -103,8 +110,13 @@
 	left: 50%;
 }
 
-.form__row.focus::before, .form__row.focus::after{
+.form__row.--focus::before, .form__row.--focus::after{
 	width: 40%;
+}
+
+.form > div,
+.form__post .form__row {
+    width: 100%;
 }
 
 .form__row .input {
@@ -117,6 +129,10 @@
     outline: 0;
 }
 
+.form__row .input__radio .input {
+    width: inherit;
+}
+
 .form__row .input__radio {
     width: 40%;
     display: inline-block;
@@ -125,7 +141,7 @@
     cursor: pointer;
 }
 
-.form__row.focus .input__radio {
+.form__row.--focus .input__radio {
     opacity: 1;
 }
 
@@ -133,11 +149,17 @@
     opacity: 0;
 }
 
-.form__row.focus .input__date {
+.form__row.--focus .input__date {
     opacity: 1;
 }
 
-.form__row.focus h5 {
+.form__row textarea.input {
+    resize: none;
+    height: 200px;
+    padding-right: 0;
+}
+
+.form__row.--focus h5 {
     transform: translateY(-30px) scale(.8);
 }
 
@@ -152,7 +174,7 @@
     left: 10px;
 }
 
-.form__row.focus .fas {
+.form__row.--focus .fas {
     color: var(--blue-color);
 }
 

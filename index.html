@@ -34,7 +34,7 @@
                 <li>
                     <a href="#" class="login__button"> <i class="fas fa-user-lock"></i> </a>
                         <form class="form form__login" action="#" method="POST">
-                            <div class="container__login">
+                            <div class="form__container">
                                 <button type="button" class="form__close"></button>
                                 <label for="login" class="form__row">
                                     <h5>Login</h5>
@@ -57,17 +57,17 @@
                 </li>
                 <li> <a href="#" class="register__button"> <i class="fas fa-user-plus"></i> </a>
                     <form class="form form__register" action="#" method="POST">
-                        <div class="container__register">
+                        <div class="form__container">
                             <button type="button" class="form__close"></button>
 
                             <label for="name" class="form__row">
-                                <h5>Name</h5>
+                                <h5>Imię</h5>
                                 <i class="fas fa-user"></i>
                                 <input id="name" type="text" name="name" pattern="^[A-Z]([',.-]?[a-z])+$" class="input" autocomplete="off" required>
                             </label>
 
                             <label for="Surname" class="form__row">
-                                <h5>Surname</h5>
+                                <h5>Nazwisko</h5>
                                 <i class="fas fa-user-friends"></i>
                                 <input id="Surname" type="text" name="surname" pattern="^[A-Z]([',.-]?[a-z])+$" class="input" autocomplete="off" required>
                             </label>
@@ -79,23 +79,23 @@
                             </label>
 
                             <label for="password-register" class="form__row">
-                                <h5>Password</h5>
+                                <h5>Hasło</h5>
                                 <i class="fas fa-unlock-alt"></i>
                                 <input id="password-register" type="password" name="password" pattern="^([\w\d][!@#$%&*]?){8,}$" class="input" required>
                                 <i class="far fa-eye-slash"></i>
                             </label>
 
                             <label for="date" class="form__row">
-                                <h5>Birthday Date</h5>
+                                <h5>Data Urodzenia</h5>
                                 <i class="fas fa-calendar-alt"></i>
                                 <input id="date" type="date" name="bdate" class="input input__date" autocomplete="off" required>
                             </label>
 
                             <div for="gender" class="form__row">
-                                <h5>Gender</h5>
+                                <h5>Płeć</h5>
                                 <i class="fas fa-venus-mars"></i>
-                                <label class="input input__radio"><input type="radio" name="gender" value="male" required>Male</label>
-                                <label class="input input__radio"><input type="radio" name="gender" value="female">Female</label>
+                                <label class="input__radio"><input type="radio" name="gender" value="male" class="input" required>M</label>
+                                <label class="input__radio"><input type="radio" name="gender" value="female" class="input" >K</label>
                             </div>
 
                             <label for="guardian" class="guardian">
@@ -106,7 +106,27 @@
                         </div>
                     </form>
                 </li>
-                <li> <a href="#"> <i class="fas fa-plus"></i> </a> </li>
+                <li> <a href="#" class="post__button"> <i class="fas fa-plus"></i> </a>
+                    <form class="form form__post" action="#" method="POST">
+                        <div class="form__container">
+                            <button type="button" class="form__close"></button>
+
+                            <label for="topic" class="form__row">
+                                <h5>Temat</h5>
+                                <i class="fas fa-user"></i>
+                                <input id="topic" type="text" name="name" pattern="^[A-Z]([',.-]?[a-z])+$" class="input" autocomplete="off" required>
+                            </label>
+
+                            <label for="content" class="form__row">
+                                <h5>Treść</h5>
+                                <i class="fas fa-user"></i>
+                                <textarea id="content" type="text" name="name" pattern="^[A-Z]([',.-]?[a-z])+$" class="input" autocomplete="off" required></textarea>
+                            </label>
+
+                            <input type="submit" value="Opublikuj" class="submit">
+                        </div>
+                    </form>
+                </li>
             </ul>
         </nav>
 

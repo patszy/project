@@ -84,6 +84,10 @@
         left: 0;
         transform: translate(0, 0);
     }
+
+    .form__row {
+        width: 300px;
+    }
 }
 
 @media all and (max-width: 540px) {
@@ -100,5 +104,9 @@
     .search__bar button[type="submit"] {
         flex-grow: 1;
         padding-left: 90px;
+    }
+
+    .form__row {
+        width: 100%;
     }
 }
