@@ -1,93 +1,57 @@
 class Post{
-    constructor(author = `admin`, title, content){
+    constructor(author = `admin`, title = ``, content = ``){
         this.author = author;
         this.title = this.getTitle();
         this.content = this.getContent();
-        this.time = this.getDate();
+        this.time = this.createPostDate();
     }
 
-    getTitle = () => {
-        return document.getElementById(`title`).value;
-    }
+    getTitle = () => document.getElementById(`title`).value;
 
-    getContent = () => {
-        return document.getElementById(`content`).value;
-    }
+    getContent = () => document.getElementById(`content`).value;
 
-    getDate = () => {
-        const today = new Date();
-        return today.toLocaleString();
-    }
+    createPostDate = () => new Date().toLocaleString();
 
-    addPost() {
+    addPostToDOM() {
         const main = document.getElementsByTagName(`main`)[0];
 
-        let userContainer = document.createElement(`section`);
-        let userData = document.createElement(`h1`);
-        let userArticle = document.createElement(`article`);
-        let userDatas, button, articleData;
+        let userContainer = createElementDOM(`section`, [`user__container`], undefined, [
+            createElementDOM(`h1`, [`user__data`], undefined, [
+                createElementDOM(`div`, [`user__name`], `Admin 123`),
+                createElementDOM(`div`, [`user__city`], `Warszawa`),
+                createElementDOM(`div`, [`user__age`], `18`)
+            ]),
+            createElementDOM(`div`, [`container__mail`], undefined, [createElementDOM(`i`, [`far`, `fa-envelope`])]),
+            createElementDOM(`div`, [`container__close`]),
+            createElementDOM(`article`, [`user__article`], undefined, [
+                createElementDOM(`div`, [`article__data`], undefined, [
+                    createElementDOM(`time`, undefined, this.time),
+                    createElementDOM(`h2`, undefined, this.title)
+                ]),
+                createElementDOM(`p`, [`article__content`], this.content)
+            ])
+        ]);
 
-        userContainer.classList.add(`user__container`);
-        userData.classList.add(`user__data`);
-        userArticle.classList.add(`user__article`);
-
-        userDatas = document.createElement(`div`);
-        userDatas.className = `user__name`;
-        userDatas.innerText = `Admin 123`;
-        userData.appendChild(userDatas);
-
-        userDatas = document.createElement(`div`);
-        userDatas.className = `user__city`;
-        userDatas.innerText = `Warszawa`;
-        userData.appendChild(userDatas);
-
-        userDatas = document.createElement(`div`);
-        userDatas.className = `user__age`;
-        userDatas.innerText = `18`;
-        userData.appendChild(userDatas);
-
-        button = document.createElement(`button`);
-        button.className = `container__mail`;
-        let i = document.createElement(`i`);
-        i.className = `far fa-envelope`;
-        button.appendChild(i);
-
-        userContainer.appendChild(button);
-
-        button = document.createElement(`button`);
-        button.className = `container__close`;
-
-        userContainer.appendChild(button);
-
-        articleData = document.createElement(`div`);
-        articleData.classList.add(`article__data`);
-        let time = document.createElement(`time`);
-        time.innerText = this.time;
-
-        articleData.appendChild(time);
-
-        let title = document.createElement(`h2`);
-        title.innerText = this.title;
-
-        articleData.appendChild(title);
-
-        userArticle.innerText = this.title;
-        userArticle.appendChild(articleData);
-
-        userContainer.appendChild(userArticle);
-        userContainer.appendChild(userData);
         main.appendChild(userContainer);
-
-        console.log(userContainer);
     }
 }
 
-const postForm = document.querySelector(`.form__post`);
+const createElementDOM = (name, classes = null, text = ``, children = null) => {
+    let element = document.createElement(name);
+    element.innerText = text;
 
-postForm.addEventListener(`submit`, event => {
-    event.preventDefault();
+    if(classes) classes.forEach(className => element.classList.add(className));
+    if(children) children.forEach(child => element.appendChild(child));
 
-    const post = new Post(undefined);
-    post.addPost();
+    return element;
+}
+
+document.addEventListener(`DOMContentLoaded`, () => {
+    document.querySelector(`.form__post`).addEventListener(`submit`, event => {
+        event.preventDefault();
+
+        const post = new Post();
+        post.addPostToDOM();
+    });
 });
->>>>>>> 317cb2f2cae320b7f1f6dc09511275a83863aff8
+
