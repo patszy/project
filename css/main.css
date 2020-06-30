@@ -5,7 +5,6 @@ main {
 
 .new__users {
     background-color: var(--light-color);
-    width: 100%;
     margin-bottom: 50px;
     display: flex;
     justify-content: space-around;
@@ -20,11 +19,15 @@ main {
     height: 100px;
     border-radius: 100px;
     padding: 0;
+}
+
+.new__users .img__wrapper {
+    height: 100%;
+    border-radius: 100px;
     overflow: hidden;
 }
 
 .new__users .user__img {
-    margin: 0;
     background-image: url(../assets/undraw_male_avatar_323b.svg);
     background-position: center;
     background-size: contain;
@@ -42,7 +45,7 @@ main {
 .new__users .user__name {
     position: absolute;
     text-align: center;
-    bottom: -30px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     padding: 1px 3px;
@@ -50,6 +53,7 @@ main {
     box-shadow: 0 0 3px var(--grey-color);
     white-space: nowrap;
     transition: .2s;
+    opacity: 0;
 }
 
 .new__users .user__wrapper:hover .user__img {
@@ -57,7 +61,8 @@ main {
 }
 
 .new__users .user__wrapper:hover .user__name {
-    transform: translate(-50%, -300%);
+    transform: translate(-50%, -200%);
+    opacity: 1;
 }
 
 .user__container {

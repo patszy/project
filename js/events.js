@@ -1,4 +1,4 @@
-document.addEventListener(`DOMContentLoaded`, () => {
+const loadEventListenners = () => {
     const closeContainerBtns = document.querySelectorAll(`.user__container .container__close`);
     const closeFormBtns = document.querySelectorAll(`.form__close`);
     const hamburgerMenu = document.querySelector(`.hamburger`);
@@ -47,4 +47,4 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     for(let closeBtn of closeContainerBtns) closeBtn.addEventListener(`click`, () => toggleShowClass(closeBtn.closest(`.user__container`)));
     for(let closeBtn of closeFormBtns) closeBtn.addEventListener(`click`, () => toggleShowClass(closeBtn.closest(`.form`), closeBtn.closest(`.form`).previousElementSibling));
-});
+};

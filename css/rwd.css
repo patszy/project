@@ -97,13 +97,24 @@
         flex-wrap: wrap;
     }
 
+    .search__bar .fa-pen {
+        display: none;
+    }
+
     .main__nav.--show {
         height: 150px;
     }
 
+    .search__bar label {
+        width: 100%;
+    }
+
+    .search__bar label input[type="text"] {
+        padding: 0;
+    }
+
     .search__bar button[type="submit"] {
         flex-grow: 1;
-        padding-left: 90px;
     }
 
     .form__row {
