@@ -18,8 +18,8 @@ const loadEventListenners = () => {
     // Add Event Listeners
 
     inputs.forEach(input => {
-        input.addEventListener(`focus`, event => toggleFocusClass(event.target.closest('.form__row'), true));
-        input.addEventListener(`blur`, event => (!event.target.value) ? toggleFocusClass(event.target.closest('.form__row'), false) : null);
+        input.addEventListener(`focus`, event => toggleFocusClass(event.target.closest(`.form__row`), true));
+        input.addEventListener(`blur`, event => (!event.target.value) ? toggleFocusClass(event.target.closest(`.form__row`), false) : null);
     });
 
     eyes.forEach(eye => {
@@ -38,7 +38,7 @@ const loadEventListenners = () => {
         });
     });
 
-    menuBtns.forEach(btn => btn.addEventListener('click', () => {
+    menuBtns.forEach(btn => btn.addEventListener(`click`, () => {
         menuBtns.forEach(btn => {if(btn.classList.contains(`--show`)) toggleShowClass(btn, btn.nextElementSibling)});
         toggleShowClass(btn, btn.nextElementSibling);
     }));
@@ -48,3 +48,5 @@ const loadEventListenners = () => {
     for(let closeBtn of closeContainerBtns) closeBtn.addEventListener(`click`, () => toggleShowClass(closeBtn.closest(`.user__container`)));
     for(let closeBtn of closeFormBtns) closeBtn.addEventListener(`click`, () => toggleShowClass(closeBtn.closest(`.form`), closeBtn.closest(`.form`).previousElementSibling));
 };
+
+document.addEventListener(`DOMContentLoaded`, loadEventListenners());

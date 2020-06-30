@@ -46,20 +46,20 @@ class Post{
     }
 }
 
-// document.addEventListener(`DOMContentLoaded`, () => {
-//     const formPost = document.querySelector(`.form__post`);
-//     formPost.addEventListener(`submit`, event => {
-//         event.preventDefault();
+document.addEventListener(`DOMContentLoaded`, () => {
+    const formPost = document.querySelector(`.form__post`);
+    formPost.addEventListener(`submit`, event => {
+        event.preventDefault();
 
-//         let title = document.getElementById(`title`);
-//         let content = document.getElementById(`content`);
+        let title = document.getElementById(`title`);
+        let content = document.getElementById(`content`);
 
-//         const post = new Post(undefined, title, content);
-//         post.addPostToDOM();
-//         post.clearInputValue([title, content]);
+        const post = new Post(undefined, title, content);
+        post.addPostToDOM();
+        post.clearInputValue([title, content]);
 
-//         formPost.classList.toggle(`--show`);
-//         formPost.previousElementSibling.classList.toggle(`--show`);
-//     });
-// });
+        formPost.classList.toggle(`--show`);
+        formPost.previousElementSibling.classList.toggle(`--show`);
+    });
+});
 
