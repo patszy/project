@@ -26,9 +26,23 @@
     height: 550px;
 }
 
-.form__post.--show {
-    width: 600px;
+.form__options.--show {
     height: 450px;
+}
+
+.form__post {
+    position: relative;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    height: initial;
+    font-size: 1.5em;
+    padding: 30px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+.form__post .form__row {
+    margin: 0 0 30px;
 }
 
 .form__close {
@@ -71,7 +85,8 @@
     background-color: var(--red-color);
 }
 
-.form h5 {
+.form h5,
+.form__post h5 {
     margin: 5px 10px;
     position: absolute;
     text-align: left;
@@ -113,11 +128,12 @@
 }
 
 .form > div,
-.form__post .form__row {
+.form__options .form__row {
     width: 100%;
 }
 
 .form__row .input {
+    font-size: .9em;
     box-sizing: border-box;
     width: 100%;
     padding: 5px 50px;

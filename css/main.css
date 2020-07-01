@@ -10,6 +10,7 @@ main {
     justify-content: space-around;
     flex-wrap: wrap;
     border-radius: 20px;
+    box-shadow: 0px 5px 10px var(--grey-color);
 }
 
 .new__users .user__wrapper {
