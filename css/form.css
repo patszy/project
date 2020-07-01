@@ -23,7 +23,7 @@
 }
 
 .form__register.--show {
-    height: 600px;
+    height: 550px;
 }
 
 .form__post.--show {
@@ -75,7 +75,6 @@
     margin: 5px 10px;
     position: absolute;
     text-align: left;
-    width: 90%;
     left: 40px;
     transition: .2s;
     cursor: text;
@@ -84,8 +83,7 @@
 .form__row {
     display: block;
     position: relative;
-    margin: 15px auto;
-    padding: 10px 0;
+    margin: 30px auto;
     width: 100%;
     background-color: transparent;
     border-bottom: 2px solid var(--dark-color);
@@ -123,7 +121,6 @@
     box-sizing: border-box;
     width: 100%;
     padding: 5px 50px;
-    font-size: 1em;
     border: 0;
     background-color: transparent;
     outline: 0;
@@ -160,13 +157,13 @@
 }
 
 .form__row.--focus h5 {
-    transform: translateY(-30px) scale(.8);
+    transform: translate(0, -30px) scale(.7);
 }
 
 .form__row .fas,
 .form__row .far {
     position: absolute;
-    top: 17px;
+    top: 7px;
     transition: .2s;
 }
 
@@ -188,7 +185,27 @@
 .form__row .far.fa-eye:hover,
 .form__row .far.fa-eye-slash:hover {
     color: var(--blue-color);
-    transform: scale(1.2);
+    transform: scale(.9);
+}
+
+.form__row.--error::before,
+.form__row.--error::after {
+    width: 40%;
+    background-color: var(--red-color);
+}
+
+.form__row.--error .fas {
+    color: var(--red-color);
+}
+
+.form__row.--error .error__field {
+    white-space: nowrap;
+    font-size: .7rem;
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--red-color);
 }
 
 .guardian {

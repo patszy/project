@@ -12,7 +12,7 @@ class FormValidate {
         this.handleSubmit();
     }
 
-    getFields() {
+    getFields = () => {
         const inputs = [...this.form.querySelectorAll(`input:not(:disabled), select:not(:disabled), textarea:not(:disabled)`)];
         const fields = [];
 
@@ -21,7 +21,7 @@ class FormValidate {
         return fields;
     }
 
-    prepareElements() {
+    prepareElements = () => {
         const elements = this.getFields();
 
         for(const element of elements){
@@ -32,14 +32,14 @@ class FormValidate {
             if(type == `date`) {
                 const currentDate = new Date();
                 const maxYear = currentDate.getFullYear()-18;
-                element.setAttribute(`max`, `${maxYear}-01-01`);
+                element.setAttribute(`max`, `${maxYear}-12-31`);
             }
 
             element.addEventListener(eventName, event => this.testInput(event.target));
         }
     }
 
-    testInput(input) {
+    testInput = input => {
         let valid = input.checkValidity();
         this.toggleErrorField(input, !valid);
         return valid;
@@ -47,7 +47,7 @@ class FormValidate {
 
     getErrorText = (element) => {
         const validity = element.validity;
-        let text = `Wrong value.`;
+        let text = `Wartość nieprawidłowa.`;
 
         if (!validity.valid) {
             if (validity.valueMissing) text = `Uzupełnij pole.`;
@@ -68,7 +68,7 @@ class FormValidate {
                 text = `Podaj wartość w wymaganym formacie.`;
 
                 if(element.name == `name` || element.name == `sname`) {
-                    text = `Wartość musi zaczynać się z dużej litery i mieć więcej niż 2 litery.`
+                    text = `Podaj swoje imię lub nazwisko`;
                 }
                 if(element.name == `password`) {
                     text = `Hasło musi składać się z min. 8 znaków.`;
@@ -79,21 +79,31 @@ class FormValidate {
         return text;
     };
 
-    toggleErrorField(field, show){
+    createErrorField = (name, className, text) => {
+        let field = document.createElement(name);
+        field.innerText = text;
+
+        if(className) field.classList.add(className);
+
+        return field;
+    }
+
+    toggleErrorField = (field, show) => {
         const formRow = field.closest(`.form__row`);
 
         let text = this.getErrorText(field);
 
         if(show) {
             formRow.classList.add(`--error`);
-            formRow.setAttribute(`title`, text);
+            if(!formRow.firstElementChild.classList.contains(`error__field`)) formRow.prepend(this.createErrorField(`div`, `error__field`, text));
+            else formRow.firstElementChild.innerText = text;
         } else {
             formRow.classList.remove(`--error`);
-            formRow.removeAttribute(`title`);
+            if(formRow.firstElementChild.classList.contains(`error__field`)) formRow.firstElementChild.remove();
         }
     }
 
-    handleSubmit() {
+    handleSubmit = () => {
         this.form.addEventListener(`submit`, event => {
             event.preventDefault();
             const elements = this.getFields();

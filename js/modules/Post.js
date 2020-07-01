@@ -12,7 +12,7 @@ class Post{
 
     createPostDate = () => new Date().toLocaleString();
 
-    createElementDOM = (name, classes = null, text = ``, children = null) => {
+    createElementDOM = (name, classes, text, children) => {
         let element = document.createElement(name);
         element.innerText = text;
 
