@@ -6,6 +6,7 @@ header {
     background-color: var(--light-color);
     display: flex;
     box-shadow: 0px 5px 15px var(--grey-color);
+    -webkit-box-shadow: 0px 5px 15px var(--grey-color);
 }
 
 .main__nav {
@@ -67,6 +68,7 @@ header {
     cursor: pointer;
     outline: 0;
     transition: .2s;
+    -webkit-transition: .2s;
 }
 
 .search__bar button:hover {
@@ -83,6 +85,7 @@ header {
     padding: 0 20px;
     color: var(--dark-color);
     transition: .2s;
+    -webkit-transition: .2s;
 }
 
 .fa-arrow-down:hover {
@@ -111,6 +114,7 @@ header {
     line-height: 50px;
     color: var(--blue-color);
     transition: .2s;
+    -webkit-transition: .2s;
 }
 
 .user__bar li:hover a i,
@@ -139,10 +143,12 @@ header {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
     width: 30px;
     height: 3px;
     background-color: var(--blue-color);
     transition: .2s;
+    -webkit-transition: .2s;
 }
 
 .hamburger__inner::before {
@@ -159,10 +165,12 @@ header {
 
 .hamburger.--show .hamburger__inner::before {
     transform: translateY(10px) rotate(45deg);
+    -webkit-transform: translateY(10px) rotate(45deg);
     background-color: var(--red-color);
 }
 
 .hamburger.--show .hamburger__inner::after {
     transform: translateY(-13px) rotate(-45deg);
+    -webkit-transform: translateY(-13px) rotate(-45deg);
     background-color: var(--red-color);
 }
