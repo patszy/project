@@ -1,12 +1,10 @@
 const loadEventListenners = () => {
-    const closeContainerBtns = document.querySelectorAll(`.user__container .container__close`);
+    const togglePostCreatorBtn = document.querySelector(`.post__creator .btn__close`);
     const closeFormBtns = document.querySelectorAll(`.form__close`);
     const hamburgerMenu = document.querySelector(`.hamburger`);
     const inputs = document.querySelectorAll(`.input`);
     const menuBtns = document.querySelectorAll(`[class$="__button"]`);
     const eyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
-
-    console.log(inputs);
 
     const toggleShowClass = (element, parent = null) => {
         element.classList.toggle(`--show`);
@@ -47,7 +45,7 @@ const loadEventListenners = () => {
 
     hamburgerMenu.addEventListener(`click`, () => toggleShowClass(hamburgerMenu, document.querySelector(`.main__nav`)));
 
-    for(let closeBtn of closeContainerBtns) closeBtn.addEventListener(`click`, () => toggleShowClass(closeBtn.closest(`.user__container`)));
+    togglePostCreatorBtn.addEventListener(`click`, () => toggleShowClass(togglePostCreatorBtn.closest(`.post__creator`)));
     for(let closeBtn of closeFormBtns) closeBtn.addEventListener(`click`, () => toggleShowClass(closeBtn.closest(`.form`), closeBtn.closest(`.form`).previousElementSibling));
 };
 

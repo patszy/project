@@ -68,7 +68,8 @@
         padding: 10px;
     }
 
-    .user__data {
+    .user__data,
+    .article__data {
         flex-wrap: wrap;
     }
 
@@ -83,10 +84,6 @@
         top: 0;
         left: 0;
         transform: translate(0, 0);
-    }
-
-    .form__post .form__row {
-        width: 100%;
     }
 
     .form__row {

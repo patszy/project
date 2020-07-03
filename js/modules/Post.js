@@ -26,14 +26,13 @@ class Post{
         const main = document.getElementsByTagName(`main`)[0];
 
         let userContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
-            this.createElementDOM(`button`, [`container__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])]),
             this.createElementDOM(`div`, [`post__data`], undefined, [
                 this.createElementDOM(`div`, [`user__img`], undefined),
-                this.createElementDOM(`div`, undefined, undefined, [
+                this.createElementDOM(`div`, [`data__wrapper`], undefined, [
                     this.createElementDOM(`div`, [`user__data`], undefined, [
                         this.createElementDOM(`span`, [`user__name`], this.user.name),
                         this.createElementDOM(`span`, [`user__city`], this.user.city),
-                        this.createElementDOM(`span `, [`user__age`], this.user.age)
+                        this.createElementDOM(`span`, [`user__age`], this.user.age)
                     ]),
                     this.createElementDOM(`div`, [`article__data`], undefined, [
                         this.createElementDOM(`time`, undefined, this.time),
@@ -43,7 +42,8 @@ class Post{
             ]),
             this.createElementDOM(`article`, [`post__content`], undefined, [
                 this.createElementDOM(`p`, [`clearfix`], this.content)
-            ])
+            ]),
+            this.createElementDOM(`button`, [`container__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])])
         ]);
 
         main.appendChild(userContainer);

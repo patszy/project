@@ -2,7 +2,6 @@
 @import "navigation.css";
 @import "main.css";
 @import "aside.css";
-
 @import "form.css";
 
 @import "rwd.css";
@@ -44,7 +43,6 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* background-color: #192a56; */
     background-color: var(--light-grey-color);
     background-image: url(../assets/undraw_in_love_3dcq.svg);
     background-repeat: no-repeat;

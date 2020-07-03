@@ -3,6 +3,34 @@ main {
     width: 60%;
 }
 
+.post__creator {
+    background-color: var(--light-color);
+    margin-bottom: 50px;
+    border-radius: 5px;
+    border: 1px solid var(--grey-color);
+}
+
+.show__form {
+    position: relative;
+    border-radius: 5px 5px 0 0;
+    padding: 10px 20px;
+}
+
+.post__creator.--show .show__form::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: var(--grey-color);
+    transition: .2s;
+}
+
+.show__form h3 {
+    margin: 0;
+}
+
 .user__name {
     position: relative;
     color: var(--light-color);
@@ -79,7 +107,7 @@ main {
 .post__container {
     margin-bottom: 50px;
     position: relative;
-    padding: 20px;
+    padding: 10px;
     background-color: var(--light-color);
     border-radius: 10px;
 }
@@ -88,17 +116,25 @@ main {
     margin-right: 20px;
 }
 
+.data__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .post__data {
     display: flex;
     align-items: center;
+    padding-bottom: 10px;
 }
 
 .post__container .user__name {
     padding: 1px 5px;
 }
 
-.user__data {
-    margin-bottom: 15px;
+.user__data,
+.article__data {
+    display: flex;
+    margin-bottom: 10px;
 }
 
 .user__name,
@@ -143,82 +179,76 @@ main {
     content: "\f133";
 }
 
-.container__mail,
-.container__close {
-    text-align: center;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+.btn__mail,
+.btn__close {
     border: 0;
     outline: 0;
     border-radius: 3px;
     background-color: transparent;
-    color: var(--blue-color);
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1em;
     transition: .2s;
+    padding: 0;
 }
 
-.container__mail i.fas {
+.btn__mail {
+    display: block;
+    margin-left: auto;
+    margin-right:0;
+    padding: 0 3px;
+    color: var(--blue-color);
+}
+
+.btn__close {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.btn__mail i.fas {
     margin-left: 5px;
 }
 
-.container__close::before,
-.container__close::after{
+.btn__close::before,
+.btn__close::after{
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 15px;
+    width: 13px;
     height: 2px;
     background-color: var(--dark-color);
     transition: .2s;
 }
 
-.container__close::before {
+.btn__close::before {
     transform: translate(-80%, -50%) rotate(45deg);
 }
 
-.container__close::after {
+.btn__close::after {
     transform: translate(-20%, -50%) rotate(-45deg);
 }
 
-.container__mail:hover {
+.btn__mail:hover {
     background-color: var(--yellow-color);
     color: var(--light-color);
     z-index: 10;
 }
 
-.container__close:hover {
+.post__creator .btn__close:hover::before,
+.post__creator .btn__close:hover::after {
     background-color: var(--green-color);
-    z-index: 10;
-}
-
-.container__close:hover::before,
-.container__close:hover::after {
-    background-color: var(--light-color);
 }
 
 .post__content {
-    padding: 10px 20px;
-}
-
-.post__content p {
-    position: relative;
-    margin: 0;
-}
-
-.post__content:not(:first-of-type) {
-    height: 0;
-    margin: 0;
-    overflow: hidden;
-    transition: .4s;
+    margin: 0 20px 5px;
 }
 
 .post__data time {
     padding: 0 10px;
     font-style: italic;
-    border-bottom: 1px solid var(--grey-color);
 }
 
 .post__data h2 {
@@ -244,24 +274,15 @@ main {
     clear: both;
 }
 
-.post__container.--show .post__content{
-    margin-top: 30px;
-    height: auto;
-}
-
-.post__container.--show .container__close::before,
-.post__container.--show .container__close::after {
-    width: 20px;
-}
-
-.post__container.--show .container__close::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.post__container.--show .container__close::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.post__container.--show .container__close:hover {
+.post__creator.--show .btn__close:hover::before,
+.post__creator.--show .btn__close:hover::after {
     background-color: var(--red-color);
+}
+
+.post__creator.--show .btn__close::before {
+    transform: translate(-80%, -50%) rotate(-45deg);
+}
+
+.post__creator.--show .btn__close::after {
+    transform: translate(-20%, -50%) rotate(45deg);
 }
