@@ -2,9 +2,11 @@ const loadEventListenners = () => {
     const closeContainerBtns = document.querySelectorAll(`.user__container .container__close`);
     const closeFormBtns = document.querySelectorAll(`.form__close`);
     const hamburgerMenu = document.querySelector(`.hamburger`);
-    const inputs = document.querySelectorAll(`.form .input`);
+    const inputs = document.querySelectorAll(`.input`);
     const menuBtns = document.querySelectorAll(`[class$="__button"]`);
     const eyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
+
+    console.log(inputs);
 
     const toggleShowClass = (element, parent = null) => {
         element.classList.toggle(`--show`);

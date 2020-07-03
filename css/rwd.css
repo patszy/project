@@ -85,6 +85,10 @@
         transform: translate(0, 0);
     }
 
+    .form__post .form__row {
+        width: 100%;
+    }
+
     .form__row {
         width: 300px;
     }

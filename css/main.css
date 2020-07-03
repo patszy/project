@@ -3,6 +3,37 @@ main {
     width: 60%;
 }
 
+.user__name {
+    position: relative;
+    color: var(--light-color);
+    background-color: var(--blue-color);
+    font-weight: bold;
+    cursor: default;
+    text-shadow: 0 0 5px var(--grey-color);
+    padding: 1px 3px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px var(--grey-color);
+    white-space: nowrap;
+}
+
+.img__wrapper {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.user__img {
+    background-image: url(../assets/undraw_male_avatar_323b.svg);
+    background-color: transparent;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    transition: .2s;
+}
+
 .new__users {
     background-color: var(--light-color);
     margin-bottom: 50px;
@@ -16,26 +47,9 @@ main {
 .new__users .user__wrapper {
     position: relative;
     margin: 10px 5px;
-    flex-basis: 100px;
     height: 100px;
+    border: 0;
     border-radius: 100px;
-    padding: 0;
-}
-
-.new__users .img__wrapper {
-    height: 100%;
-    border-radius: 100px;
-    overflow: hidden;
-}
-
-.new__users .user__img {
-    background-image: url(../assets/undraw_male_avatar_323b.svg);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    transition: .2s;
 }
 
 .new__users .user__wrapper:nth-child(3) .user__img,
@@ -49,15 +63,11 @@ main {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    padding: 1px 3px;
-    border-radius: 5px;
-    box-shadow: 0 0 3px var(--grey-color);
-    white-space: nowrap;
     transition: .2s;
     opacity: 0;
 }
 
-.new__users .user__wrapper:hover .user__img {
+.user__wrapper:hover .user__img {
     transform: scale(1.2);
 }
 
@@ -66,35 +76,35 @@ main {
     opacity: 1;
 }
 
-.user__container {
+.post__container {
     margin-bottom: 50px;
     position: relative;
-    padding: 30px;
+    padding: 20px;
     background-color: var(--light-color);
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px;
+}
+
+.post__container .user__img {
+    margin-right: 20px;
+}
+
+.article__data__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.post__container .user__name {
+    padding: 1px 5px;
 }
 
 .user__data {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: normal;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
+    margin-bottom: 15px;
 }
 
-.user__data > *{
-    margin: 0;
-    padding: 5px 10px;
-}
-
-.user__name {
-    color: var(--light-color);
-    background-color: var(--blue-color);
-    font-weight: bold;
-    cursor: default;
-    text-shadow: 0 0 5px var(--grey-color);
+.user__name,
+.user__city,
+.user__age {
+    margin-right: 10px;
 }
 
 .user__city,
@@ -109,22 +119,20 @@ main {
     margin-right: 5px;
     font-family: "Font Awesome 5 Free";
     -webkit-font-smoothing: antialiased;
-    display: inline-block;
     font-style: normal;
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
 }
 
-.user__name::before {
-    content: "\f007";
-    color: var(--dark-color);
-    font-size: 1.2rem;
-}
-
 .user__city::before,
 .user__age::before {
     color: var(--blue-color);
+}
+
+.user__name::before {
+    content: "\f007";
+    color: var(--dark-color);
 }
 
 .user__city::before {
@@ -139,14 +147,13 @@ main {
 .container__close {
     text-align: center;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
     border: 0;
     outline: 0;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
-    background-color: var(--light-color);
+    border-radius: 3px;
+    background-color: transparent;
+    color: var(--blue-color);
     cursor: pointer;
     font-size: 1.2rem;
     transition: .2s;
@@ -172,10 +179,6 @@ main {
     transform: translate(-20%, -50%) rotate(-45deg);
 }
 
-.container__mail {
-    right: 37px;
-}
-
 .container__mail:hover {
     background-color: var(--yellow-color);
     color: var(--light-color);
@@ -192,11 +195,11 @@ main {
     background-color: var(--light-color);
 }
 
-.user__article {
-    margin-top: 30px;
+.article__content {
+    padding: 10px 20px;
 }
 
-.user__article:not(:first-of-type) {
+.article__content:not(:first-of-type) {
     height: 0;
     margin: 0;
     overflow: hidden;
@@ -215,29 +218,24 @@ main {
     display: inline;
 }
 
-.article__content {
-    margin: 0;
-    padding: 10px 20px;
-}
-
-.user__container.--show .user__article{
+.post__container.--show .article__content{
     margin-top: 30px;
     height: auto;
 }
 
-.user__container.--show .container__close::before,
-.user__container.--show .container__close::after {
+.post__container.--show .container__close::before,
+.post__container.--show .container__close::after {
     width: 20px;
 }
 
-.user__container.--show .container__close::before {
+.post__container.--show .container__close::before {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.user__container.--show .container__close::after {
+.post__container.--show .container__close::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.user__container.--show .container__close:hover {
+.post__container.--show .container__close:hover {
     background-color: var(--red-color);
 }

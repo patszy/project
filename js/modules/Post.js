@@ -1,6 +1,6 @@
 class Post{
-    constructor(author = `admin`, title = null, content = null){
-        this.author = author;
+    constructor(user = {name: `Admin123`, city: `Warszawa`, age: 18}, title = null, content = null){
+        this.user = user;
         this.title = this.getInputValue(title);
         this.content = this.getInputValue(content);
         this.time = this.createPostDate();
@@ -12,7 +12,7 @@ class Post{
 
     createPostDate = () => new Date().toLocaleString();
 
-    createElementDOM = (name, classes, text, children) => {
+    createElementDOM = (name, classes, text = ``, children) => {
         let element = document.createElement(name);
         element.innerText = text;
 
@@ -27,9 +27,9 @@ class Post{
 
         let userContainer = this.createElementDOM(`section`, [`user__container`], undefined, [
             this.createElementDOM(`h1`, [`user__data`], undefined, [
-                this.createElementDOM(`div`, [`user__name`], `Admin 123`),
-                this.createElementDOM(`div`, [`user__city`], `Warszawa`),
-                this.createElementDOM(`div`, [`user__age`], `18`)
+                this.createElementDOM(`div`, [`user__name`], this.user.name),
+                this.createElementDOM(`div`, [`user__city`], this.user.city),
+                this.createElementDOM(`div`, [`user__age`], this.user.age)
             ]),
             this.createElementDOM(`div`, [`container__mail`], undefined, [this.createElementDOM(`i`, [`far`, `fa-envelope`])]),
             this.createElementDOM(`div`, [`container__close`]),
@@ -55,11 +55,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
         let content = document.getElementById(`content`);
 
         const post = new Post(undefined, title, content);
+
         post.addPostToDOM();
         post.clearInputValue([title, content]);
-
-        formPost.classList.toggle(`--show`);
-        formPost.previousElementSibling.classList.toggle(`--show`);
     });
 });
 

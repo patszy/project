@@ -23,11 +23,11 @@
 }
 
 .form__register.--show {
-    height: 550px;
+    height: 600px;
 }
 
 .form__options.--show {
-    height: 450px;
+    height: 300px;
 }
 
 .form__post {
@@ -43,6 +43,10 @@
 
 .form__post .form__row {
     margin: 0 0 30px;
+}
+
+.form__post .form__row textarea.input {
+    height: 100px;
 }
 
 .form__close {
