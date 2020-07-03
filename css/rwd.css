@@ -92,6 +92,11 @@
     .form__row {
         width: 300px;
     }
+
+    .post__img {
+        width: 30vw;
+        height: 30vw;
+    }
 }
 
 @media all and (max-width: 540px) {
@@ -123,5 +128,10 @@
 
     .form__row {
         width: 100%;
+    }
+
+    .post__img {
+        width: 50vw;
+        height: 50vw;
     }
 }

@@ -25,20 +25,24 @@ class Post{
     addPostToDOM() {
         const main = document.getElementsByTagName(`main`)[0];
 
-        let userContainer = this.createElementDOM(`section`, [`user__container`], undefined, [
-            this.createElementDOM(`h1`, [`user__data`], undefined, [
-                this.createElementDOM(`div`, [`user__name`], this.user.name),
-                this.createElementDOM(`div`, [`user__city`], this.user.city),
-                this.createElementDOM(`div`, [`user__age`], this.user.age)
-            ]),
-            this.createElementDOM(`div`, [`container__mail`], undefined, [this.createElementDOM(`i`, [`far`, `fa-envelope`])]),
-            this.createElementDOM(`div`, [`container__close`]),
-            this.createElementDOM(`article`, [`user__article`], undefined, [
-                this.createElementDOM(`div`, [`article__data`], undefined, [
-                    this.createElementDOM(`time`, undefined, this.time),
-                    this.createElementDOM(`h2`, undefined, this.title)
+        let userContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
+            this.createElementDOM(`button`, [`container__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])]),
+            this.createElementDOM(`div`, [`post__data`], undefined, [
+                this.createElementDOM(`div`, [`user__img`], undefined),
+                this.createElementDOM(`div`, undefined, undefined, [
+                    this.createElementDOM(`div`, [`user__data`], undefined, [
+                        this.createElementDOM(`span`, [`user__name`], this.user.name),
+                        this.createElementDOM(`span`, [`user__city`], this.user.city),
+                        this.createElementDOM(`span `, [`user__age`], this.user.age)
+                    ]),
+                    this.createElementDOM(`div`, [`article__data`], undefined, [
+                        this.createElementDOM(`time`, undefined, this.time),
+                        this.createElementDOM(`h2`, undefined, this.title)
+                    ]),
                 ]),
-                this.createElementDOM(`p`, [`article__content`], this.content)
+            ]),
+            this.createElementDOM(`article`, [`post__content`], undefined, [
+                this.createElementDOM(`p`, [`clearfix`], this.content)
             ])
         ]);
 
