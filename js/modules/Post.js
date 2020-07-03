@@ -43,7 +43,7 @@ class Post{
             this.createElementDOM(`article`, [`post__content`], undefined, [
                 this.createElementDOM(`p`, [`clearfix`], this.content)
             ]),
-            this.createElementDOM(`button`, [`container__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])])
+            this.createElementDOM(`button`, [`btn__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])])
         ]);
 
         main.appendChild(userContainer);
