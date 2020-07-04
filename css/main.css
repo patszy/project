@@ -246,7 +246,7 @@ main {
 }
 
 .post__data time {
-    padding: 0 10px;
+    margin-right: 10px;
     font-style: italic;
 }
 

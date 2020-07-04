@@ -23,7 +23,8 @@ class Post{
     }
 
     addPostToDOM() {
-        const main = document.getElementsByTagName(`main`)[0];
+        const parent = document.getElementsByTagName(`main`)[0];
+        const actualNode = document.getElementsByClassName(`post__container`)[0];
 
         let userContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
             this.createElementDOM(`div`, [`post__data`], undefined, [
@@ -46,7 +47,7 @@ class Post{
             this.createElementDOM(`button`, [`btn__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])])
         ]);
 
-        main.appendChild(userContainer);
+        parent.insertBefore(userContainer, actualNode);
     }
 }
 
