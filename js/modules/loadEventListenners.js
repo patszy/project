@@ -5,6 +5,9 @@ const loadEventListenners = () => {
     const inputs = document.querySelectorAll(`.input`);
     const menuBtns = document.querySelectorAll(`[class$="__button"]`);
     const eyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
+    const time = document.querySelectorAll(`.post__creator time`)[0];
+
+    const timeInterval = window.setInterval(() => time.innerText = new Date().toLocaleString(), 1000);
 
     const toggleShowClass = (element, parent = null) => {
         element.classList.toggle(`--show`);
