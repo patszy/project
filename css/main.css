@@ -285,3 +285,14 @@ main {
 .post__creator.--show .btn__close::after {
     transform: translate(-20%, -50%) rotate(45deg);
 }
+
+/* Loading post animation */
+
+.post__container {
+    transform: translateX(100vw);
+    transition: 1s;
+}
+
+.post__container.--load {
+    transform: translateX(0vw);
+}

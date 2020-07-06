@@ -7,7 +7,7 @@
 * [To do](#todo)
 
 ## General info
-This project is a web site for peoples to find other and annouce their personality or offer.
+This project is a web site for peoples to find other and annouce their person or offer.
 
 Website is being developed in Pre-Alpha version.
 
@@ -26,7 +26,7 @@ Open link: https://patszy.github.io/project/
 
 2. Local site.
 
-Copy project from github repository.
+Copy/Download project from github repository.
 To run this project open file index.html from copied folder in browser (recomended Chrome).
 
 ## Features
@@ -38,6 +38,17 @@ To run this project open file index.html from copied folder in browser (recomend
 
 ## To do
 Add:
-- option to add content
-- new users container
-- whole database and php code
+- Frontend:
+    - add categories
+    - add photo to post
+    - change user avatar
+    - slider
+    - positioning
+- Backend:
+    - add user
+    - login user
+    - user options
+    - add post
+    - render post
+    - remind password
+    - contact with other user
