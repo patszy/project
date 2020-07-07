@@ -289,14 +289,13 @@ main {
 /* Loading post animation */
 
 .post__container {
-    transform: translateX(100vw);
-    -webkit-transform: translateX(100vw);
-    transition-timing-function: ease-in-out;
     display: none;
+    transform: translateX(90vw);
+    -webkit-transform: translateX(90vw);
 }
 
 .post__container.--load {
     display: block;
-    transform: translateX(-10vw);
-    -webkit-transform: translateX(-10vw);
+    transform: translateX(0vw);
+    -webkit-transform: translateX(0vw);
 }
