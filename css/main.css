@@ -291,7 +291,7 @@ main {
 .post__container {
     transform: translateX(100vw);
     -webkit-transform: translateX(100vw);
-    transition: 1s;
+    transition-timing-function: ease-in-out;
 }
 
 .post__container.--load {
