@@ -1,6 +1,6 @@
 const loadPosts = (posts) => {
     posts.forEach(post => {
-        if(post.getBoundingClientRect().top <= window.screen.height) {
+        if(post.getBoundingClientRect().top <= window.screen.height+200) {
             post.classList.add(`--load`);
         }
     });
