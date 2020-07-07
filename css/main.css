@@ -290,9 +290,11 @@ main {
 
 .post__container {
     transform: translateX(100vw);
+    -webkit-transform: translateX(100vw);
     transition: 1s;
 }
 
 .post__container.--load {
     transform: translateX(0vw);
+    -webkit-transform: translateX(0vw);
 }
