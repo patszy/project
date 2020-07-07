@@ -295,6 +295,6 @@ main {
 }
 
 .post__container.--load {
-    transform: translateX(0vw);
-    -webkit-transform: translateX(0vw);
+    transform: translateX(-10vw);
+    -webkit-transform: translateX(-10vw);
 }
