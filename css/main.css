@@ -290,6 +290,7 @@ main {
 
 .post__container {
     transform: translateX(100vw);
+    transform-delay: 0.1s;
     -webkit-transform: translateX(100vw);
     transition-timing-function: ease-in-out;
 }
