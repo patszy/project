@@ -9,8 +9,6 @@ const loadPosts = (posts) => {
 document.addEventListener(`DOMContentLoaded`, () => {
     let posts = document.querySelectorAll(`.post__container`);
 
-    posts.style.display='none';
-
     loadPosts(posts);
 
     window.addEventListener(`scroll`, () => loadPosts(posts));

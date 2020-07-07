@@ -131,4 +131,16 @@
         width: 50vw;
         height: 50vw;
     }
+
+    .post__container {
+    display: none;
+    transform: translateX(90vw);
+    -webkit-transform: translateX(90vw);
+    }
+
+    .post__container.--load {
+    display: block;
+    transform: translateX(0vw);
+    -webkit-transform: translateX(0vw);
+    }
 }
