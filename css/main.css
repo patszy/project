@@ -288,7 +288,6 @@ main {
 
 /* Loading post animation */
 
-/*
 .post__container {
     transform: scale(0.5);
     transition: 1s;
@@ -296,21 +295,4 @@ main {
 
 .post__container.--load {
     transform: scale(1);
-}
-*/
-
-
-.post__container.--load{
-    float: right;
-    animation: main 0.3s;
-    transform-origin: 100% 50%;
-}
-
-@keyframes main {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
