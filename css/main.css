@@ -289,10 +289,10 @@ main {
 /* Loading post animation */
 
 .post__container {
-    transform: translateX(100vw);
+    transform: scale(0.5);
     transition: 1s;
 }
 
 .post__container.--load {
-    transform: translateX(0vw);
+    transform: scale(1);
 }
