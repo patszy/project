@@ -302,7 +302,7 @@ main {
 
 .post__container.--load{
     float: right;
-    animation: main 0.5s;
+    animation: main 0.3s;
     transform-origin: 100% 50%;
 }
 
