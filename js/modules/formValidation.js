@@ -115,6 +115,11 @@ class FormValidate {
             }
 
             if(!formErrors) {
+                // Maybe i shoud use AJAX
+                // const formData = new FormData(this.form);
+                // for (var data of formData.values()) {
+                //     console.log(data);
+                // }
                 event.target.submit();
             }
         });

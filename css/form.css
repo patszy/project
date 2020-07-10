@@ -134,7 +134,8 @@
 }
 
 .form__row .input__radio .input {
-    width: inherit;
+    width: initial;
+    height: initial;
 }
 
 .form__row .input__radio {
