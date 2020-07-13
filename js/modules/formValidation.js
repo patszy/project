@@ -103,9 +103,9 @@ class FormValidate {
         }
     }
 
-    createAlert = (type, show) => {
-        if(show) infoAlert.classList.add(`--show`, `--${type}`);
-        else (infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`));
+    toggleAlert = (type, show) => {
+        const infoAlert = document.querySelector(`.info__alert`);
+        show ? infoAlert.classList.add(`--show`, `--${type}`) : (infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`));
     }
 
     handleSubmit = () => {
