@@ -105,7 +105,7 @@ class FormValidate {
 
     toggleAlert = (text, type, show) => {
         const infoAlert = document.querySelector(`.info__alert`);
-        infoAlert.innerText = text;
+        infoAlert.querySelector(`span`).innerText = text;
         show ? infoAlert.classList.add(`--show`, `--${type}`) : (infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`));
     }
 
@@ -121,44 +121,44 @@ class FormValidate {
             }
 
             if(!formErrors) {
-                // event.target.submit();
+                event.target.submit();
 
                 // Maybe I shoud use AJAX
 
-                const submit = this.form.querySelector(`.submit`);
-                submit.disabled = true;
-                submit.classList.add(`loading`);
+                // const submit = this.form.querySelector(`.submit`);
+                // submit.disabled = true;
+                // submit.classList.add(`loading`);
 
-                const url = this.form.action;
-                const method = this.form.method;
-                const formData = new FormData(this.form);
+                // const url = this.form.action;
+                // const method = this.form.method;
+                // const formData = new FormData(this.form);
 
-                fetch(url, {
-                    method: method.toUpperCase(),
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(response => {
-                    if (response.errors) {
-                        const selectors = response.errors.map(element => `[name="${element}"]`);
-                        const fieldsWithErrors = form.querySelectorAll(selectors.join(`,`));
-                        for (const element of fieldsWithErrors) {
-                            toggleErrorField(element, true);
-                        }
-                    } else {
-                        if (response.status === `ok`) {
-                            console.log(`Send Ok`);
-                            this.toggleAlert(`Registered properly.` ,`success`, true);
-                        }
-                        if (response.status === `error`) {
-                            console.log(`Send Error`);
-                            this.toggleAlert(`Server doesn't response!` , `error`, true);
-                        }
-                    }
-                }).finally(() => {
-                    submit.disabled = false;
-                    submit.classList.remove(`loading`);
-                });
+                // fetch(url, {
+                //     method: method.toUpperCase(),
+                //     body: formData
+                // })
+                // .then(response => response.json())
+                // .then(response => {
+                //     if (response.errors) {
+                //         const selectors = response.errors.map(element => `[name="${element}"]`);
+                //         const fieldsWithErrors = form.querySelectorAll(selectors.join(`,`));
+                //         for (const element of fieldsWithErrors) {
+                //             toggleErrorField(element, true);
+                //         }
+                //     } else {
+                //         if (response.status === `ok`) {
+                //             console.log(response);
+                //             this.toggleAlert(`${response.text}` ,`success`, true);
+                //         }
+                //         if (response.status === `error`) {
+                //             console.log(`Send Error`);
+                //             this.toggleAlert(`Server doesn't response!` , `error`, true);
+                //         }
+                //     }
+                // }).finally(() => {
+                //     submit.disabled = false;
+                //     submit.classList.remove(`loading`);
+                // });
             }
         });
     }
@@ -171,3 +171,7 @@ document.addEventListener(`DOMContentLoaded`, () =>{
     const formLoginValidation = new FormValidate(formLogin, {});
     const formRegisterValidation = new FormValidate(formRegister, {});
 });
+
+// Add every error status from this php to js response.
+// $_POST data validation.
+// Check SQL status
