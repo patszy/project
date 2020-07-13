@@ -103,6 +103,11 @@ class FormValidate {
         }
     }
 
+    createAlert = (type, show) => {
+        if(show) infoAlert.classList.add(`--show`, `--${type}`);
+        else (infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`));
+    }
+
     handleSubmit = () => {
         this.form.addEventListener(`submit`, event => {
             event.preventDefault();

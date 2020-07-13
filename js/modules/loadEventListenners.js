@@ -6,8 +6,7 @@ const loadEventListenners = () => {
     const menuBtns = document.querySelectorAll(`[class$="__button"]`);
     const eyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
     const time = document.querySelectorAll(`.post__creator time`)[0];
-
-    const timeInterval = window.setInterval(() => time.innerText = new Date().toLocaleString(), 1000);
+    const infoAlert = document.querySelector(`.info__alert`);
 
     const toggleShowClass = (element, parent = null) => {
         element.classList.toggle(`--show`);
@@ -17,6 +16,8 @@ const loadEventListenners = () => {
     const toggleFocusClass = (element, show) => {
         show ? element.classList.add(`--focus`) : element.classList.remove(`--focus`);
     };
+
+    const timeInterval = window.setInterval(() => time.innerText = new Date().toLocaleString(), 1000);
 
     // Add Event Listeners
 
