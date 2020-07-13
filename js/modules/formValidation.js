@@ -103,6 +103,11 @@ class FormValidate {
         }
     }
 
+    toggleAlert = (type, show) => {
+        const infoAlert = document.querySelector(`.info__alert`);
+        show ? infoAlert.classList.add(`--show`, `--${type}`) : (infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`));
+    }
+
     handleSubmit = () => {
         this.form.addEventListener(`submit`, event => {
             event.preventDefault();
