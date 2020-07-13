@@ -103,8 +103,9 @@ class FormValidate {
         }
     }
 
-    toggleAlert = (type, show) => {
+    toggleAlert = (text, type, show) => {
         const infoAlert = document.querySelector(`.info__alert`);
+        infoAlert.innerText = text;
         show ? infoAlert.classList.add(`--show`, `--${type}`) : (infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`));
     }
 
@@ -147,9 +148,11 @@ class FormValidate {
                     } else {
                         if (response.status === `ok`) {
                             console.log(`Send Ok`);
+                            this.toggleAlert(`Registered properly.` ,`success`, true);
                         }
                         if (response.status === `error`) {
                             console.log(`Send Error`);
+                            this.toggleAlert(`Server doesn't response!` , `error`, true);
                         }
                     }
                 }).finally(() => {
