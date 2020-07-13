@@ -115,12 +115,42 @@ class FormValidate {
             }
 
             if(!formErrors) {
-                // Maybe i shoud use AJAX
-                // const formData = new FormData(this.form);
-                // for (var data of formData.values()) {
-                //     console.log(data);
-                // }
-                event.target.submit();
+                // event.target.submit();
+
+                // Maybe I shoud use AJAX
+
+                const submit = this.form.querySelector(`.submit`);
+                submit.disabled = true;
+                submit.classList.add(`loading`);
+
+                const url = this.form.action;
+                const method = this.form.method;
+                const formData = new FormData(this.form);
+
+                fetch(url, {
+                    method: method.toUpperCase(),
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.errors) {
+                        const selectors = response.errors.map(element => `[name="${element}"]`);
+                        const fieldsWithErrors = form.querySelectorAll(selectors.join(`,`));
+                        for (const element of fieldsWithErrors) {
+                            toggleErrorField(element, true);
+                        }
+                    } else {
+                        if (response.status === `ok`) {
+                            console.log(`Send Ok`);
+                        }
+                        if (response.status === `error`) {
+                            console.log(`Send Error`);
+                        }
+                    }
+                }).finally(() => {
+                    submit.disabled = false;
+                    submit.classList.remove(`loading`);
+                });
             }
         });
     }
