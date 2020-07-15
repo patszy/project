@@ -29,10 +29,10 @@ class FormValidate {
             let eventName = `input`;
 
             if(type == `checkbox` || type == `radio` || type == `select`) eventName = `change`;
-            if(type == `date`) {
+            if(type == `number`) {
                 const currentDate = new Date();
-                const maxYear = currentDate.getFullYear()-18;
-                element.setAttribute(`max`, `${maxYear}-12-31`);
+                const maxYear = currentDate.getFullYear();
+                element.setAttribute(`max`, `${maxYear}`);
             }
 
             element.addEventListener(eventName, event => this.testInput(event.target));
@@ -59,20 +59,11 @@ class FormValidate {
             if (validity.tooLong) text = `Wartość jest zbyt długa.`;
             if (validity.badInput) text = `Wpisz liczbę.`;
             if (validity.stepMismatch) text = `Wybierz właściwą wartość.`;
-            if (validity.rangeOverflow) {
-                text = `Wybierz mniejszą wartość.`;
-                if(element.name == `bdate`) text = `Musisz skończyć 18 lat.`;
-            }
+            if (validity.rangeOverflow) text = `Wybierz mniejszą wartość.`;
             if (validity.rangeUnderflow) text = `Wybierz większą wartość.`;
             if (validity.patternMismatch) {
-                text = `Podaj wartość w wymaganym formacie.`;
-
-                if(element.name == `name` || element.name == `sname`) {
-                    text = `Podaj swoje imię lub nazwisko`;
-                }
-                if(element.name == `password`) {
-                    text = `Hasło musi składać się z min. 8 znaków.`;
-                }
+                text = `Niepoprawny format wartości.`;
+                if(element.name == `email`) text = `Niepoprawny email.`;
             }
         }
 

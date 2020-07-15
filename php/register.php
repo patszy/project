@@ -46,7 +46,7 @@
 			else echo "Error: " . $sql_create_user . "<br>" . $this->db_connect->error;
 		}
 
-		function checkEmail() {
+		function checkUser() {
 			$sql_email = "SELECT * FROM users WHERE email='$this->email'";
 			$check_email = $this->db_connect->query($sql_email);
 
@@ -65,7 +65,7 @@
 
 			if(!$this->guardian) {
 				$this->ConnectionOpen();
-				$this->checkEmail();
+				$this->checkUser();
 				$this->ConnectionClose();
 			}
 		}
