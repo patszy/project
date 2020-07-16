@@ -43,40 +43,65 @@
 
         $return = $connect->ConnectOpen();
 
-        if(isset($return["error"])){
-            echo "Error";
-        }
+        if(!isset($return["error"])){
+            if(isset($_POST["guardian"])) {
+                $return["success"] = "Guardian!";
+            } else {
+                $login = $_POST["login"];
+                $email = $_POST["email"];
+                $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                $date = $_POST["date"];
+                $city = $_POST["city"];
 
+                if (empty($login)) { $return["error"] = "Login is empty!"; }
+                else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $return["error"] = "Wrong email!"; }
+                else if (empty($password)) { $return["error"] = "Password is empty!"; }
+                else if (empty($date)) { $return["error"] = "Age is empty!"; }
+                else if (empty($_POST["city"])) { $return["error"] = "City is empty!"; }
+                else {
+                    $sql_email = "SELECT * FROM users WHERE email='$email'";
+                    $query_email = $connect->db_connect->query($sql_email);
 
-        if(isset($_POST["guardian"])) {
-            $return["success"] = "Guardian!";
-        } else {
-            $login = $_POST["login"];
-            $email = $_POST["email"];
-            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-            $date = $_POST["date"];
-            $city = $_POST["city"];
+                    $return = isUser($connect, $table_users, $email);
 
-            if (empty($login)) { $return["error"] = "Login is empty!"; }
-            else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $return["error"] = "Wrong email!"; }
-            else if (empty($password)) { $return["error"] = "Password is empty!"; }
-            else if (empty($date)) { $return["error"] = "Age is empty!"; }
-            else if (empty($_POST["city"])) { $return["error"] = "City is empty!"; }
-            else {
-                $sql_email = "SELECT * FROM users WHERE email='$email'";
-                $query_email = $connect->db_connect->query($sql_email);
+                    if(isset($return["success"])) {
+                        $return = createUser($connect, $table_users, $login, $email, $password, $date, $city);
 
-                $return = isUser($connect, $table_users, $email);
+                        $mailToSend = "patrykszymczyk97@gmail.com";
+                        $headers  = "MIME-Version: 1.0" . "\r\n";
+                        $headers .= "Content-type: text/html; charset=UTF-8". "\r\n";
+                        $headers .= "From: ".$email."\r\n";
+                        $headers .= "Reply-to: ".$email;
+                        $message  = "
+                            <html>
+                                <head>
+                                    <meta charset=\"utf-8\">
+                                </head>
+                                <body>
+                                    <h1> Witaj $login!</h1>
+                                    <h2> Rejestracja przebiegła poprawnie. </h2>
+                                    <p> Wiadomość wygenerowana przez system, prosimy na nią nie odpowiadać. </p>
+                                    <div> Zweryfikuj swój email
+                                        <a href='#'> Link </a>
+                                    </div>
+                                </body>
+                            </html>";
 
-                if(isset($return["success"])) { $return = createUser($connect, $table_users, $login, $email, $password, $date, $city); }
+                        if (mail($mailToSend, "Wiadomość ze strony - " . date("d-m-Y"), $message, $headers)) {
+                            $return["info"] = "Verification email sent.";
+                        } else {
+                            $return["error"] = "Email did not send!";
+                        }
+                    }
+                }
             }
         }
 
-        $connect->ConnectClose();
+        if (isset($return["error"])) { $return["status"] = "error"; }
+        else if (isset($return["warning"])) { $return["status"] = "warning"; }
+        else { $return["status"] = "success"; }
 
-		if (isset($return["error"])) { $return["status"] = "error"; }
-		else if (isset($return["warning"])) { $return["status"] = "warning"; }
-        // else { $return["status"] = "ok"; }
+        $connect->ConnectClose();
 
 		header("Content-Type: application/json");
 		echo json_encode($return);
