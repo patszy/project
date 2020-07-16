@@ -3,45 +3,37 @@
     require 'init.php';
     require 'Connection.php';
 
-    function checkRegisterData($return) {
-        if(isset($_POST["guardian"])) {
-            $return["errors"] = "Guardian!";
-        } else {
-            if (empty($_POST["login"])) { $return["errors"] = "Login is empty!"; }
-            else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) { $return["errors"] = "Wrong email!"; }
-            else if (empty($_POST["password"])) { $return["errors"] = "Password is empty"; }
-            else if (empty($_POST["city"])) { $return["errors"] = "City is empty"; }
-        }
+    function isUser($connect, $table, $email) {
+        $sql_email = "SELECT * FROM $table WHERE email='$email'";
+        $query_email = $connect->db_connect->query($sql_email);
+        $return = [];
 
-        return $return;
-    }
-
-    function isUser($connect, $return) {
-        $sql_email = "SELECT * FROM users WHERE email='" . "$_POST[email]}";
-        $query_email = $connect->query($sql_email);
-
-        if($query_email->num_rows == 0) {
-            $return["text"] = "Create user!";
-        } else if($check_email->num_rows != 0) {
-            while($row = $check_email->fetch_assoc()) {
-                $return["text"] = "Email exists.";
-                echo "User with same email exists: <br>";
+        if($query_email->num_rows == 0) { $return["success"] = "Create user is possible."; }
+        else if($query_email->num_rows != 0) {
+            while($row = $query_email->fetch_assoc()) {
+                $return["warning"] = "Email exists.";
                 echo "Id_user: " . $row["id_user"] . " | Login: " . $row["login"] . " | Email: " . $row["email"] . "<br>";
             }
         } else {
-            $return["errors"] = "Failed query!";
-            echo "Error: " . $sql_email . "<br>" . $this->db_connect->error;
+            $return["error"] = "Wrong SQL query!";
+            echo "Error: " . $sql_email . "<br>" . $connect->db_connect->error;
         }
 
         return $return;
     }
 
-    // function createUser($login, $email, $password, $date, $city) {
-    //     $sql_create_user = "INSERT INTO users (id_user, login, email, password, date, city) VALUES ('', '$login', '$email', '$password', '$date', '$city')";
+    function createUser($connect, $table, $login, $email, $password, $date, $city) {
+        $sql_create_user = "INSERT INTO $table SET id_user='', login='$login', email='$email', password='$password', date='$date', city='$city', verified = '0'";
+        $return = [];
 
-    //     if ($this->db_connect->query($sql_create_user) === TRUE) echo "New record created successfully";
-    //     else echo "Error: " . $sql_create_user . "<br>" . $this->db_connect->error;
-    // }
+        if ($connect->db_connect->query($sql_create_user) === TRUE) $return["success"] = "Registered successfully.";
+        else {
+            $return["errors"] = "Wrong SQL query!";
+            echo "Error: " . $sql_create_user . "<br>" . $connect->db_connect->error;
+        }
+
+        return $return;
+    }
 
 	if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors = [];
@@ -49,40 +41,42 @@
 
         $connect = new Connection($db_user, $db_password, $db_name);
 
-        $connect->ConnectOpen();
+        $return = $connect->ConnectOpen();
+
+        if(isset($return["error"])){
+            echo "Error";
+        }
+
 
         if(isset($_POST["guardian"])) {
-            $return["errors"] = "Guardian!";
+            $return["success"] = "Guardian!";
         } else {
-            if (empty($_POST["login"])) { $return["errors"] = "Login is empty!"; }
-            else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) { $return["errors"] = "Wrong email!"; }
-            else if (empty($_POST["password"])) { $return["errors"] = "Password is empty"; }
-            else if (empty($_POST["city"])) { $return["errors"] = "City is empty"; }
+            $login = $_POST["login"];
+            $email = $_POST["email"];
+            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            $date = $_POST["date"];
+            $city = $_POST["city"];
+
+            if (empty($login)) { $return["error"] = "Login is empty!"; }
+            else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $return["error"] = "Wrong email!"; }
+            else if (empty($password)) { $return["error"] = "Password is empty!"; }
+            else if (empty($date)) { $return["error"] = "Age is empty!"; }
+            else if (empty($_POST["city"])) { $return["error"] = "City is empty!"; }
             else {
-                $sql_email = "SELECT * FROM users WHERE email='{$_POST['email']}'";
+                $sql_email = "SELECT * FROM users WHERE email='$email'";
                 $query_email = $connect->db_connect->query($sql_email);
 
-                if($query_email->num_rows == 0) {
-                    $sql_create_user = "INSERT INTO users (id_user, login, email, password, date, city) VALUES ('', '{$_POST['login']}', '{$_POST['email']}', '{$_POST['password']}', '{$_POST['date']}', '{$_POST['city']}')";
+                $return = isUser($connect, $table_users, $email);
 
-                    if ($connect->db_connect->query($sql_create_user) === TRUE) echo "New record created successfully";
-                    else echo "Error: " . $sql_create_user . "<br>" . $connect->db_connect->error;
-                } else if($query_email->num_rows != 0) {
-                    while($row = $query_email->fetch_assoc()) {
-                        echo "User with same email exists: <br>";
-                        echo "Id_user: " . $row["id_user"] . " | Login: " . $row["login"] . " | Email: " . $row["email"] . "<br>";
-                    }
-                } else echo "Error: " . $sql_email . "<br>" . $connect->db_connect->error;
+                if(isset($return["success"])) { $return = createUser($connect, $table_users, $login, $email, $password, $date, $city); }
             }
         }
 
         $connect->ConnectClose();
 
-		if (count($errors) > 0) { $return["errors"] = $errors[array_key_first($errors)]; }
-		else {
-			$return["status"] = "ok";
-			$return["text"] = "User Registered";
-		}
+		if (isset($return["error"])) { $return["status"] = "error"; }
+		else if (isset($return["warning"])) { $return["status"] = "warning"; }
+        // else { $return["status"] = "ok"; }
 
 		header("Content-Type: application/json");
 		echo json_encode($return);
