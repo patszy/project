@@ -97,7 +97,8 @@ class FormValidate {
     toggleAlert = (text, type, show) => {
         const infoAlert = document.querySelector(`.info__alert`);
         infoAlert.querySelector(`span`).innerText = text;
-        show ? infoAlert.classList.add(`--show`, `--${type}`) : (infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`));
+        infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`);
+        show ? infoAlert.classList.add(`--show`, `--${type}`) : false;
     }
 
     handleSubmit = () => {
@@ -112,48 +113,42 @@ class FormValidate {
             }
 
             if(!formErrors) {
-                event.target.submit();
+                // event.target.submit();
 
                 // Maybe I shoud use AJAX
 
-                // const submit = this.form.querySelector(`.submit`);
-                // submit.disabled = true;
-                // submit.classList.add(`loading`);
+                const submit = this.form.querySelector(`.submit`);
+                submit.disabled = true;
+                submit.classList.add(`loading`);
 
-                // const url = this.form.action;
-                // const method = this.form.method;
-                // const formData = new FormData(this.form);
+                const url = this.form.action;
+                const method = this.form.method;
+                const formData = new FormData(this.form);
 
-                // fetch(url, {
-                //     method: method.toUpperCase(),
-                //     body: formData
-                // })
-                // .then(response => response.json())
-                // .then(response => {
-                //     if (response.errors) {
-                //         const selectors = response.errors.map(element => `[name="${element}"]`);
-                //         const fieldsWithErrors = form.querySelectorAll(selectors.join(`,`));
-                //         for (const element of fieldsWithErrors) {
-                //             toggleErrorField(element, true);
-                //         }
-                //     } else {
-                //         if (response.error) {
-                //             console.log(`Send Error`);
-                //             this.toggleAlert(`${response.error}` , `error`, true);
-                //         }
-                //         if (response.warning) {
-                //             console.log(`Send Warning`);
-                //             this.toggleAlert(`${response.warning}` , `warning`, true);
-                //         }
-                //         if (response.success) {
-                //             console.log(response);
-                //             this.toggleAlert(`${response.success}` ,`success`, true);
-                //         }
-                //     }
-                // }).finally(() => {
-                //     submit.disabled = false;
-                //     submit.classList.remove(`loading`);
-                // });
+                fetch(url, {
+                    method: method.toUpperCase(),
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response);
+                    if (response.status == `error`) {
+                        console.log(`Send Error`);
+                        this.toggleAlert(`${response.error}` , `error`, true);
+                    } else {
+                        if (response.status == `warning`) {
+                            console.log(`Send Warning`);
+                            this.toggleAlert(`${response.warning}` , `warning`, true);
+                        } else if (response.status == `success`) {
+                            console.log(`Send Success`);
+                            if (response.success) this.toggleAlert(`${response.success}` ,`success`, true);
+                            else if (response.info) this.toggleAlert(`${response.info}` ,`info`, true);
+                        }
+                    }
+                }).finally(() => {
+                    submit.disabled = false;
+                    submit.classList.remove(`loading`);
+                });
             }
         });
     }

@@ -12,11 +12,9 @@
         else if($query_email->num_rows != 0) {
             while($row = $query_email->fetch_assoc()) {
                 $return["warning"] = "Email exists.";
-                echo "Id_user: " . $row["id_user"] . " | Login: " . $row["login"] . " | Email: " . $row["email"] . "<br>";
             }
         } else {
-            $return["error"] = "Wrong SQL query!";
-            echo "Error: " . $sql_email . "<br>" . $connect->db_connect->error;
+            $return["error"] = "Error: " . $sql_email . "<br>" . $connect->db_connect->error;
         }
 
         return $return;
@@ -28,8 +26,33 @@
 
         if ($connect->db_connect->query($sql_create_user) === TRUE) $return["success"] = "Registered successfully.";
         else {
-            $return["errors"] = "Wrong SQL query!";
-            echo "Error: " . $sql_create_user . "<br>" . $connect->db_connect->error;
+            $return["errors"] = "Error: " . $sql_create_user . "<br>" . $connect->db_connect->error;
+        }
+
+        return $return;
+    }
+
+    function verificationEmail($email, $login) {
+        $return = [];
+        $headers  = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: No reply";
+        $message  = "
+            <html>
+                <head>
+                    <meta charset=\"utf-8\">
+                </head>
+                <body>
+                    <h1> Witaj $login!</h1>
+                    <p> Rejestracja przebiegła poprawnie. </p>
+                    <p> Wiadomość wygenerowana przez system, prosimy na nią nie odpowiadać. </p>
+                </body>
+            </html>";
+
+        if (mail($email, "Wiadomość ze strony gejusze.pl " . date("d-m-Y"), $message, $headers)) {
+            $return["info"] = "Verification email sent.";
+        } else {
+            $return["error"] = "Email did not send!";
         }
 
         return $return;
@@ -64,34 +87,10 @@
 
                     $return = isUser($connect, $table_users, $email);
 
-                    if(isset($return["success"])) {
+                    if(!isset($return["error"]) && !isset($return["warning"])) {
                         $return = createUser($connect, $table_users, $login, $email, $password, $date, $city);
 
-                        $mailToSend = "patrykszymczyk97@gmail.com";
-                        $headers  = "MIME-Version: 1.0" . "\r\n";
-                        $headers .= "Content-type: text/html; charset=UTF-8". "\r\n";
-                        $headers .= "From: ".$email."\r\n";
-                        $headers .= "Reply-to: ".$email;
-                        $message  = "
-                            <html>
-                                <head>
-                                    <meta charset=\"utf-8\">
-                                </head>
-                                <body>
-                                    <h1> Witaj $login!</h1>
-                                    <h2> Rejestracja przebiegła poprawnie. </h2>
-                                    <p> Wiadomość wygenerowana przez system, prosimy na nią nie odpowiadać. </p>
-                                    <div> Zweryfikuj swój email
-                                        <a href='#'> Link </a>
-                                    </div>
-                                </body>
-                            </html>";
-
-                        if (mail($mailToSend, "Wiadomość ze strony - " . date("d-m-Y"), $message, $headers)) {
-                            $return["info"] = "Verification email sent.";
-                        } else {
-                            $return["error"] = "Email did not send!";
-                        }
+                        if(!isset($return["error"])) { $return = verificationEmail($email, $login); }
                     }
                 }
             }
