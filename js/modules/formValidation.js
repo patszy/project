@@ -29,10 +29,10 @@ class FormValidate {
             let eventName = `input`;
 
             if(type == `checkbox` || type == `radio` || type == `select`) eventName = `change`;
-            if(type == `date`) {
+            if(type == `number`) {
                 const currentDate = new Date();
-                const maxYear = currentDate.getFullYear()-18;
-                element.setAttribute(`max`, `${maxYear}-12-31`);
+                const maxYear = currentDate.getFullYear();
+                element.setAttribute(`max`, `${maxYear}`);
             }
 
             element.addEventListener(eventName, event => this.testInput(event.target));
@@ -59,20 +59,11 @@ class FormValidate {
             if (validity.tooLong) text = `Wartość jest zbyt długa.`;
             if (validity.badInput) text = `Wpisz liczbę.`;
             if (validity.stepMismatch) text = `Wybierz właściwą wartość.`;
-            if (validity.rangeOverflow) {
-                text = `Wybierz mniejszą wartość.`;
-                if(element.name == `bdate`) text = `Musisz skończyć 18 lat.`;
-            }
+            if (validity.rangeOverflow) text = `Wybierz mniejszą wartość.`;
             if (validity.rangeUnderflow) text = `Wybierz większą wartość.`;
             if (validity.patternMismatch) {
-                text = `Podaj wartość w wymaganym formacie.`;
-
-                if(element.name == `name` || element.name == `sname`) {
-                    text = `Podaj swoje imię lub nazwisko`;
-                }
-                if(element.name == `password`) {
-                    text = `Hasło musi składać się z min. 8 znaków.`;
-                }
+                text = `Niepoprawny format wartości.`;
+                if(element.name == `email`) text = `Niepoprawny email.`;
             }
         }
 
@@ -103,9 +94,11 @@ class FormValidate {
         }
     }
 
-    toggleAlert = (type, show) => {
+    toggleAlert = (text, type, show) => {
         const infoAlert = document.querySelector(`.info__alert`);
-        show ? infoAlert.classList.add(`--show`, `--${type}`) : (infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`));
+        infoAlert.querySelector(`span`).innerText = text;
+        infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`);
+        show ? infoAlert.classList.add(`--show`, `--${type}`) : false;
     }
 
     handleSubmit = () => {
@@ -120,7 +113,42 @@ class FormValidate {
             }
 
             if(!formErrors) {
-                event.target.submit();
+                // event.target.submit();
+
+                // Maybe I shoud use AJAX
+
+                const submit = this.form.querySelector(`.submit`);
+                submit.disabled = true;
+                submit.classList.add(`loading`);
+
+                const url = this.form.action;
+                const method = this.form.method;
+                const formData = new FormData(this.form);
+
+                fetch(url, {
+                    method: method.toUpperCase(),
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response);
+                    if (response.status == `error`) {
+                        console.log(`Send Error`);
+                        this.toggleAlert(`${response.error}` , `error`, true);
+                    } else {
+                        if (response.status == `warning`) {
+                            console.log(`Send Warning`);
+                            this.toggleAlert(`${response.warning}` , `warning`, true);
+                        } else if (response.status == `success`) {
+                            console.log(`Send Success`);
+                            if (response.success) this.toggleAlert(`${response.success}` ,`success`, true);
+                            else if (response.info) this.toggleAlert(`${response.info}` ,`info`, true);
+                        }
+                    }
+                }).finally(() => {
+                    submit.disabled = false;
+                    submit.classList.remove(`loading`);
+                });
             }
         });
     }
@@ -133,3 +161,7 @@ document.addEventListener(`DOMContentLoaded`, () =>{
     const formLoginValidation = new FormValidate(formLogin, {});
     const formRegisterValidation = new FormValidate(formRegister, {});
 });
+
+// Add every error status from this php to js response.
+// $_POST data validation.
+// Check SQL status

@@ -12,7 +12,7 @@
     <div class="info__alert">
         <p class="alert__content fas fa-times-circle">
             <span>User doesn't exsists!</span>
-            <i class="fas fa-times close"></i>
+            <i class="fas fa-times alert__close"></i>
         </p>
     </div>
 
@@ -61,67 +61,54 @@
                         </form>
                 </li>
                 <li> <a href="#" class="register__button"> <i class="fas fa-user-plus"></i> </a>
-                    <form class="form form__register" action="#" method="POST">
+                    <form class="form form__register" action="./php/register.php" method="POST">
                         <div class="form__container">
                             <button type="button" class="form__close"></button>
 
-                            <label for="name" class="form__row">
-                                <h5>Imię</h5>
+                            <label for="login2" class="form__row">
+                                <h5>Login</h5>
                                 <i class="fas fa-user"></i>
-                                <input id="name" type="text" name="name" pattern="^[A-Z]([',.-]?[a-z])+$" class="input" autocomplete="off" required>
-                            </label>
-
-                            <label for="Surname" class="form__row">
-                                <h5>Nazwisko</h5>
-                                <i class="fas fa-user-friends"></i>
-                                <input id="Surname" type="text" name="surname" pattern="^[A-Z]([',.-]?[a-z])+$" class="input" autocomplete="off" required>
+                                <input value="PatSzy" id="login2" type="text" name="login" minlength="3" class="input" autocomplete="off" required>
                             </label>
 
                             <label for="mail" class="form__row">
-                                <h5>E-mail (Login)</h5>
+                                <h5>E-mail</h5>
                                 <i class="fas fa-envelope"></i>
-                                <input id="mail" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
+                                <input value="patszy97@interia.pl" id="mail" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
                             </label>
 
                             <label for="password-register" class="form__row">
                                 <h5>Hasło</h5>
                                 <i class="fas fa-unlock-alt"></i>
-                                <input id="password-register" type="password" name="password" pattern="^([\w\d][!@#$%&*]?){8,}$" class="input" required>
+                                <input value="1234" id="password-register" type="password" name="password" minlength="8" class="input" required>
                                 <i class="far fa-eye-slash"></i>
                             </label>
 
                             <label for="date" class="form__row">
-                                <h5>Data Urodzenia</h5>
+                                <h5>Rok Urodzenia</h5>
                                 <i class="fas fa-calendar-alt"></i>
-                                <input id="date" type="date" name="bdate" class="input input__date" autocomplete="off" required>
+                                <input value="1997" id="date" type="number" name="date" min="1900" class="input input__date" autocomplete="off" required>
                             </label>
 
                             <label for="city" class="form__row">
-                                <h5>Miejsce zamieszkania</h5>
+                                <h5>Miasto</h5>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select id="city" name="city" class="input" required>
                                     <option value=""></option>
-                                    <option value="warszawa">Warszawa</option>
-                                    <option value="poznań">Poznań</option>
-                                    <option value="kraków">Kraków</option>
-                                    <option value="gdańsk">Gdańsk</option>
-                                    <option value="wrocław">Wrocław</option>
-                                    <option value="szczecin">Szczecin</option>
+                                    <option selected value="Warszawa">Warszawa</option>
+                                    <option value="Poznań">Poznań</option>
+                                    <option value="Kraków">Kraków</option>
+                                    <option value="Gdańsk">Gdańsk</option>
+                                    <option value="Wrocław">Wrocław</option>
+                                    <option value="Szczecin">Szczecin</option>
                                 </select>
                             </label>
 
-                            <div for="gender" class="form__row">
-                                <h5>Płeć</h5>
-                                <i class="fas fa-venus-mars"></i>
-                                <label class="input__radio"><input type="radio" name="gender" value="male" class="input" required>M</label>
-                                <label class="input__radio"><input type="radio" name="gender" value="female" class="input" >K</label>
-                            </div>
-
-                            <label for="guardian" class="guardian">
-                                <input id="guardian" name="guardian" type="radio">
+                            <label for="guardian" class="guardian" style="display: block;">
+                                <input id="guardian" name="guardian" type="checkbox" checked>
                             </label>
 
-                            <input type="submit" value="Zarejestruj" class="submit">
+                            <button class="submit">Zarejestruj</button>
                         </div>
                     </form>
                 </li>
@@ -131,7 +118,7 @@
                             <button type="button" class="form__close"></button>
 
                             <label for="opt_city" class="form__row">
-                                <h5>Miejsce zamieszkania</h5>
+                                <h5>Miasto</h5>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select id="opt_city" name="city" class="input" required>
                                     <option value=""></option>

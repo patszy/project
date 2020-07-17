@@ -23,7 +23,7 @@
 }
 
 .form__register.--show {
-    height: 600px;
+    height: 500px;
 }
 
 .form__options.--show {
@@ -134,7 +134,8 @@
 }
 
 .form__row .input__radio .input {
-    width: inherit;
+    width: initial;
+    height: initial;
 }
 
 .form__row .input__radio {

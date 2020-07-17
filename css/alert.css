@@ -22,15 +22,6 @@
     font-weight: normal;
 }
 
-.alert__content::before {
-    font-family: "Font Awesome 5 Free";
-    -webkit-font-smoothing: antialiased;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-}
-
 .info__alert.--error .alert__content::before {
     content: "\f057";
 }
@@ -47,7 +38,16 @@
     content: "\f05a";
 }
 
-.info__alert .alert__content i.close {
+.alert__content::before {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+.info__alert .alert__content i.alert__close {
     color: var(--dark-color);
     margin-left: 30px;
     padding: 15px;
@@ -55,7 +55,7 @@
     cursor: pointer;
 }
 
-.info__alert .alert__content i.close:hover {
+.info__alert .alert__content i.alert__close:hover {
     color: inherit;
 }
 

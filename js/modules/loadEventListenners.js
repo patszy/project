@@ -1,6 +1,7 @@
 const loadEventListenners = () => {
     const togglePostCreatorBtn = document.querySelector(`.post__creator .btn__close`);
     const closeFormBtns = document.querySelectorAll(`.form__close`);
+    const alertClose = document.querySelector(`.alert__close`);
     const hamburgerMenu = document.querySelector(`.hamburger`);
     const inputs = document.querySelectorAll(`.input`);
     const menuBtns = document.querySelectorAll(`[class$="__button"]`);
@@ -8,7 +9,7 @@ const loadEventListenners = () => {
     const time = document.querySelectorAll(`.post__creator time`)[0];
 
     const toggleShowClass = (element, parent = null) => {
-        element.classList.toggle(`--show`);
+        if(element) element.classList.toggle(`--show`);
         if(parent) parent.classList.toggle(`--show`);
     }
 
@@ -19,6 +20,8 @@ const loadEventListenners = () => {
     const timeInterval = window.setInterval(() => time.innerText = new Date().toLocaleString(), 1000);
 
     // Add Event Listeners
+
+    alertClose.addEventListener(`click`, event => toggleShowClass(null, event.target.closest(`.info__alert`)));
 
     inputs.forEach(input => {
         input.addEventListener(`focus`, event => toggleFocusClass(event.target.closest(`.form__row`), true));
