@@ -63,6 +63,12 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
         post.addPostToDOM();
         post.clearInputValue([title, content]);
+
+        let posts = document.querySelectorAll(`.post__container`);
+
+        loadPosts(posts);
+
+        window.addEventListener(`scroll`, () => loadPosts(posts));
     });
 });
 
