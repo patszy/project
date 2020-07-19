@@ -16,13 +16,24 @@
         </p>
     </div>
 
-    <div class="user__mail">
+    <div class="mail__creator">
         <div class="show__form">
-            <h3>Utwórz post</h3>
-            <button class="btn__close"></button>
+            <h5>Nowa wiadomość: </h5>
         </div>
 
         <form class="form__mail" action="#" method="POST">
+            <div class="mail__recipient form__row">
+                <i class="fas fa-envelope-open-text"></i>
+                <p>Do</p>
+                <p class="user__name">Admin123</p>
+            </div>
+
+            <label for="mail__address" class="form__row">
+                <h5>Od</h5>
+                <i class="fas fa-envelope"></i>
+                <input id="mail__address" type="text" name="name" class="input" autocomplete="off" required>
+            </label>
+
             <label for="mail__title" class="form__row">
                 <h5>Tytuł</h5>
                 <i class="fas fa-paragraph"></i>

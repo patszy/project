@@ -309,3 +309,42 @@
 .form__post .form__row .far {
     top: 4px;
 }
+
+/* Form user__contact */
+
+
+.mail__creator {
+    position: fixed;
+    background-color: var(--light-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    border-width: 3px;
+    border-style: solid;
+    box-shadow: 0 0 10px 100vw rgba(0,0,0, 0.7);
+    padding: 5px 20px;
+    border-color: var(--blue-color);
+    z-index: 9999;
+    font-size: 1.4rem;
+    /* display: none; */
+}
+
+.show__form h5 {
+    margin: 0;
+    text-align: center;
+}
+
+.mail__recipient {
+    display: flex;
+    font-size: 1rem;
+}
+
+.mail__recipient p {
+    margin: 0;
+}
+
+.mail__recipient p:first-of-type {
+    margin: 0 10px 0 50px;
+    font-weight: bold;
+}

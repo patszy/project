@@ -140,6 +140,7 @@ main {
 .user__city,
 .user__age {
     margin-right: 10px;
+    text-align: center;
 }
 
 .user__city,
