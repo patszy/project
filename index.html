@@ -16,6 +16,29 @@
         </p>
     </div>
 
+    <div class="user__mail">
+        <div class="show__form">
+            <h3>Utwórz post</h3>
+            <button class="btn__close"></button>
+        </div>
+
+        <form class="form__mail" action="#" method="POST">
+            <label for="mail__title" class="form__row">
+                <h5>Tytuł</h5>
+                <i class="fas fa-paragraph"></i>
+                <input id="mail__title" type="text" name="name" class="input" autocomplete="off" required>
+            </label>
+
+            <label for="mail__content" class="form__row">
+                <h5>Treść</h5>
+                <i class="fas fa-align-left"></i>
+                <textarea id="mail__content" type="text" name="name" class="input" autocomplete="off" required></textarea>
+            </label>
+
+            <input type="submit" value="Wyślij" class="submit">
+        </form>
+    </div>
+
     <div class="background-img"></div>
 
     <header>
@@ -180,19 +203,19 @@
 
                         <div class="article__data">
                             <time>07.06.2020 20:00</time>
-                            <label for="title" class="form__row">
+                            <label for="post__title" class="form__row">
                                 <h5>Tytuł</h5>
                                 <i class="fas fa-paragraph"></i>
-                                <input id="title" type="text" name="name" class="input" autocomplete="off" required>
+                                <input id="post__title" type="text" name="name" class="input" autocomplete="off" required>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <label for="content" class="form__row">
+                <label for="post__content" class="form__row">
                     <h5>Treść</h5>
                     <i class="fas fa-align-left"></i>
-                    <textarea id="content" type="text" name="name" class="input" autocomplete="off" required></textarea>
+                    <textarea id="post__content" type="text" name="name" class="input" autocomplete="off" required></textarea>
                 </label>
 
                 <input type="submit" value="Opublikuj" class="submit">

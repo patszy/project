@@ -56,8 +56,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
     formPost.addEventListener(`submit`, event => {
         event.preventDefault();
 
-        let title = document.getElementById(`title`);
-        let content = document.getElementById(`content`);
+        let title = document.getElementById(`post__title`);
+        let content = document.getElementById(`post__content`);
 
         const post = new Post(undefined, title, content);
 
