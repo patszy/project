@@ -11,7 +11,7 @@
         if($query_email->num_rows == 0) { $return["success"] = "Create user is possible."; }
         else if($query_email->num_rows != 0) {
             while($row = $query_email->fetch_assoc()) {
-                $return["warning"] = "Email exists.";
+                $return["warning"] = "Email już istnieje.";
             }
         } else {
             $return["error"] = "Error: " . $sql_email . "<br>" . $connect->db_connect->error;
@@ -24,7 +24,7 @@
         $sql_create_user = "INSERT INTO $table SET id_user='', login='$login', email='$email', password='$password', date='$date', city='$city', verified = '0'";
         $return = [];
 
-        if ($connect->db_connect->query($sql_create_user) === TRUE) $return["success"] = "Registered successfully.";
+        if ($connect->db_connect->query($sql_create_user) === TRUE) $return["success"] = "Rejestracja pomyślna.";
         else {
             $return["errors"] = "Error: " . $sql_create_user . "<br>" . $connect->db_connect->error;
         }
@@ -50,9 +50,9 @@
             </html>";
 
         if (mail($email, "Wiadomość ze strony gejusze.pl " . date("d-m-Y"), $message, $headers)) {
-            $return["info"] = "Verification email sent.";
+            $return["info"] = "Wysłano email weryfikacyjny.";
         } else {
-            $return["error"] = "Email did not send!";
+            $return["error"] = "Email weryfikacyjny nie wysłany!";
         }
 
         return $return;
@@ -76,11 +76,11 @@
                 $date = $_POST["date"];
                 $city = $_POST["city"];
 
-                if (empty($login)) { $return["error"] = "Login is empty!"; }
-                else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $return["error"] = "Wrong email!"; }
-                else if (empty($password)) { $return["error"] = "Password is empty!"; }
-                else if (empty($date)) { $return["error"] = "Age is empty!"; }
-                else if (empty($_POST["city"])) { $return["error"] = "City is empty!"; }
+                if (empty($login)) { $return["error"] = "Login jest pusty!"; }
+                else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $return["error"] = "Niewłaściwy email!"; }
+                else if (empty($password)) { $return["error"] = "Hasło jest puste!"; }
+                else if (empty($date)) { $return["error"] = "Wiek jest pusty!"; }
+                else if (empty($_POST["city"])) { $return["error"] = "Miasto jest puste!"; }
                 else {
                     $sql_email = "SELECT * FROM users WHERE email='$email'";
                     $query_email = $connect->db_connect->query($sql_email);

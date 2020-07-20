@@ -312,39 +312,37 @@
 
 /* Form user__contact */
 
-
-.mail__creator {
+.form__mail {
     position: fixed;
-    background-color: var(--light-color);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
-    border-width: 3px;
-    border-style: solid;
-    box-shadow: 0 0 10px 100vw rgba(0,0,0, 0.7);
-    padding: 5px 20px;
-    border-color: var(--blue-color);
     z-index: 9999;
     font-size: 1.4rem;
-    /* display: none; */
+    height: initial;
+    box-shadow: 0 0 10px 100vw rgba(0,0,0, 0.7);
+    display: none;
+    border-radius: 10px;
 }
 
-.show__form h5 {
-    margin: 0;
+.form__mail.--show {
+    display: block;
+}
+
+.form__mail h5.title {
+    margin: 20px 0 50px;
     text-align: center;
 }
 
 .mail__recipient {
     display: flex;
-    font-size: 1rem;
+    font-size: .9em;
 }
 
-.mail__recipient p {
-    margin: 0;
-}
-
-.mail__recipient p:first-of-type {
+.mail__recipient .user__name {
     margin: 0 10px 0 50px;
-    font-weight: bold;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    width: 70%;
 }

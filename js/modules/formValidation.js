@@ -157,9 +157,11 @@ class FormValidate {
 document.addEventListener(`DOMContentLoaded`, () =>{
     const formLogin = document.getElementsByClassName(`form__login`)[0];
     const formRegister = document.getElementsByClassName(`form__register`)[0];
+    const formMail = document.getElementsByClassName(`form__mail`)[0];
 
     const formLoginValidation = new FormValidate(formLogin, {});
     const formRegisterValidation = new FormValidate(formRegister, {});
+    const formMailValidation = new FormValidate(formMail, {});
 });
 
 // Add every error status from this php to js response.

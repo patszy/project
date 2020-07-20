@@ -16,22 +16,22 @@
         </p>
     </div>
 
-    <div class="mail__creator">
-        <div class="show__form">
-            <h5>Nowa wiadomość: </h5>
-        </div>
+    <form class="form form__mail" action="#" method="POST">
+        <div class="form__container">
+            <button type="button" class="form__close mail__close"></button>
 
-        <form class="form__mail" action="#" method="POST">
-            <div class="mail__recipient form__row">
+            <h5 class="title">Nowa wiadomość: </h5>
+
+            <div class="mail__recipient form__row --focus">
+                <h5>Do</h5>
                 <i class="fas fa-envelope-open-text"></i>
-                <p>Do</p>
                 <p class="user__name">Admin123</p>
             </div>
 
             <label for="mail__address" class="form__row">
                 <h5>Od</h5>
                 <i class="fas fa-envelope"></i>
-                <input id="mail__address" type="text" name="name" class="input" autocomplete="off" required>
+                <input id="mail__address" type="email" name="email" class="input" autocomplete="off" required>
             </label>
 
             <label for="mail__title" class="form__row">
@@ -47,8 +47,8 @@
             </label>
 
             <input type="submit" value="Wyślij" class="submit">
-        </form>
-    </div>
+        </div>
+    </form>
 
     <div class="background-img"></div>
 
@@ -302,7 +302,7 @@
                 </p>
             </article>
 
-            <button class="btn__mail">Kontakt<i class="fas fa-envelope"></i></button>
+            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
         </section>
 
         <section class="post__container">
@@ -338,7 +338,7 @@
                 </p>
             </article>
 
-            <button class="btn__mail">Kontakt<i class="fas fa-envelope"></i></button>
+            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
         </section>
 
         <section class="post__container">
@@ -373,7 +373,7 @@
                 </p>
             </article>
 
-            <button class="btn__mail">Kontakt<i class="fas fa-envelope"></i></button>
+            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
         </section>
 
         <section class="post__container">
@@ -408,7 +408,7 @@
                 </p>
             </article>
 
-            <button class="btn__mail">Kontakt<i class="fas fa-envelope"></i></button>
+            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
         </section>
 
         <section class="post__container">
@@ -444,7 +444,7 @@
                 </p>
             </article>
 
-            <button class="btn__mail">Kontakt<i class="fas fa-envelope"></i></button>
+            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
         </section>
 
     </main>
