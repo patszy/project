@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <script>
+        function post(str) {
+          if (str.length == 0) {
+            document.getElementById("title").innerHTML = "";
+            document.getElementById("content").innerHTML = "";
+            return;
+          } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("title").innerHTML = this.responseText;
+              }
+            };
+            xmlhttp.open("GET", "php/post.php?q=" + str, true);
+            xmlhttp.send();
+          }
+        }
+    </script>
 </head>
 <body>
     <section class="background-img"></section>
@@ -144,7 +162,7 @@
                                 <label class="input__radio"><input type="radio" name="gender" value="female" class="input" >Nie</label>
                             </div>
 
-                            <input type="submit" value="Opublikuj" class="submit">
+                            <input type="submit" value="Opublikuj" class="submit" onkeyup="post(this.value)">
                         </div>
                     </form>
                 </li>
