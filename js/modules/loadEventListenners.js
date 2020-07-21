@@ -50,7 +50,10 @@ const loadEventListenners = () => {
         toggleShowClass(btn, btn.nextElementSibling);
     }));
 
-    emailButtons.forEach(btn => btn.addEventListener(`click`, () => toggleShowClass(document.querySelector(`.form__mail`),  document.querySelector(`.mail__creator`))));
+    emailButtons.forEach(btn => btn.addEventListener(`click`, () => {
+        toggleShowClass(document.querySelector(`.form__mail`),  document.querySelector(`.mail__creator`));
+        document.getElementById(`mail__recipient`).setAttribute(`value`, btn.getAttribute(`mail`));
+    }));
 
     hamburgerMenu.addEventListener(`click`, event => toggleShowClass(event.target, document.querySelector(`.main__nav`)));
 

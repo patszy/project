@@ -120,10 +120,13 @@ class FormValidate {
                 const submit = this.form.querySelector(`.submit`);
                 submit.disabled = true;
                 submit.classList.add(`loading`);
+                console.log(submit);
 
                 const url = this.form.action;
                 const method = this.form.method;
                 const formData = new FormData(this.form);
+
+                for (var value of formData.values()) console.log(value);
 
                 fetch(url, {
                     method: method.toUpperCase(),

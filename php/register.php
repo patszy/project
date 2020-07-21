@@ -59,7 +59,6 @@
     }
 
 	if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $errors = [];
         $return = [];
 
         $connect = new Connection($db_user, $db_password, $db_name);

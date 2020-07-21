@@ -316,7 +316,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, calc(-50% - .5px));
     z-index: 9999;
     font-size: 1.4rem;
     height: initial;
@@ -334,15 +334,14 @@
     text-align: center;
 }
 
-.mail__recipient {
-    display: flex;
-    font-size: .9em;
+.form__mail .user__name {
+    margin: 0 10px 0 50px;
+    background-color: var(--blue-color);
+    padding: 0;
+    width: 70%;
+    font-size: 1rem;
 }
 
-.mail__recipient .user__name {
-    margin: 0 10px 0 50px;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    text-overflow: ellipsis;
-    width: 70%;
+.mail__recipient {
+    display: none;
 }
