@@ -120,7 +120,6 @@ class FormValidate {
                 const submit = this.form.querySelector(`.submit`);
                 submit.disabled = true;
                 submit.classList.add(`loading`);
-                console.log(submit);
 
                 const url = this.form.action;
                 const method = this.form.method;
@@ -161,10 +160,12 @@ document.addEventListener(`DOMContentLoaded`, () =>{
     const formLogin = document.getElementsByClassName(`form__login`)[0];
     const formRegister = document.getElementsByClassName(`form__register`)[0];
     const formMail = document.getElementsByClassName(`form__mail`)[0];
+    const formRecovery = document.getElementsByClassName(`form__recovery`)[0];
 
     const formLoginValidation = new FormValidate(formLogin, {});
     const formRegisterValidation = new FormValidate(formRegister, {});
     const formMailValidation = new FormValidate(formMail, {});
+    const formRecoveryValidation = new FormValidate(formRecovery, {});
 });
 
 // Add every error status from this php to js response.

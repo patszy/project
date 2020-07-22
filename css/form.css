@@ -244,6 +244,9 @@
     text-decoration: none;
     font-weight: bold;
     transition: .2s;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
 }
 
 .forgot:hover {
@@ -310,7 +313,7 @@
     top: 4px;
 }
 
-/* Form user__contact */
+/* Form form__mail */
 
 .form__mail {
     position: fixed;
@@ -344,4 +347,23 @@
 
 .mail__recipient {
     display: none;
+}
+
+/* Form form__recovery */
+
+.form__recovery {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - .5px));
+    z-index: 9999;
+    font-size: 1.4rem;
+    height: initial;
+    box-shadow: 0 0 10px 100vw rgba(0,0,0, 0.7);
+    border-radius: 10px;
+    display: none;
+}
+
+.form__recovery.--show {
+    display: block;
 }

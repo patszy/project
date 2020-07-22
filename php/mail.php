@@ -1,6 +1,6 @@
 <?php
 
-    function verificationEmail($email, $login, $userTitle, $userEmail, $userMessage) {
+    function contactEmail($email, $login, $userTitle, $userEmail, $userMessage) {
         $return = [];
 
         $headers  = "MIME-Version: 1.0" . "\r\n";
@@ -51,7 +51,7 @@
             else if (!filter_var($email, FILTER_VALIDATE_EMAIL) || !filter_var($userEmail, FILTER_VALIDATE_EMAIL)) { $return["error"] = "Niewłaściwy email!"; }
             else if (empty($userTitle)) { $return["error"] = "Tytuł jest pusty!"; }
             else if (empty($userMessage)) { $return["error"] = "Wiadomośc jest pusta!"; }
-            else { $return = verificationEmail($email, $login, $userTitle, $userEmail, $userMessage); }
+            else { $return = contactEmail($email, $login, $userTitle, $userEmail, $userMessage); }
         }
 
         if (isset($return["error"])) { $return["status"] = "error"; }

@@ -1,14 +1,15 @@
 const loadEventListenners = () => {
     const togglePostCreatorBtn = document.querySelector(`.post__creator .btn__close`);
-    const closeFormBtns = document.querySelectorAll(`.user__bar .form__close`);
+    const closeMenuFormBtns = document.querySelectorAll(`.user__bar .form__close`);
     const alertClose = document.querySelector(`.alert__close`);
-    const mailClose = document.querySelector(`.mail__close`);
+    const windowFormClose = document.querySelectorAll(`.window__close`);
     const hamburgerMenu = document.querySelector(`.hamburger`);
     const inputs = document.querySelectorAll(`.input`);
     const menuBtns = document.querySelectorAll(`[class$="__button"]`);
     const eyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
     const time = document.querySelectorAll(`.post__creator time`)[0];
     const emailButtons = document.querySelectorAll(`.btn__mail`);
+    const recoveryBtn = document.querySelector(`.forgot`);
 
     const toggleShowClass = (element, parent = null) => {
         if(element) element.classList.toggle(`--show`);
@@ -59,11 +60,13 @@ const loadEventListenners = () => {
 
     togglePostCreatorBtn.addEventListener(`click`, () => toggleShowClass(togglePostCreatorBtn.closest(`.post__creator`)));
 
-    for(let btn of closeFormBtns) btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`), btn.closest(`.form`).previousElementSibling));
+    for(let btn of closeMenuFormBtns) btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`), btn.closest(`.form`).previousElementSibling));
 
-    alertClose.addEventListener(`click`, event => toggleShowClass(null, event.target.closest(`.info__alert`)));
+    alertClose.addEventListener(`click`, () => toggleShowClass(alertClose.closest(`.info__alert`)));
 
-    mailClose.addEventListener(`click`, event => toggleShowClass(event.target.closest(`.form__mail`)));
+    windowFormClose.forEach(btn => btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`))));
+
+    recoveryBtn.addEventListener(`click`, () => toggleShowClass(document.querySelector(`.form__recovery`)));
 };
 
 document.addEventListener(`DOMContentLoaded`, loadEventListenners());

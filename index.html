@@ -11,14 +11,32 @@
 <body>
     <div class="info__alert">
         <p class="alert__content fas fa-times-circle">
-            <span>User doesn't exsists!</span>
+            <span>Alert message!</span>
             <i class="fas fa-times alert__close"></i>
         </p>
     </div>
 
+    <form class="form form__recovery --show" action="./php/passRecovery.php" method="POST">
+        <div class="form__container">
+            <button type="button" class="form__close window__close"></button>
+
+            <label for="mail__recovery" class="form__row">
+                <h5>Wprowadź swój Email.</h5>
+                <i class="fas fa-envelope"></i>
+                <input id="mail__recovery" type="email" name="email" class="input" autocomplete="off" required value="patszy97@interia.pl">
+            </label>
+
+            <label for="recovery__guardian" class="guardian">
+                <input id="recovery__guardian" name="guardian" type="checkbox">
+            </label>
+
+            <button class="submit">Wyślij Hasło</button>
+        </div>
+    </form>
+
     <form class="form form__mail" action="./php/mail.php" method="POST">
         <div class="form__container">
-            <button type="button" class="form__close mail__close"></button>
+            <button type="button" class="form__close window__close"></button>
 
             <h5 class="title">Nowa wiadomość: </h5>
 
@@ -98,7 +116,7 @@
 
                                 <button class="submit">Zaloguj</button>
 
-                                <a href="#" class="forgot">Zapomniałem hasła!</a>
+                                <button type="button" class="forgot">Zapomniałem hasła!</button>
                             </div>
                         </form>
                 </li>
