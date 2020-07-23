@@ -8,7 +8,7 @@ const loadEventListenners = () => {
     const menuBtns = document.querySelectorAll(`[class$="__button"]`);
     const eyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
     const time = document.querySelectorAll(`.post__creator time`)[0];
-    const emailButtons = document.querySelectorAll(`.btn__mail`);
+    let emailButtons = document.querySelectorAll(`.btn__mail`);
     const recoveryBtn = document.querySelector(`.forgot`);
 
     const toggleShowClass = (element, parent = null) => {

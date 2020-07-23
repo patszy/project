@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project</title>
+    <title>Gejusz.pl</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
@@ -16,14 +16,14 @@
         </p>
     </div>
 
-    <form class="form form__recovery --show" action="./php/passRecovery.php" method="POST">
+    <form class="form form__recovery" action="./php/passRecovery.php" method="POST">
         <div class="form__container">
             <button type="button" class="form__close window__close"></button>
 
             <label for="mail__recovery" class="form__row">
                 <h5>Wprowadź swój Email.</h5>
                 <i class="fas fa-envelope"></i>
-                <input id="mail__recovery" type="email" name="email" class="input" autocomplete="off" required value="patszy97@interia.pl">
+                <input id="mail__recovery" type="email" name="email" class="input" autocomplete="off" required>
             </label>
 
             <label for="recovery__guardian" class="guardian">
@@ -104,13 +104,15 @@
                                 <label for="login" class="form__row">
                                     <h5>Login</h5>
                                     <i class="fas fa-user"></i>
-                                    <input id="login" type="text" name="login" class="input" autocomplete="off" required>
+                                    <input id="login" type="text" name="login" class="input" autocomplete="off">
+                                    <!-- required -->
                                 </label>
 
                                 <label for="password__login" class="form__row">
                                     <h5>Hasło</h5>
                                     <i class="fas fa-unlock-alt"></i>
-                                    <input id="password__login" type="password" name="password" class="input" required>
+                                    <input id="password__login" type="password" name="password" class="input">
+                                    <!-- required -->
                                     <i class="far fa-eye-slash"></i>
                                 </label>
 
@@ -227,7 +229,7 @@
                 <button class="btn__close"></button>
             </div>
 
-            <form class="form__post" action="#" method="POST">
+            <form class="form form__post" action="./php/createPost.php" method="POST">
                 <div class="post__data">
                     <div class="user__img"></div>
 
@@ -240,10 +242,24 @@
 
                         <div class="article__data">
                             <time>07.06.2020 20:00</time>
+
                             <label for="post__title" class="form__row">
                                 <h5>Tytuł</h5>
                                 <i class="fas fa-paragraph"></i>
-                                <input id="post__title" type="text" name="name" class="input" autocomplete="off" required>
+                                <input id="post__title" type="text" name="title" class="input" autocomplete="off" minlength="3" required value="VoksWagen">
+                            </label>
+
+                            <label for="post__category" class="form__row">
+                                <h5>Kategoria</h5>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <select id="post__category" name="category" class="input" required>
+                                    <option value=""></option>
+                                    <option value="Pojazdy" selected>Pojazdy</option>
+                                    <option value="Podróże">Podróże</option>
+                                    <option value="Dam pracę">Dam pracę</option>
+                                    <option value="Szukam pracy">Szukam pracy</option>
+                                    <option value="Usługi">Usługi</option>
+                                </select>
                             </label>
                         </div>
                     </div>
@@ -252,10 +268,15 @@
                 <label for="post__content" class="form__row">
                     <h5>Treść</h5>
                     <i class="fas fa-align-left"></i>
-                    <textarea id="post__content" type="text" name="name" class="input" autocomplete="off" required></textarea>
+                    <textarea id="post__content" type="text" name="content" class="input" autocomplete="off" minlength="10" required>Sprzedam Passata.</textarea>
                 </label>
 
-                <input type="submit" value="Opublikuj" class="submit">
+                <label for="post__guardian" class="guardian">
+                    <input id="post__guardian" name="guardian" type="checkbox">
+                </label>
+
+                <button class="submit">Opublikuj</button>
+                <!-- <input type="submit" value="Opublikuj" class="submit"> -->
             </form>
         </section>
 
@@ -310,6 +331,7 @@
                     <div class="article__data">
                         <time>07.06.2020 20:00</time>
                         <h2>Lorem Ipsum</h2>
+                        <span class="article__category">default</span>
                     </div>
                 </div>
             </div>
@@ -345,6 +367,7 @@
                     <div class="article__data">
                         <time>07.06.2020 20:00</time>
                         <h2>Lorem Ipsum</h2>
+                        <p class="article__category">default</p>
                     </div>
                 </div>
             </div>
@@ -381,6 +404,7 @@
                     <div class="article__data">
                         <time>07.06.2020 20:00</time>
                         <h2>Lorem Ipsum</h2>
+                        <p class="article__category">default</p>
                     </div>
                 </div>
             </div>
@@ -416,6 +440,7 @@
                     <div class="article__data">
                         <time>07.06.2020 20:00</time>
                         <h2>Lorem Ipsum</h2>
+                        <p class="article__category">default</p>
                     </div>
                 </div>
             </div>
@@ -451,6 +476,7 @@
                     <div class="article__data">
                         <time>07.06.2020 20:00</time>
                         <h2>Lorem Ipsum</h2>
+                        <p class="article__category">default</p>
                     </div>
                 </div>
             </div>
@@ -482,9 +508,9 @@
     </aside>
 
     <script src="js/index.js"></script>
+    <script src="js/modules/loadPosts.js"></script>
     <script src="js/modules/loadEventListenners.js"></script>
-    <script src="js/modules/Post.js"></script>
-    <script src="js/modules/formValidation.js"></script>
     <script src="js/modules/postAnimation.js"></script>
+    <script src="js/modules/formValidation.js"></script>
 </body>
 </html>

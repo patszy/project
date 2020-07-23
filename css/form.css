@@ -74,14 +74,15 @@
     margin: 0;
     position: absolute;
     text-align: left;
-    top: 4px;
+    top: 50%;
+    transform: translateY(-50%);
     left: 50px;
     transition: .2s;
     cursor: text;
 }
 
 .form__row.--focus h5 {
-    transform: translate(0, -30px) scale(.7);
+    transform: translateY(-120%) scale(.7);
 }
 
 .form__row {
@@ -166,7 +167,8 @@
 .form__row .fas,
 .form__row .far {
     position: absolute;
-    top: 7px;
+    top: 50%;
+    transform: translateY(-50%);
     transition: .2s;
 }
 
@@ -264,12 +266,13 @@
     height: 0;
     padding: 0;
     transition: .2s;
+    width: initial;
+    display: block;
 }
 
 .post__creator.--show .form__post {
-    display: block;
     padding: 20px;
-    height: 320px;
+    height: 350px;
 }
 
 .form__post .user__img {
@@ -278,17 +281,21 @@
 
 .form__post .form__row {
     width: initial;
-    margin: 0px;
+    margin: 0;
+}
+
+.form__post .form__row[for="post__category"] {
+    margin-left: 10px;
+}
+
+.form__post .form__row[for="post__content"] {
+    margin: 10px auto 30px;
 }
 
 .form__post .form__row .input {
     font-size: 1em;
     padding-left: 35px;
     font-weight: bold;
-}
-
-.form__row[for="content"] {
-    margin: 0 20px;
 }
 
 .form__post .form__row textarea.input {
@@ -300,17 +307,17 @@
 .form__post .form__row h5 {
     font-size: 1em;
     margin: 0;
-    top: 0;
     left: 35px;
 }
 
-.form__post .form__row.--focus h5 {
-    transform: translate(30px, -20px) scale(.7);
+.form__post .form__row[for="post__content"].--focus h5 {
+    transform: translateY(-300%) scale(.7);
 }
 
 .form__post .form__row .fas,
 .form__post .form__row .far {
-    top: 4px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Form form__mail */
@@ -329,7 +336,7 @@
 }
 
 .form__mail.--show {
-    display: block;
+    display: flex;
 }
 
 .form__mail h5.title {
@@ -347,6 +354,10 @@
 
 .mail__recipient {
     display: none;
+}
+
+.form__mail .form__row[for="mail__message"].--focus h5 {
+    transform: translateY(-490%) scale(.7);
 }
 
 /* Form form__recovery */

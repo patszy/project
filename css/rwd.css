@@ -90,6 +90,16 @@
         width: 300px;
     }
 
+    .post__creator.--show .form__post {
+        height: 400px;
+    }
+
+    .form__post .article__data .form__row,
+    .form__post .article__data time {
+        margin-top: 15px;
+    }
+
+
     .post__img {
         width: 30vw;
         height: 30vw;
@@ -97,6 +107,14 @@
 }
 
 @media all and (max-width: 540px) {
+    .info__alert.--show {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 10px 100vh rgba(0,0,0, 0.7);
+        display: flex;
+    }
+
     .search__bar {
         display: flex;
         align-self: center;

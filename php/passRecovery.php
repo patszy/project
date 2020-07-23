@@ -22,9 +22,7 @@
         $return = [];
 
         if ($connect->db_connect->query($sql_update_password) === TRUE) $return["success"] = "Hasło odnowione.";
-        else {
-            $return["errors"] = "Error: " . $sql_update_password . "<br>" . $connect->db_connect->error;
-        }
+        else $return["errors"] = "Error: " . $sql_update_password . "<br>" . $connect->db_connect->error;
 
         return $return;
     }
@@ -34,7 +32,7 @@
 
         $headers  = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers .= "From: Gejusze.pl";
+        $headers .= "From: Gejusz.pl";
         $message  = "
         <html>
             <head>
@@ -46,7 +44,7 @@
             </body>
         </html>";
 
-        if (mail($email, "Wiadomość ze strony gejusze.pl " . date("d-m-Y"), $message, $headers)) { $return["info"] = "Hasło wysłane."; }
+        if (mail($email, "Wiadomość ze strony gejusze.pl " . date("d-m-Y"), $message, $headers)) $return["info"] = "Hasło wysłane.";
         else $return["error"] = "Hasło nie wysłane!";
 
         return $return;
@@ -60,7 +58,7 @@
         } else {
             $email = $_POST["email"];
 
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) { $return["error"] = "Niewłaściwy email!"; }
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) $return["error"] = "Niewłaściwy email!";
             else {
                 $connect = new Connection($db_user, $db_password, $db_name);
 
@@ -81,8 +79,8 @@
             }
         }
 
-        if (isset($return["error"])) { $return["status"] = "error"; }
-        else { $return["status"] = "success"; }
+        if (isset($return["error"])) $return["status"] = "error";
+        else $return["status"] = "success";
 
 		header("Content-Type: application/json");
 		echo json_encode($return);
