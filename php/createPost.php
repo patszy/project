@@ -47,9 +47,9 @@
             $return = $connect->ConnectOpen();
 
             if(!isset($return["error"])){
-                $title = $_POST["title"];
-                $category = $_POST["category"];
-                $content = $_POST["content"];
+                $title = $connect->db_connect->real_escape_string($_POST["title"]);
+                $category = $connect->db_connect->real_escape_string($_POST["category"]);
+                $content = $connect->db_connect->real_escape_string( $_POST["content"]);
 
                 if (empty($title)) { $return["error"] = "Tytuł jest pusty!"; }
                 else if (empty($category)) { $return["error"] = "kategoria jest pusta!"; }

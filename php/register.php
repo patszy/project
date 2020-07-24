@@ -61,11 +61,11 @@
             $return = $connect->ConnectOpen();
 
             if(!isset($return["error"])){
-                $login = $_POST["login"];
-                $email = $_POST["email"];
-                $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-                $date = $_POST["date"];
-                $city = $_POST["city"];
+                $login = $connect->db_connect->real_escape_string($_POST["login"]);
+                $email = $connect->db_connect->real_escape_string($_POST["email"]);
+                $password = password_hash($connect->db_connect->real_escape_string($_POST["password"]), PASSWORD_DEFAULT);
+                $date = $connect->db_connect->real_escape_string($_POST["date"]);
+                $city = $connect->db_connect->real_escape_string($_POST["city"]);
 
                 if (empty($login)) { $return["error"] = "Login jest pusty!"; }
                 else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $return["error"] = "Niewłaściwy email!"; }

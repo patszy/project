@@ -56,15 +56,14 @@
         if(isset($_POST["guardian"])) {
             $return["success"] = "Guardian!";
         } else {
-            $email = $_POST["email"];
+            $connect = new Connection($db_user, $db_password, $db_name);
+            $return = $connect->ConnectOpen();
 
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) $return["error"] = "Niewłaściwy email!";
-            else {
-                $connect = new Connection($db_user, $db_password, $db_name);
+            if(!isset($return["error"])) {
+                $email = $connect->db_connect->real_escape_string($_POST["email"]);
 
-                $return = $connect->ConnectOpen();
-
-                if(!isset($return["error"])) {
+                if(!filter_var($email, FILTER_VALIDATE_EMAIL)) $return["error"] = "Niewłaściwy email!";
+                else {
                     $return = isUser($connect, $table_users, $email);
 
                     if(!isset($return["error"])) {
@@ -74,9 +73,8 @@
                         if(!isset($return["error"])) $return = recoveryEmail($email, $password);
                     }
                 }
-
-                $connect->ConnectClose();
             }
+            $connect->ConnectClose();
         }
 
         if (isset($return["error"])) $return["status"] = "error";
