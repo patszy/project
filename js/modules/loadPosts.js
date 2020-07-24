@@ -19,7 +19,6 @@ class Post{
 
         if(classes) classes.forEach(className => element.classList.add(className));
         if(children) children.forEach(child => element.appendChild(child));
-        // if(attributes) attributes.forEach(attribute => element.setAttribute(attribute.name, attribute.value));
         if(attributes) attributes.forEach(attribute => element.setAttribute(attribute.name, attribute.value));
 
         return element;
@@ -102,27 +101,5 @@ document.addEventListener(`DOMContentLoaded`, () => {
                 }
             }
         });
-
-    //Submitting Form
-
-    /*  const formPost = document.querySelector(`.form__post`);
-        formPost.addEventListener(`submit`, event => {
-        event.preventDefault();
-
-
-        let title = document.getElementById(`post__title`);
-        let content = document.getElementById(`post__content`);
-
-        const post = new Post(undefined, title, content);
-
-        post.addPostToDOM();
-        post.clearInputValue([title, content]);
-
-        let posts = document.querySelectorAll(`.post__container`);
-
-        animatePosts(posts);
-
-        window.addEventListener(`scroll`, () => animatePosts(posts));
-    }); */
 });
 
