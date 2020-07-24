@@ -56,7 +56,7 @@ const loadEventListenners = () => {
         document.getElementById(`mail__recipient`).setAttribute(`value`, btn.getAttribute(`mail`));
     }));
 
-    hamburgerMenu.addEventListener(`click`, event => toggleShowClass(event.target, document.querySelector(`.main__nav`)));
+    hamburgerMenu.addEventListener(`click`, () => toggleShowClass(document.querySelector(`.hamburger`), document.querySelector(`.main__nav`)));
 
     togglePostCreatorBtn.addEventListener(`click`, () => toggleShowClass(togglePostCreatorBtn.closest(`.post__creator`)));
 
