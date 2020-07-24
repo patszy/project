@@ -1,6 +1,7 @@
 @import "header.css";
 @import "navigation.css";
 @import "main.css";
+@import "post.css";
 @import "aside.css";
 @import "form.css";
 @import "alert.css";
@@ -20,6 +21,7 @@
     --green-color: #A3CB38;
     --blue-color: #00B0FF;
     --yellow-color: #FFC312;
+    --purple-color: #833471;
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
 }

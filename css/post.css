@@ -1,0 +1,114 @@
+.post__creator {
+    background-color: var(--light-color);
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+.post__creator.--show .show__form::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: var(--grey-color);
+    transition: .2s;
+}
+
+/* Posts styles */
+
+.post__container {
+    margin-bottom: 50px;
+    position: relative;
+    padding: 10px;
+    background-color: var(--light-color);
+    border-radius: 10px;
+}
+
+.post__container .user__img {
+    margin-right: 20px;
+}
+
+.data__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.post__data {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.post__container .user__name {
+    padding: 1px 5px;
+}
+
+.post__creator .btn__close:hover::before,
+.post__creator .btn__close:hover::after {
+    background-color: var(--green-color);
+}
+
+.post__content {
+    margin: 0 20px 5px;
+}
+
+.post__data time {
+    margin-right: 10px;
+    font-style: italic;
+}
+
+.post__data h2 {
+    font-size: 1rem;
+    margin: 0;
+    display: inline;
+}
+
+.post__data .article__category {
+    margin: 0 10px;
+    color: var(--purple-color);
+    cursor: pointer;
+    text-transform: lowercase;
+    text-decoration: underline;
+}
+
+.post__img {
+    width: 20vw;
+    height: 20vw;
+    float: left;
+    border-radius: 10000px;
+    shape-outside: circle();
+    margin-right: 20px;
+}
+
+.clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.post__creator.--show .btn__close:hover::before,
+.post__creator.--show .btn__close:hover::after {
+    background-color: var(--red-color);
+}
+
+.post__creator.--show .btn__close::before {
+    transform: translate(-80%, -50%) rotate(-45deg);
+}
+
+.post__creator.--show .btn__close::after {
+    transform: translate(-20%, -50%) rotate(45deg);
+}
+
+/* Loading post animation */
+
+.post__container {
+    transform: scale(0.7);
+    transition: 1s;
+}
+
+.post__container.--load {
+    transform: scale(1);
+}

@@ -24,7 +24,7 @@
 			return $this->return;
 		}
 
-		function ConnectClose() {$this->db_connect->close();}
+		function ConnectClose() { $this->db_connect->close(); }
     }
 
 ?>
