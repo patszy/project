@@ -19,7 +19,6 @@ class Post{
 
         if(classes) classes.forEach(className => element.classList.add(className));
         if(children) children.forEach(child => element.appendChild(child));
-        // if(attributes) attributes.forEach(attribute => element.setAttribute(attribute.name, attribute.value));
         if(attributes) attributes.forEach(attribute => element.setAttribute(attribute.name, attribute.value));
 
         return element;
@@ -29,7 +28,7 @@ class Post{
         const parent = document.getElementsByTagName(`main`)[0];
         const actualNode = document.getElementsByClassName(`post__container`)[0];
 
-        let userContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
+        let postContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
             this.createElementDOM(`div`, [`post__data`], undefined, [
                 this.createElementDOM(`div`, [`user__img`], undefined),
                 this.createElementDOM(`div`, [`data__wrapper`], undefined, [
@@ -51,11 +50,9 @@ class Post{
             this.createElementDOM(`button`, [`btn__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `mail`, value: `patszy97@interia.pl`}])
         ]);
 
-        parent.insertBefore(userContainer, actualNode);
+        parent.insertBefore(postContainer, actualNode);
     }
 }
-
-let tabPosts;
 
 const toggleAlert = (text, type, show) => {
     const infoAlert = document.querySelector(`.info__alert`);
