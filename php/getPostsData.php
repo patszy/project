@@ -19,6 +19,21 @@
         return $return;
     }
 
+    function getUser($connect, $table, $id) {
+        $sql_users = "SELECT email, login, city, date FROM $table WHERE id_user = '$id'";
+        $query_users = $connect->db_connect->query($sql_users);
+        $return = [];
+
+        if($query_users->num_rows == 1) {
+            $return["success"] = "Got user.";
+            while($row = $query_users->fetch_assoc()) $return["user"] = $row;
+        }
+        else if($query_users->num_rows != 0) $return["warning"] = "No user.";
+        else $return["error"] = "Error: " . $sql_users . "<br>" . $connect->db_connect->error;
+
+        return $return;
+    }
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $return = [];
 
@@ -30,6 +45,15 @@
             else {
                 $searchStr = $connect->db_connect->real_escape_string($_POST["searchStr"]);
                 $return = getPost($connect, "SELECT * FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE posts.date like '%$searchStr%' OR posts.title like '%$searchStr%' OR posts.category like '%$searchStr%' OR users.login like '%$searchStr%' OR users.date like '%$searchStr%' OR users.city like '%$searchStr%'");
+            }
+
+            $return["users"] = [];
+
+            foreach ($return["posts"] as &$post) {
+                $user = getUser($connect, $table_users, $post["id_user"])["user"];
+
+                if(empty($return["users"])) $post["user"] = $user;
+                else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;
             }
         }
 

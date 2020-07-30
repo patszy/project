@@ -98,22 +98,24 @@
             <ul class="user__bar">
                 <li>
                     <a href="#" class="login__button"> <i class="fas fa-user-lock"></i> </a>
-                        <form class="form form__login" action="#" method="POST">
+                        <form class="form form__login" action="./php/login.php" method="POST">
                             <div class="form__container">
                                 <button type="button" class="form__close"></button>
                                 <label for="login" class="form__row">
                                     <h5>Login</h5>
                                     <i class="fas fa-user"></i>
-                                    <input id="login" type="text" name="login" class="input" autocomplete="off">
-                                    <!-- required -->
+                                    <input id="login" type="text" name="login" class="input" autocomplete="off" required value="patszy">
                                 </label>
 
                                 <label for="password__login" class="form__row">
                                     <h5>Hasło</h5>
                                     <i class="fas fa-unlock-alt"></i>
-                                    <input id="password__login" type="password" name="password" class="input">
-                                    <!-- required -->
+                                    <input id="password__login" type="password" name="password" class="input" required value="1234">
                                     <i class="far fa-eye-slash"></i>
+                                </label>
+
+                                <label for="login__guardian" class="guardian">
+                                    <input id="login__guardian" name="guardian" type="checkbox">
                                 </label>
 
                                 <button class="submit">Zaloguj</button>
@@ -166,8 +168,8 @@
                                 </select>
                             </label>
 
-                            <label for="guardian" class="guardian">
-                                <input id="guardian" name="guardian" type="checkbox">
+                            <label for="register__guardian" class="guardian">
+                                <input id="register__guardian" name="guardian" type="checkbox">
                             </label>
 
                             <button class="submit">Zarejestruj</button>
@@ -196,11 +198,12 @@
                             <div for="gender" class="form__row">
                                 <h5>Usuń konto</h5>
                                 <i class="fas fa-venus-mars"></i>
-                                <label class="input__radio"><input type="radio" name="gender" value="male" class="input" required>Tak</label>
-                                <label class="input__radio"><input type="radio" name="gender" value="female" class="input" >Nie</label>
+                                <label class="input__radio"><input type="checkbox" name="gender" class="input">Usuń</label>
                             </div>
 
-                            <input type="submit" value="Opublikuj" class="submit">
+                            <a href="./php/logout.php">Wyloguj</a>
+
+                            <button class="submit">Zatwierdź</button>
                         </div>
                     </form>
                 </li>

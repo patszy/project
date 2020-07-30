@@ -3,14 +3,14 @@
     require 'init.php';
     require 'Connection.php';
 
-    function isUser($connect, $table, $email) {
-        $sql_email = "SELECT * FROM $table WHERE email='$email'";
-        $query_email = $connect->db_connect->query($sql_email);
+    function isUser($connect, $table, $email, $login) {
+        $sql_check = "SELECT * FROM $table WHERE login='$login' OR email='$email'";
+        $query_check = $connect->db_connect->query($sql_check);
         $return = [];
 
-        if($query_email->num_rows == 0) $return["success"] = "Create user is possible.";
-        else if($query_email->num_rows != 0) $return["warning"] = "Email już istnieje.";
-        else $return["error"] = "Error: " . $sql_email . "<br>" . $connect->db_connect->error;
+        if($query_check->num_rows == 0) $return["success"] = "Email lub Login nie istnieje.";
+        else if($query_check->num_rows != 0) $return["warning"] = "Email lub Login już istnieje.";
+        else $return["error"] = "Error: " . $sql_check . "<br>" . $connect->db_connect->error;
 
         return $return;
     }
@@ -73,7 +73,7 @@
                 else if (empty($date)) { $return["error"] = "Wiek jest pusty!"; }
                 else if (empty($_POST["city"])) { $return["error"] = "Miasto jest puste!"; }
                 else {
-                    $return = isUser($connect, $table_users, $email);
+                    $return = isUser($connect, $table_users, $email, $login);
 
                     if(!isset($return["error"]) && !isset($return["warning"])) {
                         $return = createUser($connect, $table_users, $login, $email, $password, $date, $city);

@@ -143,6 +143,8 @@ class FormValidate {
                             console.log(`Send Success`);
                             if (response.success) this.toggleAlert(`${response.success}` ,`success`, true);
                             else if (response.info) this.toggleAlert(`${response.info}` ,`info`, true);
+
+                            if(response.session) console.log(response.session);
                         }
                     }
                 }).finally(() => {
