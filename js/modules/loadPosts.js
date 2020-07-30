@@ -61,10 +61,10 @@ const toggleAlert = (text, type, show) => {
     show ? infoAlert.classList.add(`--show`, `--${type}`) : false;
 }
 
-const loadPosts = (tabPosts) => {
+const createPosts = (tabPosts) => {
     tabPosts.forEach(post => {
         post.user.date = new Date().getFullYear() - post.user.date;
-        let newPost = new Post(post.user, post.date, post.title, post.category, post.content);
+        let newPost = new Post(post.user, post.postDate, post.title, post.category, post.content);
         newPost.addPostToDOM();
 
         let posts = document.querySelectorAll(`.post__container`);
@@ -95,7 +95,8 @@ const loadAllPosts = () => {
             else {
                 if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
                 else if (response.status == `success`) {
-                    loadPosts(response.posts);
+                    console.log(response.posts)
+                    createPosts(response.posts);
                     refreshEvents();
                 }
             }
@@ -127,7 +128,8 @@ const searchPosts = () => {
                 else if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
                 else if (response.status == `success`) {
                     document.querySelectorAll(`.post__container`).forEach(post => post.remove());
-                    loadPosts(response.posts);
+                    console.log(response.posts)
+                    createPosts(response.posts);
                     refreshEvents();
                 }
             }).finally(() => {

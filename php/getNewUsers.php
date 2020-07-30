@@ -4,7 +4,7 @@
     require 'Connection.php';
 
     function getUsers($connect, $table) {
-        $sql_user = "SELECT login FROM $table  LIMIT 5";
+        $sql_user = "SELECT login FROM $table ORDER BY id_user DESC LIMIT 5";
         $query_user = $connect->db_connect->query($sql_user);
         $return = [];
         $return["users"] = [];

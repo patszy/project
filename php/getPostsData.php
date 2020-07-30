@@ -41,10 +41,10 @@
         $return = $connect->ConnectOpen();
 
         if(!isset($return["error"])) {
-            if(!isset($_POST["searchStr"])) $return = getPost($connect, "SELECT * FROM $table_posts");
+            if(!isset($_POST["searchStr"])) $return = getPost($connect, "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content FROM $table_posts");
             else {
                 $searchStr = $connect->db_connect->real_escape_string($_POST["searchStr"]);
-                $return = getPost($connect, "SELECT * FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE posts.date like '%$searchStr%' OR posts.title like '%$searchStr%' OR posts.category like '%$searchStr%' OR users.login like '%$searchStr%' OR users.date like '%$searchStr%' OR users.city like '%$searchStr%'");
+                $return = getPost($connect, "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content, login, users.date AS userDate, city FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE posts.date like '%searchStr%' OR posts.title like '%searchStr%' OR posts.category like '%searchStr%' OR users.login like '%$searchStr%' OR users.date like '%$searchStr%' OR users.city like '%$searchStr%'");
             }
 
             $return["users"] = [];
