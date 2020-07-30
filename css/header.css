@@ -38,13 +38,16 @@ header {
     left: 30px;
 }
 
-.search__bar label {
+.search__bar .form__row {
     flex-grow: 1;
     display: inline-flex;
     align-items: center;
+    margin: 0;
+    width: initial;
+    border-bottom: initial;
 }
 
-.search__bar label input[type="text"]{
+.search__bar .form__row input[type="text"]{
     border: 0;
     outline: 0;
     padding-left: 80px;
@@ -57,7 +60,7 @@ header {
     margin: 0;
 }
 
-.search__bar button {
+.search__bar .submit {
     padding: 0 20px;
     height: 50px;
     font-size: 1.2rem;
@@ -67,14 +70,19 @@ header {
     cursor: pointer;
     outline: 0;
     transition: .2s;
+    margin: initial;
+    border-radius: initial;
+    box-shadow: initial;
 }
 
-.search__bar button:hover {
+.search__bar .submit:hover {
     background-color: var(--blue-color);
     color: var(--light-color);
+    box-shadow: none;
+    transform: none;
 }
 
-.search__bar button .fa-search {
+.search__bar .submit .fa-search {
     padding-left: 15px;
 }
 

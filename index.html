@@ -82,13 +82,13 @@
         <a href="index.html"><i class="fab fa-gofore logo"></i></a>
 
         <nav class="main__nav">
-            <form class="search__bar">
-                <label>
+            <form class="search__bar" action="./php/getPostsData.php" method="POST">
+                <label class="form__row">
                     <i class="fas fa-pen"></i>
-                    <input type="text" placeholder="Kogo szukasz?" autofocus>
+                    <input type="text" name="searchStr" placeholder="Wpisz szukaną frazę." autofocus>
                 </label>
 
-                <button type="submit"> Wyszukaj
+                <button class="submit"> Wyszukaj
                         <i class="fas fa-search"></i>
                 </button>
             </form>

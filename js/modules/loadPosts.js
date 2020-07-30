@@ -90,15 +90,48 @@ document.addEventListener(`DOMContentLoaded`, () => {
     fetch(`./php/getPostsData.php`, {method: `POST`})
         .then(response => response.json())
         .then(response => {
-            if (response.status == `error`) this.toggleAlert(`${response.error}` , `error`, true);
+            if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
             else {
-                if (response.status == `warning`) this.toggleAlert(`${response.warning}` , `warning`, true);
+                if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
                 else if (response.status == `success`) {
                     loadPosts(response.posts);
                     refreshEvents();
                 }
             }
         });
+
+    const formBar = document.querySelector(`.search__bar`);
+
+    formBar.addEventListener(`submit`, event => {
+        event.preventDefault();
+
+        const submit = formBar.querySelector(`.submit`);
+        submit.disabled = true;
+        submit.classList.add(`loading`);
+
+        const url = formBar.action;
+        const method = formBar.method;
+        const formData = new FormData(formBar);
+
+        fetch(url, {
+            method: method.toUpperCase(),
+            body: formData
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
+                else if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
+                else if (response.status == `success`) {
+                    document.querySelectorAll(`.post__container`).forEach(post => post.remove());
+                    loadPosts(response.posts);
+                    refreshEvents();
+                }
+            }).finally(() => {
+                submit.disabled = false;
+                submit.classList.remove(`loading`);
+            });
+    });
 
     //Submitting Form
 

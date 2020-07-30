@@ -115,8 +115,6 @@ class FormValidate {
             if(!formErrors) {
                 // event.target.submit();
 
-                // Maybe I shoud use AJAX
-
                 const submit = this.form.querySelector(`.submit`);
                 submit.disabled = true;
                 submit.classList.add(`loading`);
