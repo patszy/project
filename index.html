@@ -41,31 +41,31 @@
             <h5 class="title">Nowa wiadomość: </h5>
 
             <label for="mail__recipient" class="form__row mail__recipient">
-                <input id="mail__recipient" type="email" name="email__recipient" class="input" autocomplete="off" required>
+                <input id="mail__recipient" type="email" name="email" class="input" autocomplete="off" required readonly>
             </label>
 
-            <label for="mail__login" class="form__row">
+            <label for="mail__login" class="form__row --focus">
                 <h5>Do</h5>
                 <i class="fas fa-envelope-open-text"></i>
-                <input id="mail__login" type="text" name="login" class="input user__name" autocomplete="off" required readonly value="Admin 123">
+                <input id="mail__login" type="text" name="login" class="input user__name" autocomplete="off" required readonly>
             </label>
 
             <label for="mail__address" class="form__row">
                 <h5>Od</h5>
                 <i class="fas fa-envelope"></i>
-                <input id="mail__address" type="email" name="email__address" class="input" autocomplete="off" required value="patrykszymczyk97@gmail.com">
+                <input id="mail__address" type="email" name="email" class="input" autocomplete="off" required>
             </label>
 
             <label for="mail__title" class="form__row">
                 <h5>Tytuł</h5>
                 <i class="fas fa-paragraph"></i>
-                <input id="mail__title" type="text" name="title" class="input" autocomplete="off" required value="Witaj">
+                <input id="mail__title" type="text" name="title" class="input" autocomplete="off" required>
             </label>
 
             <label for="mail__message" class="form__row">
                 <h5>Treść</h5>
                 <i class="fas fa-align-left"></i>
-                <textarea id="mail__message" type="text" name="message" class="input" autocomplete="off" required>Miło cię poznać.</textarea>
+                <textarea id="mail__message" type="text" name="message" class="input" autocomplete="off" required></textarea>
             </label>
 
             <label for="mail__guardian" class="guardian">
@@ -79,7 +79,7 @@
     <div class="background-img"></div>
 
     <header>
-        <a href="index.html"><i class="fab fa-gofore logo"></i></a>
+        <a href="#"><i class="fab fa-gofore logo"></i></a>
 
         <nav class="main__nav">
             <form class="search__bar" action="./php/getPostsData.php" method="POST">
@@ -104,13 +104,13 @@
                                 <label for="login" class="form__row">
                                     <h5>Login</h5>
                                     <i class="fas fa-user"></i>
-                                    <input id="login" type="text" name="login" class="input" autocomplete="off" required value="patszy">
+                                    <input id="login" type="text" name="login" class="input" autocomplete="off" required>
                                 </label>
 
                                 <label for="password__login" class="form__row">
                                     <h5>Hasło</h5>
                                     <i class="fas fa-unlock-alt"></i>
-                                    <input id="password__login" type="password" name="password" class="input" required value="1234">
+                                    <input id="password__login" type="password" name="password" class="input" required>
                                     <i class="far fa-eye-slash"></i>
                                 </label>
 
@@ -132,26 +132,26 @@
                             <label for="login2" class="form__row">
                                 <h5>Login</h5>
                                 <i class="fas fa-user"></i>
-                                <input value="PatSzy" id="login2" type="text" name="login" minlength="3" class="input" autocomplete="off" required>
+                                <input id="login2" type="text" name="login" minlength="3" class="input" autocomplete="off" required>
                             </label>
 
                             <label for="mail" class="form__row">
                                 <h5>E-mail</h5>
                                 <i class="fas fa-envelope"></i>
-                                <input value="patszy97@interia.pl" id="mail" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
+                                <input id="mail" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
                             </label>
 
-                            <label for="password-register" class="form__row">
+                            <label for="password__register" class="form__row">
                                 <h5>Hasło</h5>
                                 <i class="fas fa-unlock-alt"></i>
-                                <input value="1234" id="password-register" type="password" name="password" minlength="8" class="input" required>
+                                <input id="password__register" type="password" name="password" minlength="8" class="input" required>
                                 <i class="far fa-eye-slash"></i>
                             </label>
 
                             <label for="date" class="form__row">
                                 <h5>Rok Urodzenia</h5>
                                 <i class="fas fa-calendar-alt"></i>
-                                <input value="1997" id="date" type="number" name="date" min="1900" class="input input__date" autocomplete="off" required>
+                                <input id="date" type="number" name="date" min="1900" class="input input__date" autocomplete="off" required>
                             </label>
 
                             <label for="city" class="form__row">
@@ -159,7 +159,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select id="city" name="city" class="input" required>
                                     <option value=""></option>
-                                    <option selected value="Warszawa">Warszawa</option>
+                                    <option value="Warszawa">Warszawa</option>
                                     <option value="Poznań">Poznań</option>
                                     <option value="Kraków">Kraków</option>
                                     <option value="Gdańsk">Gdańsk</option>
@@ -238,9 +238,10 @@
 
                     <div>
                         <div class="user__data">
-                            <span class="user__name"> Admin 123 </span>
-                            <span class="user__city"> Warszawa </span>
-                            <span class="user__age"> 18 </span>
+                            <input type="text" name="user__id" class="input" required readonly>
+                            <span class="user__name"></span>
+                            <span class="user__city"></span>
+                            <span class="user__age"></span>
                         </div>
 
                         <div class="article__data">
@@ -249,7 +250,7 @@
                             <label for="post__title" class="form__row">
                                 <h5>Tytuł</h5>
                                 <i class="fas fa-paragraph"></i>
-                                <input id="post__title" type="text" name="title" class="input" autocomplete="off" minlength="3" required value="VoksWagen">
+                                <input id="post__title" type="text" name="title" class="input" autocomplete="off" minlength="3" required>
                             </label>
 
                             <label for="post__category" class="form__row">
@@ -257,7 +258,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select id="post__category" name="category" class="input" required>
                                     <option value=""></option>
-                                    <option value="Pojazdy" selected>Pojazdy</option>
+                                    <option value="Pojazdy">Pojazdy</option>
                                     <option value="Podróże">Podróże</option>
                                     <option value="Dam pracę">Dam pracę</option>
                                     <option value="Szukam pracy">Szukam pracy</option>
@@ -271,7 +272,7 @@
                 <label for="post__content" class="form__row">
                     <h5>Treść</h5>
                     <i class="fas fa-align-left"></i>
-                    <textarea id="post__content" type="text" name="content" class="input" autocomplete="off" minlength="10" required>Sprzedam Passata.</textarea>
+                    <textarea id="post__content" type="text" name="content" class="input" autocomplete="off" minlength="10" required></textarea>
                 </label>
 
                 <label for="post__guardian" class="guardian">
@@ -279,7 +280,6 @@
                 </label>
 
                 <button class="submit">Opublikuj</button>
-                <!-- <input type="submit" value="Opublikuj" class="submit"> -->
             </form>
         </section>
 

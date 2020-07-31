@@ -84,6 +84,7 @@ const refreshPostEvents = () => {
     emailButtons.forEach(btn => btn.addEventListener(`click`, () => {
         toggleShowClass(document.querySelector(`.form__mail`),  document.querySelector(`.mail__creator`));
         document.getElementById(`mail__recipient`).setAttribute(`value`, btn.getAttribute(`mail`));
+        document.getElementById(`mail__login`).value = btn.parentElement.querySelector(`.user__name`).innerText;
     }));
 }
 

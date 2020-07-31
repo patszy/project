@@ -18,12 +18,28 @@
         return $return;
     };
 
-    function checkPassword($password, $password2) {
+    function checkData($login, $password, $userLogin, $userPassword) {
         $return = [];
 
-        if(password_verify($password, $password2)) $return["success"] = "Zalogowano.";
-        else if(!password_verify($password, $password2)) $return["error"] = "Niewłaściwe hasło.";
+        if(password_verify($password, $userPassword) && $login == $userLogin) $return["success"] = "Dane poprawne.";
+        else if(!password_verify($password, $userPassword) || $login != $userLogin) $return["error"] = "Niewłaściwe dane.";
         else $return["error"] = "Error: " . $sql_login . "<br>" . $connect->db_connect->error;
+
+        return $return;
+    }
+
+    function login($user) {
+        $retrun = [];
+
+        session_start();
+        $_SESSION["login"] = true;
+        $_SESSION["id_user"] = $user["id_user"];
+        $_SESSION["name"] = $user["login"];
+        $_SESSION["email"] = $user["email"];
+        $_SESSION["date"] = $user["date"];
+        $_SESSION["city"] = $user["city"];
+        $return["success"] = "Zalogowano.";
+        $return["session"] = $_SESSION;
 
         return $return;
     }
@@ -48,19 +64,9 @@
 
                     if(!isset($return["error"]) && !isset($return["warning"])) {
                         $user = $return["user"];
-                        $return = checkPassword($password, $user["password"]);
+                        $return = checkData($login, $password, $user["login"], $user["password"]);
 
-                        if(!isset($return["error"]) && !isset($return["warning"]) && $login==$user["login"]) {
-                            session_start();
-                            $_SESSION["login"] = true;
-                            $_SESSION["id_user"] = $user["id_user"];
-                            $_SESSION["name"] = $user["login"];
-                            $_SESSION["email"] = $user["email"];
-                            $_SESSION["date"] = $user["date"];
-                            $_SESSION["city"] = $user["city"];
-
-                            $return["session"] = $_SESSION;
-                        }
+                        if(!isset($return["error"]) && !isset($return["warning"])) $return = login($user);
                     }
                 }
             }

@@ -144,7 +144,25 @@ class FormValidate {
                             if (response.success) this.toggleAlert(`${response.success}` ,`success`, true);
                             else if (response.info) this.toggleAlert(`${response.info}` ,`info`, true);
 
-                            if(response.session) console.log(response.session);
+                            if(response.session) {
+                                const userSession = response.session;
+                                const postCreator = document.querySelector(`.post__creator`);
+                                const userId = postCreator.querySelector(`.post__creator input[name="user__id"]`);
+                                const userName = postCreator.querySelector(`.post__creator .user__name`);
+                                const userCity = postCreator.querySelector(`.post__creator .user__city`);
+                                const userAge = postCreator.querySelector(`.post__creator .user__age`);
+                                const emailAddress = document.getElementById(`mail__address`);
+                                postCreator.style.display = `block`;
+                                userId.value = userSession.id_user;
+                                userName.innerText = userSession.name;
+                                userCity.innerText = userSession.city;
+                                userAge.innerText = new Date().getFullYear() - userSession.date;
+                                emailAddress.parentElement.classList.add(`--focus`);
+                                emailAddress.value = userSession.email;
+
+                                document.querySelector(`.user__bar li:nth-child(1)`).style.display = `none`;
+                                document.querySelector(`.user__bar li:nth-child(2)`).style.display = `none`;
+                            }
                         }
                     }
                 }).finally(() => {
