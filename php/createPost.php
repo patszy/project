@@ -25,8 +25,8 @@
         return $return;
     }
 
-    function createPost($connect, $table, $date, $title, $category, $content) {
-        $sql_create_post = "INSERT INTO $table SET id_post='', id_user='1', date='$date', title='$title', category='$category', content='$content'";
+    function createPost($connect, $table, $id, $date, $title, $category, $content) {
+        $sql_create_post = "INSERT INTO $table SET id_post='', id_user='$id', date='$date', title='$title', category='$category', content='$content'";
         $return = [];
 
         if ($connect->db_connect->query($sql_create_post) === TRUE) $return["success"] = "Utworzono post.";
@@ -47,6 +47,7 @@
             $return = $connect->ConnectOpen();
 
             if(!isset($return["error"])){
+                $user_id = $connect->db_connect->real_escape_string($_POST["user__id"]);
                 $title = $connect->db_connect->real_escape_string($_POST["title"]);
                 $category = $connect->db_connect->real_escape_string($_POST["category"]);
                 $content = $connect->db_connect->real_escape_string( $_POST["content"]);
@@ -57,7 +58,7 @@
                 else {
                     // $return = isPost($connect, $table_posts, $title);
 
-                    if(!isset($return["error"]) && !isset($return["warning"])) { $return = createPost($connect, $table_posts, createDate(), $title, $category, $content); }
+                    if(!isset($return["error"]) && !isset($return["warning"])) { $return = createPost($connect, $table_posts, $user_id,createDate(), $title, $category, $content); }
                 }
             }
 

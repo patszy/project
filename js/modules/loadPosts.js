@@ -1,5 +1,5 @@
 class Post{
-    constructor(user = {name: `Admin123`, city: `Warszawa`, age: 18}, date = null, title = null, category = null, content = null){
+    constructor(user = null, date = null, title = null, category = null, content = null){
         this.user = user;
         this.date = date || this.createPostDate();
         this.title = title || this.getInputValue(title);
@@ -19,7 +19,6 @@ class Post{
 
         if(classes) classes.forEach(className => element.classList.add(className));
         if(children) children.forEach(child => element.appendChild(child));
-        // if(attributes) attributes.forEach(attribute => element.setAttribute(attribute.name, attribute.value));
         if(attributes) attributes.forEach(attribute => element.setAttribute(attribute.name, attribute.value));
 
         return element;
@@ -29,14 +28,14 @@ class Post{
         const parent = document.getElementsByTagName(`main`)[0];
         const actualNode = document.getElementsByClassName(`post__container`)[0];
 
-        let userContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
+        let postContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
             this.createElementDOM(`div`, [`post__data`], undefined, [
                 this.createElementDOM(`div`, [`user__img`], undefined),
                 this.createElementDOM(`div`, [`data__wrapper`], undefined, [
                     this.createElementDOM(`div`, [`user__data`], undefined, [
-                        this.createElementDOM(`span`, [`user__name`], this.user.name),
+                        this.createElementDOM(`span`, [`user__name`], this.user.login),
                         this.createElementDOM(`span`, [`user__city`], this.user.city),
-                        this.createElementDOM(`span`, [`user__age`], this.user.age)
+                        this.createElementDOM(`span`, [`user__age`], this.user.date)
                     ]),
                     this.createElementDOM(`div`, [`article__data`], undefined, [
                         this.createElementDOM(`time`, undefined, this.date),
@@ -48,14 +47,12 @@ class Post{
             this.createElementDOM(`article`, [`post__content`], undefined, [
                 this.createElementDOM(`p`, [`clearfix`], this.content)
             ]),
-            this.createElementDOM(`button`, [`btn__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `mail`, value: `patszy97@interia.pl`}])
+            this.createElementDOM(`button`, [`btn__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `mail`, value: this.user.email}])
         ]);
 
-        parent.insertBefore(userContainer, actualNode);
+        parent.insertBefore(postContainer, actualNode);
     }
 }
-
-let tabPosts;
 
 const toggleAlert = (text, type, show) => {
     const infoAlert = document.querySelector(`.info__alert`);
@@ -64,9 +61,10 @@ const toggleAlert = (text, type, show) => {
     show ? infoAlert.classList.add(`--show`, `--${type}`) : false;
 }
 
-const loadPosts = (tabPosts) => {
+const createPosts = (tabPosts) => {
     tabPosts.forEach(post => {
-        let newPost = new Post(undefined, post.date, post.title, post.category, post.content);
+        post.user.date = new Date().getFullYear() - post.user.date;
+        let newPost = new Post(post.user, post.postDate, post.title, post.category, post.content);
         newPost.addPostToDOM();
 
         let posts = document.querySelectorAll(`.post__container`);
@@ -75,7 +73,7 @@ const loadPosts = (tabPosts) => {
     })
 }
 
-const refreshEvents = () => {
+const refreshPostEvents = () => {
     let toggleShowClass = (element, parent = null) => {
         if(element) element.classList.toggle(`--show`);
         if(parent) parent.classList.toggle(`--show`);
@@ -86,43 +84,62 @@ const refreshEvents = () => {
     emailButtons.forEach(btn => btn.addEventListener(`click`, () => {
         toggleShowClass(document.querySelector(`.form__mail`),  document.querySelector(`.mail__creator`));
         document.getElementById(`mail__recipient`).setAttribute(`value`, btn.getAttribute(`mail`));
+        document.getElementById(`mail__login`).value = btn.parentElement.querySelector(`.user__name`).innerText;
     }));
 }
 
-document.addEventListener(`DOMContentLoaded`, () => {
+const loadAllPosts = () => {
     fetch(`./php/getPostsData.php`, {method: `POST`})
         .then(response => response.json())
         .then(response => {
-            if (response.status == `error`) this.toggleAlert(`${response.error}` , `error`, true);
+            if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
             else {
-                if (response.status == `warning`) this.toggleAlert(`${response.warning}` , `warning`, true);
+                if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
                 else if (response.status == `success`) {
-                    loadPosts(response.posts);
-                    refreshEvents();
+                    createPosts(response.posts);
+                    refreshPostEvents();
                 }
             }
         });
+}
 
-    //Submitting Form
+const searchPosts = () => {
+    const formBar = document.querySelector(`.search__bar`);
 
-    /*  const formPost = document.querySelector(`.form__post`);
-        formPost.addEventListener(`submit`, event => {
+    formBar.addEventListener(`submit`, event => {
         event.preventDefault();
 
+        const submit = formBar.querySelector(`.submit`);
+        submit.disabled = true;
+        submit.classList.add(`loading`);
 
-        let title = document.getElementById(`post__title`);
-        let content = document.getElementById(`post__content`);
+        const url = formBar.action;
+        const method = formBar.method;
+        const formData = new FormData(formBar);
 
-        const post = new Post(undefined, title, content);
+        fetch(url, {
+            method: method.toUpperCase(),
+            body: formData
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
+                else if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
+                else if (response.status == `success`) {
+                    document.querySelectorAll(`.post__container`).forEach(post => post.remove());
+                    createPosts(response.posts);
+                    refreshPostEvents();
+                }
+            }).finally(() => {
+                submit.disabled = false;
+                submit.classList.remove(`loading`);
+            });
+    });
+}
 
-        post.addPostToDOM();
-        post.clearInputValue([title, content]);
-
-        let posts = document.querySelectorAll(`.post__container`);
-
-        animatePosts(posts);
-
-        window.addEventListener(`scroll`, () => animatePosts(posts));
-    }); */
+document.addEventListener(`DOMContentLoaded`, () => {
+    loadAllPosts();
+    searchPosts();
 });
 

@@ -45,10 +45,5 @@ Add:
     - slider
     - positioning
 - Backend:
-    - add user
-    - login user
     - user options
-    - add post
-    - render post
-    - remind password
-    - contact with other user
+    - limit post render
