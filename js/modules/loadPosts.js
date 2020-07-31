@@ -73,7 +73,7 @@ const createPosts = (tabPosts) => {
     })
 }
 
-const refreshEvents = () => {
+const refreshPostEvents = () => {
     let toggleShowClass = (element, parent = null) => {
         if(element) element.classList.toggle(`--show`);
         if(parent) parent.classList.toggle(`--show`);
@@ -95,9 +95,8 @@ const loadAllPosts = () => {
             else {
                 if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
                 else if (response.status == `success`) {
-                    console.log(response.posts)
                     createPosts(response.posts);
-                    refreshEvents();
+                    refreshPostEvents();
                 }
             }
         });
@@ -128,9 +127,8 @@ const searchPosts = () => {
                 else if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
                 else if (response.status == `success`) {
                     document.querySelectorAll(`.post__container`).forEach(post => post.remove());
-                    console.log(response.posts)
                     createPosts(response.posts);
-                    refreshEvents();
+                    refreshPostEvents();
                 }
             }).finally(() => {
                 submit.disabled = false;
