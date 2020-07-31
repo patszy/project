@@ -88,10 +88,20 @@ const refreshPostEvents = () => {
     }));
 }
 
-const loadAllPosts = () => {
-    fetch(`./php/getPostsData.php`, {method: `POST`})
+const loadPosts = (row) => {
+
+    const formData = new FormData();
+    formData.append(`rowNum`, row);
+
+    for (var value of formData.entries()) console.log(value);
+
+    fetch(`./php/getPostsData.php`, {
+        method: `POST`,
+        body: formData
+    })
         .then(response => response.json())
         .then(response => {
+            console.log(response);
             if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
             else {
                 if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
@@ -101,6 +111,8 @@ const loadAllPosts = () => {
                 }
             }
         });
+
+    return row += 10;
 }
 
 const searchPosts = () => {
@@ -139,7 +151,11 @@ const searchPosts = () => {
 }
 
 document.addEventListener(`DOMContentLoaded`, () => {
-    loadAllPosts();
+    let rowNum = 0;
+
+    rowNum = loadPosts(rowNum);
+    rowNum = loadPosts(rowNum);
+
     searchPosts();
 });
 
