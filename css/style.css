@@ -94,3 +94,9 @@ button:active, a:active, i:active {
         transform: translate(-50%, -50%) rotate(360deg);
     }
 }
+
+.post__container:nth-child(1),
+.post__container:nth-child(2),
+.post__container:nth-child(3) {
+    display: none;
+}

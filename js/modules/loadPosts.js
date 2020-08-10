@@ -25,8 +25,8 @@ class Post{
     }
 
     addPostToDOM() {
-        const parent = document.getElementsByTagName(`main`)[0];
-        const actualNode = document.getElementsByClassName(`post__container`)[0];
+        const parent = document.getElementsByClassName(`posts__wrapper`)[0];
+        const loadButton = document.querySelector(`.btn__load`);
 
         let postContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
             this.createElementDOM(`div`, [`post__data`], undefined, [
@@ -50,7 +50,8 @@ class Post{
             this.createElementDOM(`button`, [`btn__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `mail`, value: this.user.email}])
         ]);
 
-        parent.insertBefore(postContainer, actualNode);
+        // parent.append(postContainer);
+        parent.insertBefore(postContainer, loadButton);
     }
 }
 
@@ -88,10 +89,11 @@ const refreshPostEvents = () => {
     }));
 }
 
-const loadPosts = (row) => {
+const loadPosts = (rowNum, rowCount, data, removePosts) => {
+    const formData = data || new FormData();
 
-    const formData = new FormData();
-    formData.append(`rowNum`, row);
+    if(rowNum) formData.append(`rowNum`, rowNum);
+    if(rowCount) formData.append(`rowCount`, rowCount);
 
     for (var value of formData.entries()) console.log(value);
 
@@ -106,16 +108,17 @@ const loadPosts = (row) => {
             else {
                 if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
                 else if (response.status == `success`) {
+                    if(removePosts) document.querySelectorAll(`.post__container`).forEach(post => post.remove());
                     createPosts(response.posts);
                     refreshPostEvents();
                 }
             }
         });
 
-    return row += 10;
+    return rowNum += rowCount;
 }
 
-const searchPosts = () => {
+const searchPosts = (rowCount) => {
     const formBar = document.querySelector(`.search__bar`);
 
     formBar.addEventListener(`submit`, event => {
@@ -129,33 +132,24 @@ const searchPosts = () => {
         const method = formBar.method;
         const formData = new FormData(formBar);
 
-        fetch(url, {
-            method: method.toUpperCase(),
-            body: formData
-        })
-            .then(response => response.json())
-            .then(response => {
-                console.log(response);
-                if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
-                else if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
-                else if (response.status == `success`) {
-                    document.querySelectorAll(`.post__container`).forEach(post => post.remove());
-                    createPosts(response.posts);
-                    refreshPostEvents();
-                }
-            }).finally(() => {
-                submit.disabled = false;
-                submit.classList.remove(`loading`);
-            });
+        // loadPosts(0, rowCount, formData, true);
+        submit.disabled = false;
+        submit.classList.remove(`loading`);
     });
 }
 
 document.addEventListener(`DOMContentLoaded`, () => {
     let rowNum = 0;
+    let rowCount = 5;
 
-    rowNum = loadPosts(rowNum);
-    rowNum = loadPosts(rowNum);
+    rowNum = loadPosts(rowNum, rowCount);
+
+    searchPosts(rowCount);
+
+    window.addEventListener(`scroll`, () => { if(document.body.scrollHeight == window.scrollY+window.innerHeight) rowNum = loadPosts(rowNum, rowCount) });
 
     searchPosts();
+
+
 });
 

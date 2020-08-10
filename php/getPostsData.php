@@ -41,14 +41,15 @@
         $return = $connect->ConnectOpen();
 
         if(!isset($return["error"])) {
-            if(isset($_POST["rowNum"])) $rowNum = $connect->db_connect->real_escape_string($_POST["rowNum"]);
+            isset($_POST["rowNum"]) ? $rowNum = $connect->db_connect->real_escape_string($_POST["rowNum"]) : $rowNum = 0;
+            isset($_POST["rowCount"]) ? $rowCount = $connect->db_connect->real_escape_string($_POST["rowCount"]) : $rowCount = 1;
 
-            if(!isset($_POST["searchStr"])) $return = getPost($connect, "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content FROM $table_posts WHERE id_post<=(SELECT MAX(id_post) FROM $table_posts) - $rowNum ORDER BY id_post DESC LIMIT 10");
+            if(!isset($_POST["searchStr"])) $return = getPost($connect, "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content FROM $table_posts WHERE id_post<=(SELECT MAX(id_post) FROM $table_posts) - $rowNum ORDER BY id_post DESC LIMIT $rowCount");
             else {
                 $searchStr = $connect->db_connect->real_escape_string($_POST["searchStr"]);
                 is_numeric($searchStr) ? intval($searchStr) < 150 ? $searchStr = date("Y") - intval($searchStr) : 0 : 0;
 
-                $return = getPost($connect, "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content, login, users.date AS userDate, city FROM $table_posts INNER JOIN users ON posts.id_user = users.id_user WHERE posts.date like '%$searchStr%' OR posts.title like '%$searchStr%' OR posts.category like '%$searchStr%' OR users.login like '%$searchStr%' OR users.date like '%$searchStr%' OR users.city like '%$searchStr%'");
+                $return = getPost($connect, "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content, login, users.date AS userDate, city FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE id_post<=(SELECT MAX(id_post) FROM posts) - $rowNum AND posts.date like '%admin%' OR posts.title like '%admin%' OR posts.category like '%admin%' OR users.login like '%admin%' OR users.date like '%admin%' OR users.city like '%admin%' ORDER BY id_post DESC LIMIT $rowCount");
             }
             // SELECT * FROM $table_posts WHERE id_post<=(SELECT MAX(id_post) FROM $table_posts) - $rowNum ORDER BY id_post DESC LIMIT 10
             // SELECT * FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE posts.date like '%%' OR posts.title like '%%' OR posts.category like '%%' OR users.login like '%%' OR users.date like '%%' OR users.city like '%%' AND id_post<=(SELECT MAX(id_post) FROM posts) - 10 ORDER BY id_post DESC LIMIT 10
