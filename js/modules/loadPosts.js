@@ -89,11 +89,11 @@ const refreshPostEvents = () => {
     }));
 }
 
-const loadPosts = (rowNum, rowCount, data, removePosts) => {
+const loadPosts = (rowNum = 0, rowCount = 1, data, removePosts) => {
     const formData = data || new FormData();
 
-    if(rowNum) formData.append(`rowNum`, rowNum);
-    if(rowCount) formData.append(`rowCount`, rowCount);
+    if(typeof(rowNum) != undefined) formData.append(`rowNum`, rowNum);
+    if(typeof(rowCount) != undefined) formData.append(`rowCount`, rowCount);
 
     for (var value of formData.entries()) console.log(value);
 
@@ -101,24 +101,23 @@ const loadPosts = (rowNum, rowCount, data, removePosts) => {
         method: `POST`,
         body: formData
     })
-        .then(response => response.json())
-        .then(response => {
-            console.log(response);
-            if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
-            else {
-                if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
-                else if (response.status == `success`) {
-                    if(removePosts) document.querySelectorAll(`.post__container`).forEach(post => post.remove());
-                    createPosts(response.posts);
-                    refreshPostEvents();
-                }
+    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+        if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
+        else {
+            if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
+            else if (response.status == `success`) {
+                createPosts(response.posts);
+                refreshPostEvents();
             }
-        });
+        }
+    });
 
     return rowNum += rowCount;
 }
 
-const searchPosts = (rowCount) => {
+const searchPosts = (rowNum, rowCount) => {
     const formBar = document.querySelector(`.search__bar`);
 
     formBar.addEventListener(`submit`, event => {
@@ -128,28 +127,24 @@ const searchPosts = (rowCount) => {
         submit.disabled = true;
         submit.classList.add(`loading`);
 
-        const url = formBar.action;
-        const method = formBar.method;
         const formData = new FormData(formBar);
 
-        // loadPosts(0, rowCount, formData, true);
+        rowNum = loadPosts(rowNum, rowCount, formData, true);
         submit.disabled = false;
         submit.classList.remove(`loading`);
     });
+
+    return rowNum;
 }
 
 document.addEventListener(`DOMContentLoaded`, () => {
     let rowNum = 0;
-    let rowCount = 5;
+    const rowCount = 5;
 
-    rowNum = loadPosts(rowNum, rowCount);
-
-    searchPosts(rowCount);
+    // rowNum = searchPosts(rowNum, rowCount);
+    loadPosts(rowNum, rowCount);
 
     window.addEventListener(`scroll`, () => { if(document.body.scrollHeight == window.scrollY+window.innerHeight) rowNum = loadPosts(rowNum, rowCount) });
-
-    searchPosts();
-
 
 });
 
