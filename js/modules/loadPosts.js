@@ -89,15 +89,17 @@ const refreshPostEvents = () => {
     }));
 }
 
-const loadPosts = (rowNum = 0, rowCount = 1, data, removePosts) => {
-    const formData = data || new FormData();
+const loadPosts = (Status) => {
+    const formData = new FormData();
 
-    if(typeof(rowNum) != undefined) formData.append(`rowNum`, rowNum);
-    if(typeof(rowCount) != undefined) formData.append(`rowCount`, rowCount);
+    if(typeof(Status.rowNum) != undefined) formData.append(`rowNum`, Status.rowNum);
+    if(typeof(Status.rowCount) != undefined) formData.append(`rowCount`, Status.rowCount);
+    if(typeof(Status.searchStr) != undefined) formData.append(`searchStr`, Status.searchStr);
 
+    console.log(Status);
     for (var value of formData.entries()) console.log(value);
 
-    fetch(`./php/getPostsData.php`, {
+    return fetch(`./php/getPostsData.php`, {
         method: `POST`,
         body: formData
     })
@@ -110,14 +112,15 @@ const loadPosts = (rowNum = 0, rowCount = 1, data, removePosts) => {
             else if (response.status == `success`) {
                 createPosts(response.posts);
                 refreshPostEvents();
+                Status.rowNum += Status.rowCount;
             }
         }
-    });
 
-    return rowNum += rowCount;
+        return Status;
+    })
 }
 
-const searchPosts = (rowNum, rowCount) => {
+const searchPosts = (Status) => {
     const formBar = document.querySelector(`.search__bar`);
 
     formBar.addEventListener(`submit`, event => {
@@ -129,22 +132,28 @@ const searchPosts = (rowNum, rowCount) => {
 
         const formData = new FormData(formBar);
 
-        rowNum = loadPosts(rowNum, rowCount, formData, true);
-        submit.disabled = false;
-        submit.classList.remove(`loading`);
-    });
+        Status.searchStr = formData.get(`searchStr`);
+        Status.rowNum = 0
+        document.querySelector(`.posts__wrapper`).innerHTML = ``;
 
-    return rowNum;
+        return loadPosts(Status).finally(() => {
+                submit.disabled = false;
+                submit.classList.remove(`loading`);
+                return Status;
+            });
+    });
 }
 
 document.addEventListener(`DOMContentLoaded`, () => {
-    let rowNum = 0;
-    const rowCount = 5;
+    let loadPostsStatus = {rowNum: 0, rowCount: 5, searchStr: ``};
 
-    // rowNum = searchPosts(rowNum, rowCount);
-    loadPosts(rowNum, rowCount);
+    if(searchPosts(loadPostsStatus)) searchPosts(loadPostsStatus).then(response => loadPostsStatus = response);
 
-    window.addEventListener(`scroll`, () => { if(document.body.scrollHeight == window.scrollY+window.innerHeight) rowNum = loadPosts(rowNum, rowCount) });
+    loadPosts(loadPostsStatus).then(response => loadPostsStatus = response);
 
+    window.addEventListener(`scroll`, () => {
+        if(document.body.scrollHeight == window.scrollY+window.innerHeight) {
+                loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum);
+        }
+    });
 });
-
