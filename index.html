@@ -104,13 +104,13 @@
                                 <label for="login" class="form__row">
                                     <h5>Login</h5>
                                     <i class="fas fa-user"></i>
-                                    <input id="login" type="text" name="login" class="input" autocomplete="off" required>
+                                    <input id="login" type="text" name="login" class="input" autocomplete="off" required value="PatSzy">
                                 </label>
 
                                 <label for="password__login" class="form__row">
                                     <h5>Hasło</h5>
                                     <i class="fas fa-unlock-alt"></i>
-                                    <input id="password__login" type="password" name="password" class="input" required>
+                                    <input id="password__login" type="password" name="password" class="input" required value="1234">
                                     <i class="far fa-eye-slash"></i>
                                 </label>
 
@@ -129,16 +129,16 @@
                         <div class="form__container">
                             <button type="button" class="form__close"></button>
 
-                            <label for="login2" class="form__row">
+                            <label for="login__register" class="form__row">
                                 <h5>Login</h5>
                                 <i class="fas fa-user"></i>
-                                <input id="login2" type="text" name="login" minlength="3" class="input" autocomplete="off" required>
+                                <input id="login__register" type="text" name="login" minlength="3" class="input" autocomplete="off" required>
                             </label>
 
-                            <label for="mail" class="form__row">
+                            <label for="mail__register" class="form__row">
                                 <h5>E-mail</h5>
                                 <i class="fas fa-envelope"></i>
-                                <input id="mail" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
+                                <input id="mail__register" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
                             </label>
 
                             <label for="password__register" class="form__row">
@@ -148,10 +148,10 @@
                                 <i class="far fa-eye-slash"></i>
                             </label>
 
-                            <label for="date" class="form__row">
+                            <label for="date__register" class="form__row">
                                 <h5>Rok Urodzenia</h5>
                                 <i class="fas fa-calendar-alt"></i>
-                                <input id="date" type="number" name="date" min="1900" class="input input__date" autocomplete="off" required>
+                                <input id="date__register" type="number" name="date" min="1900" class="input input__date" autocomplete="off" required>
                             </label>
 
                             <label for="city" class="form__row">
@@ -177,14 +177,33 @@
                     </form>
                 </li>
                 <li> <a href="#" class="options__button"> <i class="fas fa-user-cog"></i> </a>
-                    <form class="form form__options" action="#" method="POST">
+                    <form class="form form__options" action="./php/editUser.php" method="POST">
                         <div class="form__container">
                             <button type="button" class="form__close"></button>
 
-                            <label for="opt_city" class="form__row">
+                            <label for="login__options" class="form__row --focus">
+                                <h5>Login</h5>
+                                <i class="fas fa-user"></i>
+                                <input id="login__options" type="text" name="login" minlength="3" class="input" autocomplete="off">
+                            </label>
+
+                            <label for="mail__options" class="form__row --focus">
+                                <h5>E-mail</h5>
+                                <i class="fas fa-envelope"></i>
+                                <input id="mail__options" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off">
+                            </label>
+
+                            <label for="password__options" class="form__row">
+                                <h5>Nowe Hasło</h5>
+                                <i class="fas fa-unlock-alt"></i>
+                                <input id="password__options" type="password" name="password" minlength="8" class="input">
+                                <i class="far fa-eye-slash"></i>
+                            </label>
+
+                            <label for="city__options" class="form__row --focus">
                                 <h5>Miasto</h5>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <select id="opt_city" name="city" class="input" required>
+                                <select id="city__options" name="city" class="input">
                                     <option value=""></option>
                                     <option value="warszawa">Warszawa</option>
                                     <option value="poznań">Poznań</option>
@@ -195,15 +214,15 @@
                                 </select>
                             </label>
 
-                            <div for="gender" class="form__row">
+                            <div class="form__row">
                                 <h5>Usuń konto</h5>
                                 <i class="fas fa-venus-mars"></i>
-                                <label class="input__radio"><input type="checkbox" name="gender" class="input">Usuń</label>
+                                <label class="input__radio"><input type="checkbox" name="delete" class="input">Usuń</label>
                             </div>
 
-                            <button class="submit">Zatwierdź</button>
+                            <button class="submit">Zapisz zmiany</button>
 
-                            <a href="./php/logout.php">Wyloguj</a>
+                            <a class="btn__logout" href="./php/logout.php">Wyloguj</a>
                         </div>
                     </form>
                 </li>
@@ -413,6 +432,7 @@
     </aside>
 
     <script src="js/index.js"></script>
+    <script src="js/modules/cookies.js"></script>
     <script src="js/modules/loadPosts.js"></script>
     <script src="js/modules/loadNewUsers.js"></script>
     <script src="js/modules/loadEventListenners.js"></script>

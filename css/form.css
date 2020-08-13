@@ -22,12 +22,9 @@
     height: 300px;
 }
 
-.form__register.--show {
-    height: 500px;
-}
-
+.form__register.--show,
 .form__options.--show {
-    height: 300px;
+    height: 500px;
 }
 
 .form__close {
@@ -190,7 +187,7 @@
 .form__row .far.fa-eye:hover,
 .form__row .far.fa-eye-slash:hover {
     color: var(--blue-color);
-    transform: scale(.9);
+    transform: scale(.9) translateY(-50%);
 }
 
 .form__row.--error::before,

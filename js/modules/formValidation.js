@@ -113,8 +113,6 @@ class FormValidate {
             }
 
             if(!formErrors) {
-                // event.target.submit();
-
                 const submit = this.form.querySelector(`.submit`);
                 submit.disabled = true;
                 submit.classList.add(`loading`);
@@ -145,23 +143,11 @@ class FormValidate {
                             else if (response.info) this.toggleAlert(`${response.info}` ,`info`, true);
 
                             if(response.session) {
-                                const userSession = response.session;
-                                const postCreator = document.querySelector(`.post__creator`);
-                                const userId = postCreator.querySelector(`.post__creator input[name="user__id"]`);
-                                const userName = postCreator.querySelector(`.post__creator .user__name`);
-                                const userCity = postCreator.querySelector(`.post__creator .user__city`);
-                                const userAge = postCreator.querySelector(`.post__creator .user__age`);
-                                const emailAddress = document.getElementById(`mail__address`);
-                                postCreator.style.display = `block`;
-                                userId.value = userSession.id_user;
-                                userName.innerText = userSession.name;
-                                userCity.innerText = userSession.city;
-                                userAge.innerText = new Date().getFullYear() - userSession.date;
-                                emailAddress.parentElement.classList.add(`--focus`);
-                                emailAddress.value = userSession.email;
+                                loadUserDataOnPage(response.session);
 
-                                document.querySelector(`.user__bar li:nth-child(1)`).style.display = `none`;
-                                document.querySelector(`.user__bar li:nth-child(2)`).style.display = `none`;
+                                for (const [key, value] of Object.entries(response.session)) {
+                                    setCookie(`${key}`, `${value}`);
+                                }
                             }
                         }
                     }
@@ -174,16 +160,40 @@ class FormValidate {
     }
 }
 
+const loadUserDataOnPage = (sessionUserData) =>{
+    //PostCreator
+    document.querySelector(`.post__creator`).style.display = `block`;
+    document.querySelector(`.post__creator input[name="user__id"]`).value = sessionUserData.id_user;
+    document.querySelector(`.post__creator .user__name`).innerText = sessionUserData.name;
+    document.querySelector(`.post__creator .user__city`).innerText = sessionUserData.city;
+    document.querySelector(`.post__creator .user__age`).innerText = new Date().getFullYear() - sessionUserData.date;
+
+    //Contact
+    document.getElementById(`mail__address`).value = sessionUserData.email;
+    document.getElementById(`mail__address`).parentElement.classList.add(`--focus`);
+
+    //Menu settings
+    document.querySelector(`.user__bar li:nth-child(1)`).style.display = `none`;
+    document.querySelector(`.user__bar li:nth-child(2)`).style.display = `none`;
+    userLoginOpt = document.getElementById(`login__options`).value = sessionUserData.name;
+    userEmailOpt = document.getElementById(`mail__options`).value = sessionUserData.email;
+    userCityOpt = document.getElementById(`city__options`).querySelector(`[value=${sessionUserData.city.toLowerCase()}]`).selected = true;
+}
+
 document.addEventListener(`DOMContentLoaded`, () =>{
     const formLogin = document.getElementsByClassName(`form__login`)[0];
     const formRegister = document.getElementsByClassName(`form__register`)[0];
     const formMail = document.getElementsByClassName(`form__mail`)[0];
     const formRecovery = document.getElementsByClassName(`form__recovery`)[0];
+    const formOptions = document.getElementsByClassName(`form__options`)[0];
     const postCreator = document.getElementsByClassName(`form__post`)[0];
 
     const formLoginValidation = new FormValidate(formLogin, {});
     const formRegisterValidation = new FormValidate(formRegister, {});
     const formMailValidation = new FormValidate(formMail, {});
     const formRecoveryValidation = new FormValidate(formRecovery, {});
+    const formOptionsValidatio = new FormValidate(formOptions, {});
     const postCreatorValidation = new FormValidate(postCreator, {});
+
+    if(getCookie(`login`)) loadUserDataOnPage({id_user: getCookie(`id_user`), name: getCookie(`name`), email: getCookie(`email`), date: getCookie(`date`), city: getCookie(`city`)});
 });

@@ -10,6 +10,7 @@ const loadEventListenners = () => {
     const time = document.querySelectorAll(`.post__creator time`)[0];
     let emailButtons = document.querySelectorAll(`.btn__mail`);
     const recoveryBtn = document.querySelector(`.forgot`);
+    const logoutBtn = document.querySelector(`.btn__logout`);
 
     const toggleShowClass = (element, parent = null) => {
         if(element) element.classList.toggle(`--show`);
@@ -23,6 +24,15 @@ const loadEventListenners = () => {
     const timeInterval = window.setInterval(() => time.innerText = new Date().toLocaleString(), 1000);
 
     // Add Event Listeners
+
+    logoutBtn.addEventListener(`click`, () => {
+        removeCookie(`login`);
+        removeCookie(`id_user`);
+        removeCookie(`name`);
+        removeCookie(`email`);
+        removeCookie(`date`);
+        removeCookie(`city`);
+    })
 
     inputs.forEach(input => {
         if(input.value) toggleFocusClass(input.closest(`.form__row`), true);
