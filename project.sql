@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 23 Lip 2020, 19:47
+-- Czas generowania: 14 Sie 2020, 12:00
 -- Wersja serwera: 10.4.13-MariaDB
 -- Wersja PHP: 7.4.8
 
@@ -31,7 +31,7 @@ CREATE TABLE `posts` (
   `id_post` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `title` varchar(50) NOT NULL,
+  `title` text NOT NULL,
   `category` varchar(50) NOT NULL,
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -41,16 +41,30 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id_post`, `id_user`, `date`, `title`, `category`, `content`) VALUES
-(1, 1, '2020-07-23 18:20:52', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(2, 1, '2020-07-23 18:20:54', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(3, 1, '2020-07-23 18:20:55', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(4, 1, '2020-07-23 18:20:55', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(5, 1, '2020-07-23 18:20:57', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(6, 1, '2020-07-23 18:20:58', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(7, 1, '2020-07-23 18:20:58', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(8, 1, '2020-07-23 18:20:59', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(9, 1, '2020-07-23 18:21:09', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(10, 1, '2020-07-23 18:21:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.');
+(1, 3, '2020-07-23 18:20:52', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(2, 3, '2020-07-23 18:20:54', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(3, 3, '2020-07-23 18:20:55', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(4, 3, '2020-07-23 18:20:55', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(5, 3, '2020-07-23 18:20:57', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(6, 3, '2020-07-23 18:20:58', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(7, 3, '2020-07-23 18:20:58', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(8, 3, '2020-07-23 18:20:59', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(9, 3, '2020-07-23 18:21:09', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(10, 3, '2020-07-23 18:21:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(11, 3, '2020-07-24 13:25:22', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(12, 3, '2020-07-24 13:25:52', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(13, 3, '2020-07-24 13:40:01', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(14, 1, '2020-07-30 19:59:18', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(15, 1, '2020-07-31 10:49:39', 'Budowa', 'Usługi', 'Zrealizuję projekt budowy domu.'),
+(16, 1, '2020-07-31 10:53:35', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(17, 1, '2020-07-31 10:54:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(18, 1, '2020-07-31 10:56:40', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(19, 1, '2020-07-31 11:06:45', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(20, 3, '2020-07-31 11:08:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(21, 3, '2020-08-13 18:21:23', 'Witaj', 'Usługi', 'Miło cię poznać.'),
+(22, 5, '2020-08-14 11:39:55', 'wakacje', 'Podróże', 'Wiesz już coś co z tym bonem?\r\n'),
+(23, 5, '2020-08-14 11:39:55', 'wakacje', 'Podróże', 'Wiesz już coś co z tym bonem?\r\n'),
+(24, 3, '2020-08-14 11:44:30', 'Wakacje', 'Podróże', 'Nie wiem co z tym bonem.');
 
 -- --------------------------------------------------------
 
@@ -64,7 +78,7 @@ CREATE TABLE `users` (
   `email` varchar(30) NOT NULL,
   `password` varchar(1024) NOT NULL,
   `date` smallint(6) NOT NULL,
-  `city` text NOT NULL,
+  `city` varchar(50) NOT NULL,
   `verified` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -75,7 +89,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `login`, `email`, `password`, `date`, `city`, `verified`) VALUES
 (1, 'admin', 'admin@power.pl', '1234', 1968, 'Katowice', 1),
 (2, 'Lanqpl', 'lanqpl@interia.pl', '$2y$10$uSAbHI4q/bQHYYO94HbLhe69EPwVR2OTOrpgGcsbWtjSZkzpl0agO', 1997, 'Warszawa', 0),
-(3, 'PatSzy', 'patszy97@interia.pl', '$2y$10$Lds59iHaRggvR9FO9MTqme3N6l054UUtt/7up3c7T35Nm36o30hGe', 1997, 'Warszawa', 0);
+(3, 'PatSzy', 'patszy97@interia.pl', '$2y$10$eHtQlFq8TgniiTLvOGtZ8e0FH/2yk9gvKwdLl40p19SPqJpgRIgoG', 1997, 'Warszawa', 0),
+(4, 'sannit', 'sannit@interia.pl', '$2y$10$QX.F3alpZzLV6BNyvkeq8uu3xB3/1HCWTEiZzDjzi/pCNonCEYjvu', 2004, 'Warszawa', 0),
+(5, 'Atena98', 'aneta98kramarczyk@interia.pl', '$2y$10$ykStMhzUU7yLf7UICyicpuI6OhMBkXHY4SCu8FoQCWaz.gq./Q3k2', 1998, 'Poznań', 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -101,13 +117,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
