@@ -375,3 +375,9 @@
 .form__recovery.--show {
     display: flex;
 }
+
+/* Form form__optrions */
+
+.form__options input[name="userid"] {
+    display: none;
+}

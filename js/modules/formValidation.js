@@ -175,6 +175,7 @@ const loadUserDataOnPage = (sessionUserData) =>{
     //Menu settings
     document.querySelector(`.user__bar li:nth-child(1)`).style.display = `none`;
     document.querySelector(`.user__bar li:nth-child(2)`).style.display = `none`;
+    userUserIdOpt = document.getElementById(`userid__options`).value = sessionUserData.id_user;
     userLoginOpt = document.getElementById(`login__options`).value = sessionUserData.name;
     userEmailOpt = document.getElementById(`mail__options`).value = sessionUserData.email;
     userCityOpt = document.getElementById(`city__options`).querySelector(`[value=${sessionUserData.city.toLowerCase()}]`).selected = true;
