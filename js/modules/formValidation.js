@@ -42,6 +42,7 @@ class FormValidate {
     testInput = input => {
         let valid = input.checkValidity();
         this.toggleErrorField(input, !valid);
+
         return valid;
     }
 
@@ -167,11 +168,9 @@ const loadUserDataOnPage = (sessionUserData) =>{
     document.querySelector(`.post__creator .user__name`).innerText = sessionUserData.name;
     document.querySelector(`.post__creator .user__city`).innerText = sessionUserData.city;
     document.querySelector(`.post__creator .user__age`).innerText = new Date().getFullYear() - sessionUserData.date;
-
     //Contact
     document.getElementById(`mail__address`).value = sessionUserData.email;
     document.getElementById(`mail__address`).parentElement.classList.add(`--focus`);
-
     //Menu settings
     document.querySelector(`.user__bar li:nth-child(1)`).style.display = `none`;
     document.querySelector(`.user__bar li:nth-child(2)`).style.display = `none`;

@@ -54,8 +54,8 @@
             $return = $connect->ConnectOpen();
 
             if(!isset($return["error"])){
-                $login = $_POST["login"];
-                $password = $_POST["password"];
+                $login = $connect->db_connect->real_escape_string($_POST["login"]);
+                $password = $connect->db_connect->real_escape_string($_POST["password"]);
 
                 if (empty($login)) { $return["error"] = "Login jest pusty!"; }
                 else if (empty($password)) { $return["error"] = "Hasło jest puste!"; }

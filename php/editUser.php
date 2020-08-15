@@ -4,16 +4,27 @@
     require 'Connection.php';
 
     function updateUser($connect, $table, $id_user) {
-        $sql_login = "SELECT * FROM $table WHERE login='$login'";
-        $query_login = $connect->db_connect->query($sql_login);
+        $sql_user = "SELECT * FROM $table WHERE login='$id_user'";
+        $query_user = $connect->db_connect->query($sql_user);
         $return = [];
-        $return["user"] = [];
 
-        if($query_login->num_rows == 1) {
+        if($query_user->num_rows == 1) {
             $return["success"] = "Użytkownik istnieje.";
-            $return["user"] = mysqli_fetch_assoc($query_login);
-        } else if($query_login->num_rows == 0) $return["warning"] = "Użytkownik nie istnieje.";
-        else $return["error"] = "Error: " . $sql_login . "<br>" . $connect->db_connect->error;
+        } else if($query_user->num_rows == 0) $return["warning"] = "Użytkownik nie istnieje.";
+        else $return["error"] = "Error: " . $sql_user . "<br>" . $connect->db_connect->error;
+
+        return $return;
+    };
+
+    function deleteUser($connect, $table, $id_user) {
+        $sql_user = "DELETE FROM $table WHERE id_user = $id_user";
+        $query_user = $connect->db_connect->query($sql_user);
+        $return = [];
+
+        if($query_user->num_rows == 1) {
+            $return["success"] = "Użytkownik istnieje.";
+        } else if($query_user->num_rows == 0) $return["warning"] = "Użytkownik nie istnieje.";
+        else $return["error"] = "Error: " . $sql_user . "<br>" . $connect->db_connect->error;
 
         return $return;
     };
@@ -28,17 +39,22 @@
             $return = $connect->ConnectOpen();
 
             if(!isset($return["error"])){
-                $login = $_POST["login"];
-                $password = $_POST["password"];
+                $id_user = $connect->db_connect->real_escape_string($_POST["user__id"]);
 
-                if (empty($login)) { $return["error"] = "Login jest pusty!"; }
-                else if (empty($password)) { $return["error"] = "Hasło jest puste!"; }
+                // if(isset($_POST["delete"])) $return = deleteUser($connect, $table_users, $id_user);
+                if(isset($_POST["delete"])) print_r(isset($_POST["delete"]));
                 else {
-                    $return = getUser($connect, $table_users, $login);
+                    $login = $connect->db_connect->real_escape_string($_POST["login"]);
+                    $email = $connect->db_connect->real_escape_string($_POST["email"]);
+                    $password = $connect->db_connect->real_escape_string($_POST["password"]);
+                    $city = $connect->db_connect->real_escape_string($_POST["city"]);
 
-                    if(!isset($return["error"]) && !isset($return["warning"])) {
-                        $user = $return["user"];
-                    }
+                    if (empty($id_user)) { $return["error"] = "Id jest puste!"; }
+                    else if (empty($login)) { $return["error"] = "Login jest pusty!"; }
+                    else if (empty($email)) { $return["error"] = "Email jest pusty!"; }
+                    else if (empty($password)) { $return["error"] = "Hasło jest puste!"; }
+                    else if (empty($city)) { $return["error"] = "Miasto jest puste!"; }
+                    else $return = updateUser($connect, $table_users, $id_user);
                 }
             }
 

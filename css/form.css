@@ -378,6 +378,6 @@
 
 /* Form form__optrions */
 
-.form__options input[name="userid"] {
+.form__options input[name="user__id"] {
     display: none;
 }
