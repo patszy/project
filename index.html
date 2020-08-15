@@ -101,6 +101,7 @@
                         <form class="form form__login" action="./php/login.php" method="POST">
                             <div class="form__container">
                                 <button type="button" class="form__close"></button>
+
                                 <label for="login" class="form__row">
                                     <h5>Login</h5>
                                     <i class="fas fa-user"></i>
@@ -181,7 +182,7 @@
                         <div class="form__container">
                             <button type="button" class="form__close"></button>
 
-                            <input id="userid__options" type="text" name="userid">
+                                <input id="userid__options" type="number" name="userid" required readonly>
 
                             <label for="login__options" class="form__row --focus">
                                 <h5>Login</h5>
@@ -221,6 +222,10 @@
                                 <i class="fas fa-venus-mars"></i>
                                 <label class="input__radio"><input type="checkbox" name="delete" class="input">Usuń</label>
                             </div>
+
+                            <label for="options__guardian" class="guardian">
+                                <input id="options__guardian" name="guardian" type="checkbox">
+                            </label>
 
                             <button class="submit">Zapisz zmiany</button>
 

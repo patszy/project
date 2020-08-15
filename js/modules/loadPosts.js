@@ -151,9 +151,5 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     loadPosts(loadPostsStatus).then(response => loadPostsStatus = response);
 
-    window.addEventListener(`scroll`, () => {
-        if(document.body.scrollHeight == window.scrollY+window.innerHeight) {
-                loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum);
-        }
-    });
+    window.addEventListener(`scroll`, () => { if(document.body.scrollHeight == window.scrollY+window.innerHeight) loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum) });
 });

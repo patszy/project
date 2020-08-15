@@ -44,6 +44,8 @@ Add:
     - change user avatar
     - slider
     - positioning
+    - html class name of every form label for input id is different
+    - user options delete input issue
 - Backend:
     - user options
     - limit post render
