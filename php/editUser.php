@@ -4,7 +4,7 @@
     require 'Connection.php';
 
     function updateUser($connect, $table, $id_user) {
-        $sql_user = "SELECT * FROM $table WHERE login='$id_user'";
+        $sql_user = "UPDATE $table SET  WHERE id_user='$id_user'";
         $query_user = $connect->db_connect->query($sql_user);
         $return = [];
 
@@ -21,9 +21,10 @@
         $query_user = $connect->db_connect->query($sql_user);
         $return = [];
 
-        if($query_user->num_rows == 1) {
-            $return["success"] = "Użytkownik istnieje.";
-        } else if($query_user->num_rows == 0) $return["warning"] = "Użytkownik nie istnieje.";
+        if($query_user === true) {
+            $return["success"] = "Usunięto użytkownika.";
+            $return["delete"] = true;
+        } else if($query_user === false) $return["warning"] = "Użytkownik nie istnieje.";
         else $return["error"] = "Error: " . $sql_user . "<br>" . $connect->db_connect->error;
 
         return $return;
@@ -41,8 +42,7 @@
             if(!isset($return["error"])){
                 $id_user = $connect->db_connect->real_escape_string($_POST["user__id"]);
 
-                // if(isset($_POST["delete"])) $return = deleteUser($connect, $table_users, $id_user);
-                if(isset($_POST["delete"])) print_r(isset($_POST["delete"]));
+                if(isset($_POST["delete"])) $return = deleteUser($connect, $table_users, $id_user);
                 else {
                     $login = $connect->db_connect->real_escape_string($_POST["login"]);
                     $email = $connect->db_connect->real_escape_string($_POST["email"]);
