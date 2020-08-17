@@ -8,15 +8,15 @@
         return $date;
     }
 
-    function isPost($connect, $table, $title) {
-        $sql_post = "SELECT * FROM $table WHERE title='$title'";
+    function isPost($connect, $table, $user_id, $title, $category) {
+        $sql_post = "SELECT * FROM $table WHERE id_user='$user_id' AND title='$title' AND category='$category'";
         $query_post = $connect->db_connect->query($sql_post);
         $return = [];
 
         if($query_post->num_rows == 0) { $return["success"] = "Create post is possible."; }
         else if($query_post->num_rows != 0) {
             while($row = $query_post->fetch_assoc()) {
-                $return["warning"] = "Post już istnieje.";
+                $return["warning"] = "Na tym konie już istnieje podobny post.";
             }
         } else {
             $return["error"] = "Error: " . $sql_post . "<br>" . $connect->db_connect->error;
@@ -56,9 +56,9 @@
                 else if (empty($category)) { $return["error"] = "kategoria jest pusta!"; }
                 else if (empty($content)) { $return["error"] = "Treść jest pusta!"; }
                 else {
-                    // $return = isPost($connect, $table_posts, $title);
+                    $return = isPost($connect, $table_posts, $user_id, $title, $category);
 
-                    if(!isset($return["error"]) && !isset($return["warning"])) { $return = createPost($connect, $table_posts, $user_id,createDate(), $title, $category, $content); }
+                    if(!isset($return["error"]) && !isset($return["warning"])) { $return = createPost($connect, $table_posts, $user_id, createDate(), $title, $category, $content); }
                 }
             }
 

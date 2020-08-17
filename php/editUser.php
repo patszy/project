@@ -26,19 +26,32 @@
         return $return;
     };
 
-    function deleteUser($connect, $table, $id_user) {
-        $sql_user = "DELETE FROM $table WHERE id_user = $id_user";
+    function deleteUser($connect, $table_users, $table_posts, $id_user) {
+        $sql_user = "DELETE FROM $table_users WHERE id_user = $id_user";
         $query_delete_user = $connect->db_connect->query($sql_user);
         $return = [];
 
         if($query_delete_user === true) {
             $return["success"] = "Usunięto użytkownika.";
             $return["delete"] = true;
+            deletePost($connect, $table_posts, $id_user);
         } else if($query_delete_user === false) $return["warning"] = "Użytkownik nie istnieje.";
         else $return["error"] = "Error: " . $sql_user . "<br>" . $connect->db_connect->error;
 
         return $return;
     };
+
+    function deletePost($connect, $table, $id_user) {
+        $sql_user = "DELETE FROM $table WHERE id_user = $id_user";
+        $query_delete_user = $connect->db_connect->query($sql_user);
+        $return = [];
+
+        if($query_delete_user === true) $return["success"] = "Usunięto posty.";
+        else if($query_delete_user === false) $return["warning"] = "Posty nie istnieją.";
+        else $return["error"] = "Error: " . $sql_user . "<br>" . $connect->db_connect->error;
+
+        return $return;
+    }
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $return = [];
@@ -52,7 +65,7 @@
             if(!isset($return["error"])){
                 $id_user = $connect->db_connect->real_escape_string($_POST["user__id"]);
 
-                if(isset($_POST["delete"])) $return = deleteUser($connect, $table_users, $id_user);
+                if(isset($_POST["delete"])) $return = deleteUser($connect, $table_users, $table_posts, $id_user);
                 else {
                     $login = $connect->db_connect->real_escape_string($_POST["login"]);
                     $email = $connect->db_connect->real_escape_string($_POST["email"]);
