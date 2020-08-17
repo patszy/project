@@ -115,6 +115,10 @@ header {
     text-align: center;
 }
 
+.user__bar li.--show {
+    display: none;
+}
+
 .user__bar li a i{
     width: 100%;
     line-height: 50px;

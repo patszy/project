@@ -71,7 +71,7 @@
                 else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $return["error"] = "Niewłaściwy email!"; }
                 else if (empty($password)) { $return["error"] = "Hasło jest puste!"; }
                 else if (empty($date)) { $return["error"] = "Wiek jest pusty!"; }
-                else if (empty($_POST["city"])) { $return["error"] = "Miasto jest puste!"; }
+                else if (empty($city)) { $return["error"] = "Miasto jest puste!"; }
                 else {
                     $return = isUser($connect, $table_users, $email, $login);
 

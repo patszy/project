@@ -140,7 +140,19 @@ class FormValidate {
                             this.toggleAlert(`${response.warning}` , `warning`, true);
                         } else if (response.status == `success`) {
                             console.log(`Send Success`);
-                            if (response.success) this.toggleAlert(`${response.success}` ,`success`, true);
+                            if (response.success) {
+                                if(response.update || response.delete) {
+                                    fetch('./php/logout.php', {method: method.toUpperCase()});
+                                    removeCookie(`login`);
+                                    removeCookie(`id_user`);
+                                    removeCookie(`name`);
+                                    removeCookie(`email`);
+                                    removeCookie(`date`);
+                                    removeCookie(`city`);
+                                    setTimeout(() => window.location.reload(true), 1500);
+                                }
+                                this.toggleAlert(`${response.success}` ,`success`, true);
+                            }
                             else if (response.info) this.toggleAlert(`${response.info}` ,`info`, true);
 
                             if(response.session) {
@@ -172,8 +184,9 @@ const loadUserDataOnPage = (sessionUserData) =>{
     document.getElementById(`mail__address`).value = sessionUserData.email;
     document.getElementById(`mail__address`).parentElement.classList.add(`--focus`);
     //Menu settings
-    document.querySelector(`.user__bar li:nth-child(1)`).style.display = `none`;
-    document.querySelector(`.user__bar li:nth-child(2)`).style.display = `none`;
+    toggleShowClass(document.querySelector(`.user__bar li:nth-child(1)`));
+    toggleShowClass(document.querySelector(`.user__bar li:nth-child(2)`));
+    toggleShowClass(document.querySelector(`.user__bar li:nth-child(3)`));
     userUserIdOpt = document.getElementById(`userid__options`).value = sessionUserData.id_user;
     userLoginOpt = document.getElementById(`login__options`).value = sessionUserData.name;
     userEmailOpt = document.getElementById(`mail__options`).value = sessionUserData.email;

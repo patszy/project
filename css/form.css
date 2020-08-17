@@ -148,6 +148,10 @@
     opacity: 1;
 }
 
+.form__row .input.input__checkbox{
+    height: initial;
+}
+
 .form__row .input__date {
     opacity: 0;
 }

@@ -1,3 +1,12 @@
+const toggleShowClass = (element, parent = null) => {
+    if(element) element.classList.toggle(`--show`);
+    if(parent) parent.classList.toggle(`--show`);
+}
+
+const toggleFocusClass = (element, show) => {
+    show ? element.classList.add(`--focus`) : element.classList.remove(`--focus`);
+};
+
 const loadEventListenners = () => {
     const togglePostCreatorBtn = document.querySelector(`.post__creator .btn__close`);
     const closeMenuFormBtns = document.querySelectorAll(`.user__bar .form__close`);
@@ -11,15 +20,6 @@ const loadEventListenners = () => {
     let emailButtons = document.querySelectorAll(`.btn__mail`);
     const recoveryBtn = document.querySelector(`.forgot`);
     const logoutBtn = document.querySelector(`.btn__logout`);
-
-    const toggleShowClass = (element, parent = null) => {
-        if(element) element.classList.toggle(`--show`);
-        if(parent) parent.classList.toggle(`--show`);
-    }
-
-    const toggleFocusClass = (element, show) => {
-        show ? element.classList.add(`--focus`) : element.classList.remove(`--focus`);
-    };
 
     const timeInterval = window.setInterval(() => time.innerText = new Date().toLocaleString(), 1000);
 
@@ -77,6 +77,8 @@ const loadEventListenners = () => {
     windowFormClose.forEach(btn => btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`))));
 
     recoveryBtn.addEventListener(`click`, () => toggleShowClass(document.querySelector(`.form__recovery`)));
+
+    toggleShowClass(document.querySelector(`.user__bar li:nth-child(3)`));
 };
 
 document.addEventListener(`DOMContentLoaded`, loadEventListenners());

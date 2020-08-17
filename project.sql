@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 14 Sie 2020, 12:00
+-- Czas generowania: 17 Sie 2020, 11:15
 -- Wersja serwera: 10.4.13-MariaDB
 -- Wersja PHP: 7.4.8
 
@@ -87,11 +87,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `login`, `email`, `password`, `date`, `city`, `verified`) VALUES
-(1, 'admin', 'admin@power.pl', '1234', 1968, 'Katowice', 1),
+(1, 'admin', 'admin@power.pl', '$2y$10$0cvHj2/WlI92U.aXrZhCUeCyC9mh.OqXx6U.3w/eHthpXqRN1u7H2', 1968, 'Katowice', 1),
 (2, 'Lanqpl', 'lanqpl@interia.pl', '$2y$10$uSAbHI4q/bQHYYO94HbLhe69EPwVR2OTOrpgGcsbWtjSZkzpl0agO', 1997, 'Warszawa', 0),
-(3, 'PatSzy', 'patszy97@interia.pl', '$2y$10$eHtQlFq8TgniiTLvOGtZ8e0FH/2yk9gvKwdLl40p19SPqJpgRIgoG', 1997, 'Warszawa', 0),
-(4, 'sannit', 'sannit@interia.pl', '$2y$10$QX.F3alpZzLV6BNyvkeq8uu3xB3/1HCWTEiZzDjzi/pCNonCEYjvu', 2004, 'Warszawa', 0),
-(5, 'Atena98', 'aneta98kramarczyk@interia.pl', '$2y$10$ykStMhzUU7yLf7UICyicpuI6OhMBkXHY4SCu8FoQCWaz.gq./Q3k2', 1998, 'Poznań', 0);
+(3, 'sannit', 'sannit@interia.pl', '$2y$10$QX.F3alpZzLV6BNyvkeq8uu3xB3/1HCWTEiZzDjzi/pCNonCEYjvu', 2004, 'Warszawa', 0),
+(4, 'Atena98', 'aneta98kramarczyk@interia.pl', '$2y$10$ykStMhzUU7yLf7UICyicpuI6OhMBkXHY4SCu8FoQCWaz.gq./Q3k2', 1998, 'Poznań', 0),
+(5, 'PatSzy', 'patszy97@interia.pl', '$2y$10$o60DEpA51rNmZaYxa02pnuYEaky4ObfsrxRhwjE2MwAwQrsxMl7Da', 1997, 'Warszawa', 0);
 
 --
 -- Indeksy dla zrzutów tabel
