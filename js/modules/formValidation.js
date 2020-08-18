@@ -149,6 +149,7 @@ class FormValidate {
                                     removeCookie(`email`);
                                     removeCookie(`date`);
                                     removeCookie(`city`);
+                                    removeCookie(`permission`);
                                     setTimeout(() => window.location.reload(true), 1500);
                                 }
                                 this.toggleAlert(`${response.success}` ,`success`, true);
@@ -156,11 +157,11 @@ class FormValidate {
                             else if (response.info) this.toggleAlert(`${response.info}` ,`info`, true);
 
                             if(response.session) {
-                                loadUserDataOnPage(response.session);
-
                                 for (const [key, value] of Object.entries(response.session)) {
                                     setCookie(`${key}`, `${value}`);
                                 }
+
+                                loadUserDataOnPage(response.session);
                             }
                         }
                     }
@@ -191,6 +192,9 @@ const loadUserDataOnPage = (sessionUserData) =>{
     userLoginOpt = document.getElementById(`login__options`).value = sessionUserData.name;
     userEmailOpt = document.getElementById(`mail__options`).value = sessionUserData.email;
     userCityOpt = document.getElementById(`city__options`).querySelector(`[value=${sessionUserData.city.toLowerCase()}]`).selected = true;
+    //Delete post form
+    showDeletePostForm();
+
 }
 
 document.addEventListener(`DOMContentLoaded`, () =>{
@@ -207,6 +211,4 @@ document.addEventListener(`DOMContentLoaded`, () =>{
     const formRecoveryValidation = new FormValidate(formRecovery, {});
     const formOptionsValidatio = new FormValidate(formOptions, {});
     const postCreatorValidation = new FormValidate(postCreator, {});
-
-    if(getCookie(`login`)) loadUserDataOnPage({id_user: getCookie(`id_user`), name: getCookie(`name`), email: getCookie(`email`), date: getCookie(`date`), city: getCookie(`city`)});
 });

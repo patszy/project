@@ -16,7 +16,7 @@
     }
 
     function createUser($connect, $table, $login, $email, $password, $date, $city) {
-        $sql_create_user = "INSERT INTO $table SET id_user='', login='$login', email='$email', password='$password', date='$date', city='$city', verified = '0'";
+        $sql_create_user = "INSERT INTO $table SET id_user='', login='$login', email='$email', password='$password', date='$date', city='$city', permission = '0'";
         $return = [];
 
         if ($connect->db_connect->query($sql_create_user) === TRUE) $return["success"] = "Rejestracja pomyślna.";

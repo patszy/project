@@ -63,7 +63,7 @@
             $return = $connect->ConnectOpen();
 
             if(!isset($return["error"])){
-                $id_user = $connect->db_connect->real_escape_string($_POST["user__id"]);
+                $id_user = $connect->db_connect->real_escape_string($_POST["user_id"]);
 
                 if(isset($_POST["delete"])) $return = deleteUser($connect, $table_users, $table_posts, $id_user);
                 else {

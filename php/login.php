@@ -38,6 +38,7 @@
         $_SESSION["email"] = $user["email"];
         $_SESSION["date"] = $user["date"];
         $_SESSION["city"] = $user["city"];
+        $_SESSION["permission"] = $user["permission"];
         $return["success"] = "Zalogowano.";
         $return["session"] = $_SESSION;
 

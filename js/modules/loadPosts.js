@@ -1,6 +1,7 @@
 class Post{
-    constructor(user = null, date = null, title = null, category = null, content = null){
+    constructor(user = null, id_post, date = null, title = null, category = null, content = null){
         this.user = user;
+        this.id_post = id_post;
         this.date = date || this.createPostDate();
         this.title = title || this.getInputValue(title);
         this.category =  category || this.getInputValue(category);
@@ -47,10 +48,17 @@ class Post{
             this.createElementDOM(`article`, [`post__content`], undefined, [
                 this.createElementDOM(`p`, [`clearfix`], this.content)
             ]),
+            this.createElementDOM(`form`, [`form__delete__post`], undefined, [
+                this.createElementDOM(`input`, [`input`], undefined, [], [{name: `type`, value: `text`}, {name: `name`, value: `post_id`}, {name: `required`, value: ``}, {name: `readonly`, value: ``}, {name: `value`, value: this.id_post}]),
+                this.createElementDOM(`input`, [`input`], undefined, [], [{name: `type`, value: `text`}, {name: `name`, value: `user_id`}, {name: `required`, value: ``}, {name: `readonly`, value: ``}, {name: `value`, value: (getCookie('id_user')!=undefined)?getCookie('id_user'):``}]),
+                this.createElementDOM(`label`, [`guardian`], undefined, [
+                    this.createElementDOM(`input`, undefined, undefined, undefined, [{name: `name`, value: `guardian`}, {name: `type`, value: `checkbox`}])
+                ]),
+                this.createElementDOM(`button`, [`btn__delete`], `Usuń Post`, [this.createElementDOM(`i`, [`fas`, `fa-trash-alt`])], undefined)
+            ], [{name: `action`, value: `./php/deletePost.php`}, {name: `method`, value: `POST`}]),
             this.createElementDOM(`button`, [`btn__mail`], `Kontakt`, [this.createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `mail`, value: this.user.email}])
         ]);
 
-        // parent.append(postContainer);
         parent.insertBefore(postContainer, loadButton);
     }
 }
@@ -65,8 +73,12 @@ const toggleAlert = (text, type, show) => {
 const createPosts = (tabPosts) => {
     tabPosts.forEach(post => {
         post.user.date = new Date().getFullYear() - post.user.date;
-        let newPost = new Post(post.user, post.postDate, post.title, post.category, post.content);
+        let newPost = new Post(post.user, post.id_post, post.postDate, post.title, post.category, post.content);
         newPost.addPostToDOM();
+
+        // if(getCookie(`name`) == post.user.login) showDeletePostForm();
+        // console.log(`showDeleteFormPost`);
+        // if(getCookie(`name`) == post.user.login) showDeletePostForm();
 
         let posts = document.querySelectorAll(`.post__container`);
         animatePosts(posts);
@@ -144,7 +156,14 @@ const searchPosts = (Status) => {
     });
 }
 
-document.addEventListener(`DOMContentLoaded`, () => {
+const showDeletePostForm = () => {
+    document.querySelectorAll(`.post__container`).forEach(post => {
+        console.log(getCookie(`name`), post.querySelector(`.user__name`).innerText)
+        if(getCookie(`name`) == post.querySelector(`.user__name`).innerText || getCookie(`permission`) == 1) post.querySelector(`.form__delete__post`).classList.add(`--show`);
+    })
+}
+
+document.addEventListener(`DOMContentLoaded`, () =>{
     let loadPostsStatus = {rowNum: 0, rowCount: 5, searchStr: ``};
 
     if(searchPosts(loadPostsStatus)) searchPosts(loadPostsStatus).then(response => loadPostsStatus = response);
@@ -152,4 +171,6 @@ document.addEventListener(`DOMContentLoaded`, () => {
     loadPosts(loadPostsStatus).then(response => loadPostsStatus = response);
 
     window.addEventListener(`scroll`, () => { if(document.body.scrollHeight == window.scrollY+window.innerHeight) loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum) });
+
+    if(getCookie(`login`)) loadUserDataOnPage({id_user: getCookie(`id_user`), name: getCookie(`name`), email: getCookie(`email`), date: getCookie(`date`), city: getCookie(`city`)});
 });

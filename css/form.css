@@ -380,8 +380,23 @@
     display: flex;
 }
 
-/* Form form__optrions */
+/* Form form__options */
 
-.form__options input[name="user__id"] {
+.form__options input[name="user_id"] {
+    display: none;
+}
+
+/* Form form__delete__post */
+
+.form__delete__post {
+    display: none;
+}
+
+.form__delete__post.--show {
+    display: initial;
+}
+
+.form__delete__post input[name="post_id"],
+.form__delete__post input[name="user_id"] {
     display: none;
 }

@@ -182,7 +182,7 @@
                         <div class="form__container">
                             <button type="button" class="form__close"></button>
 
-                                <input id="userid__options" type="number" name="user__id" required readonly>
+                                <input id="userid__options" type="number" name="user_id" required readonly>
 
                             <label for="login__options" class="form__row --focus">
                                 <h5>Login</h5>
@@ -222,12 +222,6 @@
                                 <i class="fas fa-venus-mars"></i>
                                 <input type="checkbox" name="delete" class="input input__checkbox">
                             </label>
-
-                            <!-- <div class="form__row">
-                                <h5>Usuń konto</h5>
-                                <i class="fas fa-venus-mars"></i>
-                                <label class="input__radio"><input type="checkbox" name="delete" class="input">Usuń</label>
-                            </div> -->
 
                             <label for="options__guardian" class="guardian">
                                 <input id="options__guardian" name="guardian" type="checkbox">
@@ -322,79 +316,6 @@
                 <div class="post__data">
                     <div class="user__img"></div>
 
-                    <div>
-                        <div class="user__data">
-                            <span class="user__name"> Admin 123 </span>
-                            <span class="user__city"> Warszawa </span>
-                            <span class="user__age"> 18 </span>
-                        </div>
-
-                        <div class="article__data">
-                            <time>07.06.2020 20:00</time>
-                            <h2>Lorem Ipsum</h2>
-                            <span class="article__category">default</span>
-                        </div>
-                    </div>
-                </div>
-
-                <article class="post__content">
-                    <p class="clearfix">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Repudiandae sequi iure similique, maiores voluptate a commodi sed,
-                        nobis recusandae nam quasi! Atque adipisci dignissimos ea deserunt veniam vel,
-                        omnis et reprehenderit ratione minima, velit cum ex mollitia explicabo exercitationem eos,
-                        delectus aliquid autem voluptatibus repellendus rerum iste illum.
-                        Quas accusantium aperiam praesentium unde, alias ab sint placeat expedita officia obcaecati totam blanditiis!
-                        Id, quae. Ab, error sequi. Velit possimus repellat inventore at, rem dolores neque,
-                        sapiente eaque officiis doloremque beatae pariatur? Consequuntur velit vero repellendus,
-                        id, optio magni dolorum ipsam rem iure, totam quisquam.Ratione consequatur suscipit odio doloribus voluptate.
-                    </p>
-                </article>
-
-                <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
-            </section>
-
-            <section class="post__container" style="display:none">
-                <div class="post__data">
-                    <div class="user__img"></div>
-
-                    <div>
-                        <div class="user__data">
-                            <span class="user__name"> Admin 123 </span>
-                            <span class="user__city"> Warszawa </span>
-                            <span class="user__age"> 18 </span>
-                        </div>
-
-                        <div class="article__data">
-                            <time>07.06.2020 20:00</time>
-                            <h2>Lorem Ipsum</h2>
-                            <p class="article__category">default</p>
-                        </div>
-                    </div>
-                </div>
-
-                <article class="post__content">
-                    <img src="./assets/undraw_intense_feeling_ft9s.svg" alt="Post image" class="post__img">
-                    <p class="clearfix">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Repudiandae sequi iure similique, maiores voluptate a commodi sed,
-                        nobis recusandae nam quasi! Atque adipisci dignissimos ea deserunt veniam vel,
-                        omnis et reprehenderit ratione minima, velit cum ex mollitia explicabo exercitationem eos,
-                        delectus aliquid autem voluptatibus repellendus rerum iste illum.
-                        Quas accusantium aperiam praesentium unde, alias ab sint placeat expedita officia obcaecati totam blanditiis!
-                        Id, quae. Ab, error sequi. Velit possimus repellat inventore at, rem dolores neque,
-                        sapiente eaque officiis doloremque beatae pariatur? Consequuntur velit vero repellendus,
-                        id, optio magni dolorum ipsam rem iure, totam quisquam.Ratione consequatur suscipit odio doloribus voluptate.
-                    </p>
-                </article>
-
-                <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
-            </section>
-
-            <section class="post__container" style="display:none">
-                <div class="post__data">
-                    <div class="user__img"></div>
-
                     <div class="data__wrapper">
                         <div class="user__data">
                             <span class="user__name"> Admin 123 </span>
@@ -425,6 +346,17 @@
                     </p>
                 </article>
 
+                <form class="form__delete__post" action="./php/deletePost.php" method="POST">
+                    <input type="text" name="post_id" class="input" required readonly value="">
+                    <input type="text" name="user_id" class="input" required readonly value="">
+
+                    <label class="guardian">
+                        <input name="guardian" type="checkbox">
+                    </label>
+
+                    <button class="btn__mail btn__delete">Usuń Post<i class="fas fa-trash-alt"></i></button>
+                </form>
+
                 <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
             </section>
         </div>
@@ -437,7 +369,7 @@
         </div>
     </aside>
 
-    <script src="js/index.js"></script>
+    <script src="js/init.js"></script>
     <script src="js/modules/cookies.js"></script>
     <script src="js/modules/loadPosts.js"></script>
     <script src="js/modules/loadNewUsers.js"></script>

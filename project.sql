@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 17 Sie 2020, 11:15
+-- Czas generowania: 17 Sie 2020, 17:25
 -- Wersja serwera: 10.4.13-MariaDB
 -- Wersja PHP: 7.4.8
 
@@ -41,30 +41,30 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id_post`, `id_user`, `date`, `title`, `category`, `content`) VALUES
-(1, 3, '2020-07-23 18:20:52', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(2, 3, '2020-07-23 18:20:54', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(3, 3, '2020-07-23 18:20:55', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(4, 3, '2020-07-23 18:20:55', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(5, 3, '2020-07-23 18:20:57', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(6, 3, '2020-07-23 18:20:58', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(7, 3, '2020-07-23 18:20:58', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(8, 3, '2020-07-23 18:20:59', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(9, 3, '2020-07-23 18:21:09', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(10, 3, '2020-07-23 18:21:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(11, 3, '2020-07-24 13:25:22', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(12, 3, '2020-07-24 13:25:52', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(13, 3, '2020-07-24 13:40:01', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(1, 5, '2020-07-23 18:20:52', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(2, 5, '2020-07-23 18:20:54', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(3, 5, '2020-07-23 18:20:55', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(4, 5, '2020-07-23 18:20:55', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(5, 5, '2020-07-23 18:20:57', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(6, 5, '2020-07-23 18:20:58', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(7, 5, '2020-07-23 18:20:58', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(8, 5, '2020-07-23 18:20:59', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(9, 5, '2020-07-23 18:21:09', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(10, 5, '2020-07-23 18:21:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(11, 5, '2020-07-24 13:25:22', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(12, 5, '2020-07-24 13:25:52', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(13, 5, '2020-07-24 13:40:01', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
 (14, 1, '2020-07-30 19:59:18', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
 (15, 1, '2020-07-31 10:49:39', 'Budowa', 'Usługi', 'Zrealizuję projekt budowy domu.'),
 (16, 1, '2020-07-31 10:53:35', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
 (17, 1, '2020-07-31 10:54:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
 (18, 1, '2020-07-31 10:56:40', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
 (19, 1, '2020-07-31 11:06:45', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(20, 3, '2020-07-31 11:08:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(21, 3, '2020-08-13 18:21:23', 'Witaj', 'Usługi', 'Miło cię poznać.'),
-(22, 5, '2020-08-14 11:39:55', 'wakacje', 'Podróże', 'Wiesz już coś co z tym bonem?\r\n'),
-(23, 5, '2020-08-14 11:39:55', 'wakacje', 'Podróże', 'Wiesz już coś co z tym bonem?\r\n'),
-(24, 3, '2020-08-14 11:44:30', 'Wakacje', 'Podróże', 'Nie wiem co z tym bonem.');
+(20, 5, '2020-07-31 11:08:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
+(21, 5, '2020-08-13 18:21:23', 'Witaj', 'Usługi', 'Miło cię poznać.'),
+(22, 4, '2020-08-14 11:39:55', 'wakacje', 'Podróże', 'Wiesz już coś co z tym bonem?\r\n'),
+(23, 4, '2020-08-14 11:39:55', 'wakacje', 'Podróże', 'Wiesz już coś co z tym bonem?\r\n'),
+(24, 5, '2020-08-14 11:44:30', 'Wakacje', 'Podróże', 'Nie wiem co z tym bonem.');
 
 -- --------------------------------------------------------
 
@@ -79,15 +79,15 @@ CREATE TABLE `users` (
   `password` varchar(1024) NOT NULL,
   `date` smallint(6) NOT NULL,
   `city` varchar(50) NOT NULL,
-  `verified` tinyint(1) DEFAULT NULL
+  `permission` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id_user`, `login`, `email`, `password`, `date`, `city`, `verified`) VALUES
-(1, 'admin', 'admin@power.pl', '$2y$10$0cvHj2/WlI92U.aXrZhCUeCyC9mh.OqXx6U.3w/eHthpXqRN1u7H2', 1968, 'Katowice', 1),
+INSERT INTO `users` (`id_user`, `login`, `email`, `password`, `date`, `city`, `permission`) VALUES
+(1, 'admin', 'admin@power.pl', '$2y$10$0cvHj2/WlI92U.aXrZhCUeCyC9mh.OqXx6U.3w/eHthpXqRN1u7H2', 1968, 'Poznań', 1),
 (2, 'Lanqpl', 'lanqpl@interia.pl', '$2y$10$uSAbHI4q/bQHYYO94HbLhe69EPwVR2OTOrpgGcsbWtjSZkzpl0agO', 1997, 'Warszawa', 0),
 (3, 'sannit', 'sannit@interia.pl', '$2y$10$QX.F3alpZzLV6BNyvkeq8uu3xB3/1HCWTEiZzDjzi/pCNonCEYjvu', 2004, 'Warszawa', 0),
 (4, 'Atena98', 'aneta98kramarczyk@interia.pl', '$2y$10$ykStMhzUU7yLf7UICyicpuI6OhMBkXHY4SCu8FoQCWaz.gq./Q3k2', 1998, 'Poznań', 0),
