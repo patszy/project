@@ -7,6 +7,16 @@ const toggleFocusClass = (element, show) => {
     show ? element.classList.add(`--focus`) : element.classList.remove(`--focus`);
 };
 
+const logOut = () => {
+    removeCookie(`login`);
+    removeCookie(`id_user`);
+    removeCookie(`name`);
+    removeCookie(`email`);
+    removeCookie(`date`);
+    removeCookie(`city`);
+    removeCookie(`permission`);
+}
+
 const loadEventListenners = () => {
     const togglePostCreatorBtn = document.querySelector(`.post__creator .btn__close`);
     const closeMenuFormBtns = document.querySelectorAll(`.user__bar .form__close`);
@@ -25,14 +35,7 @@ const loadEventListenners = () => {
 
     // Add Event Listeners
 
-    logoutBtn.addEventListener(`click`, () => {
-        removeCookie(`login`);
-        removeCookie(`id_user`);
-        removeCookie(`name`);
-        removeCookie(`email`);
-        removeCookie(`date`);
-        removeCookie(`city`);
-    })
+    logoutBtn.addEventListener(`click`, () => logOut());
 
     inputs.forEach(input => {
         if(input.value) toggleFocusClass(input.closest(`.form__row`), true);

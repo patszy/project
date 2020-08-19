@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 17 Sie 2020, 17:25
+-- Czas generowania: 19 Sie 2020, 20:23
 -- Wersja serwera: 10.4.13-MariaDB
 -- Wersja PHP: 7.4.8
 
@@ -55,7 +55,7 @@ INSERT INTO `posts` (`id_post`, `id_user`, `date`, `title`, `category`, `content
 (12, 5, '2020-07-24 13:25:52', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
 (13, 5, '2020-07-24 13:40:01', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
 (14, 1, '2020-07-30 19:59:18', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
-(15, 1, '2020-07-31 10:49:39', 'Budowa', 'Usługi', 'Zrealizuję projekt budowy domu.'),
+(15, 3, '2020-07-31 10:49:39', 'Budowa', 'Usługi', 'Zrealizuję projekt budowy domu.'),
 (16, 1, '2020-07-31 10:53:35', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
 (17, 1, '2020-07-31 10:54:11', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),
 (18, 1, '2020-07-31 10:56:40', 'VoksWagen', 'Pojazdy', 'Sprzedam Passata.'),

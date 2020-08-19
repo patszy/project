@@ -143,13 +143,7 @@ class FormValidate {
                             if (response.success) {
                                 if(response.update || response.delete) {
                                     fetch('./php/logout.php', {method: method.toUpperCase()});
-                                    removeCookie(`login`);
-                                    removeCookie(`id_user`);
-                                    removeCookie(`name`);
-                                    removeCookie(`email`);
-                                    removeCookie(`date`);
-                                    removeCookie(`city`);
-                                    removeCookie(`permission`);
+                                    logOut();
                                     setTimeout(() => window.location.reload(true), 1500);
                                 }
                                 this.toggleAlert(`${response.success}` ,`success`, true);
@@ -193,7 +187,8 @@ const loadUserDataOnPage = (sessionUserData) =>{
     userEmailOpt = document.getElementById(`mail__options`).value = sessionUserData.email;
     userCityOpt = document.getElementById(`city__options`).querySelector(`[value=${sessionUserData.city.toLowerCase()}]`).selected = true;
     //Delete post form
-    showDeletePostForm();
+    showDeletePostFormBtn();
+    setDeletePostFormUserId();
 
 }
 

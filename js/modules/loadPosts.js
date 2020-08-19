@@ -76,10 +76,6 @@ const createPosts = (tabPosts) => {
         let newPost = new Post(post.user, post.id_post, post.postDate, post.title, post.category, post.content);
         newPost.addPostToDOM();
 
-        // if(getCookie(`name`) == post.user.login) showDeletePostForm();
-        // console.log(`showDeleteFormPost`);
-        // if(getCookie(`name`) == post.user.login) showDeletePostForm();
-
         let posts = document.querySelectorAll(`.post__container`);
         animatePosts(posts);
         window.addEventListener(`scroll`, () => animatePosts(posts));
@@ -125,6 +121,8 @@ const loadPosts = (Status) => {
                 createPosts(response.posts);
                 refreshPostEvents();
                 Status.rowNum += Status.rowCount;
+                showDeletePostFormBtn();
+                setDeletePostFormUserId();
             }
         }
 
@@ -156,10 +154,15 @@ const searchPosts = (Status) => {
     });
 }
 
-const showDeletePostForm = () => {
+const showDeletePostFormBtn = () => {
     document.querySelectorAll(`.post__container`).forEach(post => {
-        console.log(getCookie(`name`), post.querySelector(`.user__name`).innerText)
         if(getCookie(`name`) == post.querySelector(`.user__name`).innerText || getCookie(`permission`) == 1) post.querySelector(`.form__delete__post`).classList.add(`--show`);
+    })
+}
+
+const setDeletePostFormUserId = () => {
+    document.querySelectorAll(`.post__container`).forEach(post => {
+        if(getCookie(`id_user`)) console.log(post.querySelector(`input[name="user_id"]`).value = getCookie(`id_user`));
     })
 }
 
