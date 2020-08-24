@@ -144,7 +144,7 @@ class FormValidate {
                                 if(response.update || response.delete) {
                                     fetch('./php/logout.php', {method: method.toUpperCase()});
                                     logOut();
-                                    setTimeout(() => window.location.reload(true), 1500);
+                                    // setTimeout(() => window.location.reload(true), 1500);
                                 }
                                 this.toggleAlert(`${response.success}` ,`success`, true);
                             }

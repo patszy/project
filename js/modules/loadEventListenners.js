@@ -15,6 +15,7 @@ const logOut = () => {
     removeCookie(`date`);
     removeCookie(`city`);
     removeCookie(`permission`);
+    removeCookie(`url_portrait`);
 }
 
 const loadEventListenners = () => {

@@ -22,9 +22,12 @@
     height: 300px;
 }
 
-.form__register.--show,
-.form__options.--show {
+.form__register.--show {
     height: 500px;
+}
+
+.form__options.--show {
+    height: 600px;
 }
 
 .form__close {
@@ -131,6 +134,10 @@
     outline: 0;
 }
 
+.form__row .input[type="file"] {
+    font-size: initial;
+}
+
 .form__row .input__radio .input {
     width: initial;
     height: initial;
@@ -177,7 +184,8 @@
     left: 10px;
 }
 
-.form__row.--focus .fas {
+.form__row.--focus .fas,
+.form__row.--focus .far {
     color: var(--blue-color);
 }
 

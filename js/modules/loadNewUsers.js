@@ -1,5 +1,5 @@
 class NewUser{
-    constructor(login) { this.login = login; }
+    constructor(user) { this.user = user; }
 
     createElementDOM = (name, classes, text = ``, children, attributes) => {
         let element = document.createElement(name);
@@ -17,9 +17,9 @@ class NewUser{
 
         let userWrapper = this.createElementDOM(`div`, [`user__wrapper`], undefined, [
             this.createElementDOM(`div`, [`img__wrapper`], undefined, [
-                this.createElementDOM(`div`, [`user__img`])
+                this.createElementDOM(`div`, [`user__img`], undefined, undefined, [{name: `style`, value: `--url-portrait: url(${this.user.url_portrait});`}]),
             ]),
-            this.createElementDOM(`span`, [`user__name`], this.login)
+            this.createElementDOM(`span`, [`user__name`], this.user.login)
         ]);
 
         parent.appendChild(userWrapper);
@@ -28,7 +28,7 @@ class NewUser{
 
 const loadNewUsers = (tabUsers) => {
     tabUsers.forEach(user => {
-        let newUser = new NewUser(user.login);
+        let newUser = new NewUser(user);
         newUser.addNewUserToDOM();
     })
 }

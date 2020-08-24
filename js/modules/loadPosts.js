@@ -28,10 +28,11 @@ class Post{
     addPostToDOM() {
         const parent = document.getElementsByClassName(`posts__wrapper`)[0];
         const loadButton = document.querySelector(`.btn__load`);
+        console.log(this.user);
 
         let postContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
             this.createElementDOM(`div`, [`post__data`], undefined, [
-                this.createElementDOM(`div`, [`user__img`], undefined),
+                this.createElementDOM(`div`, [`user__img`], undefined, undefined, [{name: `style`, value: `--url-portrait: url(${this.user.url_portrait});`}]),
                 this.createElementDOM(`div`, [`data__wrapper`], undefined, [
                     this.createElementDOM(`div`, [`user__data`], undefined, [
                         this.createElementDOM(`span`, [`user__name`], this.user.login),
@@ -104,8 +105,8 @@ const loadPosts = (Status) => {
     if(typeof(Status.rowCount) != undefined) formData.append(`rowCount`, Status.rowCount);
     if(typeof(Status.searchStr) != undefined) formData.append(`searchStr`, Status.searchStr);
 
-    console.log(Status);
-    for (var value of formData.entries()) console.log(value);
+    // console.log(Status);
+    // for (var value of formData.entries()) console.log(value);
 
     return fetch(`./php/getPostsData.php`, {
         method: `POST`,
@@ -113,11 +114,12 @@ const loadPosts = (Status) => {
     })
     .then(response => response.json())
     .then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
         else {
             if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
             else if (response.status == `success`) {
+                console.log(response.posts);
                 createPosts(response.posts);
                 refreshPostEvents();
                 Status.rowNum += Status.rowCount;

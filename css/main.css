@@ -34,7 +34,7 @@ main {
 }
 
 .user__img {
-    background-image: url(../assets/undraw_male_avatar_323b.svg);
+    background-image: var(--url-portrait);
     background-color: transparent;
     background-position: center;
     background-size: contain;
@@ -60,11 +60,6 @@ main {
     height: 100px;
     border: 0;
     border-radius: 100px;
-}
-
-.new__users .user__wrapper:nth-child(3) .user__img,
-.new__users .user__wrapper:nth-child(5) .user__img {
-    background-image: url(../assets/undraw_female_avatar_w3jk.svg);
 }
 
 .new__users .user__name {

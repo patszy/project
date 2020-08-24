@@ -20,7 +20,7 @@
     }
 
     function getUser($connect, $table, $id) {
-        $sql_users = "SELECT email, login, city, date FROM $table WHERE id_user = '$id'";
+        $sql_users = "SELECT email, login, city, date, url_portrait FROM $table WHERE id_user = '$id'";
         $query_users = $connect->db_connect->query($sql_users);
         $return = [];
 
