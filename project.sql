@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 19 Sie 2020, 20:23
+-- Czas generowania: 24 Sie 2020, 18:11
 -- Wersja serwera: 10.4.13-MariaDB
 -- Wersja PHP: 7.4.8
 
@@ -79,19 +79,20 @@ CREATE TABLE `users` (
   `password` varchar(1024) NOT NULL,
   `date` smallint(6) NOT NULL,
   `city` varchar(50) NOT NULL,
-  `permission` tinyint(1) DEFAULT NULL
+  `permission` tinyint(1) DEFAULT NULL,
+  `url_portrait` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id_user`, `login`, `email`, `password`, `date`, `city`, `permission`) VALUES
-(1, 'admin', 'admin@power.pl', '$2y$10$0cvHj2/WlI92U.aXrZhCUeCyC9mh.OqXx6U.3w/eHthpXqRN1u7H2', 1968, 'Poznań', 1),
-(2, 'Lanqpl', 'lanqpl@interia.pl', '$2y$10$uSAbHI4q/bQHYYO94HbLhe69EPwVR2OTOrpgGcsbWtjSZkzpl0agO', 1997, 'Warszawa', 0),
-(3, 'sannit', 'sannit@interia.pl', '$2y$10$QX.F3alpZzLV6BNyvkeq8uu3xB3/1HCWTEiZzDjzi/pCNonCEYjvu', 2004, 'Warszawa', 0),
-(4, 'Atena98', 'aneta98kramarczyk@interia.pl', '$2y$10$ykStMhzUU7yLf7UICyicpuI6OhMBkXHY4SCu8FoQCWaz.gq./Q3k2', 1998, 'Poznań', 0),
-(5, 'PatSzy', 'patszy97@interia.pl', '$2y$10$o60DEpA51rNmZaYxa02pnuYEaky4ObfsrxRhwjE2MwAwQrsxMl7Da', 1997, 'Warszawa', 0);
+INSERT INTO `users` (`id_user`, `login`, `email`, `password`, `date`, `city`, `permission`, `url_portrait`) VALUES
+(1, 'admin', 'admin@power.pl', '$2y$10$0cvHj2/WlI92U.aXrZhCUeCyC9mh.OqXx6U.3w/eHthpXqRN1u7H2', 1968, 'Poznań', 1, '../assets/img/portraits/undraw_male_avatar_323b.svg'),
+(2, 'Lanqpl', 'lanqpl@interia.pl', '$2y$10$uSAbHI4q/bQHYYO94HbLhe69EPwVR2OTOrpgGcsbWtjSZkzpl0agO', 1997, 'Warszawa', 0, '../assets/img/portraits/undraw_male_avatar_323b.svg'),
+(3, 'sannit', 'sannit@interia.pl', '$2y$10$QX.F3alpZzLV6BNyvkeq8uu3xB3/1HCWTEiZzDjzi/pCNonCEYjvu', 2004, 'Warszawa', 0, '../assets/img/portraits/undraw_male_avatar_323b.svg'),
+(4, 'Atena98', 'aneta98kramarczyk@interia.pl', '$2y$10$ykStMhzUU7yLf7UICyicpuI6OhMBkXHY4SCu8FoQCWaz.gq./Q3k2', 1998, 'Poznań', 0, '../assets/img/portraits/undraw_female_avatar_w3jk.svg'),
+(5, 'PatSzy', 'patszy97@interia.pl', '$2y$10$S.HUz.GGQsQEo.fGlAa8We67w8C3/DBuB9mXuprLWDwRmOeLVa46i', 1997, 'warszawa', 0, '../assets/img/portraits/undraw_male_avatar_323b.svg');
 
 --
 -- Indeksy dla zrzutów tabel
