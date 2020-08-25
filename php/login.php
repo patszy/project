@@ -21,8 +21,8 @@
     function checkData($login, $password, $userLogin, $userPassword) {
         $return = [];
 
-        if(password_verify($password, $userPassword) && $login == $userLogin) $return["success"] = "Dane poprawne.";
-        else if(!password_verify($password, $userPassword) || $login != $userLogin) $return["error"] = "Niewłaściwe dane.";
+        if(password_verify($password, $userPassword) && $login === $userLogin) $return["success"] = "Dane poprawne.";
+        else if(!password_verify($password, $userPassword) || $login !== $userLogin) $return["error"] = "Niewłaściwe dane.";
         else $return["error"] = "Error: " . $sql_login . "<br>" . $connect->db_connect->error;
 
         return $return;

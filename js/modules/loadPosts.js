@@ -28,7 +28,6 @@ class Post{
     addPostToDOM() {
         const parent = document.getElementsByClassName(`posts__wrapper`)[0];
         const loadButton = document.querySelector(`.btn__load`);
-        console.log(this.user);
 
         let postContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
             this.createElementDOM(`div`, [`post__data`], undefined, [
@@ -105,8 +104,8 @@ const loadPosts = (Status) => {
     if(typeof(Status.rowCount) != undefined) formData.append(`rowCount`, Status.rowCount);
     if(typeof(Status.searchStr) != undefined) formData.append(`searchStr`, Status.searchStr);
 
-    // console.log(Status);
-    // for (var value of formData.entries()) console.log(value);
+    console.log(Status);
+    for (var value of formData.entries()) console.log(value);
 
     return fetch(`./php/getPostsData.php`, {
         method: `POST`,
@@ -114,12 +113,11 @@ const loadPosts = (Status) => {
     })
     .then(response => response.json())
     .then(response => {
-        // console.log(response);
+        console.log(response);
         if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
         else {
             if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
             else if (response.status == `success`) {
-                console.log(response.posts);
                 createPosts(response.posts);
                 refreshPostEvents();
                 Status.rowNum += Status.rowCount;
@@ -164,7 +162,7 @@ const showDeletePostFormBtn = () => {
 
 const setDeletePostFormUserId = () => {
     document.querySelectorAll(`.post__container`).forEach(post => {
-        if(getCookie(`id_user`)) console.log(post.querySelector(`input[name="user_id"]`).value = getCookie(`id_user`));
+        if(getCookie(`id_user`)) post.querySelector(`input[name="user_id"]`).value = getCookie(`id_user`);
     })
 }
 
