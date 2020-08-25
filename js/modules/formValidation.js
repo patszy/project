@@ -155,6 +155,7 @@ class FormValidate {
                                     setCookie(`${key}`, `${value}`);
                                 }
 
+                                console.log(response.session);
                                 loadUserDataOnPage(response.session);
                             }
                         }
@@ -175,6 +176,8 @@ const loadUserDataOnPage = (sessionUserData) =>{
     document.querySelector(`.post__creator .user__name`).innerText = sessionUserData.name;
     document.querySelector(`.post__creator .user__city`).innerText = sessionUserData.city;
     document.querySelector(`.post__creator .user__age`).innerText = new Date().getFullYear() - sessionUserData.date;
+    document.querySelector(`.post__creator .user__img`).setAttribute(`style`, `--url-portrait: url(${sessionUserData.url_portrait})`);
+    console.log(sessionUserData);
     //Contact
     document.getElementById(`mail__address`).value = sessionUserData.email;
     document.getElementById(`mail__address`).parentElement.classList.add(`--focus`);

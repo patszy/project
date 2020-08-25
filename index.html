@@ -188,7 +188,7 @@
                                 <h5>Zdjęcie</h5>
                                 <i class="fas fa-user-circle"></i>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
-                                <input id="portrait__options" type="file" name="url_portrait" accept=".jpg, .jpeg" class="input">
+                                <input id="portrait__options" type="file" name="url_portrait" accept=".jpg, .jpeg" class="input" value="Zdjęcie">
                             </label>
 
                             <label for="login__options" class="form__row --focus">
@@ -306,6 +306,13 @@
                     <h5>Treść</h5>
                     <i class="fas fa-align-left"></i>
                     <textarea id="post__content" type="text" name="content" class="input" autocomplete="off" minlength="10" required></textarea>
+                </label>
+
+                <label for="post__img" class="form__row">
+                    <h5>Zdjęcie</h5>
+                    <i class="fas fa-image"></i>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+                    <input id="post__img" type="file" name="url_post_img" accept=".jpg, .jpeg" class="input">
                 </label>
 
                 <label for="post__guardian" class="guardian">

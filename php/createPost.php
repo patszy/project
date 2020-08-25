@@ -25,14 +25,54 @@
         return $return;
     }
 
-    function createPost($connect, $table, $id, $date, $title, $category, $content) {
-        $sql_create_post = "INSERT INTO $table SET id_post='', id_user='$id', date='$date', title='$title', category='$category', content='$content'";
+    function createPost($connect, $table, $id, $date, $title, $category, $content, $url_post_img) {
+        $url_img = "";
+        if (!empty($url_portrait)) $url_img = $url_portrait;
+
+        $sql_create_post = "INSERT INTO $table SET id_post='', id_user='$id', date='$date', title='$title', category='$category', content='$content', url_post_img='$url_img'";
         $return = [];
 
         if ($connect->db_connect->query($sql_create_post) === TRUE) $return["success"] = "Utworzono post.";
         else {
             $return["errors"] = "Error: " . $sql_create_post . "<br>" . $connect->db_connect->error;
         }
+
+        return $return;
+    }
+
+    function validateFile($file) {
+        $return = [];
+
+        if ($_FILES["url_portrait"]["error"] > 0) {
+          switch ($_FILES["url_portrait"]["error"]) {
+            case 1: $return["error"] = "Zdjęcie jest za duże";
+                break;
+            case 2: $return["error"] = "Zdjęcie jest za duże.";
+                break;
+            case 3: $return["error"] = "Zdjęcie wysłane częściowo.";
+                break;
+            case 4: $return["error"] = "Nie wysłano zdjęcia.";
+                break;
+            default: $return["error"] = "Błąd podczas wysyłania.";
+              break;
+          }
+        }
+
+        if ($_FILES["url_portrait"]["type"] != 'image/jpeg') $return["error"] = "Zdjęcie jest za duże";
+
+        if(!isset($return["error"])) $return["success"] = "Zdjęcie prawidłowe.";
+
+        return $return;
+    }
+
+    function saveFile($file, $url) {
+        $return = [];
+
+        if(is_uploaded_file($file["url_portrait"]["tmp_name"])) {
+            if(!move_uploaded_file($_FILES["url_portrait"]["tmp_name"], $url)) $return["warning"] = "Nie skopiowano zdjęcia do katalogu.";
+        } else $return["error"] = "Nie zapisano zdjęcia.";
+
+        if(!isset($return["error"])) $return["success"] = "Zapisano zdjęcie.";
 
         return $return;
     }

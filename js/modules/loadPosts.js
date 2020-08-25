@@ -175,5 +175,5 @@ document.addEventListener(`DOMContentLoaded`, () =>{
 
     window.addEventListener(`scroll`, () => { if(document.body.scrollHeight == window.scrollY+window.innerHeight) loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum) });
 
-    if(getCookie(`login`)) loadUserDataOnPage({id_user: getCookie(`id_user`), name: getCookie(`name`), email: getCookie(`email`), date: getCookie(`date`), city: getCookie(`city`)});
+    if(getCookie(`login`)) loadUserDataOnPage({id_user: getCookie(`id_user`), name: getCookie(`name`), email: getCookie(`email`), date: getCookie(`date`), city: getCookie(`city`), url_portrait: getCookie(`url_portrait`)});
 });
