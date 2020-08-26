@@ -1,11 +1,12 @@
 class Post{
-    constructor(user = null, id_post, date = null, title = null, category = null, content = null){
+    constructor(user = null, id_post, date = null, title = null, category = null, content = null, url_post_img = null){
         this.user = user;
         this.id_post = id_post;
         this.date = date || this.createPostDate();
         this.title = title || this.getInputValue(title);
         this.category =  category || this.getInputValue(category);
         this.content = content || this.getInputValue(content);
+        this.url_post_img = url_post_img;
     }
 
     getInputValue = input => {if(input) return input.value};
@@ -28,10 +29,12 @@ class Post{
     addPostToDOM() {
         const parent = document.getElementsByClassName(`posts__wrapper`)[0];
         const loadButton = document.querySelector(`.btn__load`);
+        let postImgAttr;
+        this.url_post_img ? postImgAttr = [{name: `src`, value: this.url_post_img}] : postImgAttr = undefined;
 
         let postContainer = this.createElementDOM(`section`, [`post__container`], undefined, [
             this.createElementDOM(`div`, [`post__data`], undefined, [
-                this.createElementDOM(`div`, [`user__img`], undefined, undefined, [{name: `style`, value: `--url-portrait: url(${this.user.url_portrait});`}]),
+                this.createElementDOM(`img`, [`user__img`], undefined, undefined, [{name: `src`, value: this.user.url_portrait}]),
                 this.createElementDOM(`div`, [`data__wrapper`], undefined, [
                     this.createElementDOM(`div`, [`user__data`], undefined, [
                         this.createElementDOM(`span`, [`user__name`], this.user.login),
@@ -48,6 +51,7 @@ class Post{
             this.createElementDOM(`article`, [`post__content`], undefined, [
                 this.createElementDOM(`p`, [`clearfix`], this.content)
             ]),
+            this.createElementDOM(`img`, [`post__img`], undefined, undefined, postImgAttr),
             this.createElementDOM(`form`, [`form__delete__post`], undefined, [
                 this.createElementDOM(`input`, [`input`], undefined, [], [{name: `type`, value: `text`}, {name: `name`, value: `post_id`}, {name: `required`, value: ``}, {name: `readonly`, value: ``}, {name: `value`, value: this.id_post}]),
                 this.createElementDOM(`input`, [`input`], undefined, [], [{name: `type`, value: `text`}, {name: `name`, value: `user_id`}, {name: `required`, value: ``}, {name: `readonly`, value: ``}, {name: `value`, value: (getCookie('id_user')!=undefined)?getCookie('id_user'):``}]),
@@ -73,7 +77,7 @@ const toggleAlert = (text, type, show) => {
 const createPosts = (tabPosts) => {
     tabPosts.forEach(post => {
         post.user.date = new Date().getFullYear() - post.user.date;
-        let newPost = new Post(post.user, post.id_post, post.postDate, post.title, post.category, post.content);
+        let newPost = new Post(post.user, post.id_post, post.postDate, post.title, post.category, post.content, post.url_post_img);
         newPost.addPostToDOM();
 
         let posts = document.querySelectorAll(`.post__container`);

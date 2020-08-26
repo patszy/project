@@ -56,6 +56,7 @@
 
     function validateFile($file) {
         $return = [];
+        $max_size = $_POST["MAX_FILE_SIZE"]/1000000;
 
         if ($_FILES["url_portrait"]["error"] > 0) {
           switch ($_FILES["url_portrait"]["error"]) {
@@ -72,7 +73,7 @@
           }
         }
 
-        if ($_FILES["url_portrait"]["type"] != 'image/jpeg') $return["error"] = "Zdjęcie jest za duże";
+        if ($_FILES["url_portrait"]["type"] != 'image/jpeg') $return["error"] = "Zdjęcie jest większe niż 1MB";
 
         if(!isset($return["error"])) $return["success"] = "Zdjęcie prawidłowe.";
 
@@ -83,7 +84,7 @@
         $return = [];
 
         if(is_uploaded_file($file["url_portrait"]["tmp_name"])) {
-            if(!move_uploaded_file($_FILES["url_portrait"]["tmp_name"], $url)) $return["warning"] = "Nie skopiowano zdjęcia do katalogu.";
+            if(!move_uploaded_file($_FILES["url_portrait"]["tmp_name"], ".".$url)) $return["warning"] = "Nie skopiowano zdjęcia do katalogu.";
         } else $return["error"] = "Nie zapisano zdjęcia.";
 
         if(!isset($return["error"])) $return["success"] = "Zapisano zdjęcie.";
@@ -113,7 +114,7 @@
 
                     if(!empty($_FILES["url_portrait"]["name"])) {
                         $return = validateFile($_FILES);
-                        $url_portrait = "../assets/img/portraits/".$id_user."_portrait.jpg";
+                        $url_portrait = "./assets/img/portraits/".$id_user."_portrait.jpg";
 
                         if(!isset($return["error"])) $return = saveFile($_FILES, $url_portrait);
                     }

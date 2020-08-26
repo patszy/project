@@ -16,7 +16,7 @@
         if($query_post->num_rows == 0) { $return["success"] = "Create post is possible."; }
         else if($query_post->num_rows != 0) {
             while($row = $query_post->fetch_assoc()) {
-                $return["warning"] = "Na tym konie już istnieje podobny post.";
+                $return["warning"] = "Na tym koncie istnieje już podobny post.";
             }
         } else {
             $return["error"] = "Error: " . $sql_post . "<br>" . $connect->db_connect->error;
@@ -26,10 +26,7 @@
     }
 
     function createPost($connect, $table, $id, $date, $title, $category, $content, $url_post_img) {
-        $url_img = "";
-        if (!empty($url_portrait)) $url_img = $url_portrait;
-
-        $sql_create_post = "INSERT INTO $table SET id_post='', id_user='$id', date='$date', title='$title', category='$category', content='$content', url_post_img='$url_img'";
+        $sql_create_post = "INSERT INTO $table SET id_post='', id_user='$id', date='$date', title='$title', category='$category', content='$content', url_post_img='$url_post_img'";
         $return = [];
 
         if ($connect->db_connect->query($sql_create_post) === TRUE) $return["success"] = "Utworzono post.";
@@ -43,8 +40,8 @@
     function validateFile($file) {
         $return = [];
 
-        if ($_FILES["url_portrait"]["error"] > 0) {
-          switch ($_FILES["url_portrait"]["error"]) {
+        if ($file["url_post_img"]["error"] > 0) {
+          switch ($file["url_post_img"]["error"]) {
             case 1: $return["error"] = "Zdjęcie jest za duże";
                 break;
             case 2: $return["error"] = "Zdjęcie jest za duże.";
@@ -58,7 +55,7 @@
           }
         }
 
-        if ($_FILES["url_portrait"]["type"] != 'image/jpeg') $return["error"] = "Zdjęcie jest za duże";
+        if ($file["url_post_img"]["type"] != 'image/jpeg') $return["error"] = "Zdjęcie jest za duże";
 
         if(!isset($return["error"])) $return["success"] = "Zdjęcie prawidłowe.";
 
@@ -68,8 +65,8 @@
     function saveFile($file, $url) {
         $return = [];
 
-        if(is_uploaded_file($file["url_portrait"]["tmp_name"])) {
-            if(!move_uploaded_file($_FILES["url_portrait"]["tmp_name"], $url)) $return["warning"] = "Nie skopiowano zdjęcia do katalogu.";
+        if(is_uploaded_file($file["url_post_img"]["tmp_name"])) {
+            if(!move_uploaded_file($file["url_post_img"]["tmp_name"], ".".$url)) $return["warning"] = "Nie skopiowano zdjęcia do katalogu.";
         } else $return["error"] = "Nie zapisano zdjęcia.";
 
         if(!isset($return["error"])) $return["success"] = "Zapisano zdjęcie.";
@@ -91,14 +88,25 @@
                 $title = $connect->db_connect->real_escape_string($_POST["title"]);
                 $category = $connect->db_connect->real_escape_string($_POST["category"]);
                 $content = $connect->db_connect->real_escape_string( $_POST["content"]);
+                $date = createDate();
+                $url_post_img = "";
 
-                if (empty($title)) { $return["error"] = "Tytuł jest pusty!"; }
-                else if (empty($category)) { $return["error"] = "kategoria jest pusta!"; }
-                else if (empty($content)) { $return["error"] = "Treść jest pusta!"; }
-                else {
-                    $return = isPost($connect, $table_posts, $user_id, $title, $category);
+                if(!empty($_FILES["url_post_img"]["name"])) {
+                    $return = validateFile($_FILES);
+                    $url_date = date("Y-m-d H-i-s", strtotime(createDate()));
+                    $url_post_img = "./assets/img/posts_img/".$url_date."_post_img.jpg";
 
-                    if(!isset($return["error"]) && !isset($return["warning"])) { $return = createPost($connect, $table_posts, $user_id, createDate(), $title, $category, $content); }
+                    if(!isset($return["error"])) $return = saveFile($_FILES, $url_post_img);
+                }
+
+                if(!isset($return["error"])) {
+                    if (empty($title)) { $return["error"] = "Tytuł jest pusty!"; }
+                    else if (empty($category)) { $return["error"] = "kategoria jest pusta!"; }
+                    else if (empty($content)) { $return["error"] = "Treść jest pusta!"; }
+                    else {
+                        $return = isPost($connect, $table_posts, $user_id, $title, $category);
+                        if(!isset($return["error"]) && !isset($return["warning"])) { $return = createPost($connect, $table_posts, $user_id, $date, $title, $category, $content, $url_post_img); }
+                    }
                 }
             }
 

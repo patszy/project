@@ -17,7 +17,7 @@ class NewUser{
 
         let userWrapper = this.createElementDOM(`div`, [`user__wrapper`], undefined, [
             this.createElementDOM(`div`, [`img__wrapper`], undefined, [
-                this.createElementDOM(`div`, [`user__img`], undefined, undefined, [{name: `style`, value: `--url-portrait: url(${this.user.url_portrait});`}]),
+                this.createElementDOM(`div`, [`user__img`], undefined, undefined, [{name: `style`, value: `--url-portrait: url(.${this.user.url_portrait});`}]),
             ]),
             this.createElementDOM(`span`, [`user__name`], this.user.login)
         ]);
