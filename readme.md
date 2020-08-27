@@ -40,12 +40,22 @@ To run this project open file index.html from copied folder in browser (recomend
 Add:
 - Frontend:
     - add categories
-    - add photo to post
-    - change user avatar
-    - slider
     - positioning
-    - html class name of every form label for input id is different
-    - user options delete input issue
-- Backend:
-    - user options
-    - limit post render
+
+## Optimisation/Errors
+Delete:
+- Label for / Input id
+- Comments / Console.log
+- Useless pictures
+
+Change:
+- init.js
+- php function in 1 file
+- Instruction to run project
+- Email address
+
+Check:
+- Registration (Not/Properly)
+- Login (Not/Properly)
+- Adding Post (Not/Properly)
+- User options (Not/Properly)

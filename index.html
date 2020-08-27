@@ -20,14 +20,14 @@
         <div class="form__container">
             <button type="button" class="form__close window__close"></button>
 
-            <label for="mail__recovery" class="form__row">
+            <label class="form__row">
                 <h5>Wprowadź swój Email.</h5>
                 <i class="fas fa-envelope"></i>
-                <input id="mail__recovery" type="email" name="email" class="input" autocomplete="off" required>
+                <input type="email" name="email" class="input" autocomplete="off" required>
             </label>
 
-            <label for="recovery__guardian" class="guardian">
-                <input id="recovery__guardian" name="guardian" type="checkbox">
+            <label class="guardian">
+                <input name="guardian" type="checkbox">
             </label>
 
             <button class="submit">Wyślij Hasło</button>
@@ -40,36 +40,36 @@
 
             <h5 class="title">Nowa wiadomość: </h5>
 
-            <label for="mail__recipient" class="form__row mail__recipient">
-                <input id="mail__recipient" type="email" name="email" class="input" autocomplete="off" required readonly>
+            <label class="form__row mail__recipient">
+                <input type="email" name="email" class="input" autocomplete="off" required readonly>
             </label>
 
-            <label for="mail__login" class="form__row --focus">
+            <label class="form__row --focus">
                 <h5>Do</h5>
                 <i class="fas fa-envelope-open-text"></i>
-                <input id="mail__login" type="text" name="login" class="input user__name" autocomplete="off" required readonly>
+                <input type="text" name="login" class="input user__name" autocomplete="off" required readonly>
             </label>
 
-            <label for="mail__address" class="form__row">
+            <label class="form__row">
                 <h5>Od</h5>
                 <i class="fas fa-envelope"></i>
-                <input id="mail__address" type="email" name="email" class="input" autocomplete="off" required>
+                <input type="email" name="email" class="input" autocomplete="off" required>
             </label>
 
-            <label for="mail__title" class="form__row">
+            <label class="form__row">
                 <h5>Tytuł</h5>
                 <i class="fas fa-paragraph"></i>
-                <input id="mail__title" type="text" name="title" class="input" autocomplete="off" required>
+                <input type="text" name="title" class="input" autocomplete="off" required>
             </label>
 
-            <label for="mail__message" class="form__row">
+            <label class="form__row">
                 <h5>Treść</h5>
                 <i class="fas fa-align-left"></i>
-                <textarea id="mail__message" type="text" name="message" class="input" autocomplete="off" required></textarea>
+                <textarea type="text" name="message" class="input" autocomplete="off" required></textarea>
             </label>
 
-            <label for="mail__guardian" class="guardian">
-                <input id="mail__guardian" name="guardian" type="checkbox">
+            <label class="guardian">
+                <input name="guardian" type="checkbox">
             </label>
 
             <button class="submit">Wyślij</button>
@@ -102,21 +102,21 @@
                             <div class="form__container">
                                 <button type="button" class="form__close"></button>
 
-                                <label for="login" class="form__row">
+                                <label class="form__row">
                                     <h5>Login</h5>
                                     <i class="fas fa-user"></i>
-                                    <input id="login" type="text" name="login" class="input" autocomplete="off" required value="PatSzy">
+                                    <input type="text" name="login" class="input" autocomplete="off" required>
                                 </label>
 
-                                <label for="password__login" class="form__row">
+                                <label class="form__row">
                                     <h5>Hasło</h5>
                                     <i class="fas fa-unlock-alt"></i>
-                                    <input id="password__login" type="password" name="password" class="input" required value="1234">
+                                    <input type="password" name="password" class="input" required>
                                     <i class="far fa-eye-slash"></i>
                                 </label>
 
-                                <label for="login__guardian" class="guardian">
-                                    <input id="login__guardian" name="guardian" type="checkbox">
+                                <label class="guardian">
+                                    <input name="guardian" type="checkbox">
                                 </label>
 
                                 <button class="submit">Zaloguj</button>
@@ -130,47 +130,57 @@
                         <div class="form__container">
                             <button type="button" class="form__close"></button>
 
-                            <label for="login__register" class="form__row">
+                            <label class="form__row">
                                 <h5>Login</h5>
                                 <i class="fas fa-user"></i>
-                                <input id="login__register" type="text" name="login" minlength="3" class="input" autocomplete="off" required value="PatSzy">
+                                <input type="text" name="login" minlength="3" class="input" autocomplete="off" required>
                             </label>
 
-                            <label for="mail__register" class="form__row">
+                            <label class="form__row">
                                 <h5>E-mail</h5>
                                 <i class="fas fa-envelope"></i>
-                                <input id="mail__register" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required value="patszy97@interia.pl">
+                                <input type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
                             </label>
 
-                            <label for="password__register" class="form__row">
+                            <label class="form__row">
                                 <h5>Hasło</h5>
                                 <i class="fas fa-unlock-alt"></i>
-                                <input id="password__register" type="password" name="password" minlength="8" class="input" required value="1234">
+                                <input type="password" name="password" minlength="8" class="input" required>
                                 <i class="far fa-eye-slash"></i>
                             </label>
 
-                            <label for="date__register" class="form__row">
+                            <label class="form__row">
                                 <h5>Rok Urodzenia</h5>
                                 <i class="fas fa-calendar-alt"></i>
-                                <input id="date__register" type="number" name="date" min="1900" class="input input__date" autocomplete="off" required value="1997">
+                                <input type="number" name="date" min="1900" class="input input__date" autocomplete="off" required>
                             </label>
 
-                            <label for="city" class="form__row">
+                            <label class="form__row">
                                 <h5>Miasto</h5>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <select id="city" name="city" class="input" required>
+                                <select name="city" class="input" required>
                                     <option value=""></option>
-                                    <option value="warszawa" selected>Warszawa</option>
-                                    <option value="poznań">Poznań</option>
-                                    <option value="kraków">Kraków</option>
-                                    <option value="gdańsk">Gdańsk</option>
-                                    <option value="wrocław">Wrocław</option>
-                                    <option value="szczecin">Szczecin</option>
+                                    <option value="dolnośląskie">Dolnośląskie</option>
+                                    <option value="kujawsko-pomorskie">Kujawsko-Pomorskie</option>
+                                    <option value="lubelskie">Lubelskie</option>
+                                    <option value="lubuskie">Lubuskie</option>
+                                    <option value="łódzkie">Łódzkie</option>
+                                    <option value="małopolskie">Małopolskie</option>
+                                    <option value="mazowieckie">Mazowieckie</option>
+                                    <option value="opolskie">Opolskie</option>
+                                    <option value="podkarpackie">Podkarpackie</option>
+                                    <option value="podlaskie">Podlaskie</option>
+                                    <option value="pomorskie">Pomorskie</option>
+                                    <option value="śląskie">Śląskie</option>
+                                    <option value="świętokrzyskie">Świętokrzyskie</option>
+                                    <option value="warmińsko-mazurskie">Warmińsko-mazurskie</option>
+                                    <option value="wielkopolskie">Wielkopolskie</option>
+                                    <option value="zachodniopomorskie">Zachodniopomorskie</option>
                                 </select>
                             </label>
 
-                            <label for="register__guardian" class="guardian">
-                                <input id="register__guardian" name="guardian" type="checkbox">
+                            <label class="guardian">
+                                <input name="guardian" type="checkbox">
                             </label>
 
                             <button class="submit">Zarejestruj</button>
@@ -182,45 +192,55 @@
                         <div class="form__container">
                             <button type="button" class="form__close"></button>
 
-                            <input id="userid__options" type="number" name="user_id" required readonly>
+                            <input type="number" name="user_id" required readonly>
 
-                            <label for="portrait__options" class="form__row --focus">
+                            <label class="form__row --focus">
                                 <h5>Zdjęcie</h5>
                                 <i class="fas fa-user-circle"></i>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-                                <input id="portrait__options" type="file" name="url_portrait" accept=".jpg, .jpeg" class="input" value="Zdjęcie">
+                                <input type="file" name="url_portrait" accept=".jpg, .jpeg" class="input">
                             </label>
 
-                            <label for="login__options" class="form__row --focus">
+                            <label class="form__row --focus">
                                 <h5>Login</h5>
                                 <i class="fas fa-user"></i>
-                                <input id="login__options" type="text" name="login" minlength="3" class="input" autocomplete="off">
+                                <input type="text" name="login" minlength="3" class="input" autocomplete="off">
                             </label>
 
-                            <label for="mail__options" class="form__row --focus">
+                            <label class="form__row --focus">
                                 <h5>E-mail</h5>
                                 <i class="fas fa-envelope"></i>
-                                <input id="mail__options" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off">
+                                <input type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off">
                             </label>
 
-                            <label for="password__options" class="form__row">
+                            <label class="form__row">
                                 <h5>Nowe Hasło</h5>
                                 <i class="fas fa-unlock-alt"></i>
-                                <input id="password__options" type="password" name="password" minlength="8" class="input" value = "1234">
+                                <input type="password" name="password" minlength="8" class="input">
                                 <i class="far fa-eye-slash"></i>
                             </label>
 
-                            <label for="city__options" class="form__row --focus">
+                            <label class="form__row --focus">
                                 <h5>Miasto</h5>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <select id="city__options" name="city" class="input">
+                                <select name="city" class="input">
                                     <option value=""></option>
-                                    <option value="warszawa">Warszawa</option>
-                                    <option value="poznań">Poznań</option>
-                                    <option value="kraków">Kraków</option>
-                                    <option value="gdańsk">Gdańsk</option>
-                                    <option value="wrocław">Wrocław</option>
-                                    <option value="szczecin">Szczecin</option>
+                                    <option value="dolnośląskie">Dolnośląskie</option>
+                                    <option value="kujawsko-pomorskie">Kujawsko-Pomorskie</option>
+                                    <option value="lubelskie">Lubelskie</option>
+                                    <option value="lubuskie">Lubuskie</option>
+                                    <option value="łódzkie">Łódzkie</option>
+                                    <option value="małopolskie">Małopolskie</option>
+                                    <option value="mazowieckie">Mazowieckie</option>
+                                    <option value="opolskie">Opolskie</option>
+                                    <option value="podkarpackie">Podkarpackie</option>
+                                    <option value="podlaskie">Podlaskie</option>
+                                    <option value="pomorskie">Pomorskie</option>
+                                    <option value="śląskie">Śląskie</option>
+                                    <option value="świętokrzyskie">Świętokrzyskie</option>
+                                    <option value="warmińsko-mazurskie">Warmińsko-mazurskie</option>
+                                    <option value="wielkopolskie">Wielkopolskie</option>
+                                    <option value="zachodniopomorskie">Zachodniopomorskie</option>
                                 </select>
                             </label>
 
@@ -230,8 +250,8 @@
                                 <input type="checkbox" name="delete" class="input input__checkbox">
                             </label>
 
-                            <label for="options__guardian" class="guardian">
-                                <input id="options__guardian" name="guardian" type="checkbox">
+                            <label class="guardian">
+                                <input name="guardian" type="checkbox">
                             </label>
 
                             <button class="submit">Zapisz zmiany</button>
@@ -280,16 +300,16 @@
                         <div class="article__data">
                             <time>07.06.2020 20:00</time>
 
-                            <label for="post__title" class="form__row">
+                            <label class="form__row">
                                 <h5>Tytuł</h5>
                                 <i class="fas fa-paragraph"></i>
-                                <input id="post__title" type="text" name="title" class="input" autocomplete="off" minlength="3" required>
+                                <input type="text" name="title" class="input" autocomplete="off" minlength="3" required>
                             </label>
 
-                            <label for="post__category" class="form__row">
+                            <label class="form__row">
                                 <h5>Kategoria</h5>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <select id="post__category" name="category" class="input" required>
+                                <select name="category" class="input" required>
                                     <option value=""></option>
                                     <option value="Pojazdy">Pojazdy</option>
                                     <option value="Podróże">Podróże</option>
@@ -302,21 +322,21 @@
                     </div>
                 </div>
 
-                <label for="post__content" class="form__row">
+                <label class="form__row">
                     <h5>Treść</h5>
                     <i class="fas fa-align-left"></i>
-                    <textarea id="post__content" type="text" name="content" class="input" autocomplete="off" minlength="10" required></textarea>
+                    <textarea type="text" name="content" class="input" autocomplete="off" minlength="10" required></textarea>
                 </label>
 
-                <label for="post__img" class="form__row">
+                <label class="form__row">
                     <h5>Zdjęcie</h5>
                     <i class="fas fa-image"></i>
                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-                    <input id="post__img" type="file" name="url_post_img" accept=".jpg, .jpeg" class="input">
+                    <input type="file" name="url_post_img" accept=".jpg, .jpeg" class="input">
                 </label>
 
-                <label for="post__guardian" class="guardian">
-                    <input id="post__guardian" name="guardian" type="checkbox">
+                <label class="guardian">
+                    <input name="guardian" type="checkbox">
                 </label>
 
                 <button class="submit">Opublikuj</button>
