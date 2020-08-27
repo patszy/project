@@ -179,16 +179,17 @@ const loadUserDataOnPage = (sessionUserData) =>{
     document.querySelector(`.post__creator .user__img`).setAttribute(`style`, `--url-portrait: url(.${sessionUserData.url_portrait})`);
     console.log(sessionUserData);
     //Contact
-    document.getElementById(`mail__address`).value = sessionUserData.email;
-    document.getElementById(`mail__address`).parentElement.classList.add(`--focus`);
+    document.querySelector(`.form__mail .mail__recipient`).value = sessionUserData.email;
+    document.querySelector(`.form__mail .mail__recipient`).parentElement.classList.add(`--focus`);
     //Menu settings
     toggleShowClass(document.querySelector(`.user__bar li:nth-child(1)`));
     toggleShowClass(document.querySelector(`.user__bar li:nth-child(2)`));
     toggleShowClass(document.querySelector(`.user__bar li:nth-child(3)`));
-    userUserIdOpt = document.getElementById(`userid__options`).value = sessionUserData.id_user;
-    userLoginOpt = document.getElementById(`login__options`).value = sessionUserData.name;
-    userEmailOpt = document.getElementById(`mail__options`).value = sessionUserData.email;
-    userCityOpt = document.getElementById(`city__options`).querySelector(`[value=${sessionUserData.city.toLowerCase()}]`).selected = true;
+    userUserIdOpt = document.querySelector(`.form__options [name="user_id"]`).value = sessionUserData.id_user;
+    userLoginOpt = document.querySelector(`.form__options [name="login"]`).value = sessionUserData.name;
+    userEmailOpt = document.querySelector(`.form__options [name="email"]`).value = sessionUserData.email;
+    //Error solution: no warszawa in options.
+    userCityOpt = document.querySelector(`.form__options [value=${sessionUserData.city.toLowerCase()}]`).selected = true;
     //Delete post form
     showDeletePostFormBtn();
     setDeletePostFormUserId();
