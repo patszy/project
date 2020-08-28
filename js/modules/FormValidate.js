@@ -95,13 +95,6 @@ class FormValidate {
         }
     }
 
-    toggleAlert = (text, type, show) => {
-        const infoAlert = document.querySelector(`.info__alert`);
-        infoAlert.querySelector(`span`).innerText = text;
-        infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`);
-        show ? infoAlert.classList.add(`--show`, `--${type}`) : false;
-    }
-
     handleSubmit = () => {
         this.form.addEventListener(`submit`, event => {
             event.preventDefault();
@@ -133,11 +126,11 @@ class FormValidate {
                     console.log(response);
                     if (response.status == `error`) {
                         console.log(`Send Error`);
-                        this.toggleAlert(`${response.error}` , `error`, true);
+                        toggleAlert(`${response.error}` , `error`, true);
                     } else {
                         if (response.status == `warning`) {
                             console.log(`Send Warning`);
-                            this.toggleAlert(`${response.warning}` , `warning`, true);
+                            toggleAlert(`${response.warning}` , `warning`, true);
                         } else if (response.status == `success`) {
                             console.log(`Send Success`);
                             if (response.success) {
@@ -146,18 +139,11 @@ class FormValidate {
                                     logOut();
                                     setTimeout(() => window.location.reload(true), 1500);
                                 }
-                                this.toggleAlert(`${response.success}` ,`success`, true);
+                                toggleAlert(`${response.success}` ,`success`, true);
                             }
-                            else if (response.info) this.toggleAlert(`${response.info}` ,`info`, true);
+                            else if (response.info) toggleAlert(`${response.info}` ,`info`, true);
 
-                            if(response.session) {
-                                for (const [key, value] of Object.entries(response.session)) {
-                                    setCookie(`${key}`, `${value}`);
-                                }
-
-                                console.log(response.session);
-                                loadUserDataOnPage(response.session);
-                            }
+                            if(response.session) logIn(response.session);
                         }
                     }
                 }).finally(() => {
@@ -168,46 +154,3 @@ class FormValidate {
         });
     }
 }
-
-const loadUserDataOnPage = (sessionUserData) =>{
-    //PostCreator
-    document.querySelector(`.post__creator`).style.display = `block`;
-    document.querySelector(`.post__creator input[name="user__id"]`).value = sessionUserData.id_user;
-    document.querySelector(`.post__creator .user__name`).innerText = sessionUserData.name;
-    document.querySelector(`.post__creator .user__city`).innerText = sessionUserData.city;
-    document.querySelector(`.post__creator .user__age`).innerText = new Date().getFullYear() - sessionUserData.date;
-    document.querySelector(`.post__creator .user__img`).setAttribute(`style`, `--url-portrait: url(.${sessionUserData.url_portrait})`);
-    console.log(sessionUserData);
-    //Contact
-    document.querySelector(`.form__mail .mail__recipient`).value = sessionUserData.email;
-    document.querySelector(`.form__mail .mail__recipient`).parentElement.classList.add(`--focus`);
-    //Menu settings
-    toggleShowClass(document.querySelector(`.user__bar li:nth-child(1)`));
-    toggleShowClass(document.querySelector(`.user__bar li:nth-child(2)`));
-    toggleShowClass(document.querySelector(`.user__bar li:nth-child(3)`));
-    userUserIdOpt = document.querySelector(`.form__options [name="user_id"]`).value = sessionUserData.id_user;
-    userLoginOpt = document.querySelector(`.form__options [name="login"]`).value = sessionUserData.name;
-    userEmailOpt = document.querySelector(`.form__options [name="email"]`).value = sessionUserData.email;
-    //Error solution: no warszawa in options.
-    userCityOpt = document.querySelector(`.form__options [value=${sessionUserData.city.toLowerCase()}]`).selected = true;
-    //Delete post form
-    showDeletePostFormBtn();
-    setDeletePostFormUserId();
-
-}
-
-document.addEventListener(`DOMContentLoaded`, () =>{
-    const formLogin = document.getElementsByClassName(`form__login`)[0];
-    const formRegister = document.getElementsByClassName(`form__register`)[0];
-    const formMail = document.getElementsByClassName(`form__mail`)[0];
-    const formRecovery = document.getElementsByClassName(`form__recovery`)[0];
-    const formOptions = document.getElementsByClassName(`form__options`)[0];
-    const postCreator = document.getElementsByClassName(`form__post`)[0];
-
-    const formLoginValidation = new FormValidate(formLogin, {});
-    const formRegisterValidation = new FormValidate(formRegister, {});
-    const formMailValidation = new FormValidate(formMail, {});
-    const formRecoveryValidation = new FormValidate(formRecovery, {});
-    const formOptionsValidatio = new FormValidate(formOptions, {});
-    const postCreatorValidation = new FormValidate(postCreator, {});
-});

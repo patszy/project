@@ -293,12 +293,16 @@
     margin: 0;
 }
 
-.form__post .form__row[for="post__category"] {
+.form__post .post__category {
     margin-left: 10px;
 }
 
-.form__post .form__row[for="post__content"] {
+.form__post .post__content {
     margin: 10px auto 30px;
+}
+
+.form__post .form__row.post__img.--focus h5 {
+    transform: translateY(-140%) scale(.7);
 }
 
 .form__post .form__row .input {
@@ -319,7 +323,7 @@
     left: 35px;
 }
 
-.form__post .form__row[for="post__content"].--focus h5 {
+.form__post .post__content.--focus h5 {
     transform: translateY(-300%) scale(.7);
 }
 
@@ -365,7 +369,7 @@
     display: none;
 }
 
-.form__mail .form__row[for="mail__message"].--focus h5 {
+.form__mail .mail__message.--focus h5 {
     transform: translateY(-490%) scale(.7);
 }
 

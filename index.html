@@ -41,7 +41,7 @@
             <h5 class="title">Nowa wiadomość: </h5>
 
             <label class="form__row mail__recipient">
-                <input type="email" name="email" class="input" autocomplete="off" required readonly>
+                <input type="email" name="email_recipient" class="input" autocomplete="off" required readonly>
             </label>
 
             <label class="form__row --focus">
@@ -62,7 +62,7 @@
                 <input type="text" name="title" class="input" autocomplete="off" required>
             </label>
 
-            <label class="form__row">
+            <label class="form__row mail__message">
                 <h5>Treść</h5>
                 <i class="fas fa-align-left"></i>
                 <textarea type="text" name="message" class="input" autocomplete="off" required></textarea>
@@ -156,7 +156,7 @@
                             </label>
 
                             <label class="form__row">
-                                <h5>Miasto</h5>
+                                <h5>Miasto/Województwo</h5>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select name="city" class="input" required>
                                     <option value=""></option>
@@ -221,7 +221,7 @@
                             </label>
 
                             <label class="form__row --focus">
-                                <h5>Miasto</h5>
+                                <h5>Miasto/Województwo</h5>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select name="city" class="input">
                                     <option value=""></option>
@@ -306,7 +306,7 @@
                                 <input type="text" name="title" class="input" autocomplete="off" minlength="3" required>
                             </label>
 
-                            <label class="form__row">
+                            <label class="form__row post__category">
                                 <h5>Kategoria</h5>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select name="category" class="input" required>
@@ -328,13 +328,13 @@
                     </div>
                 </div>
 
-                <label class="form__row">
+                <label class="form__row post__content">
                     <h5>Treść</h5>
                     <i class="fas fa-align-left"></i>
                     <textarea type="text" name="content" class="input" autocomplete="off" minlength="10" required></textarea>
                 </label>
 
-                <label class="form__row">
+                <label class="form__row post__img --focus">
                     <h5>Zdjęcie</h5>
                     <i class="fas fa-image"></i>
                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
@@ -411,12 +411,13 @@
         </div>
     </aside>
 
-    <script src="js/init.js"></script>
+    <script src="js/modules/functions.js"></script>
+    <script src="js/modules/postFunctions.js"></script>
     <script src="js/modules/cookies.js"></script>
-    <script src="js/modules/loadPosts.js"></script>
-    <script src="js/modules/loadNewUsers.js"></script>
+    <script src="js/modules/Post.js"></script>
+    <script src="js/modules/NewUser.js"></script>
+    <script src="js/modules/FormValidate.js"></script>
     <script src="js/modules/loadEventListenners.js"></script>
-    <script src="js/modules/postAnimation.js"></script>
-    <script src="js/modules/formValidation.js"></script>
+    <script src="js/init.js"></script>
 </body>
 </html>
