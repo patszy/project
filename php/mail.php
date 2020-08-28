@@ -41,10 +41,10 @@
         if(isset($_POST["guardian"])) {
             $return["success"] = "Guardian!";
         } else {
-            $email = $_POST["email__recipient"];
+            $email = $_POST["email_recipient"];
             $login = $_POST["login"];
             $userTitle = $_POST["title"];
-            $userEmail = $_POST["email__address"];
+            $userEmail = $_POST["email_addressee"];
             $userMessage = $_POST["message"];
 
             if (empty($login)) { $return["error"] = "Login jest pusty!"; }

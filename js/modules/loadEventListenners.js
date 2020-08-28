@@ -40,7 +40,9 @@ const loadEventListenners = () => {
     });
 
     menuBtns.forEach(btn => btn.addEventListener(`click`, () => {
-        menuBtns.forEach(btn => {if(btn.classList.contains(`--show`)) toggleShowClass(btn, btn.nextElementSibling)});
+        if(menuBtns[0] != btn && menuBtns[0].classList.contains(`--show`)) toggleShowClass(menuBtns[0], menuBtns[0].nextElementSibling);
+        if(menuBtns[1] != btn && menuBtns[1].classList.contains(`--show`)) toggleShowClass(menuBtns[1], menuBtns[1].nextElementSibling);
+
         toggleShowClass(btn, btn.nextElementSibling);
     }));
 
@@ -53,7 +55,7 @@ const loadEventListenners = () => {
 
     togglePostCreatorBtn.addEventListener(`click`, () => toggleShowClass(togglePostCreatorBtn.closest(`.post__creator`)));
 
-    for(let btn of closeMenuFormBtns) btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`), btn.closest(`.form`).previousElementSibling));
+    // for(let btn of closeMenuFormBtns) btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`), btn.closest(`.form`).previousElementSibling));
 
     alertClose.addEventListener(`click`, () => toggleShowClass(alertClose.closest(`.info__alert`)));
 
@@ -61,7 +63,7 @@ const loadEventListenners = () => {
 
     recoveryBtn.addEventListener(`click`, () => toggleShowClass(document.querySelector(`.form__recovery`)));
 
-    toggleShowClass(document.querySelector(`.user__bar li:nth-child(3)`));
+    toggleShowClass(menuBtns[2].parentElement);
 };
 
 document.addEventListener(`DOMContentLoaded`, loadEventListenners());

@@ -49,10 +49,8 @@ Delete:
 - Useless pictures
 
 Change:
-- init.js
 - php function in 1 file
 - Instruction to run project
-- Email address
 
 Check:
 - Registration (Not/Properly)

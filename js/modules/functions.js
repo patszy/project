@@ -7,8 +7,8 @@ const loadUserDataOnPage = (sessionUserData) =>{
     document.querySelector(`.post__creator .user__age`).innerText = new Date().getFullYear() - sessionUserData.date;
     document.querySelector(`.post__creator .user__img`).setAttribute(`style`, `--url-portrait: url(.${sessionUserData.url_portrait})`);
     //Contact
-    document.querySelector(`.form__mail .mail__recipient`).value = sessionUserData.email;
-    document.querySelector(`.form__mail .mail__recipient`).parentElement.classList.add(`--focus`);
+    document.querySelector(`.form__mail [name="email_addressee"]`).value = sessionUserData.email;
+    document.querySelector(`.form__mail [name="email_addressee"]`).parentElement.classList.add(`--focus`);
     //Menu settings
     toggleShowClass(document.querySelector(`.user__bar li:nth-child(1)`));
     toggleShowClass(document.querySelector(`.user__bar li:nth-child(2)`));
@@ -37,9 +37,8 @@ const toggleAlert = (text, type, show) => {
     show ? infoAlert.classList.add(`--show`, `--${type}`) : false;
 }
 
-const toggleShowClass = (element, parent = null) => {
-    if(element) element.classList.toggle(`--show`);
-    if(parent) parent.classList.toggle(`--show`);
+const toggleShowClass = (...params) => {
+    params.forEach(param => param.classList.toggle(`--show`));
 }
 
 const toggleFocusClass = (element, show) => {
