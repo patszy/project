@@ -2,6 +2,7 @@
 
     require 'init.php';
     require 'Connection.php';
+    require 'fileFunctions.php';
 
     function updateUser($connect, $table_users, $id_user, $login, $email, $password, $city, $url_portrait) {
         $tab_query = [];
@@ -43,51 +44,13 @@
     };
 
     function deletePost($connect, $table, $id_user) {
-        $sql_user = "DELETE FROM $table WHERE id_user = $id_user";
-        $query_delete_user = $connect->db_connect->query($sql_user);
+        $sql_post = "DELETE FROM $table WHERE id_user = $id_user";
+        $query_delete_post = $connect->db_connect->query($sql_post);
         $return = [];
 
-        if($query_delete_user === true) $return["success"] = "Usunięto posty.";
-        else if($query_delete_user === false) $return["warning"] = "Posty nie istnieją.";
-        else $return["error"] = "Error: " . $sql_user . "<br>" . $connect->db_connect->error;
-
-        return $return;
-    }
-
-    function validateFile($file) {
-        $return = [];
-        $max_size = $_POST["MAX_FILE_SIZE"]/1000000;
-
-        if ($_FILES["url_portrait"]["error"] > 0) {
-          switch ($_FILES["url_portrait"]["error"]) {
-            case 1: $return["error"] = "Zdjęcie jest za duże";
-                break;
-            case 2: $return["error"] = "Zdjęcie jest za duże.";
-                break;
-            case 3: $return["error"] = "Zdjęcie wysłane częściowo.";
-                break;
-            case 4: $return["error"] = "Nie wysłano zdjęcia.";
-                break;
-            default: $return["error"] = "Błąd podczas wysyłania.";
-              break;
-          }
-        }
-
-        if ($_FILES["url_portrait"]["type"] != 'image/jpeg') $return["error"] = "Zdjęcie jest większe niż 1MB";
-
-        if(!isset($return["error"])) $return["success"] = "Zdjęcie prawidłowe.";
-
-        return $return;
-    }
-
-    function saveFile($file, $url) {
-        $return = [];
-
-        if(is_uploaded_file($file["url_portrait"]["tmp_name"])) {
-            if(!move_uploaded_file($_FILES["url_portrait"]["tmp_name"], ".".$url)) $return["warning"] = "Nie skopiowano zdjęcia do katalogu.";
-        } else $return["error"] = "Nie zapisano zdjęcia.";
-
-        if(!isset($return["error"])) $return["success"] = "Zapisano zdjęcie.";
+        if($query_delete_post === true) $return["success"] = "Usunięto posty.";
+        else if($query_delete_post === false) $return["warning"] = "Posty nie istnieją.";
+        else $return["error"] = "Error: " . $sql_post . "<br>" . $connect->db_connect->error;
 
         return $return;
     }
@@ -108,7 +71,8 @@
                 else {
                     $login = $connect->db_connect->real_escape_string($_POST["login"]);
                     $email = $connect->db_connect->real_escape_string($_POST["email"]);
-                    $password = password_hash($connect->db_connect->real_escape_string($_POST["password"]), PASSWORD_DEFAULT);
+                    $password = "";
+                    if(!empty($_POST["password"])) $password = password_hash($connect->db_connect->real_escape_string($_POST["password"]), PASSWORD_DEFAULT);
                     $city = $connect->db_connect->real_escape_string($_POST["city"]);
                     $url_portrait = "";
 

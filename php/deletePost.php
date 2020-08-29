@@ -18,7 +18,7 @@
         return $return;
     }
 
-    function getUser($connect, $table, $id) {
+    function getUserPermission($connect, $table, $id) {
         $sql_users = "SELECT permission FROM $table WHERE id_user = '$id'";
         $query_users = $connect->db_connect->query($sql_users);
         $return = [];
@@ -58,7 +58,7 @@
                 $id_post = $connect->db_connect->real_escape_string($_POST["post_id"]);
                 $id_user = $connect->db_connect->real_escape_string($_POST["user_id"]);
 
-                $return = getUser($connect, $table_users, $id_user);
+                $return = getUserPermission($connect, $table_users, $id_user);
 
                 if(!isset($return["error"])){
                     if($return["permission"] == 1) $return = deletePost($connect, $table_posts, $id_post);

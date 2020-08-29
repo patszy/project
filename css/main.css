@@ -43,6 +43,7 @@ main {
     height: 100px;
     transition: .2s;
     border-radius: 100%;
+    object-fit: cover;
 }
 
 .new__users {

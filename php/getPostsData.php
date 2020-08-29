@@ -19,7 +19,7 @@
         return $return;
     }
 
-    function getUser($connect, $table, $id) {
+    function getUserData($connect, $table, $id) {
         $sql_users = "SELECT email, login, city, date, url_portrait FROM $table WHERE id_user = '$id'";
         $query_users = $connect->db_connect->query($sql_users);
         $return = [];
@@ -58,7 +58,7 @@
             $return["users"] = [];
 
             foreach ($return["posts"] as &$post) {
-                $user = getUser($connect, $table_users, $post["id_user"])["user"];
+                $user = getUserData($connect, $table_users, $post["id_user"])["user"];
 
                 if(empty($return["users"])) $post["user"] = $user;
                 else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;

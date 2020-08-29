@@ -2,6 +2,7 @@
 
     require 'init.php';
     require 'Connection.php';
+    require 'fileFunctions.php';
 
     function createDate() {
         $date = date("Y-m-d H:i:s", time());
@@ -33,43 +34,6 @@
         else {
             $return["errors"] = "Error: " . $sql_create_post . "<br>" . $connect->db_connect->error;
         }
-
-        return $return;
-    }
-
-    function validateFile($file) {
-        $return = [];
-
-        if ($file["url_post_img"]["error"] > 0) {
-          switch ($file["url_post_img"]["error"]) {
-            case 1: $return["error"] = "Zdjęcie jest za duże";
-                break;
-            case 2: $return["error"] = "Zdjęcie jest za duże.";
-                break;
-            case 3: $return["error"] = "Zdjęcie wysłane częściowo.";
-                break;
-            case 4: $return["error"] = "Nie wysłano zdjęcia.";
-                break;
-            default: $return["error"] = "Błąd podczas wysyłania.";
-              break;
-          }
-        }
-
-        if ($file["url_post_img"]["type"] != 'image/jpeg') $return["error"] = "Zdjęcie jest za duże";
-
-        if(!isset($return["error"])) $return["success"] = "Zdjęcie prawidłowe.";
-
-        return $return;
-    }
-
-    function saveFile($file, $url) {
-        $return = [];
-
-        if(is_uploaded_file($file["url_post_img"]["tmp_name"])) {
-            if(!move_uploaded_file($file["url_post_img"]["tmp_name"], ".".$url)) $return["warning"] = "Nie skopiowano zdjęcia do katalogu.";
-        } else $return["error"] = "Nie zapisano zdjęcia.";
-
-        if(!isset($return["error"])) $return["success"] = "Zapisano zdjęcie.";
 
         return $return;
     }
