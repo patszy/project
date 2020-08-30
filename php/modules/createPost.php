@@ -4,6 +4,7 @@
     require '../Connection.php';
     require '../functions/fileFunctions.php';
     require '../functions/postFunctions.php';
+    require '../functions/userFunctions.php';
 
     function createDate() {
         $date = date("Y-m-d H:i:s", time());
@@ -41,7 +42,24 @@
                     else if (empty($content)) { $return["error"] = "Treść jest pusta!"; }
                     else {
                         $return = isPost($connect, $table_posts, $user_id, $title, $category);
-                        if(!isset($return["error"]) && !isset($return["warning"])) { $return = createPost($connect, $table_posts, $user_id, $date, $title, $category, $content, $url_post_img); }
+                        if(!isset($return["error"]) && !isset($return["warning"])) {
+                            $return = createPost($connect, $table_posts, $user_id, $date, $title, $category, $content, $url_post_img);
+
+                            if(!isset($return["error"]) && !isset($return["warning"])) {
+                                $return = getUserPost($connect, $table_posts, $user_id);
+
+                                if(!isset($return["error"]) && !isset($return["warning"])) {
+                                    foreach ($return["post"] as &$post) {
+                                        $user = getUserData($connect, $table_users, $post["id_user"])["user"];
+
+                                        if(empty($return["users"])) $post["user"] = $user;
+                                        else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;
+                                    }
+
+                                    $return["success"] = "Utworzono post.";
+                                }
+                            }
+                        }
                     }
                 }
             }

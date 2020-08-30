@@ -138,7 +138,13 @@ class FormValidate {
                                     fetch('./php/modules/logout.php', {method: method.toUpperCase()});
                                     logOut();
                                     setTimeout(() => window.location.reload(true), 1500);
-                                } else if(response.deletePost) submit.closest(`.post__container`).remove();
+                                }
+                                if(response.deletePost) submit.closest(`.post__container`).remove();
+                                if(response.post) {
+                                    createPosts(response.post, true);
+                                    showDeletePostFormBtn();
+                                    setDeletePostFormUserId();
+                                }
 
                                 toggleAlert(`${response.success}` ,`success`, true);
                             }

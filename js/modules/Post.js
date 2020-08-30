@@ -15,9 +15,8 @@ class Post{
 
     createPostDate = () => new Date().toLocaleString();
 
-    addPostToDOM() {
+    addPostToDOM(before = false) {
         const parent = document.getElementsByClassName(`posts__wrapper`)[0];
-        const loadButton = document.querySelector(`.btn__load`);
         let postImgAttr;
         this.url_post_img ? postImgAttr = [{name: `src`, value: this.url_post_img}] : postImgAttr = undefined;
 
@@ -52,6 +51,7 @@ class Post{
             createElementDOM(`button`, [`btn__mail`], `Kontakt`, [createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `mail`, value: this.user.email}])
         ]);
 
-        parent.insertBefore(postContainer, loadButton);
+        if(before) parent.prepend(postContainer);
+        else parent.append(postContainer);
     }
 }

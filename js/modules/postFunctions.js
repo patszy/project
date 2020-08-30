@@ -1,8 +1,8 @@
-const createPosts = (tabPosts) => {
+const createPosts = (tabPosts, before = false) => {
     tabPosts.forEach(post => {
         post.user.date = new Date().getFullYear() - post.user.date;
         let newPost = new Post(post.user, post.id_post, post.postDate, post.title, post.category, post.content, post.url_post_img);
-        newPost.addPostToDOM();
+        newPost.addPostToDOM(before);
 
         let posts = document.querySelectorAll(`.post__container`);
         animatePosts(posts);

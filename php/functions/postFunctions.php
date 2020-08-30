@@ -22,10 +22,26 @@
         $sql_create_post = "INSERT INTO $table SET id_post='', id_user='$id', date='$date', title='$title', category='$category', content='$content', url_post_img='$url_post_img'";
         $return = [];
 
-        if ($connect->db_connect->query($sql_create_post) === TRUE) $return["success"] = "Utworzono post.";
+        if ($connect->db_connect->query($sql_create_post) === TRUE) {
+            $return["success"] = "Utworzono post.";
+            $return["createdPost"] = true;
+        }
         else {
             $return["errors"] = "Error: " . $sql_create_post . "<br>" . $connect->db_connect->error;
         }
+
+        return $return;
+    }
+
+    function getUserPost($connect, $table, $id_user) {
+        $sql_post = "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content, posts.url_post_img, login, users.date AS userDate, city FROM $table INNER JOIN users ON posts.id_user = users.id_user WHERE posts.id_user = users.id_user ORDER BY id_post DESC LIMIT 1";
+        $query_post = $connect->db_connect->query($sql_post);
+        $return = [];
+        $return["post"] = [];
+
+        if($query_post->num_rows != 0) while($row = $query_post->fetch_assoc()) array_push($return["post"], $row);
+        else if($query_post->num_rows == 0) $return["warning"] = "Brak postu. ";
+        else $return["error"] = "Error: " . $sql_post . "<br>" . $connect->db_connect->error;
 
         return $return;
     }
