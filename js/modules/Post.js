@@ -47,8 +47,8 @@ class Post{
                 createElementDOM(`label`, [`guardian`], undefined, [
                     createElementDOM(`input`, undefined, undefined, undefined, [{name: `name`, value: `guardian`}, {name: `type`, value: `checkbox`}])
                 ]),
-                createElementDOM(`button`, [`btn__delete`], `Usuń Post`, [createElementDOM(`i`, [`fas`, `fa-trash-alt`])], undefined)
-            ], [{name: `action`, value: `./php/deletePost.php`}, {name: `method`, value: `POST`}]),
+                createElementDOM(`button`, [`btn__delete`, `form__submit`], `Usuń Post`, [createElementDOM(`i`, [`fas`, `fa-trash-alt`])], undefined)
+            ], [{name: `action`, value: `./php/modules/deletePost.php`}, {name: `method`, value: `POST`}]),
             createElementDOM(`button`, [`btn__mail`], `Kontakt`, [createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `mail`, value: this.user.email}])
         ]);
 

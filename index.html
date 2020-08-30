@@ -16,7 +16,7 @@
         </p>
     </div>
 
-    <form class="form form__recovery" action="./php/passRecovery.php" method="POST">
+    <form class="form form__recovery" action="./php/modules/passRecovery.php" method="POST">
         <div class="form__container">
             <button type="button" class="form__close window__close"></button>
 
@@ -34,7 +34,7 @@
         </div>
     </form>
 
-    <form class="form form__mail" action="./php/mail.php" method="POST">
+    <form class="form form__mail" action="./php/modules/mail.php" method="POST">
         <div class="form__container">
             <button type="button" class="form__close window__close"></button>
 
@@ -72,7 +72,7 @@
                 <input name="guardian" type="checkbox">
             </label>
 
-            <button class="submit">Wyślij</button>
+            <button class="submit form__submit">Wyślij</button>
         </div>
     </form>
 
@@ -82,13 +82,13 @@
         <a href="index.html"><i class="fab fa-gofore logo"></i></a>
 
         <nav class="main__nav">
-            <form class="search__bar" action="./php/getPostsData.php" method="POST">
+            <form class="search__bar" action="./php/modules/getPostsData.php" method="POST">
                 <label class="form__row">
                     <i class="fas fa-pen"></i>
                     <input type="text" name="searchStr" placeholder="Wyszukaj: Login, Miasto, Wiek, Data, Tytuł, Kategoria" autofocus>
                 </label>
 
-                <button class="submit"> Wyszukaj
+                <button class="submit form__submit"> Wyszukaj
                         <i class="fas fa-search"></i>
                 </button>
             </form>
@@ -98,7 +98,7 @@
             <ul class="user__bar">
                 <li>
                     <a href="#" class="login__button"> <i class="fas fa-user-lock"></i> </a>
-                        <form class="form form__login" action="./php/login.php" method="POST">
+                        <form class="form form__login" action="./php/modules/login.php" method="POST">
                             <div class="form__container">
                                 <label class="form__row">
                                     <h5>Login</h5>
@@ -117,14 +117,14 @@
                                     <input name="guardian" type="checkbox">
                                 </label>
 
-                                <button class="submit">Zaloguj</button>
+                                <button class="submit form__submit">Zaloguj</button>
 
                                 <button type="button" class="forgot">Zapomniałem hasła!</button>
                             </div>
                         </form>
                 </li>
                 <li> <a href="#" class="register__button"> <i class="fas fa-user-plus"></i> </a>
-                    <form class="form form__register" action="./php/register.php" method="POST">
+                    <form class="form form__register" action="./php/modules/register.php" method="POST">
                         <div class="form__container">
                             <label class="form__row">
                                 <h5>Login</h5>
@@ -197,12 +197,12 @@
                                 <input name="guardian" type="checkbox">
                             </label>
 
-                            <button class="submit">Zarejestruj</button>
+                            <button class="submit form__submit">Zarejestruj</button>
                         </div>
                     </form>
                 </li>
                 <li> <a href="#" class="options__button"> <i class="fas fa-user-cog"></i> </a>
-                    <form class="form form__options" action="./php/editUser.php" method="POST">
+                    <form class="form form__options" action="./php/modules/editUser.php" method="POST">
                         <div class="form__container">
                             <input type="number" name="user_id" required readonly>
 
@@ -284,9 +284,9 @@
                                 <input name="guardian" type="checkbox">
                             </label>
 
-                            <button class="submit">Zapisz zmiany</button>
+                            <button class="submit form__submit">Zapisz zmiany</button>
 
-                            <a class="btn__logout" href="./php/logout.php">Wyloguj</a>
+                            <a class="btn__logout" href="./php/modules/logout.php">Wyloguj</a>
                         </div>
                     </form>
                 </li>
@@ -315,7 +315,7 @@
                 <button class="btn__close"></button>
             </div>
 
-            <form class="form form__post" action="./php/createPost.php" method="POST">
+            <form class="form form__post" action="./php/modules/createPost.php" method="POST">
                 <div class="post__data">
                     <div class="user__img"></div>
 
@@ -375,7 +375,7 @@
                     <input name="guardian" type="checkbox">
                 </label>
 
-                <button class="submit">Opublikuj</button>
+                <button class="submit form__submit">Opublikuj</button>
             </form>
         </section>
 
@@ -418,7 +418,7 @@
 
                 <div class="post__img"></div>
 
-                <form class="form__delete__post" action="./php/deletePost.php" method="POST">
+                <form class="form__delete__post" action="./php/modules/deletePost.php" method="POST">
                     <input type="text" name="post_id" class="input" required readonly value="">
                     <input type="text" name="user_id" class="input" required readonly value="">
 
@@ -426,7 +426,7 @@
                         <input name="guardian" type="checkbox">
                     </label>
 
-                    <button class="btn__mail btn__delete">Usuń Post<i class="fas fa-trash-alt"></i></button>
+                    <button class="btn__delete form__submit">Usuń Post<i class="fas fa-trash-alt"></i></button>
                 </form>
 
                 <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>

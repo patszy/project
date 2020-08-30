@@ -2,16 +2,16 @@ const loadEventListenners = () => {
     const togglePostCreatorBtn = document.querySelector(`.post__creator .btn__close`);
     const closeMenuFormBtns = document.querySelectorAll(`.user__bar .form__close`);
     const alertClose = document.querySelector(`.alert__close`);
-    const windowFormClose = document.querySelectorAll(`.window__close`);
+    const formCloseBtn = document.querySelectorAll(`.window__close`);
     const hamburgerMenu = document.querySelector(`.hamburger`);
     const inputs = document.querySelectorAll(`.input`);
     const menuBtns = document.querySelectorAll(`[class$="__button"]`);
-    const eyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
-    const time = document.querySelectorAll(`.post__creator time`)[0];
-    const emailButtons = document.querySelectorAll(`.btn__mail`);
+    const passwordEyes = document.querySelectorAll(`.far[class*="fa-eye"]`);
+    const createPostTime = document.querySelectorAll(`.post__creator time`)[0];
+    const emailToUserBtns = document.querySelectorAll(`.btn__mail`);
     const recoveryBtn = document.querySelector(`.forgot`);
     const logoutBtn = document.querySelector(`.btn__logout`);
-    const timeInterval = window.setInterval(() => time.innerText = new Date().toLocaleString(), 1000);
+    const timeInterval = window.setInterval(() => createPostTime.innerText = new Date().toLocaleString(), 1000);
 
     // Add Event Listeners
 
@@ -23,7 +23,7 @@ const loadEventListenners = () => {
         input.addEventListener(`blur`, event => (!event.target.value) ? toggleFocusClass(event.target.closest(`.form__row`), false) : null);
     });
 
-    eyes.forEach(eye => {
+    passwordEyes.forEach(eye => {
         eye.addEventListener(`click`, (event) => {
             if(eye.classList.contains(`fa-eye`)) {
                 eye.classList.remove(`fa-eye`);
@@ -46,7 +46,7 @@ const loadEventListenners = () => {
         toggleShowClass(btn, btn.nextElementSibling);
     }));
 
-    emailButtons.forEach(btn => btn.addEventListener(`click`, () => {
+    emailToUserBtns.forEach(btn => btn.addEventListener(`click`, () => {
         toggleShowClass(document.querySelector(`.form__mail`),  document.querySelector(`.mail__creator`));
         document.getElementById(`mail__recipient`).setAttribute(`value`, btn.getAttribute(`mail`));
     }));
@@ -59,7 +59,7 @@ const loadEventListenners = () => {
 
     alertClose.addEventListener(`click`, () => toggleShowClass(alertClose.closest(`.info__alert`)));
 
-    windowFormClose.forEach(btn => btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`))));
+    formCloseBtn.forEach(btn => btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`))));
 
     recoveryBtn.addEventListener(`click`, () => toggleShowClass(document.querySelector(`.form__recovery`)));
 

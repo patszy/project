@@ -35,7 +35,7 @@ const loadPosts = (Status) => {
     console.log(Status);
     for (var value of formData.entries()) console.log(value);
 
-    return fetch(`./php/getPostsData.php`, {
+    return fetch(`./php/modules/getPostsData.php`, {
         method: `POST`,
         body: formData
     })
@@ -84,8 +84,16 @@ const searchPosts = (Status) => {
 
 const showDeletePostFormBtn = () => {
     document.querySelectorAll(`.post__container`).forEach(post => {
-        if(getCookie(`name`) == post.querySelector(`.user__name`).innerText || getCookie(`permission`) == 1) post.querySelector(`.form__delete__post`).classList.add(`--show`);
+        if(getCookie(`name`) == post.querySelector(`.user__name`).innerText || getCookie(`permission`) == 1) {
+            let form = post.querySelector(`.form__delete__post`).classList.add(`--show`);
+
+            post.querySelector(`.form__delete__post .btn__delete`).addEventListener(`click`, event => {
+                let formPostDelete = event.target.parentElement;
+                let formPostDeleteValidation = new FormValidate(formPostDelete, {});
+            });
+        }
     })
+
 }
 
 const setDeletePostFormUserId = () => {

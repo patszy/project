@@ -5,17 +5,17 @@ document.addEventListener(`DOMContentLoaded`, () =>{
     const formMail = document.getElementsByClassName(`form__mail`)[0];
     const formRecovery = document.getElementsByClassName(`form__recovery`)[0];
     const formOptions = document.getElementsByClassName(`form__options`)[0];
-    const postCreator = document.getElementsByClassName(`form__post`)[0];
+    const formPostCreator = document.getElementsByClassName(`form__post`)[0];
 
     const formLoginValidation = new FormValidate(formLogin, {});
     const formRegisterValidation = new FormValidate(formRegister, {});
     const formMailValidation = new FormValidate(formMail, {});
     const formRecoveryValidation = new FormValidate(formRecovery, {});
     const formOptionsValidatio = new FormValidate(formOptions, {});
-    const postCreatorValidation = new FormValidate(postCreator, {});
+    const formPostCreatorValidation = new FormValidate(formPostCreator, {});
 
     //Load new users
-    fetch(`./php/getNewUsers.php`, {method: `POST`})
+    fetch(`./php/modules/getNewUsers.php`, {method: `POST`})
         .then(response => response.json())
         .then(response => {
             if (response.status == `error`) this.toggleAlert(`${response.error}` , `error`, true);

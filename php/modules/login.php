@@ -1,32 +1,8 @@
 <?php
 
-    require 'init.php';
-    require 'Connection.php';
-
-    function getUser($connect, $table, $login) {
-        $sql_login = "SELECT * FROM $table WHERE login='$login'";
-        $query_login = $connect->db_connect->query($sql_login);
-        $return = [];
-        $return["user"] = [];
-
-        if($query_login->num_rows == 1) {
-            $return["success"] = "Użytkownik istnieje.";
-            $return["user"] = mysqli_fetch_assoc($query_login);
-        } else if($query_login->num_rows == 0) $return["warning"] = "Użytkownik nie istnieje.";
-        else $return["error"] = "Error: " . $sql_login . "<br>" . $connect->db_connect->error;
-
-        return $return;
-    };
-
-    function checkData($login, $password, $userLogin, $userPassword) {
-        $return = [];
-
-        if(password_verify($password, $userPassword) && $login === $userLogin) $return["success"] = "Dane poprawne.";
-        else if(!password_verify($password, $userPassword) || $login !== $userLogin) $return["error"] = "Niewłaściwe dane.";
-        else $return["error"] = "Error: " . $sql_login . "<br>" . $connect->db_connect->error;
-
-        return $return;
-    }
+    require '../init.php';
+    require '../Connection.php';
+    require '../functions/userFunctions.php';
 
     function login($user) {
         $retrun = [];
@@ -66,7 +42,7 @@
 
                     if(!isset($return["error"]) && !isset($return["warning"])) {
                         $user = $return["user"];
-                        $return = checkData($login, $password, $user["login"], $user["password"]);
+                        $return = checkUserData($login, $password, $user["login"], $user["password"]);
 
                         if(!isset($return["error"]) && !isset($return["warning"])) $return = login($user);
                     }

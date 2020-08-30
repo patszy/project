@@ -49,7 +49,7 @@ Delete:
 - Useless pictures
 
 Change:
-- php function in 1 file
+- Delete post to fetch
 - Instruction to run project
 
 Check:

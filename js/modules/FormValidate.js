@@ -107,7 +107,7 @@ class FormValidate {
             }
 
             if(!formErrors) {
-                const submit = this.form.querySelector(`.submit`);
+                const submit = this.form.querySelector(`.form__submit`);
                 submit.disabled = true;
                 submit.classList.add(`loading`);
 
@@ -134,11 +134,12 @@ class FormValidate {
                         } else if (response.status == `success`) {
                             console.log(`Send Success`);
                             if (response.success) {
-                                if(response.update || response.delete) {
-                                    fetch('./php/logout.php', {method: method.toUpperCase()});
+                                if(response.updateUser || response.deleteUser) {
+                                    fetch('./php/modules/logout.php', {method: method.toUpperCase()});
                                     logOut();
                                     setTimeout(() => window.location.reload(true), 1500);
-                                }
+                                } else if(response.deletePost) submit.closest(`.post__container`).remove();
+
                                 toggleAlert(`${response.success}` ,`success`, true);
                             }
                             else if (response.info) toggleAlert(`${response.info}` ,`info`, true);

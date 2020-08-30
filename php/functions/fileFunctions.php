@@ -1,5 +1,6 @@
 <?php
 
+    //editUser
     function validateFile($file) {
         $return = [];
         $max_size = $_POST["MAX_FILE_SIZE"]/1000000;
