@@ -59,6 +59,7 @@
 		background-color: none;
 		top: 185px;
 		z-index: 500;
+		display: none;	
 	}
 
 	.content__nav > ul, ul li {
