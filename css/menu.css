@@ -27,16 +27,16 @@
 	text-decoration: none;
 	padding: 7px;
 	font-weight: bold;
-	background-color: #27c;
-	color: #def;
-	border-left: 10px solid #25b;
+	background-color: #fff;
+	color: #000;
+	border-left: 10px solid #aaa;
 }
 
 .content__nav > ul a:hover {
 	width: 166px;
-	background-color: #28e;
-	color: #fff;
-	border-left: 20px solid #26d;
+	background-color: #fff;
+	color: #000;
+	border-left: 20px solid #aaa;
 }
 
 .content__nav ul>li>ol>li{
