@@ -19,8 +19,9 @@ const loadUserDataOnPage = (sessionUserData) =>{
     //Error solution: no warszawa in options.
     userCityOpt = document.querySelector(`.form__options [value=${sessionUserData.city.toLowerCase()}]`).selected = true;
     //Delete post form
-    showDeletePostFormBtn();
-    setDeletePostFormUserId();
+    let posts = document.querySelectorAll(`.post__container`);
+    showDeletePostFormBtn(posts);
+    setDeletePostFormUserId(posts);
 }
 
 const loadNewUsers = (tabUsers) => {
