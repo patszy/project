@@ -27,7 +27,7 @@
 }
 
 .form__options.--show {
-    height: 300px;
+    height: 600px;
 }
 
 .form__close {
@@ -134,6 +134,10 @@
     outline: 0;
 }
 
+.form__row .input[type="file"] {
+    font-size: initial;
+}
+
 .form__row .input__radio .input {
     width: initial;
     height: initial;
@@ -149,6 +153,10 @@
 
 .form__row.--focus .input__radio {
     opacity: 1;
+}
+
+.form__row .input.input__checkbox{
+    height: initial;
 }
 
 .form__row .input__date {
@@ -176,7 +184,8 @@
     left: 10px;
 }
 
-.form__row.--focus .fas {
+.form__row.--focus .fas,
+.form__row.--focus .far {
     color: var(--blue-color);
 }
 
@@ -190,7 +199,7 @@
 .form__row .far.fa-eye:hover,
 .form__row .far.fa-eye-slash:hover {
     color: var(--blue-color);
-    transform: scale(.9);
+    transform: scale(.9) translateY(-50%);
 }
 
 .form__row.--error::before,
@@ -272,7 +281,7 @@
 
 .post__creator.--show .form__post {
     padding: 20px;
-    height: 350px;
+    height: 400px;
 }
 
 .form__post .user__img {
@@ -284,12 +293,16 @@
     margin: 0;
 }
 
-.form__post .form__row[for="post__category"] {
+.form__post .post__category {
     margin-left: 10px;
 }
 
-.form__post .form__row[for="post__content"] {
+.form__post .post__content {
     margin: 10px auto 30px;
+}
+
+.form__post .form__row.post__img.--focus h5 {
+    transform: translateY(-140%) scale(.7);
 }
 
 .form__post .form__row .input {
@@ -310,7 +323,7 @@
     left: 35px;
 }
 
-.form__post .form__row[for="post__content"].--focus h5 {
+.form__post .post__content.--focus h5 {
     transform: translateY(-300%) scale(.7);
 }
 
@@ -356,7 +369,7 @@
     display: none;
 }
 
-.form__mail .form__row[for="mail__message"].--focus h5 {
+.form__mail .mail__message.--focus h5 {
     transform: translateY(-490%) scale(.7);
 }
 
@@ -377,4 +390,25 @@
 
 .form__recovery.--show {
     display: flex;
+}
+
+/* Form form__options */
+
+.form__options input[name="user_id"] {
+    display: none;
+}
+
+/* Form form__delete__post */
+
+.form__delete__post {
+    display: none;
+}
+
+.form__delete__post.--show {
+    display: initial;
+}
+
+.form__delete__post input[name="post_id"],
+.form__delete__post input[name="user_id"] {
+    display: none;
 }

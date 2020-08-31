@@ -34,7 +34,7 @@ main {
 }
 
 .user__img {
-    background-image: url(../assets/undraw_male_avatar_323b.svg);
+    background-image: var(--url-portrait);
     background-color: transparent;
     background-position: center;
     background-size: contain;
@@ -42,6 +42,8 @@ main {
     width: 100px;
     height: 100px;
     transition: .2s;
+    border-radius: 100%;
+    object-fit: cover;
 }
 
 .new__users {
@@ -60,11 +62,6 @@ main {
     height: 100px;
     border: 0;
     border-radius: 100px;
-}
-
-.new__users .user__wrapper:nth-child(3) .user__img,
-.new__users .user__wrapper:nth-child(5) .user__img {
-    background-image: url(../assets/undraw_female_avatar_w3jk.svg);
 }
 
 .new__users .user__name {
@@ -141,7 +138,8 @@ main {
 }
 
 .btn__mail,
-.btn__close {
+.btn__close,
+.btn__delete {
     border: 0;
     outline: 0;
     border-radius: 3px;
@@ -152,7 +150,8 @@ main {
     padding: 0;
 }
 
-.btn__mail {
+.btn__mail,
+.btn__delete {
     display: block;
     margin-left: auto;
     margin-right:0;
@@ -168,7 +167,8 @@ main {
     left: 0;
 }
 
-.btn__mail i.fas {
+.btn__mail i.fas,
+.btn__delete i.fas {
     margin-left: 5px;
 }
 
@@ -194,6 +194,12 @@ main {
 
 .btn__mail:hover {
     background-color: var(--yellow-color);
+    color: var(--light-color);
+    z-index: 10;
+}
+
+.btn__delete:hover {
+    background-color: var(--red-color);
     color: var(--light-color);
     z-index: 10;
 }

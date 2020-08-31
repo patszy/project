@@ -16,6 +16,7 @@
     --dark-color: black;
     --light-color: white;
     --grey-color: #707070;
+    --web-wash: #F0F2F5;
     --light-grey-color: #cccccc;
     --red-color: #EA2027;
     --green-color: #A3CB38;
@@ -46,7 +47,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--light-grey-color);
+    background-color: var(--web-wash);
     background-image: url(../assets/undraw_in_love_3dcq.svg);
     background-repeat: no-repeat;
     background-size: contain;

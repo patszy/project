@@ -81,13 +81,11 @@
     text-decoration: underline;
 }
 
-.post__img {
-    width: 20vw;
-    height: 20vw;
-    float: left;
-    border-radius: 10000px;
-    shape-outside: circle();
-    margin-right: 20px;
+.post__img[src] {
+    width: 70%;
+    display: block;
+    margin: 0 auto 1em;
+    border-radius: 10px;
 }
 
 .clearfix:after {

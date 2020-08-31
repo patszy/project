@@ -42,6 +42,7 @@ class FormValidate {
     testInput = input => {
         let valid = input.checkValidity();
         this.toggleErrorField(input, !valid);
+
         return valid;
     }
 
@@ -94,13 +95,6 @@ class FormValidate {
         }
     }
 
-    toggleAlert = (text, type, show) => {
-        const infoAlert = document.querySelector(`.info__alert`);
-        infoAlert.querySelector(`span`).innerText = text;
-        infoAlert.classList.remove(`--show`, `--error`, `--warning`,  `--success`, `--info`);
-        show ? infoAlert.classList.add(`--show`, `--${type}`) : false;
-    }
-
     handleSubmit = () => {
         this.form.addEventListener(`submit`, event => {
             event.preventDefault();
@@ -113,9 +107,7 @@ class FormValidate {
             }
 
             if(!formErrors) {
-                // event.target.submit();
-
-                const submit = this.form.querySelector(`.submit`);
+                const submit = this.form.querySelector(`.form__submit`);
                 submit.disabled = true;
                 submit.classList.add(`loading`);
 
@@ -134,35 +126,29 @@ class FormValidate {
                     console.log(response);
                     if (response.status == `error`) {
                         console.log(`Send Error`);
-                        this.toggleAlert(`${response.error}` , `error`, true);
+                        toggleAlert(`${response.error}` , `error`, true);
                     } else {
                         if (response.status == `warning`) {
                             console.log(`Send Warning`);
-                            this.toggleAlert(`${response.warning}` , `warning`, true);
+                            toggleAlert(`${response.warning}` , `warning`, true);
                         } else if (response.status == `success`) {
                             console.log(`Send Success`);
-                            if (response.success) this.toggleAlert(`${response.success}` ,`success`, true);
-                            else if (response.info) this.toggleAlert(`${response.info}` ,`info`, true);
+                            if (response.success) {
+                                if(response.updateUser || response.deleteUser) {
+                                    fetch('./php/modules/logout.php', {method: method.toUpperCase()});
+                                    logOut();
+                                    setTimeout(() => window.location.reload(true), 1500);
+                                }
+                                if(response.deletePost) submit.closest(`.post__container`).remove();
+                                if(response.post) {
+                                    createPosts(response.post, true);
+                                }
 
-                            if(response.session) {
-                                const userSession = response.session;
-                                const postCreator = document.querySelector(`.post__creator`);
-                                const userId = postCreator.querySelector(`.post__creator input[name="user__id"]`);
-                                const userName = postCreator.querySelector(`.post__creator .user__name`);
-                                const userCity = postCreator.querySelector(`.post__creator .user__city`);
-                                const userAge = postCreator.querySelector(`.post__creator .user__age`);
-                                const emailAddress = document.getElementById(`mail__address`);
-                                postCreator.style.display = `block`;
-                                userId.value = userSession.id_user;
-                                userName.innerText = userSession.name;
-                                userCity.innerText = userSession.city;
-                                userAge.innerText = new Date().getFullYear() - userSession.date;
-                                emailAddress.parentElement.classList.add(`--focus`);
-                                emailAddress.value = userSession.email;
-
-                                document.querySelector(`.user__bar li:nth-child(1)`).style.display = `none`;
-                                document.querySelector(`.user__bar li:nth-child(2)`).style.display = `none`;
+                                toggleAlert(`${response.success}` ,`success`, true);
                             }
+                            else if (response.info) toggleAlert(`${response.info}` ,`info`, true);
+
+                            if(response.session) logIn(response.session);
                         }
                     }
                 }).finally(() => {
@@ -173,17 +159,3 @@ class FormValidate {
         });
     }
 }
-
-document.addEventListener(`DOMContentLoaded`, () =>{
-    const formLogin = document.getElementsByClassName(`form__login`)[0];
-    const formRegister = document.getElementsByClassName(`form__register`)[0];
-    const formMail = document.getElementsByClassName(`form__mail`)[0];
-    const formRecovery = document.getElementsByClassName(`form__recovery`)[0];
-    const postCreator = document.getElementsByClassName(`form__post`)[0];
-
-    const formLoginValidation = new FormValidate(formLogin, {});
-    const formRegisterValidation = new FormValidate(formRegister, {});
-    const formMailValidation = new FormValidate(formMail, {});
-    const formRecoveryValidation = new FormValidate(formRecovery, {});
-    const postCreatorValidation = new FormValidate(postCreator, {});
-});

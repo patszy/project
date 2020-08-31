@@ -40,10 +40,20 @@ To run this project open file index.html from copied folder in browser (recomend
 Add:
 - Frontend:
     - add categories
-    - add photo to post
-    - change user avatar
-    - slider
     - positioning
-- Backend:
-    - user options
-    - limit post render
+
+## Optimisation/Errors
+Delete:
+- Label for / Input id
+- Comments / Console.log
+- Useless pictures
+
+Change:
+- Delete post to fetch
+- Instruction to run project
+
+Check:
+- Registration (Not/Properly)
+- Login (Not/Properly)
+- Adding Post (Not/Properly)
+- User options (Not/Properly)

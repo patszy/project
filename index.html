@@ -17,79 +17,79 @@
         </p>
     </div>
 
-    <form class="form form__recovery" action="./php/passRecovery.php" method="POST">
+    <form class="form form__recovery" action="./php/modules/passRecovery.php" method="POST">
         <div class="form__container">
             <button type="button" class="form__close window__close"></button>
 
-            <label for="mail__recovery" class="form__row">
+            <label class="form__row">
                 <h5>Wprowadź swój Email.</h5>
                 <i class="fas fa-envelope"></i>
-                <input id="mail__recovery" type="email" name="email" class="input" autocomplete="off" required>
+                <input type="email" name="email" class="input" autocomplete="off" required>
             </label>
 
-            <label for="recovery__guardian" class="guardian">
-                <input id="recovery__guardian" name="guardian" type="checkbox">
+            <label class="guardian">
+                <input name="guardian" type="checkbox">
             </label>
 
             <button class="submit">Wyślij Hasło</button>
         </div>
     </form>
 
-    <form class="form form__mail" action="./php/mail.php" method="POST">
+    <form class="form form__mail" action="./php/modules/mail.php" method="POST">
         <div class="form__container">
             <button type="button" class="form__close window__close"></button>
 
             <h5 class="title">Nowa wiadomość: </h5>
 
-            <label for="mail__recipient" class="form__row mail__recipient">
-                <input id="mail__recipient" type="email" name="email" class="input" autocomplete="off" required readonly>
+            <label class="form__row mail__recipient">
+                <input type="email" name="email_recipient" class="input" autocomplete="off" required readonly>
             </label>
 
-            <label for="mail__login" class="form__row --focus">
+            <label class="form__row --focus">
                 <h5>Do</h5>
                 <i class="fas fa-envelope-open-text"></i>
-                <input id="mail__login" type="text" name="login" class="input user__name" autocomplete="off" required readonly>
+                <input type="text" name="login" class="input user__name" autocomplete="off" required readonly>
             </label>
 
-            <label for="mail__address" class="form__row">
+            <label class="form__row">
                 <h5>Od</h5>
                 <i class="fas fa-envelope"></i>
-                <input id="mail__address" type="email" name="email" class="input" autocomplete="off" required>
+                <input type="email" name="email_addressee" class="input" autocomplete="off" required>
             </label>
 
-            <label for="mail__title" class="form__row">
+            <label class="form__row --focus">
                 <h5>Tytuł</h5>
                 <i class="fas fa-paragraph"></i>
-                <input id="mail__title" type="text" name="title" class="input" autocomplete="off" required>
+                <input type="text" name="title" class="input" autocomplete="off" required>
             </label>
 
-            <label for="mail__message" class="form__row">
+            <label class="form__row mail__message">
                 <h5>Treść</h5>
                 <i class="fas fa-align-left"></i>
-                <textarea id="mail__message" type="text" name="message" class="input" autocomplete="off" required></textarea>
+                <textarea type="text" name="message" class="input" autocomplete="off" required></textarea>
             </label>
 
-            <label for="mail__guardian" class="guardian">
-                <input id="mail__guardian" name="guardian" type="checkbox">
+            <label class="guardian">
+                <input name="guardian" type="checkbox">
             </label>
 
-            <button class="submit">Wyślij</button>
+            <button class="submit form__submit">Wyślij</button>
         </div>
     </form>
 
     <div class="background-img"></div>
 
     <header>
-        <a href="#"><i class="fab fa-gofore logo"></i></a>
+        <a href="index.html"><i class="fab fa-gofore logo"></i></a>
 
         <nav class="main__nav">
-            <form class="search__bar" action="./php/getPostsData.php" method="POST">
+            <form class="search__bar" action="./php/modules/getPostsData.php" method="POST">
                 <label class="form__row">
                     <i class="fas fa-pen"></i>
-                    <input type="text" name="searchStr" placeholder="Wpisz szukaną frazę." autofocus>
+                    <input type="text" name="searchStr" placeholder="Wyszukaj: Login, Miasto, Wiek, Data, Tytuł, Kategoria" autofocus>
                 </label>
 
-                <button class="submit"> Wyszukaj
+                <button class="submit form__submit"> Wyszukaj
                         <i class="fas fa-search"></i>
                 </button>
             </form>
@@ -99,112 +99,195 @@
             <ul class="user__bar">
                 <li>
                     <a href="#" class="login__button"> <i class="fas fa-user-lock"></i> </a>
-                        <form class="form form__login" action="./php/login.php" method="POST">
+                        <form class="form form__login" action="./php/modules/login.php" method="POST">
                             <div class="form__container">
-                                <button type="button" class="form__close"></button>
-                                <label for="login" class="form__row">
+                                <label class="form__row">
                                     <h5>Login</h5>
                                     <i class="fas fa-user"></i>
-                                    <input id="login" type="text" name="login" class="input" autocomplete="off" required>
+                                    <input type="text" name="login" class="input" autocomplete="off" required>
                                 </label>
 
-                                <label for="password__login" class="form__row">
+                                <label class="form__row">
                                     <h5>Hasło</h5>
                                     <i class="fas fa-unlock-alt"></i>
-                                    <input id="password__login" type="password" name="password" class="input" required>
+                                    <input type="password" name="password" class="input" required>
                                     <i class="far fa-eye-slash"></i>
                                 </label>
 
-                                <label for="login__guardian" class="guardian">
-                                    <input id="login__guardian" name="guardian" type="checkbox">
+                                <label class="guardian">
+                                    <input name="guardian" type="checkbox">
                                 </label>
 
-                                <button class="submit">Zaloguj</button>
+                                <button class="submit form__submit">Zaloguj</button>
 
                                 <button type="button" class="forgot">Zapomniałem hasła!</button>
                             </div>
                         </form>
                 </li>
                 <li> <a href="#" class="register__button"> <i class="fas fa-user-plus"></i> </a>
-                    <form class="form form__register" action="./php/register.php" method="POST">
+                    <form class="form form__register" action="./php/modules/register.php" method="POST">
                         <div class="form__container">
-                            <button type="button" class="form__close"></button>
-
-                            <label for="login2" class="form__row">
+                            <label class="form__row">
                                 <h5>Login</h5>
                                 <i class="fas fa-user"></i>
-                                <input id="login2" type="text" name="login" minlength="3" class="input" autocomplete="off" required>
+                                <input type="text" name="login" minlength="3" class="input" autocomplete="off" required>
                             </label>
 
-                            <label for="mail" class="form__row">
+                            <label class="form__row">
                                 <h5>E-mail</h5>
                                 <i class="fas fa-envelope"></i>
-                                <input id="mail" type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
+                                <input type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
                             </label>
 
-                            <label for="password__register" class="form__row">
+                            <label class="form__row">
                                 <h5>Hasło</h5>
                                 <i class="fas fa-unlock-alt"></i>
-                                <input id="password__register" type="password" name="password" minlength="8" class="input" required>
+                                <input type="password" name="password" minlength="8" class="input" required>
                                 <i class="far fa-eye-slash"></i>
                             </label>
 
-                            <label for="date" class="form__row">
+                            <label class="form__row">
                                 <h5>Rok Urodzenia</h5>
                                 <i class="fas fa-calendar-alt"></i>
-                                <input id="date" type="number" name="date" min="1900" class="input input__date" autocomplete="off" required>
+                                <input type="number" name="date" min="1900" class="input input__date" autocomplete="off" required>
                             </label>
 
-                            <label for="city" class="form__row">
-                                <h5>Miasto</h5>
+                            <label class="form__row">
+                                <h5>Miasto/Województwo</h5>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <select id="city" name="city" class="input" required>
+                                <select name="city" class="input" required>
                                     <option value=""></option>
-                                    <option value="Warszawa">Warszawa</option>
-                                    <option value="Poznań">Poznań</option>
-                                    <option value="Kraków">Kraków</option>
-                                    <option value="Gdańsk">Gdańsk</option>
-                                    <option value="Wrocław">Wrocław</option>
-                                    <option value="Szczecin">Szczecin</option>
+                                    <option value="dolnośląskie">Dolnośląskie</option>
+                                    <option value="kujawsko-pomorskie">Kujawsko-Pomorskie</option>
+                                    <option value="lubelskie">Lubelskie</option>
+                                    <option value="lubuskie">Lubuskie</option>
+                                    <option value="łódzkie">Łódzkie</option>
+                                    <option value="małopolskie">Małopolskie</option>
+                                    <option value="mazowieckie">Mazowieckie</option>
+                                    <option value="opolskie">Opolskie</option>
+                                    <option value="podkarpackie">Podkarpackie</option>
+                                    <option value="podlaskie">Podlaskie</option>
+                                    <option value="pomorskie">Pomorskie</option>
+                                    <option value="śląskie">Śląskie</option>
+                                    <option value="świętokrzyskie">Świętokrzyskie</option>
+                                    <option value="warmińsko-mazurskie">Warmińsko-mazurskie</option>
+                                    <option value="wielkopolskie">Wielkopolskie</option>
+                                    <option value="zachodniopomorskie">Zachodniopomorskie</option>
+                                    <option value="białystok">Białystok</option>
+                                    <option value="bydgoszcz">Bydgoszcz</option>
+                                    <option value="gdańsk">Gdańsk</option>
+                                    <option value="gorzów Wielkopolski">Gorzów Wielkopolski</option>
+                                    <option value="katowice">Katowice</option>
+                                    <option value="kielce">Kielce</option>
+                                    <option value="kraków">Kraków</option>
+                                    <option value="lublin">Lublin</option>
+                                    <option value="łódź">Łódź</option>
+                                    <option value="olsztyn">Olsztyn</option>
+                                    <option value="opole">Opole</option>
+                                    <option value="poznań">Poznań</option>
+                                    <option value="rzeszów">Rzeszów</option>
+                                    <option value="szczecin">Szczecin</option>
+                                    <option value="toruń">Toruń</option>
+                                    <option value="warszawa">Warszawa</option>
+                                    <option value="wrocław">Wrocław</option>
+                                    <option value="zielona Góra">Zielona Góra</option>
                                 </select>
                             </label>
 
-                            <label for="register__guardian" class="guardian">
-                                <input id="register__guardian" name="guardian" type="checkbox">
+                            <label class="guardian">
+                                <input name="guardian" type="checkbox">
                             </label>
 
-                            <button class="submit">Zarejestruj</button>
+                            <button class="submit form__submit">Zarejestruj</button>
                         </div>
                     </form>
                 </li>
                 <li> <a href="#" class="options__button"> <i class="fas fa-user-cog"></i> </a>
-                    <form class="form form__options" action="#" method="POST">
+                    <form class="form form__options" action="./php/modules/editUser.php" method="POST">
                         <div class="form__container">
-                            <button type="button" class="form__close"></button>
+                            <input type="number" name="user_id" required readonly>
 
-                            <label for="opt_city" class="form__row">
-                                <h5>Miasto</h5>
+                            <label class="form__row --focus">
+                                <h5>Zdjęcie</h5>
+                                <i class="fas fa-user-circle"></i>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                                <input type="file" name="url_portrait" accept=".jpg, .jpeg" class="input">
+                            </label>
+
+                            <label class="form__row --focus">
+                                <h5>Login</h5>
+                                <i class="fas fa-user"></i>
+                                <input type="text" name="login" minlength="3" class="input" autocomplete="off">
+                            </label>
+
+                            <label class="form__row --focus">
+                                <h5>E-mail</h5>
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off">
+                            </label>
+
+                            <label class="form__row">
+                                <h5>Nowe Hasło</h5>
+                                <i class="fas fa-unlock-alt"></i>
+                                <input type="password" name="password" minlength="8" class="input">
+                                <i class="far fa-eye-slash"></i>
+                            </label>
+
+                            <label class="form__row --focus">
+                                <h5>Miasto/Województwo</h5>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <select id="opt_city" name="city" class="input" required>
+                                <select name="city" class="input">
                                     <option value=""></option>
-                                    <option value="warszawa">Warszawa</option>
-                                    <option value="poznań">Poznań</option>
-                                    <option value="kraków">Kraków</option>
+                                    <option value="dolnośląskie">Dolnośląskie</option>
+                                    <option value="kujawsko-pomorskie">Kujawsko-Pomorskie</option>
+                                    <option value="lubelskie">Lubelskie</option>
+                                    <option value="lubuskie">Lubuskie</option>
+                                    <option value="łódzkie">Łódzkie</option>
+                                    <option value="małopolskie">Małopolskie</option>
+                                    <option value="mazowieckie">Mazowieckie</option>
+                                    <option value="opolskie">Opolskie</option>
+                                    <option value="podkarpackie">Podkarpackie</option>
+                                    <option value="podlaskie">Podlaskie</option>
+                                    <option value="pomorskie">Pomorskie</option>
+                                    <option value="śląskie">Śląskie</option>
+                                    <option value="świętokrzyskie">Świętokrzyskie</option>
+                                    <option value="warmińsko-mazurskie">Warmińsko-mazurskie</option>
+                                    <option value="wielkopolskie">Wielkopolskie</option>
+                                    <option value="zachodniopomorskie">Zachodniopomorskie</option>
+                                    <option value="białystok">Białystok</option>
+                                    <option value="bydgoszcz">Bydgoszcz</option>
                                     <option value="gdańsk">Gdańsk</option>
-                                    <option value="wrocław">Wrocław</option>
+                                    <option value="gorzów Wielkopolski">Gorzów Wielkopolski</option>
+                                    <option value="katowice">Katowice</option>
+                                    <option value="kielce">Kielce</option>
+                                    <option value="kraków">Kraków</option>
+                                    <option value="lublin">Lublin</option>
+                                    <option value="łódź">Łódź</option>
+                                    <option value="olsztyn">Olsztyn</option>
+                                    <option value="opole">Opole</option>
+                                    <option value="poznań">Poznań</option>
+                                    <option value="rzeszów">Rzeszów</option>
                                     <option value="szczecin">Szczecin</option>
+                                    <option value="toruń">Toruń</option>
+                                    <option value="warszawa">Warszawa</option>
+                                    <option value="wrocław">Wrocław</option>
+                                    <option value="zielona Góra">Zielona Góra</option>
                                 </select>
                             </label>
 
-                            <div for="gender" class="form__row">
+                            <label class="form__row">
                                 <h5>Usuń konto</h5>
                                 <i class="fas fa-venus-mars"></i>
-                                <label class="input__radio"><input type="checkbox" name="gender" class="input">Usuń</label>
-                            </div>
+                                <input type="checkbox" name="delete" class="input input__checkbox">
+                            </label>
 
-                            <button class="submit">Zatwierdź</button>
+                            <label class="guardian">
+                                <input name="guardian" type="checkbox">
+                            </label>
 
-                            <a href="./php/logout.php">Wyloguj</a>
+                            <button class="submit form__submit">Zapisz zmiany</button>
+
+                            <a class="btn__logout" href="./php/modules/logout.php">Wyloguj</a>
                         </div>
                     </form>
                 </li>
@@ -242,7 +325,7 @@
                 <button class="btn__close"></button>
             </div>
 
-            <form class="form form__post" action="./php/createPost.php" method="POST">
+            <form class="form form__post" action="./php/modules/createPost.php" method="POST">
                 <div class="post__data">
                     <div class="user__img"></div>
 
@@ -257,260 +340,108 @@
                         <div class="article__data">
                             <time>07.06.2020 20:00</time>
 
-                            <label for="post__title" class="form__row">
+                            <label class="form__row">
                                 <h5>Tytuł</h5>
                                 <i class="fas fa-paragraph"></i>
-                                <input id="post__title" type="text" name="title" class="input" autocomplete="off" minlength="3" required>
+                                <input type="text" name="title" class="input" autocomplete="off" minlength="3" required>
                             </label>
 
-                            <label for="post__category" class="form__row">
+                            <label class="form__row post__category">
                                 <h5>Kategoria</h5>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <select id="post__category" name="category" class="input" required>
+                                <select name="category" class="input" required>
                                     <option value=""></option>
-                                    <option value="Pojazdy">Pojazdy</option>
-                                    <option value="Podróże">Podróże</option>
-                                    <option value="Dam pracę">Dam pracę</option>
-                                    <option value="Szukam pracy">Szukam pracy</option>
-                                    <option value="Usługi">Usługi</option>
+                                    <option value="komercyjne">Komercyjne</option>
+                                    <option value="szukam partnera">Szukam Partnera</option>
+                                    <option value="szukam Kochanka">Szukam Kochanka</option>
+                                    <option value="szukam przygodyx">Szukam Przygody</option>
+                                    <option value="wakacje i podróże">Wakacje i Podróże</option>
+                                    <option value="ogłoszenie o pracę">Ogłoszenie o Pracę</option>
+                                    <option value="szukam pracy">Szukam pracy</option>
+                                    <option value="usługi budowlane">Usługi budowlane</option>
+                                    <option value="usługi samochodowe">Usługi samochodowe</option>
+                                    <option value="usługi informatyczne">Usługi informatyczne</option>
+                                    <option value="korepetycje">Korepetycje</option>
                                 </select>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <label for="post__content" class="form__row">
+                <label class="form__row post__content">
                     <h5>Treść</h5>
                     <i class="fas fa-align-left"></i>
-                    <textarea id="post__content" type="text" name="content" class="input" autocomplete="off" minlength="10" required></textarea>
+                    <textarea type="text" name="content" class="input" autocomplete="off" minlength="10" required></textarea>
                 </label>
 
-                <label for="post__guardian" class="guardian">
-                    <input id="post__guardian" name="guardian" type="checkbox">
+                <label class="form__row post__img --focus">
+                    <h5>Zdjęcie</h5>
+                    <i class="fas fa-image"></i>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+                    <input type="file" name="url_post_img" accept=".jpg, .jpeg" class="input">
                 </label>
 
-                <button class="submit">Opublikuj</button>
+                <label class="guardian">
+                    <input name="guardian" type="checkbox">
+                </label>
+
+                <button class="submit form__submit">Opublikuj</button>
             </form>
         </section>
 
-        <section class="new__users">
-            <div class="user__wrapper">
-                <div class="img__wrapper">
+        <section class="new__users"> </section>
+
+        <div class="posts__wrapper">
+            <section class="post__container" style="display:none">
+                <div class="post__data">
                     <div class="user__img"></div>
-                </div>
-                <span class="user__name">Paweł</span>
-            </div>
 
-            <div class="user__wrapper">
-                <div class="img__wrapper">
-                    <div class="user__img"></div>
-                </div>
-                <span class="user__name">Horacy</span>
-            </div>
+                    <div class="data__wrapper">
+                        <div class="user__data">
+                            <span class="user__name"> Admin 123 </span>
+                            <span class="user__city"> Warszawa </span>
+                            <span class="user__age"> 18 </span>
+                        </div>
 
-            <div class="user__wrapper">
-                <div class="img__wrapper">
-                    <div class="user__img"></div>
-                </div>
-                <span class="user__name">Kamila</span>
-            </div>
-
-            <div class="user__wrapper">
-                <div class="img__wrapper">
-                    <div class="user__img"></div>
-                </div>
-                <span class="user__name">Jacenty</span>
-            </div>
-
-            <div class="user__wrapper">
-                <div class="img__wrapper">
-                    <div class="user__img"></div>
-                </div>
-                <span class="user__name">Agnieszka</span>
-            </div>
-        </section>
-
-        <section class="post__container">
-            <div class="post__data">
-                <div class="user__img"></div>
-
-                <div>
-                    <div class="user__data">
-                        <span class="user__name"> Admin 123 </span>
-                        <span class="user__city"> Warszawa </span>
-                        <span class="user__age"> 18 </span>
-                    </div>
-
-                    <div class="article__data">
-                        <time>07.06.2020 20:00</time>
-                        <h2>Lorem Ipsum</h2>
-                        <span class="article__category">default</span>
+                        <div class="article__data">
+                            <time>07.06.2020 20:00</time>
+                            <h2>Lorem Ipsum</h2>
+                            <p class="article__category">default</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <article class="post__content">
-                <p class="clearfix">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Repudiandae sequi iure similique, maiores voluptate a commodi sed,
-                    nobis recusandae nam quasi! Atque adipisci dignissimos ea deserunt veniam vel,
-                    omnis et reprehenderit ratione minima, velit cum ex mollitia explicabo exercitationem eos,
-                    delectus aliquid autem voluptatibus repellendus rerum iste illum.
-                    Quas accusantium aperiam praesentium unde, alias ab sint placeat expedita officia obcaecati totam blanditiis!
-                    Id, quae. Ab, error sequi. Velit possimus repellat inventore at, rem dolores neque,
-                    sapiente eaque officiis doloremque beatae pariatur? Consequuntur velit vero repellendus,
-                    id, optio magni dolorum ipsam rem iure, totam quisquam.Ratione consequatur suscipit odio doloribus voluptate.
-                </p>
-            </article>
+                <article class="post__content">
+                    <img src="./assets/undraw_pure_love_ay8a.svg" alt="Post image" class="post__img">
+                    <p class="clearfix">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Repudiandae sequi iure similique, maiores voluptate a commodi sed,
+                        nobis recusandae nam quasi! Atque adipisci dignissimos ea deserunt veniam vel,
+                        omnis et reprehenderit ratione minima, velit cum ex mollitia explicabo exercitationem eos,
+                        delectus aliquid autem voluptatibus repellendus rerum iste illum.
+                        Quas accusantium aperiam praesentium unde, alias ab sint placeat expedita officia obcaecati totam blanditiis!
+                        Id, quae. Ab, error sequi. Velit possimus repellat inventore at, rem dolores neque,
+                        sapiente eaque officiis doloremque beatae pariatur? Consequuntur velit vero repellendus,
+                        id, optio magni dolorum ipsam rem iure, totam quisquam.Ratione consequatur suscipit odio doloribus voluptate.
+                    </p>
+                </article>
 
-            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
-        </section>
+                <div class="post__img"></div>
 
-        <section class="post__container">
-            <div class="post__data">
-                <div class="user__img"></div>
+                <form class="form__delete__post" action="./php/modules/deletePost.php" method="POST">
+                    <input type="text" name="post_id" class="input" required readonly value="">
+                    <input type="text" name="user_id" class="input" required readonly value="">
 
-                <div>
-                    <div class="user__data">
-                        <span class="user__name"> Admin 123 </span>
-                        <span class="user__city"> Warszawa </span>
-                        <span class="user__age"> 18 </span>
-                    </div>
+                    <label class="guardian">
+                        <input name="guardian" type="checkbox">
+                    </label>
 
-                    <div class="article__data">
-                        <time>07.06.2020 20:00</time>
-                        <h2>Lorem Ipsum</h2>
-                        <p class="article__category">default</p>
-                    </div>
-                </div>
-            </div>
+                    <button class="btn__delete form__submit">Usuń Post<i class="fas fa-trash-alt"></i></button>
+                </form>
 
-            <article class="post__content">
-                <img src="./assets/undraw_intense_feeling_ft9s.svg" alt="Post image" class="post__img">
-                <p class="clearfix">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Repudiandae sequi iure similique, maiores voluptate a commodi sed,
-                    nobis recusandae nam quasi! Atque adipisci dignissimos ea deserunt veniam vel,
-                    omnis et reprehenderit ratione minima, velit cum ex mollitia explicabo exercitationem eos,
-                    delectus aliquid autem voluptatibus repellendus rerum iste illum.
-                    Quas accusantium aperiam praesentium unde, alias ab sint placeat expedita officia obcaecati totam blanditiis!
-                    Id, quae. Ab, error sequi. Velit possimus repellat inventore at, rem dolores neque,
-                    sapiente eaque officiis doloremque beatae pariatur? Consequuntur velit vero repellendus,
-                    id, optio magni dolorum ipsam rem iure, totam quisquam.Ratione consequatur suscipit odio doloribus voluptate.
-                </p>
-            </article>
-
-            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
-        </section>
-
-        <section class="post__container">
-            <div class="post__data">
-                <div class="user__img"></div>
-
-                <div>
-                    <div class="user__data">
-                        <span class="user__name"> Admin 123 </span>
-                        <span class="user__city"> Warszawa </span>
-                        <span class="user__age"> 18 </span>
-                    </div>
-
-                    <div class="article__data">
-                        <time>07.06.2020 20:00</time>
-                        <h2>Lorem Ipsum</h2>
-                        <p class="article__category">default</p>
-                    </div>
-                </div>
-            </div>
-
-            <article class="post__content">
-                <p class="clearfix">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Repudiandae sequi iure similique, maiores voluptate a commodi sed,
-                    nobis recusandae nam quasi! Atque adipisci dignissimos ea deserunt veniam vel,
-                    omnis et reprehenderit ratione minima, velit cum ex mollitia explicabo exercitationem eos,
-                    delectus aliquid autem voluptatibus repellendus rerum iste illum.
-                    Quas accusantium aperiam praesentium unde, alias ab sint placeat expedita officia obcaecati totam blanditiis!
-                    Id, quae. Ab, error sequi. Velit possimus repellat inventore at, rem dolores neque,
-                    sapiente eaque officiis doloremque beatae pariatur? Consequuntur velit vero repellendus,
-                    id, optio magni dolorum ipsam rem iure, totam quisquam.Ratione consequatur suscipit odio doloribus voluptate.
-                </p>
-            </article>
-
-            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
-        </section>
-
-        <section class="post__container">
-            <div class="post__data">
-                <div class="user__img"></div>
-
-                <div>
-                    <div class="user__data">
-                        <span class="user__name"> Admin 123 </span>
-                        <span class="user__city"> Warszawa </span>
-                        <span class="user__age"> 18 </span>
-                    </div>
-
-                    <div class="article__data">
-                        <time>07.06.2020 20:00</time>
-                        <h2>Lorem Ipsum</h2>
-                        <p class="article__category">default</p>
-                    </div>
-                </div>
-            </div>
-
-            <article class="post__content">
-                <p class="clearfix">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Repudiandae sequi iure similique, maiores voluptate a commodi sed,
-                    nobis recusandae nam quasi! Atque adipisci dignissimos ea deserunt veniam vel,
-                    omnis et reprehenderit ratione minima, velit cum ex mollitia explicabo exercitationem eos,
-                    delectus aliquid autem voluptatibus repellendus rerum iste illum.
-                    Quas accusantium aperiam praesentium unde, alias ab sint placeat expedita officia obcaecati totam blanditiis!
-                    Id, quae. Ab, error sequi. Velit possimus repellat inventore at, rem dolores neque,
-                    sapiente eaque officiis doloremque beatae pariatur? Consequuntur velit vero repellendus,
-                    id, optio magni dolorum ipsam rem iure, totam quisquam.Ratione consequatur suscipit odio doloribus voluptate.
-                </p>
-            </article>
-
-            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
-        </section>
-
-        <section class="post__container">
-            <div class="post__data">
-                <div class="user__img"></div>
-
-                <div class="data__wrapper">
-                    <div class="user__data">
-                        <span class="user__name"> Admin 123 </span>
-                        <span class="user__city"> Warszawa </span>
-                        <span class="user__age"> 18 </span>
-                    </div>
-
-                    <div class="article__data">
-                        <time>07.06.2020 20:00</time>
-                        <h2>Lorem Ipsum</h2>
-                        <p class="article__category">default</p>
-                    </div>
-                </div>
-            </div>
-
-            <article class="post__content">
-                <img src="./assets/undraw_pure_love_ay8a.svg" alt="Post image" class="post__img">
-                <p class="clearfix">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Repudiandae sequi iure similique, maiores voluptate a commodi sed,
-                    nobis recusandae nam quasi! Atque adipisci dignissimos ea deserunt veniam vel,
-                    omnis et reprehenderit ratione minima, velit cum ex mollitia explicabo exercitationem eos,
-                    delectus aliquid autem voluptatibus repellendus rerum iste illum.
-                    Quas accusantium aperiam praesentium unde, alias ab sint placeat expedita officia obcaecati totam blanditiis!
-                    Id, quae. Ab, error sequi. Velit possimus repellat inventore at, rem dolores neque,
-                    sapiente eaque officiis doloremque beatae pariatur? Consequuntur velit vero repellendus,
-                    id, optio magni dolorum ipsam rem iure, totam quisquam.Ratione consequatur suscipit odio doloribus voluptate.
-                </p>
-            </article>
-
-            <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
-        </section>
+                <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
+            </section>
+        </div>
 
     </main>
 
@@ -520,11 +451,13 @@
         </div>
     </aside>
 
-    <script src="js/index.js"></script>
-    <script src="js/modules/loadPosts.js"></script>
-    <script src="js/modules/loadNewUsers.js"></script>
+    <script src="js/modules/functions.js"></script>
+    <script src="js/modules/postFunctions.js"></script>
+    <script src="js/modules/cookies.js"></script>
+    <script src="js/modules/Post.js"></script>
+    <script src="js/modules/NewUser.js"></script>
+    <script src="js/modules/FormValidate.js"></script>
     <script src="js/modules/loadEventListenners.js"></script>
-    <script src="js/modules/postAnimation.js"></script>
-    <script src="js/modules/formValidation.js"></script>
+    <script src="js/init.js"></script>
 </body>
 </html>
