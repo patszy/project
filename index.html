@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/menu.css">
 </head>
 <body>
     <div class="info__alert">
@@ -299,22 +298,28 @@
         </div>
     </header>
 
-    <nav class="content__nav">
+    <nav class="category__nav">
+        <i class="fas fa-ellipsis-v eject__btn"></i>
         <ul>
-            <li><a href="#">Szukam partnera</a></li>
-            <li><a href="#">Szukam kochanka</a></li>
-            <li><a href="#">Szukam przygody</a></li>
-            <li><a href="#">Wakacje i podróże</a></li>
-            <li><a href="#">Dam pracę</a></li>
-            <li><a href="#">Szukam pracy</a></li>
-            <li><a href="#">Świadczę usługi</a>
-                <ol>
-                    <li><a href="#">Budowlane</a></li>
-                    <li><a href="#">Samochodowe</a></li>
-                    <li><a href="#">Informatyczne</a></li>
-                    <li><a href="#">Korepetycje</a></li>
-                </ol>
+            <li value="komercyjne">Komercyjne</li>
+            <li> Szukam
+                <ul>
+                    <li value="szukam partnera">partnera</li>
+                    <li value="szukam Kochanka">kochanka</li>
+                    <li value="szukam przygodyx">przygody</li>
+                </ul>
             </li>
+            <li value="wakacje i podróże">Wakacje i Podróże</li>
+            <li value="ogłoszenie o pracę">Ogłoszenie o Pracę</li>
+            <li value="szukam pracy">Szukam pracy</li>
+            <li> Usługi
+                <ul>
+                    <li value="usługi budowlane">budowlane</li>
+                    <li value="usługi samochodowe">samochodowe</li>
+                    <li value="usługi informatyczne">informatyczne</li>
+                </ul>
+            </li>
+            <li value="korepetycje">Korepetycje</li>
         </ul>
     </nav>
 
