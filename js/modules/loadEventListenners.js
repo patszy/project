@@ -55,8 +55,6 @@ const loadEventListenners = () => {
 
     togglePostCreatorBtn.addEventListener(`click`, () => toggleShowClass(togglePostCreatorBtn.closest(`.post__creator`)));
 
-    // for(let btn of closeMenuFormBtns) btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`), btn.closest(`.form`).previousElementSibling));
-
     alertClose.addEventListener(`click`, () => toggleShowClass(alertClose.closest(`.info__alert`)));
 
     formCloseBtn.forEach(btn => btn.addEventListener(`click`, () => toggleShowClass(btn.closest(`.form`))));

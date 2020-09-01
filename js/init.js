@@ -41,4 +41,18 @@ document.addEventListener(`DOMContentLoaded`, () =>{
     //Event listenners
     window.addEventListener(`scroll`, () => { if(document.body.scrollHeight == window.scrollY+window.innerHeight) loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum) });
     window.addEventListener(`scroll`, () => animatePosts(posts));
+
+    // Category menu
+
+    const categoryMenu = document.querySelectorAll(`.category__nav li[value]`);
+
+    categoryMenu.forEach(item => {
+        item.addEventListener(`click`, () => {
+            document.querySelector(`.search__bar input[name="searchStr"]`).value = item.getAttribute(`value`);
+            document.querySelector(`.posts__wrapper`).innerHTML = ``;
+
+            loadPostsStatus = ({rowNum: 0, rowCount: 5, searchStr: item.getAttribute(`value`)});
+            loadPosts(loadPostsStatus).then(response => loadPostsStatus = response);
+        })
+    })
 });
