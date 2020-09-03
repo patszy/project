@@ -22,10 +22,8 @@ const addPostMailEvent = post => {
         let emailButton = post.querySelector(`.btn__mail`);
 
         emailButton.addEventListener(`click`, () => {
-            // toggleShowClass(document.querySelector(`.form__mail`), document.querySelector(`.mail__creator`));
-            // I don't know what it is and when I used .mail_ creator!!!
             toggleShowClass(document.querySelector(`.form__mail`));
-            document.querySelector(`.form__mail [name="email_recipient"]`).setAttribute(`value`, emailButton.getAttribute(`mail`));
+            document.querySelector(`.form__mail [name="email_recipient"]`).setAttribute(`value`, emailButton.getAttribute(`email`));
             document.querySelector(`.form__mail [name="login"]`).value = emailButton.parentElement.querySelector(`.user__name`).innerText;
             document.querySelector(`.form__mail [name="title"]`).value = `Odp: ${emailButton.parentElement.querySelector(`.article__data h2`).innerText}`;
         });
@@ -39,16 +37,12 @@ const loadPosts = (Status) => {
     if(typeof(Status.rowCount) != undefined) formData.append(`rowCount`, Status.rowCount);
     if(typeof(Status.searchStr) != undefined) formData.append(`searchStr`, Status.searchStr);
 
-    console.log(Status);
-    for (var value of formData.entries()) console.log(value);
-
     return fetch(`./php/modules/getPostsData.php`, {
         method: `POST`,
         body: formData
     })
     .then(response => response.json())
     .then(response => {
-        console.log(response);
         if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
         else {
             if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);

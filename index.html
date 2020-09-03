@@ -21,7 +21,7 @@
             <button type="button" class="form__close window__close"></button>
 
             <label class="form__row">
-                <h5>Wprowadź swój Email.</h5>
+                <span class="input__text">Wprowadź swój Email.</span>
                 <i class="fas fa-envelope"></i>
                 <input type="email" name="email" class="input" autocomplete="off" required>
             </label>
@@ -45,27 +45,27 @@
             </label>
 
             <label class="form__row --focus">
-                <h5>Do</h5>
+                <span class="input__text">Do</span>
                 <i class="fas fa-envelope-open-text"></i>
                 <input type="text" name="login" class="input user__name" autocomplete="off" required readonly>
             </label>
 
             <label class="form__row">
-                <h5>Od</h5>
+                <span class="input__text">Od</span>
                 <i class="fas fa-envelope"></i>
                 <input type="email" name="email_addressee" class="input" autocomplete="off" required>
             </label>
 
             <label class="form__row --focus">
-                <h5>Tytuł</h5>
+                <span class="input__text">Tytuł</span>
                 <i class="fas fa-paragraph"></i>
                 <input type="text" name="title" class="input" autocomplete="off" required>
             </label>
 
             <label class="form__row mail__message">
-                <h5>Treść</h5>
+                <span class="input__text">Treść</span>
                 <i class="fas fa-align-left"></i>
-                <textarea type="text" name="message" class="input" autocomplete="off" required></textarea>
+                <textarea name="message" class="input" autocomplete="off" required></textarea>
             </label>
 
             <label class="guardian">
@@ -101,13 +101,13 @@
                         <form class="form form__login" action="./php/modules/login.php" method="POST">
                             <div class="form__container">
                                 <label class="form__row">
-                                    <h5>Login</h5>
+                                    <span class="input__text">Login</span>
                                     <i class="fas fa-user"></i>
                                     <input type="text" name="login" class="input" autocomplete="off" required>
                                 </label>
 
                                 <label class="form__row">
-                                    <h5>Hasło</h5>
+                                    <span class="input__text">Hasło</span>
                                     <i class="fas fa-unlock-alt"></i>
                                     <input type="password" name="password" class="input" required>
                                     <i class="far fa-eye-slash"></i>
@@ -127,35 +127,35 @@
                     <form class="form form__register" action="./php/modules/register.php" method="POST">
                         <div class="form__container">
                             <label class="form__row">
-                                <h5>Login</h5>
+                                <span class="input__text">Login</span>
                                 <i class="fas fa-user"></i>
                                 <input type="text" name="login" minlength="3" class="input" autocomplete="off" required>
                             </label>
 
                             <label class="form__row">
-                                <h5>E-mail</h5>
+                                <span class="input__text">E-mail</span>
                                 <i class="fas fa-envelope"></i>
                                 <input type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off" required>
                             </label>
 
                             <label class="form__row">
-                                <h5>Hasło</h5>
+                                <span class="input__text">Hasło</span>
                                 <i class="fas fa-unlock-alt"></i>
                                 <input type="password" name="password" minlength="8" class="input" required>
                                 <i class="far fa-eye-slash"></i>
                             </label>
 
                             <label class="form__row">
-                                <h5>Rok Urodzenia</h5>
+                                <span class="input__text">Rok Urodzenia</span>
                                 <i class="fas fa-calendar-alt"></i>
                                 <input type="number" name="date" min="1900" class="input input__date" autocomplete="off" required>
                             </label>
 
                             <label class="form__row">
-                                <h5>Miasto/Województwo</h5>
+                                <span class="input__text">Miasto/Województwo</span>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select name="city" class="input" required>
-                                    <option value=""></option>
+                                    <option value=""> </option>
                                     <option value="dolnośląskie">Dolnośląskie</option>
                                     <option value="kujawsko-pomorskie">Kujawsko-Pomorskie</option>
                                     <option value="lubelskie">Lubelskie</option>
@@ -207,36 +207,36 @@
                             <input type="number" name="user_id" required readonly>
 
                             <label class="form__row --focus">
-                                <h5>Zdjęcie</h5>
+                                <span class="input__text">Zdjęcie</span>
                                 <i class="fas fa-user-circle"></i>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                                 <input type="file" name="url_portrait" accept=".jpg, .jpeg" class="input">
                             </label>
 
                             <label class="form__row --focus">
-                                <h5>Login</h5>
+                                <span class="input__text">Login</span>
                                 <i class="fas fa-user"></i>
                                 <input type="text" name="login" minlength="3" class="input" autocomplete="off">
                             </label>
 
                             <label class="form__row --focus">
-                                <h5>E-mail</h5>
+                                <span class="input__text">E-mail</span>
                                 <i class="fas fa-envelope"></i>
                                 <input type="email" name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" class="input" autocomplete="off">
                             </label>
 
                             <label class="form__row">
-                                <h5>Nowe Hasło</h5>
+                                <span class="input__text">Nowe Hasło</span>
                                 <i class="fas fa-unlock-alt"></i>
                                 <input type="password" name="password" minlength="8" class="input">
                                 <i class="far fa-eye-slash"></i>
                             </label>
 
                             <label class="form__row --focus">
-                                <h5>Miasto/Województwo</h5>
+                                <span class="input__text">Miasto/Województwo</span>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select name="city" class="input">
-                                    <option value=""></option>
+                                    <option value=""> </option>
                                     <option value="dolnośląskie">Dolnośląskie</option>
                                     <option value="kujawsko-pomorskie">Kujawsko-Pomorskie</option>
                                     <option value="lubelskie">Lubelskie</option>
@@ -275,7 +275,7 @@
                             </label>
 
                             <label class="form__row">
-                                <h5>Usuń konto</h5>
+                                <span class="input__text">Usuń konto</span>
                                 <i class="fas fa-venus-mars"></i>
                                 <input type="checkbox" name="delete" class="input input__checkbox">
                             </label>
@@ -343,19 +343,19 @@
                         </div>
 
                         <div class="article__data">
-                            <time>07.06.2020 20:00</time>
+                            <time>2020-06-07 20:03:10</time>
 
                             <label class="form__row">
-                                <h5>Tytuł</h5>
+                                <span class="input__text">Tytuł</span>
                                 <i class="fas fa-paragraph"></i>
                                 <input type="text" name="title" class="input" autocomplete="off" minlength="3" required>
                             </label>
 
                             <label class="form__row post__category">
-                                <h5>Kategoria</h5>
+                                <span class="input__text">Kategoria</span>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <select name="category" class="input" required>
-                                    <option value=""></option>
+                                    <option value=""> </option>
                                     <option value="komercyjne">Komercyjne</option>
                                     <option value="szukam partnera">Szukam Partnera</option>
                                     <option value="szukam Kochanka">Szukam Kochanka</option>
@@ -374,13 +374,13 @@
                 </div>
 
                 <label class="form__row post__content">
-                    <h5>Treść</h5>
+                    <span class="input__text">Treść</span>
                     <i class="fas fa-align-left"></i>
-                    <textarea type="text" name="content" class="input" autocomplete="off" minlength="10" required></textarea>
+                    <textarea name="content" class="input" autocomplete="off" minlength="10" required></textarea>
                 </label>
 
                 <label class="form__row post__img --focus">
-                    <h5>Zdjęcie</h5>
+                    <span class="input__text">Zdjęcie</span>
                     <i class="fas fa-image"></i>
                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
                     <input type="file" name="url_post_img" accept=".jpg, .jpeg" class="input">
@@ -409,7 +409,7 @@
                         </div>
 
                         <div class="article__data">
-                            <time>07.06.2020 20:00</time>
+                            <time>2020-06-07 20:03:10</time>
                             <h2>Lorem Ipsum</h2>
                             <p class="article__category">default</p>
                         </div>
@@ -444,7 +444,7 @@
                     <button class="btn__delete form__submit">Usuń Post<i class="fas fa-trash-alt"></i></button>
                 </form>
 
-                <button class="btn__mail" mail="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
+                <button class="btn__mail" email="patszy97@interia.pl">Kontakt<i class="fas fa-envelope"></i></button>
             </section>
         </div>
 

@@ -34,19 +34,11 @@ document.addEventListener(`DOMContentLoaded`, () =>{
     //Check user cookies
     if(getCookie(`login`)) loadUserDataOnPage({id_user: getCookie(`id_user`), name: getCookie(`name`), email: getCookie(`email`), date: getCookie(`date`), city: getCookie(`city`), url_portrait: getCookie(`url_portrait`)});
 
-    //Post animation
-    let posts = document.querySelectorAll(`.post__container`);
-    animatePosts(posts);
-
     //Event listenners
-    window.addEventListener(`scroll`, () => { if(document.body.scrollHeight == window.scrollY+window.innerHeight) loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum) });
-    window.addEventListener(`scroll`, () => animatePosts(posts));
+    window.addEventListener(`scroll`, () => { if(document.body.scrollHeight <= window.scrollY+window.innerHeight) loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum) });
 
     // Category menu
-
-    const categoryMenu = document.querySelectorAll(`.category__nav li[value]`);
-
-    categoryMenu.forEach(item => {
+    document.querySelectorAll(`.category__nav li[value]`).forEach(item => {
         item.addEventListener(`click`, () => {
             document.querySelector(`.search__bar input[name="searchStr"]`).value = item.getAttribute(`value`);
             document.querySelector(`.posts__wrapper`).innerHTML = ``;

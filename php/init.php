@@ -1,7 +1,7 @@
 <?php
 
-    $db_user = "admin";
-    $db_password = "1234";
+    $db_user = "gejusz";
+    $db_password = "gejusz435879";
     $db_name = "project";
     $table_users = "users";
     $table_posts = "posts";

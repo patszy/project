@@ -48,7 +48,7 @@ const loadEventListenners = () => {
 
     emailToUserBtns.forEach(btn => btn.addEventListener(`click`, () => {
         toggleShowClass(document.querySelector(`.form__mail`),  document.querySelector(`.mail__creator`));
-        document.getElementById(`mail__recipient`).setAttribute(`value`, btn.getAttribute(`mail`));
+        document.getElementById(`mail__recipient`).setAttribute(`value`, btn.getAttribute(`email`));
     }));
 
     hamburgerMenu.addEventListener(`click`, () => toggleShowClass(document.querySelector(`.hamburger`), document.querySelector(`.main__nav`)));

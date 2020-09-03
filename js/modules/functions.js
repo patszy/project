@@ -16,9 +16,8 @@ const loadUserDataOnPage = (sessionUserData) =>{
     userUserIdOpt = document.querySelector(`.form__options [name="user_id"]`).value = sessionUserData.id_user;
     userLoginOpt = document.querySelector(`.form__options [name="login"]`).value = sessionUserData.name;
     userEmailOpt = document.querySelector(`.form__options [name="email"]`).value = sessionUserData.email;
-    //Error solution: no warszawa in options.
     userCityOpt = document.querySelector(`.form__options [value=${sessionUserData.city.toLowerCase()}]`).selected = true;
-    //Delete post form
+    //Set delete post form
     let posts = document.querySelectorAll(`.post__container`);
     showDeletePostFormBtn(posts);
     setDeletePostFormUserId(posts);

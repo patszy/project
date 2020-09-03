@@ -70,7 +70,7 @@
     background-color: var(--red-color);
 }
 
-.form__row h5 {
+.form__row .input__text {
     margin: 0;
     position: absolute;
     text-align: left;
@@ -79,9 +79,10 @@
     left: 50px;
     transition: .2s;
     cursor: text;
+    font-weight: bold;
 }
 
-.form__row.--focus h5 {
+.form__row.--focus .input__text {
     transform: translateY(-120%) scale(.7);
 }
 
@@ -301,7 +302,7 @@
     margin: 10px auto 30px;
 }
 
-.form__post .form__row.post__img.--focus h5 {
+.form__post .form__row.post__img.--focus .input__text {
     transform: translateY(-140%) scale(.7);
 }
 
@@ -317,13 +318,13 @@
     font-weight: normal;
 }
 
-.form__post .form__row h5 {
+.form__post .form__row .input__text {
     font-size: 1em;
     margin: 0;
     left: 35px;
 }
 
-.form__post .post__content.--focus h5 {
+.form__post .post__content.--focus .input__text {
     transform: translateY(-300%) scale(.7);
 }
 
@@ -340,7 +341,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, calc(-50% - .5px));
-    z-index: 9999;
+    z-index: 99999;
     font-size: 1.4rem;
     height: initial;
     box-shadow: 0 0 10px 100vw rgba(0,0,0, 0.7);
@@ -369,8 +370,8 @@
     display: none;
 }
 
-.form__mail .mail__message.--focus h5 {
-    transform: translateY(-490%) scale(.7);
+.form__mail .mail__message.--focus .input__text {
+    transform: translateY(-410%) scale(.7);
 }
 
 /* Form form__recovery */

@@ -115,24 +115,17 @@ class FormValidate {
                 const method = this.form.method;
                 const formData = new FormData(this.form);
 
-                for (var value of formData.values()) console.log(value);
-
                 fetch(url, {
                     method: method.toUpperCase(),
                     body: formData
                 })
                 .then(response => response.json())
                 .then(response => {
-                    console.log(response);
-                    if (response.status == `error`) {
-                        console.log(`Send Error`);
-                        toggleAlert(`${response.error}` , `error`, true);
-                    } else {
+                    if (response.status == `error`) toggleAlert(`${response.error}` , `error`, true);
+                    else {
                         if (response.status == `warning`) {
-                            console.log(`Send Warning`);
                             toggleAlert(`${response.warning}` , `warning`, true);
                         } else if (response.status == `success`) {
-                            console.log(`Send Success`);
                             if (response.success) {
                                 if(response.updateUser || response.deleteUser) {
                                     fetch('./php/modules/logout.php', {method: method.toUpperCase()});
