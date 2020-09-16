@@ -68,11 +68,6 @@
         padding: 10px;
     }
 
-    .user__data,
-    .article__data {
-        flex-wrap: wrap;
-    }
-
     .form {
         top: 0;
         left: 0;

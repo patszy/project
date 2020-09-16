@@ -33,11 +33,6 @@ header {
     display: flex;
 }
 
-.search__bar .fa-pen {
-    position: absolute;
-    left: 30px;
-}
-
 .search__bar .form__row {
     flex-grow: 1;
     display: inline-flex;
@@ -50,10 +45,10 @@ header {
 .search__bar .form__row input[type="text"]{
     border: 0;
     outline: 0;
-    padding-left: 80px;
     flex-grow: 1;
     font-size: 1.2rem;
     background-color: transparent;
+    text-align: center;
 }
 
 .search__bar p {

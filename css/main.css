@@ -86,24 +86,19 @@ main {
 .user__data,
 .article__data {
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 10px;
+    gap: 7px;
 }
 
-.form__post .article__data .form__row,
-.form__post .article__data time {
-    /* margin-top: 10px; */
-}
-
-.user__name,
-.user__city,
-.user__age {
-    margin-right: 10px;
+.user__name {
     text-align: center;
 }
 
 .user__city,
 .user__age {
     color: var(--dark-color);
+    text-transform: capitalize;
     cursor: default;
 }
 
@@ -139,6 +134,7 @@ main {
 
 .btn__mail,
 .btn__close,
+.btn__caution,
 .btn__delete {
     border: 0;
     outline: 0;
@@ -151,7 +147,8 @@ main {
 }
 
 .btn__mail,
-.btn__delete {
+.btn__delete,
+.btn__caution {
     display: block;
     margin-left: auto;
     margin-right:0;
@@ -168,7 +165,8 @@ main {
 }
 
 .btn__mail i.fas,
-.btn__delete i.fas {
+.btn__delete i.fas,
+.btn__caution i.fas {
     margin-left: 5px;
 }
 
@@ -193,6 +191,12 @@ main {
 }
 
 .btn__mail:hover {
+    background-color: var(--green-color);
+    color: var(--light-color);
+    z-index: 10;
+}
+
+.btn__caution:hover {
     background-color: var(--yellow-color);
     color: var(--light-color);
     z-index: 10;

@@ -63,7 +63,6 @@
 }
 
 .post__data time {
-    margin-right: 10px;
     font-style: italic;
 }
 
@@ -74,7 +73,6 @@
 }
 
 .post__data .article__category {
-    margin: 0 10px;
     color: var(--purple-color);
     cursor: pointer;
     text-transform: lowercase;

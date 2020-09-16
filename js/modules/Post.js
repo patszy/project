@@ -32,7 +32,8 @@ class Post{
                     createElementDOM(`div`, [`article__data`], undefined, [
                         createElementDOM(`time`, undefined, this.date),
                         createElementDOM(`h2`, undefined, this.title),
-                        createElementDOM(`span`, [`article__category`], this.category)
+                        createElementDOM(`span`, [`article__category`], this.category),
+                        createElementDOM(`span`, [`article__id`], `id: ${this.id_post}`)
                     ]),
                 ]),
             ]),
@@ -48,7 +49,8 @@ class Post{
                 ]),
                 createElementDOM(`button`, [`btn__delete`, `form__submit`], `Usuń Post`, [createElementDOM(`i`, [`fas`, `fa-trash-alt`])], undefined)
             ], [{name: `action`, value: `./php/modules/deletePost.php`}, {name: `method`, value: `POST`}]),
-            createElementDOM(`button`, [`btn__mail`], `Kontakt`, [createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `email`, value: this.user.email}])
+            createElementDOM(`button`, [`btn__mail`], `Skontaktuj się`, [createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `email`, value: this.user.email}]),
+            createElementDOM(`button`, [`btn__caution`], `Zgłoś post`, [createElementDOM(`i`, [`fas`, `fa-exclamation-triangle`])], [{name: `id_post`, value: this.id_post}])
         ]);
 
         if(before) parent.prepend(postContainer);

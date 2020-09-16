@@ -135,6 +135,14 @@
     outline: 0;
 }
 
+.form__row .input::placeholder {
+    opacity: 0;
+}
+
+.form__row.--focus .input::placeholder {
+    opacity: 1;
+}
+
 .form__row .input[type="file"] {
     font-size: initial;
 }

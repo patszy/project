@@ -42,6 +42,9 @@ Add:
     - add categories
     - positioning
 
+Add to search_post_form filters: (16-19, 20-25, 26-33, 34-41, 42-54, 55-100) and all data input.
+Add other city to select in city selection or city new name.
+
 ## Optimisation/Errors
 Delete:
 - Label for / Input id

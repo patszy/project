@@ -12,6 +12,7 @@ const createPosts = (tabPosts, before = false) => {
         animatePosts([addedPost]);
         window.addEventListener(`scroll`, () => animatePosts([addedPost]));
         addPostMailEvent(addedPost);
+        addPostCautionEvent(addedPost);
         showDeletePostFormBtn([addedPost]);
         setDeletePostFormUserId([addedPost]);
     })
@@ -26,6 +27,19 @@ const addPostMailEvent = post => {
             document.querySelector(`.form__mail [name="email_recipient"]`).setAttribute(`value`, emailButton.getAttribute(`email`));
             document.querySelector(`.form__mail [name="login"]`).value = emailButton.parentElement.querySelector(`.user__name`).innerText;
             document.querySelector(`.form__mail [name="title"]`).value = `Odp: ${emailButton.parentElement.querySelector(`.article__data h2`).innerText}`;
+        });
+    }
+}
+
+const addPostCautionEvent = post => {
+    if(post) {
+        let cautionButton = post.querySelector(`.btn__caution`);
+
+        cautionButton.addEventListener(`click`, () => {
+            toggleShowClass(document.querySelector(`.form__mail`));
+            document.querySelector(`.form__mail [name="email_recipient"]`).setAttribute(`value`, `gejusz.pl@gmail.com`);
+            document.querySelector(`.form__mail [name="login"]`).value = `Administrator`;
+            document.querySelector(`.form__mail [name="title"]`).value = `Zastrzeżenie do postu id:${cautionButton.getAttribute(`id_post`)}.`;
         });
     }
 }
