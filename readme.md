@@ -42,6 +42,17 @@ Add:
     - add categories
     - positioning
 
+Add placeholder to login input register.
+Change category to give a job.
+Add other to all category and inside ul.
+Add searching by age (16-19, 20-25, 26-33, 34-41, 42-54, 55-100).
+Choose post by form to filter. All data to choose.
+Change kontakt to Skontaktuj się.
+Issue to admin.
+Add to Message, placeholder write your email.
+Other city.
+Add validate by length.
+
 ## Optimisation/Errors
 Delete:
 - Label for / Input id
