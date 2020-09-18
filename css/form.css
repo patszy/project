@@ -23,11 +23,23 @@
 }
 
 .form__register.--show {
-    height: 500px;
+    height: 450px;
 }
 
 .form__options.--show {
-    height: 600px;
+    height: 550px;
+}
+
+.form__search__filter.--show {
+    height: 400px;
+}
+
+.form__search__filter {
+    top: 100%;
+}
+
+.main__nav .form__close {
+    display: none;
 }
 
 .form__close {
@@ -118,10 +130,10 @@
 	width: 40%;
 }
 
-.form > div,
+/* .form > div,
 .form__options .form__row {
     width: 100%;
-}
+} */
 
 .form__row .input {
     font-size: .9em;
@@ -390,7 +402,7 @@
     left: 50%;
     transform: translate(-50%, calc(-50% - .5px));
     z-index: 9999;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     height: initial;
     box-shadow: 0 0 10px 100vw rgba(0,0,0, 0.7);
     border-radius: 10px;

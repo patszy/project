@@ -21,6 +21,11 @@
     .main__nav.--show {
         display: flex;
         height: 100px;
+        overflow: initial;
+    }
+
+    .form.form__search__filter.--show {
+        top: -100%;
     }
 
     .search__bar {
@@ -92,6 +97,14 @@
     .form__post .article__data .form__row,
     .form__post .article__data time {
         margin-top: 15px;
+    }
+
+    .main__nav .form__close {
+        display: initial;
+    }
+
+    .form__container {
+        width: initial;
     }
 }
 

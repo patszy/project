@@ -12,7 +12,7 @@ header {
     flex-grow: 1;
     height: 50px;
     display: flex;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .main__nav.--show {
@@ -33,7 +33,7 @@ header {
     display: flex;
 }
 
-.search__bar .form__row {
+.search__bar > .form__row {
     flex-grow: 1;
     display: inline-flex;
     align-items: center;
@@ -48,14 +48,13 @@ header {
     flex-grow: 1;
     font-size: 1.2rem;
     background-color: transparent;
-    text-align: center;
 }
 
 .search__bar p {
     margin: 0;
 }
 
-.search__bar .submit {
+.search__bar > .submit {
     padding: 0 20px;
     height: 50px;
     font-size: 1.2rem;
@@ -82,16 +81,20 @@ header {
     padding-left: 15px;
 }
 
-.fa-arrow-down {
+.filter__button i {
     line-height: 50px;
     padding: 0 20px;
     color: var(--dark-color);
     transition: .2s;
 }
 
-.fa-arrow-down:hover {
+.filter__button i:hover {
     background-color: var(--grey-color);
     color: var(--light-color);
+}
+
+.form__search__filter {
+    height: 400px;
 }
 
 .user__bar {
