@@ -130,11 +130,6 @@
 	width: 40%;
 }
 
-/* .form > div,
-.form__options .form__row {
-    width: 100%;
-} */
-
 .form__row .input {
     font-size: .9em;
     box-sizing: border-box;

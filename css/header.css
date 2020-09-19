@@ -81,21 +81,6 @@ header {
     padding-left: 15px;
 }
 
-.filter__button i {
-    line-height: 50px;
-    color: var(--dark-color);
-    transition: .2s;
-}
-
-.filter__button i:hover {
-    background-color: var(--grey-color);
-    color: var(--light-color);
-}
-
-.form__filter {
-    height: 400px;
-}
-
 .user__bar {
     margin: 0;
     padding: 0;
