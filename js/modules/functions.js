@@ -10,9 +10,10 @@ const loadUserDataOnPage = (sessionUserData) =>{
     document.querySelector(`.form__mail [name="email_addressee"]`).value = sessionUserData.email;
     document.querySelector(`.form__mail [name="email_addressee"]`).parentElement.classList.add(`--focus`);
     //Menu settings
-    toggleShowClass(document.querySelector(`.user__bar li:nth-child(1)`));
     toggleShowClass(document.querySelector(`.user__bar li:nth-child(2)`));
     toggleShowClass(document.querySelector(`.user__bar li:nth-child(3)`));
+    toggleShowClass(document.querySelector(`.user__bar li:nth-child(4)`));
+    //Options
     userUserIdOpt = document.querySelector(`.form__options [name="user_id"]`).value = sessionUserData.id_user;
     userLoginOpt = document.querySelector(`.form__options [name="login"]`).value = sessionUserData.name;
     userEmailOpt = document.querySelector(`.form__options [name="email"]`).value = sessionUserData.email;

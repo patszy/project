@@ -43,7 +43,7 @@ const loadEventListenners = () => {
         if(menuBtns[0] != btn && menuBtns[0].classList.contains(`--show`)) toggleShowClass(menuBtns[0], menuBtns[0].nextElementSibling);
         if(menuBtns[1] != btn && menuBtns[1].classList.contains(`--show`)) toggleShowClass(menuBtns[1], menuBtns[1].nextElementSibling);
         if(menuBtns[2] != btn && menuBtns[2].classList.contains(`--show`)) toggleShowClass(menuBtns[2], menuBtns[2].nextElementSibling);
-        console.log(menuBtns[0], menuBtns[1], menuBtns[2]);
+        if(menuBtns[3] != btn && menuBtns[3].classList.contains(`--show`)) toggleShowClass(menuBtns[3], menuBtns[3].nextElementSibling);
 
         toggleShowClass(btn, btn.nextElementSibling);
     }));

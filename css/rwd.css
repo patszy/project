@@ -24,10 +24,6 @@
         overflow: initial;
     }
 
-    .form.form__search__filter.--show {
-        top: -100%;
-    }
-
     .search__bar {
         display: flex;
         align-self: center;

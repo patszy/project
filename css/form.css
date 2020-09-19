@@ -30,11 +30,11 @@
     height: 550px;
 }
 
-.form__search__filter.--show {
+.form__filter.--show {
     height: 400px;
 }
 
-.form__search__filter {
+.form__filter {
     top: 100%;
 }
 

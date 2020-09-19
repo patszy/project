@@ -83,7 +83,6 @@ header {
 
 .filter__button i {
     line-height: 50px;
-    padding: 0 20px;
     color: var(--dark-color);
     transition: .2s;
 }
@@ -93,7 +92,7 @@ header {
     color: var(--light-color);
 }
 
-.form__search__filter {
+.form__filter {
     height: 400px;
 }
 

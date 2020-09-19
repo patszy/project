@@ -90,102 +90,103 @@
                 <button class="submit form__submit"> Wyszukaj
                         <i class="fas fa-search"></i>
                 </button>
-<!-- Current work -->
-                <a href="#" class="filter__button"> <i class="fas fa-filter"></i> </a>
-                    <div class="form form__search__filter">
-                        <div class="form__container">
-                            <button type="button" class="form__close"></button>
-
-                            <label class="form__row">
-                                <span class="input__text">Login</span>
-                                <i class="fas fa-user"></i>
-                                <input type="text" name="login" class="input" autocomplete="off" maxlength="30" placeholder="Imię lub pseudonim">
-                            </label>
-
-                            <label class="form__row">
-                                <span class="input__text">Miasto/Województwo</span>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <select name="city" class="input">
-                                    <option value=""> </option>
-                                    <option value="dolnośląskie">Dolnośląskie</option>
-                                    <option value="kujawsko-pomorskie">Kujawsko-Pomorskie</option>
-                                    <option value="lubelskie">Lubelskie</option>
-                                    <option value="lubuskie">Lubuskie</option>
-                                    <option value="łódzkie">Łódzkie</option>
-                                    <option value="małopolskie">Małopolskie</option>
-                                    <option value="mazowieckie">Mazowieckie</option>
-                                    <option value="opolskie">Opolskie</option>
-                                    <option value="podkarpackie">Podkarpackie</option>
-                                    <option value="podlaskie">Podlaskie</option>
-                                    <option value="pomorskie">Pomorskie</option>
-                                    <option value="śląskie">Śląskie</option>
-                                    <option value="świętokrzyskie">Świętokrzyskie</option>
-                                    <option value="warmińsko-mazurskie">Warmińsko-mazurskie</option>
-                                    <option value="wielkopolskie">Wielkopolskie</option>
-                                    <option value="zachodniopomorskie">Zachodniopomorskie</option>
-                                    <option value="białystok">Białystok</option>
-                                    <option value="bydgoszcz">Bydgoszcz</option>
-                                    <option value="gdańsk">Gdańsk</option>
-                                    <option value="gorzów Wielkopolski">Gorzów Wielkopolski</option>
-                                    <option value="katowice">Katowice</option>
-                                    <option value="kielce">Kielce</option>
-                                    <option value="kraków">Kraków</option>
-                                    <option value="lublin">Lublin</option>
-                                    <option value="łódź">Łódź</option>
-                                    <option value="olsztyn">Olsztyn</option>
-                                    <option value="opole">Opole</option>
-                                    <option value="poznań">Poznań</option>
-                                    <option value="rzeszów">Rzeszów</option>
-                                    <option value="szczecin">Szczecin</option>
-                                    <option value="toruń">Toruń</option>
-                                    <option value="warszawa">Warszawa</option>
-                                    <option value="wrocław">Wrocław</option>
-                                    <option value="zielona Góra">Zielona Góra</option>
-                                </select>
-                            </label>
-
-                            <label class="form__row">
-                                <span class="input__text">Rok Urodzenia</span>
-                                <i class="fas fa-calendar-alt"></i>
-                                <input type="number" name="date" min="1900" class="input input__date" autocomplete="off">
-                            </label>
-
-                            <label class="form__row">
-                                <span class="input__text">Tytuł</span>
-                                <i class="fas fa-paragraph"></i>
-                                <input type="text" name="title" class="input" autocomplete="off" minlength="3" maxlength="50">
-                            </label>
-
-                            <label class="form__row post__category">
-                                <span class="input__text">Kategoria</span>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <select name="category" class="input">
-                                    <option value=""> </option>
-                                    <option value="komercyjne">Komercyjne</option>
-                                    <option value="szukam partnera">Szukam Partnera</option>
-                                    <option value="szukam Kochanka">Szukam Kochanka</option>
-                                    <option value="szukam przygody">Szukam Przygody</option>
-                                    <option value="szukam inne">Szukam inne</option>
-                                    <option value="wakacje i podróże">Wakacje i Podróże</option>
-                                    <option value="dam pracę">Dam Pracę</option>
-                                    <option value="szukam pracy">Szukam pracy</option>
-                                    <option value="usługi budowlane">Usługi budowlane</option>
-                                    <option value="usługi samochodowe">Usługi samochodowe</option>
-                                    <option value="usługi informatyczne">Usługi informatyczne</option>
-                                    <option value="usługi inne">Usługi inne</option>
-                                    <option value="korepetycje">Korepetycje</option>
-                                    <option value="inne">Inne</option>
-                                </select>
-                            </label>
-
-                            <label class="guardian">
-                                <input name="guardian" type="checkbox">
-                            </label>
-                        </div>
-                    </div>
             </form>
 
             <ul class="user__bar">
+                <li>
+                    <a href="#" class="filter__button"> <i class="fas fa-filter"></i> </a>
+                        <form class="form form__filter" action="./php/modules/filter.php" method="POST">
+                            <div class="form__container">
+                                <button type="button" class="form__close"></button>
+
+                                <label class="form__row">
+                                    <span class="input__text">Login</span>
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" name="login" class="input" autocomplete="off" maxlength="30" placeholder="Imię lub pseudonim">
+                                </label>
+
+                                <label class="form__row">
+                                    <span class="input__text">Miasto/Województwo</span>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <select name="city" class="input">
+                                        <option value=""> </option>
+                                        <option value="dolnośląskie">Dolnośląskie</option>
+                                        <option value="kujawsko-pomorskie">Kujawsko-Pomorskie</option>
+                                        <option value="lubelskie">Lubelskie</option>
+                                        <option value="lubuskie">Lubuskie</option>
+                                        <option value="łódzkie">Łódzkie</option>
+                                        <option value="małopolskie">Małopolskie</option>
+                                        <option value="mazowieckie">Mazowieckie</option>
+                                        <option value="opolskie">Opolskie</option>
+                                        <option value="podkarpackie">Podkarpackie</option>
+                                        <option value="podlaskie">Podlaskie</option>
+                                        <option value="pomorskie">Pomorskie</option>
+                                        <option value="śląskie">Śląskie</option>
+                                        <option value="świętokrzyskie">Świętokrzyskie</option>
+                                        <option value="warmińsko-mazurskie">Warmińsko-mazurskie</option>
+                                        <option value="wielkopolskie">Wielkopolskie</option>
+                                        <option value="zachodniopomorskie">Zachodniopomorskie</option>
+                                        <option value="białystok">Białystok</option>
+                                        <option value="bydgoszcz">Bydgoszcz</option>
+                                        <option value="gdańsk">Gdańsk</option>
+                                        <option value="gorzów Wielkopolski">Gorzów Wielkopolski</option>
+                                        <option value="katowice">Katowice</option>
+                                        <option value="kielce">Kielce</option>
+                                        <option value="kraków">Kraków</option>
+                                        <option value="lublin">Lublin</option>
+                                        <option value="łódź">Łódź</option>
+                                        <option value="olsztyn">Olsztyn</option>
+                                        <option value="opole">Opole</option>
+                                        <option value="poznań">Poznań</option>
+                                        <option value="rzeszów">Rzeszów</option>
+                                        <option value="szczecin">Szczecin</option>
+                                        <option value="toruń">Toruń</option>
+                                        <option value="warszawa">Warszawa</option>
+                                        <option value="wrocław">Wrocław</option>
+                                        <option value="zielona Góra">Zielona Góra</option>
+                                    </select>
+                                </label>
+
+                                <label class="form__row">
+                                    <span class="input__text">Rok Urodzenia</span>
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <input type="number" name="date" min="1900" class="input input__date" autocomplete="off">
+                                </label>
+
+                                <label class="form__row">
+                                    <span class="input__text">Tytuł</span>
+                                    <i class="fas fa-paragraph"></i>
+                                    <input type="text" name="title" class="input" autocomplete="off" minlength="3" maxlength="50">
+                                </label>
+
+                                <label class="form__row post__category">
+                                    <span class="input__text">Kategoria</span>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <select name="category" class="input">
+                                        <option value=""> </option>
+                                        <option value="komercyjne">Komercyjne</option>
+                                        <option value="szukam partnera">Szukam Partnera</option>
+                                        <option value="szukam Kochanka">Szukam Kochanka</option>
+                                        <option value="szukam przygody">Szukam Przygody</option>
+                                        <option value="szukam inne">Szukam inne</option>
+                                        <option value="wakacje i podróże">Wakacje i Podróże</option>
+                                        <option value="dam pracę">Dam Pracę</option>
+                                        <option value="szukam pracy">Szukam pracy</option>
+                                        <option value="usługi budowlane">Usługi budowlane</option>
+                                        <option value="usługi samochodowe">Usługi samochodowe</option>
+                                        <option value="usługi informatyczne">Usługi informatyczne</option>
+                                        <option value="usługi inne">Usługi inne</option>
+                                        <option value="korepetycje">Korepetycje</option>
+                                        <option value="inne">Inne</option>
+                                    </select>
+                                </label>
+
+                                <label class="guardian">
+                                    <input name="guardian" type="checkbox">
+                                </label>
+                            </div>
+                        </form>
+                </li>
                 <li>
                     <a href="#" class="login__button"> <i class="fas fa-user-lock"></i> </a>
                         <form class="form form__login" action="./php/modules/login.php" method="POST">
