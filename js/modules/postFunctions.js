@@ -50,6 +50,7 @@ const loadPosts = (Status) => {
     if(typeof(Status.rowNum) != undefined) formData.append(`rowNum`, Status.rowNum);
     if(typeof(Status.rowCount) != undefined) formData.append(`rowCount`, Status.rowCount);
     if(typeof(Status.searchStr) != undefined) formData.append(`searchStr`, Status.searchStr);
+    if(Status.filterData) for (const [key, value] of Object.entries(Status.filterData)) formData.append(`${key}`, value)
 
     return fetch(`./php/modules/getPostsData.php`, {
         method: `POST`,
@@ -61,6 +62,7 @@ const loadPosts = (Status) => {
         else {
             if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
             else if (response.status == `success`) {
+                console.log(response);
                 createPosts(response.posts);
                 Status.rowNum += Status.rowCount;
             }
@@ -83,6 +85,36 @@ const searchPosts = (Status) => {
         const formData = new FormData(formBar);
 
         Status.searchStr = formData.get(`searchStr`);
+        Status.rowNum = 0
+        document.querySelector(`.posts__wrapper`).innerHTML = ``;
+
+        return loadPosts(Status).finally(() => {
+                submit.disabled = false;
+                submit.classList.remove(`loading`);
+                return Status;
+            });
+    });
+}
+//Current work
+
+const filterPosts = (Status) => {
+    const formFilter = document.querySelector(`.form__filter`);
+
+    formFilter.addEventListener(`submit`, event => {
+        event.preventDefault();
+
+        const submit = formFilter.querySelector(`.submit`);
+        submit.disabled = true;
+        submit.classList.add(`loading`);
+
+        const formData = new FormData(formFilter);
+
+        Status.filterData = {};
+        if(formData.get("login") != ``)Status.filterData.login = formData.get("login");
+        if(formData.get("city") != ``) Status.filterData.city = formData.get("city");
+        if(formData.get("date") != ``) Status.filterData.date = formData.get("date");
+        if(formData.get("title") != ``) Status.filterData.title = formData.get("title");
+        if(formData.get("category") != ``) Status.filterData.category = formData.get("category");
         Status.rowNum = 0
         document.querySelector(`.posts__wrapper`).innerHTML = ``;
 

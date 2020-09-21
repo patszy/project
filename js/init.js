@@ -29,6 +29,7 @@ document.addEventListener(`DOMContentLoaded`, () =>{
     let loadPostsStatus = {rowNum: 0, rowCount: 5, searchStr: ``};
 
     if(searchPosts(loadPostsStatus)) searchPosts(loadPostsStatus).then(response => loadPostsStatus = response);
+    if(filterPosts(loadPostsStatus)) filterPosts(loadPostsStatus).then(response => loadPostsStatus = response);
     loadPosts(loadPostsStatus).then(response => loadPostsStatus = response);
 
     //Check user cookies
