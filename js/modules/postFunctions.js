@@ -52,8 +52,6 @@ const loadPosts = (Status) => {
     if(typeof(Status.searchStr) != undefined) formData.append(`searchStr`, Status.searchStr);
     if(Status.filterData) for (const [key, value] of Object.entries(Status.filterData)) formData.append(`${key}`, value);
 
-    console.log(Status);
-
     return fetch(`./php/modules/getPostsData.php`, {
         method: `POST`,
         body: formData
@@ -64,7 +62,6 @@ const loadPosts = (Status) => {
         else {
             if (response.status == `warning`) toggleAlert(`${response.warning}` , `warning`, true);
             else if (response.status == `success`) {
-                console.log(response);
                 createPosts(response.posts);
                 Status.rowNum += Status.rowCount;
             }
