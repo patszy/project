@@ -41,19 +41,20 @@ class Post{
                 createElementDOM(`p`, [`clearfix`], this.content)
             ]),
             createElementDOM(`img`, [`post__img`], undefined, undefined, postImgAttr),
-            createElementDOM(`form`, [`form__delete__post`], undefined, [
-                createElementDOM(`input`, [`input`], undefined, [], [{name: `type`, value: `text`}, {name: `name`, value: `post_id`}, {name: `required`, value: ``}, {name: `readonly`, value: ``}, {name: `value`, value: this.id_post}]),
-                createElementDOM(`input`, [`input`], undefined, [], [{name: `type`, value: `text`}, {name: `name`, value: `user_id`}, {name: `required`, value: ``}, {name: `readonly`, value: ``}, {name: `value`, value: (getCookie('id_user')!=undefined)?getCookie('id_user'):``}]),
-                createElementDOM(`label`, [`guardian`], undefined, [
-                    createElementDOM(`input`, undefined, undefined, undefined, [{name: `name`, value: `guardian`}, {name: `type`, value: `checkbox`}])
-                ]),
-                createElementDOM(`button`, [`btn__delete`, `form__submit`], `Usuń Post`, [createElementDOM(`i`, [`fas`, `fa-trash-alt`])], undefined)
-            ], [{name: `action`, value: `./php/modules/deletePost.php`}, {name: `method`, value: `POST`}]),
-            createElementDOM(`button`, [`btn__mail`], `Skontaktuj się`, [createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `email`, value: this.user.email}]),
-            createElementDOM(`button`, [`btn__caution`], `Zgłoś post`, [createElementDOM(`i`, [`fas`, `fa-exclamation-triangle`])], [{name: `id_post`, value: this.id_post}])
+            createElementDOM(`div`, [`post__options`], undefined, [
+                createElementDOM(`form`, [`form__delete__post`], undefined, [
+                    createElementDOM(`input`, [`input`], undefined, [], [{name: `type`, value: `text`}, {name: `name`, value: `post_id`}, {name: `required`, value: ``}, {name: `readonly`, value: ``}, {name: `value`, value: this.id_post}]),
+                    createElementDOM(`input`, [`input`], undefined, [], [{name: `type`, value: `text`}, {name: `name`, value: `user_id`}, {name: `required`, value: ``}, {name: `readonly`, value: ``}, {name: `value`, value: (getCookie('id_user')!=undefined)?getCookie('id_user'):``}]),
+                    createElementDOM(`label`, [`guardian`], undefined, [
+                        createElementDOM(`input`, undefined, undefined, undefined, [{name: `name`, value: `guardian`}, {name: `type`, value: `checkbox`}])
+                    ]),
+                    createElementDOM(`button`, [`btn__delete`, `form__submit`], `Usuń Post`, [createElementDOM(`i`, [`fas`, `fa-trash-alt`])], undefined)
+                ], [{name: `action`, value: `./php/modules/deletePost.php`}, {name: `method`, value: `POST`}]),
+                createElementDOM(`button`, [`btn__mail`], `Skontaktuj się`, [createElementDOM(`i`, [`fas`, `fa-envelope`])], [{name: `email`, value: this.user.email}]),
+                createElementDOM(`button`, [`btn__caution`], `Zgłoś post`, [createElementDOM(`i`, [`fas`, `fa-exclamation-triangle`])], [{name: `id_post`, value: this.id_post}])
+            ])
         ]);
 
-        if(before) parent.prepend(postContainer);
-        else parent.append(postContainer);
+        before ? parent.prepend(postContainer) : parent.append(postContainer);
     }
 }

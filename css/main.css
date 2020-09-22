@@ -150,8 +150,6 @@ main {
 .btn__delete,
 .btn__caution {
     display: block;
-    margin-left: auto;
-    margin-right:0;
     padding: 0 3px;
     color: var(--blue-color);
 }

@@ -107,6 +107,11 @@
     transform: translate(-20%, -50%) rotate(45deg);
 }
 
+.post__options {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 /* Loading post animation */
 
 .post__container {
