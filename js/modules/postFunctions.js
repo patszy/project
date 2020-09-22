@@ -50,7 +50,9 @@ const loadPosts = (Status) => {
     if(typeof(Status.rowNum) != undefined) formData.append(`rowNum`, Status.rowNum);
     if(typeof(Status.rowCount) != undefined) formData.append(`rowCount`, Status.rowCount);
     if(typeof(Status.searchStr) != undefined) formData.append(`searchStr`, Status.searchStr);
-    if(Status.filterData) for (const [key, value] of Object.entries(Status.filterData)) formData.append(`${key}`, value)
+    if(Status.filterData) for (const [key, value] of Object.entries(Status.filterData)) formData.append(`${key}`, value);
+
+    console.log(Status);
 
     return fetch(`./php/modules/getPostsData.php`, {
         method: `POST`,
@@ -84,6 +86,7 @@ const searchPosts = (Status) => {
 
         const formData = new FormData(formBar);
 
+        Status.filterData = {};
         Status.searchStr = formData.get(`searchStr`);
         Status.rowNum = 0
         document.querySelector(`.posts__wrapper`).innerHTML = ``;
@@ -95,10 +98,9 @@ const searchPosts = (Status) => {
             });
     });
 }
-//Current work
 
 const filterPosts = (Status) => {
-    const formFilter = document.querySelector(`.form__filter`);
+    let formFilter = document.querySelector(`.form__filter`);
 
     formFilter.addEventListener(`submit`, event => {
         event.preventDefault();
@@ -109,10 +111,11 @@ const filterPosts = (Status) => {
 
         const formData = new FormData(formFilter);
 
+        Status.searchStr = ``;
         Status.filterData = {};
-        if(formData.get("login") != ``)Status.filterData.login = formData.get("login");
+        if(formData.get("login") != ``) Status.filterData.login = formData.get("login");
         if(formData.get("city") != ``) Status.filterData.city = formData.get("city");
-        if(formData.get("date") != ``) Status.filterData.date = formData.get("date");
+        if(formData.get("date") != ``) Status.filterData.date = formData.get("date").split(`-`);
         if(formData.get("title") != ``) Status.filterData.title = formData.get("title");
         if(formData.get("category") != ``) Status.filterData.category = formData.get("category");
         Status.rowNum = 0

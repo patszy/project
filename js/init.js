@@ -26,7 +26,7 @@ document.addEventListener(`DOMContentLoaded`, () =>{
         });
 
     //Load posts
-    let loadPostsStatus = {rowNum: 0, rowCount: 5, searchStr: ``};
+    let loadPostsStatus = {rowNum: 0, rowCount: 5, searchStr: ``, filterData: {}};
 
     if(searchPosts(loadPostsStatus)) searchPosts(loadPostsStatus).then(response => loadPostsStatus = response);
     if(filterPosts(loadPostsStatus)) filterPosts(loadPostsStatus).then(response => loadPostsStatus = response);

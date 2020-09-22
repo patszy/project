@@ -5,6 +5,15 @@
     require '../functions/userFunctions.php';
     require '../functions/postFunctions.php';
 
+    function countDate($date) {
+        $dateTab = explode(",", $_POST["date"]);
+
+        foreach($dateTab as &$date) $date = date("Y")-$date;
+        $dateTab = array_reverse($dateTab);
+
+        return $dateTab;
+    }
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $return = [];
 
@@ -20,8 +29,11 @@
                     $tab_query = [];
 
                     if (isset($_POST["login"])) array_push($tab_query, "users.login like '%".$connect->db_connect->real_escape_string($_POST["login"])."%'");
-                    if (isset($_POST["city"])) array_push($tab_query, "users.city = '".$connect->db_connect->real_escape_string($_POST["city"])."'");
-                    if (isset($_POST["date"])) array_push($tab_query, "users.date = '".$connect->db_connect->real_escape_string($_POST["date"])."'");
+                    if (isset($_POST["city"])) array_push($tab_query, "users.city like '%".$connect->db_connect->real_escape_string($_POST["city"])."%'");
+                    if (isset($_POST["date"])) {
+                        $date_tab = $connect->db_connect->real_escape_string($_POST["date"]);
+                        array_push($tab_query, 'users.date BETWEEN '.implode(' AND ', countDate($date_tab)));
+                    }
                     if (isset($_POST["title"])) array_push($tab_query, "posts.title like '%".$connect->db_connect->real_escape_string($_POST["title"])."%'");
                     if (isset($_POST["category"])) array_push($tab_query, "posts.category = '".$connect->db_connect->real_escape_string($_POST["category"])."'");
 
@@ -29,21 +41,21 @@
 
                     $return = getPosts($connect, "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content, posts.url_post_img FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE $where_query ORDER BY id_post DESC LIMIT $rowNum, $rowCount");
 
-                    foreach ($return["posts"] as &$post) {
-                        $user = getUserData($connect, $table_users, $post["id_user"])["user"];
+                    // foreach ($return["posts"] as &$post) {
+                    //     $user = getUserData($connect, $table_users, $post["id_user"])["user"];
 
-                        if(empty($return["users"])) $post["user"] = $user;
-                        else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;
-                    }
+                    //     if(empty($return["users"])) $post["user"] = $user;
+                    //     else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;
+                    // }
                 } else {
                     $return = getPosts($connect, "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content, posts.url_post_img FROM $table_posts INNER JOIN users ON posts.id_user = users.id_user ORDER BY id_post DESC LIMIT $rowNum, $rowCount");
 
-                    foreach ($return["posts"] as &$post) {
-                        $user = getUserData($connect, $table_users, $post["id_user"])["user"];
+                    // foreach ($return["posts"] as &$post) {
+                    //     $user = getUserData($connect, $table_users, $post["id_user"])["user"];
 
-                        if(empty($return["users"])) $post["user"] = $user;
-                        else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;
-                    }
+                    //     if(empty($return["users"])) $post["user"] = $user;
+                    //     else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;
+                    // }
                 }
             } else {
                 $searchStr = $connect->db_connect->real_escape_string($_POST["searchStr"]);
@@ -51,12 +63,19 @@
 
                 $return = getPosts($connect, "SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content, posts.url_post_img FROM $table_posts INNER JOIN users ON posts.id_user = users.id_user WHERE posts.date like '%$searchStr%' OR posts.title like '%$searchStr%' OR posts.category like '%$searchStr%' OR users.login like '%$searchStr%' OR users.date like '%$searchStr%' OR users.city like '%$searchStr%' ORDER BY id_post DESC LIMIT $rowNum, $rowCount");
 
-                foreach ($return["posts"] as &$post) {
-                    $user = getUserData($connect, $table_users, $post["id_user"])["user"];
+                // foreach ($return["posts"] as &$post) {
+                //     $user = getUserData($connect, $table_users, $post["id_user"])["user"];
 
-                    if(empty($return["users"])) $post["user"] = $user;
-                    else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;
-                }
+                //     if(empty($return["users"])) $post["user"] = $user;
+                //     else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;
+                // }
+            }
+
+            foreach ($return["posts"] as &$post) {
+                $user = getUserData($connect, $table_users, $post["id_user"])["user"];
+
+                if(empty($return["users"])) $post["user"] = $user;
+                else foreach($return["users"] as &$item) if($item["id_user"] != $user["id_user"]) $post["user"] = $user;
             }
 
             // SELECT id_post, posts.id_user, posts.date AS postDate, title, category, content, login, users.date AS userDate, city FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE posts.date like '%patszy%' OR posts.title like '%patszy%' OR posts.category like '%patszy%' OR users.login like '%patszy%' OR users.date like '%patszy%' OR users.city like '%patszy%' ORDER BY id_post DESC LIMIT 0, 5
