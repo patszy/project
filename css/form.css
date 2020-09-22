@@ -88,10 +88,11 @@
     text-align: left;
     top: 50%;
     transform: translateY(-50%);
-    left: 50px;
+    left: 40px;
     transition: .2s;
     cursor: text;
     font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .form__row.--focus .input__text {
@@ -307,10 +308,6 @@
 .form__post .form__row {
     width: initial;
     margin: 0;
-}
-
-.form__post .post__category {
-    margin-left: 10px;
 }
 
 .form__post .post__content {

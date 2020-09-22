@@ -167,7 +167,7 @@
     }
 
     function createUser($connect, $table, $login, $email, $password, $date, $city) {
-        $url_array = ["../assets/img/portraits/undraw_male_avatar_323b.svg", "../assets/img/portraits/undraw_female_avatar_w3jk.svg"];
+        $url_array = ["./assets/img/portraits/undraw_male_avatar_323b.svg", "./assets/img/portraits/undraw_female_avatar_w3jk.svg"];
         $url_portrait = $url_array[array_rand($url_array, 1)];
         $sql_create_user = "INSERT INTO $table SET id_user='', login='$login', email='$email', password='$password', date='$date', city='$city', permission = '0', url_portrait='$url_portrait'";
         $return = [];

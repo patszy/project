@@ -14,10 +14,10 @@ const loadUserDataOnPage = (sessionUserData) =>{
     toggleShowClass(document.querySelector(`.user__bar li:nth-child(3)`));
     toggleShowClass(document.querySelector(`.user__bar li:nth-child(4)`));
     //Options
-    userUserIdOpt = document.querySelector(`.form__options [name="user_id"]`).value = sessionUserData.id_user;
-    userLoginOpt = document.querySelector(`.form__options [name="login"]`).value = sessionUserData.name;
-    userEmailOpt = document.querySelector(`.form__options [name="email"]`).value = sessionUserData.email;
-    userCityOpt = document.querySelector(`.form__options [value=${sessionUserData.city.toLowerCase()}]`).selected = true;
+    document.querySelector(`.form__options [name="user_id"]`).value = sessionUserData.id_user;
+    document.querySelector(`.form__options [name="login"]`).value = sessionUserData.name;
+    document.querySelector(`.form__options [name="email"]`).value = sessionUserData.email;
+    document.querySelector(`.form__options [name="city"]`).value = sessionUserData.city;
     //Set delete post form
     let posts = document.querySelectorAll(`.post__container`);
     showDeletePostFormBtn(posts);
