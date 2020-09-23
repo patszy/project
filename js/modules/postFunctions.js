@@ -85,7 +85,7 @@ const searchPosts = (Status) => {
 
         Status.filterData = {};
         Status.searchStr = formData.get(`searchStr`);
-        Status.rowNum = 0
+        Status.rowNum = 0;
         document.querySelector(`.posts__wrapper`).innerHTML = ``;
 
         return loadPosts(Status).finally(() => {

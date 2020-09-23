@@ -37,8 +37,7 @@ To run this project open file index.html from copied folder in browser (recomend
 * https://undraw.co/illustrations/
 
 ## To do
-Bugs:
-- Get second page of data. Filter something. You get then doubled data.
+xxx
 
 ## Optimisation/Errors
 Delete:

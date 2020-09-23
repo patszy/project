@@ -30,13 +30,14 @@ document.addEventListener(`DOMContentLoaded`, () =>{
 
     if(searchPosts(loadPostsStatus)) searchPosts(loadPostsStatus).then(response => loadPostsStatus = response);
     if(filterPosts(loadPostsStatus)) filterPosts(loadPostsStatus).then(response => loadPostsStatus = response);
+
     loadPosts(loadPostsStatus).then(response => loadPostsStatus = response);
 
     //Check user cookies
     if(getCookie(`login`)) loadUserDataOnPage({id_user: getCookie(`id_user`), name: getCookie(`name`), email: getCookie(`email`), date: getCookie(`date`), city: getCookie(`city`), url_portrait: getCookie(`url_portrait`)});
 
     //Event listenners
-    window.addEventListener(`scroll`, () => { if(document.body.scrollHeight <= window.scrollY+window.innerHeight) loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum) });
+    window.addEventListener(`scroll`, () => { if(document.body.scrollHeight == window.scrollY+window.innerHeight) loadPosts(loadPostsStatus).then(response => loadPostsStatus.rowNum = response.rowNum) });
 
     // Category menu
     document.querySelectorAll(`.category__nav li[value]`).forEach(item => {
@@ -44,7 +45,8 @@ document.addEventListener(`DOMContentLoaded`, () =>{
             document.querySelector(`.search__bar input[name="searchStr"]`).value = item.getAttribute(`value`);
             document.querySelector(`.posts__wrapper`).innerHTML = ``;
 
-            loadPostsStatus = ({rowNum: 0, rowCount: 5, searchStr: item.getAttribute(`value`)});
+            loadPostsStatus.rowNum = 0;
+            loadPostsStatus.searchStr = item.getAttribute(`value`);
             loadPosts(loadPostsStatus).then(response => loadPostsStatus = response);
         })
     })
