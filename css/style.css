@@ -13,7 +13,7 @@
 }
 
 :root {
-    --dark-color: black;
+    --dark-color:black;
     --light-color: white;
     --grey-color: #707070;
     --web-wash: #F0F2F5;
@@ -48,9 +48,9 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--web-wash);
-    background-image: url(../assets/undraw_in_love_3dcq.svg);
+    background-image: url(../assets/bg-shop.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
 }
 

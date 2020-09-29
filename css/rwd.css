@@ -135,7 +135,7 @@
         padding: 0;
     }
 
-    .search__bar button[type="submit"] {
+    .search__bar > .submit {
         flex-grow: 1;
     }
 
