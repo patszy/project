@@ -48,9 +48,9 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--web-wash);
-    background-image: url(../assets/bg-shop.jpg);
+    background-image: url(../assets/undraw_add_to_cart_vkjp.svg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
 }
 
