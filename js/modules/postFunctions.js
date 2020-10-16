@@ -110,9 +110,11 @@ const filterPosts = (Status) => {
 
         Status.searchStr = ``;
         Status.filterData = {};
+        if(formData.get("post_id") != ``) Status.filterData.postId = formData.get("post_id");
         if(formData.get("login") != ``) Status.filterData.login = formData.get("login");
         if(formData.get("city") != ``) Status.filterData.city = formData.get("city");
-        if(formData.get("date") != ``) Status.filterData.date = formData.get("date").split(`-`);
+        if(formData.get("date_from") != ``) Status.filterData.dateFrom = formData.get("date_from");
+        if(formData.get("date_to") != ``) Status.filterData.dateTo = formData.get("date_to");
         if(formData.get("title") != ``) Status.filterData.title = formData.get("title");
         if(formData.get("category") != ``) Status.filterData.category = formData.get("category");
         Status.rowNum = 0

@@ -100,9 +100,15 @@
                                 <button type="button" class="form__close"></button>
 
                                 <label class="form__row">
+                                    <span class="input__text">Id postu</span>
+                                    <i class="fas fa-address-card"></i>
+                                    <input type="number" name="post_id" class="input" min="1" autocomplete="off">
+                                </label>
+
+                                <label class="form__row">
                                     <span class="input__text">Login</span>
                                     <i class="fas fa-user"></i>
-                                    <input type="text" name="login" class="input" autocomplete="off" maxlength="30" placeholder="Imię lub pseudonim" value="PatSzy">
+                                    <input type="text" name="login" class="input" autocomplete="off" maxlength="30" placeholder="Imię lub pseudonim">
                                 </label>
 
                                 <label class="form__row">
@@ -149,17 +155,15 @@
                                 </label>
 
                                 <label class="form__row">
-                                    <span class="input__text">Wiek</span>
+                                    <span class="input__text">Wiek od</span>
                                     <i class="fas fa-calendar-alt"></i>
-                                    <select name="date" class="input">
-                                        <option value=""> </option>
-                                        <option value="16-19">16-19</option>
-                                        <option value="20-24" selected>20-24</option>
-                                        <option value="25-32">25-32</option>
-                                        <option value="33-41">33-41</option>
-                                        <option value="42-51">42-51</option>
-                                        <option value="52-100">52-100</option>
-                                    </select>
+                                    <input type="number" name="date_from" min="16" max="100" class="input" autocomplete="off">
+                                </label>
+
+                                <label class="form__row">
+                                    <span class="input__text">Wiek do</span>
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <input type="number" name="date_to" min="16" max="100" class="input" autocomplete="off">
                                 </label>
 
                                 <label class="form__row">
@@ -174,7 +178,7 @@
                                     <select name="category" class="input">
                                         <option value=""> </option>
                                         <option value="komercyjne">Komercyjne</option>
-                                        <option value="szukam partnera" selected>Szukam Partnera</option>
+                                        <option value="szukam partnera">Szukam Partnera</option>
                                         <option value="szukam Kochanka">Szukam Kochanka</option>
                                         <option value="szukam przygody">Szukam Przygody</option>
                                         <option value="szukam inne">Szukam inne</option>
